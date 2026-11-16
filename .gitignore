@@ -1,0 +1,32 @@
+# runtime / caches
+__pycache__/
+*.py[cod]
+
+# study data (contains participant records) - never commit
+khai-backend/data/
+*.db
+*.db-wal
+*.db-shm
+
+# local logs
+*.log
+
+# personal / strategy documents - stay local by design
+Khai-*.md
+Khai-*.pdf
+CFTRI-Application/
+
+# OS junk
+Thumbs.db
+Desktop.ini
+
+# local python envs
+.venv/
+venv/
+
+# android build output and signing material (khai-tracker-android has its own ignore)
+khai-tracker-android/build/
+khai-tracker-android/keystore/
+khai-tracker-android/tools/kotlinc/
+khai-tracker-android/tools/bundletool.jar
+khai-tracker-android/build-log.txt

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="khai_primary">#1F5C3A</color>
+    <color name="khai_primary_dark">#143D27</color>
+    <color name="khai_primary_light">#E7F0EA</color>
+    <color name="khai_accent">#B8761F</color>
+    <color name="khai_accent_light">#FBF1E2</color>
+    <color name="khai_bg">#F5F7F5</color>
+    <color name="khai_surface">#FFFFFF</color>
+    <color name="khai_text">#16211B</color>
+    <color name="khai_muted">#5B6B62</color>
+    <color name="khai_line">#DCE3DE</color>
+    <color name="khai_danger">#A3231B</color>
+    <color name="khai_danger_light">#FBEAE8</color>
+    <color name="khai_ok">#1F6B45</color>
+    <color name="khai_warn">#8A5A00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

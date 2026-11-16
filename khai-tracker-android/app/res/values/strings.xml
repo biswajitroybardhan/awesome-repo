@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Khai Tracker</string>
+    <string name="brand">Khai</string>
+    <string name="brand_sub">Tracker</string>
+
+    <!-- Onboarding -->
+    <string name="onboard_title">Welcome to Khai Tracker</string>
+    <string name="onboard_intro">A daily food-and-health record that helps you and your clinician see what is actually happening between visits. It is a tracking tool, not medical advice.</string>
+    <string name="onboard_code">Participant code</string>
+    <string name="onboard_code_ph">e.g. K01</string>
+    <string name="onboard_age">Age group</string>
+    <string name="onboard_age_ph">Select</string>
+    <string name="onboard_conditions">Conditions (tick all that apply)</string>
+    <string name="onboard_meds">Daily medicines (name and dose)</string>
+    <string name="onboard_meds_ph">e.g. Metformin 500 mg</string>
+    <string name="onboard_add_med">+ Add another</string>
+    <string name="dose_hint">Dose (optional)</string>
+    <string name="onboard_start">Start tracking</string>
+    <string name="onboard_error_code">Please enter your participant code.</string>
+    <string name="onboard_error_consent">Please confirm consent to continue.</string>
+    <string name="onboard_error_age">Please choose an age group.</string>
+
+    <string name="consent_title">Consent</string>
+    <string name="consent_body">You choose what to record. Your entries stay encrypted on this phone, and are sent to the Khai study server only if your coordinator gives you a server address. You can erase everything at any time. No name, address, Aadhaar number or contact list is collected. You may withdraw by erasing your data.</string>
+    <string name="consent_listen">Listen in Hindi</string>
+    <string name="consent_check">I have read or heard this, and I agree to take part.</string>
+    <string name="consent_meta">Consent version 1.0 · recorded on this device with a timestamp</string>
+
+    <!-- Tabs -->
+    <string name="tab_today">Today</string>
+    <string name="tab_history">History</string>
+    <string name="tab_progress">Progress</string>
+    <string name="tab_settings">Settings</string>
+
+    <string name="disclaimer">Khai Tracker is a tracking tool, not medical advice. It never diagnoses and never changes a prescription.</string>
+
+    <!-- Today -->
+    <string name="meal_breakfast">Breakfast</string>
+    <string name="meal_lunch">Lunch</string>
+    <string name="meal_dinner">Dinner</string>
+    <string name="meal_snacks">Snacks &amp; drinks</string>
+    <string name="add_food">+ Add food</string>
+    <string name="search_food">Search a dish in English or Hindi</string>
+    <string name="no_food_yet">Nothing added yet</string>
+    <string name="portion_q">Portion</string>
+    <string name="remove">Remove</string>
+    <string name="remove_confirm">Remove this item?</string>
+    <string name="meds_title">Medicines</string>
+    <string name="meds_hint">Tick what you actually did today.</string>
+    <string name="meds_taken">Taken</string>
+    <string name="meds_skipped">Skipped</string>
+    <string name="meds_changed">Changed</string>
+    <string name="meds_empty">No medicines listed yet.</string>
+    <string name="meds_none">No medicines are listed in your profile. Add them once, then tick them off each day.</string>
+    <string name="add_medicines">Add medicines</string>
+    <string name="meds_summary">%1$d of %2$d medicines taken</string>
+    <string name="food_items">%1$d food items</string>
+    <string name="vitals_title">Readings</string>
+    <string name="vitals_hint">Only fill what you measured. Blank means not measured, which is useful information too.</string>
+    <string name="bp_sys">Systolic (upper)</string>
+    <string name="bp_dia">Diastolic (lower)</string>
+    <string name="pulse">Pulse</string>
+    <string name="glucose">Blood sugar</string>
+    <string name="glucose_fasting">Fasting</string>
+    <string name="glucose_pp">After food</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="wellbeing_title">How was the day?</string>
+    <string name="energy">Energy</string>
+    <string name="mood">Mood</string>
+    <string name="sleep">Sleep last night (hours)</string>
+    <string name="note">Anything else? (optional)</string>
+    <string name="save_today">Save today</string>
+    <string name="saved">Saved on this device. Encrypted.</string>
+    <string name="save_failed">Could not save. Please try again.</string>
+    <string name="already_saved">Saved. You can keep editing and save again.</string>
+
+    <!-- History -->
+    <string name="history_title">Last 21 days</string>
+    <string name="history_hint">A filled square has an entry. Tap any day to review or correct it.</string>
+    <string name="day_detail">Day detail</string>
+    <string name="pick_day">Pick a day above.</string>
+    <string name="nothing_logged">No entry for this day.</string>
+    <string name="edit_day">Edit this day</string>
+
+    <!-- Progress -->
+    <string name="progress_title">Progress</string>
+    <string name="completeness">21-day completeness</string>
+    <string name="completeness_hint">Days with meals, medicines and a reading, divided by 21. Counted from saved entries, not from memory.</string>
+    <string name="streak">Day streak</string>
+    <string name="this_week">This week</string>
+    <string name="days_logged">Days logged</string>
+    <string name="insights_title">What your own data shows</string>
+    <string name="insights_empty">Keep logging for a week. Patterns appear once there are at least five days with readings.</string>
+    <string name="insights_caveat">These are observations about your own entries, not a diagnosis and not a treatment recommendation.</string>
+    <string name="insight_early">early signal</string>
+    <string name="insight_moderate">moderate signal</string>
+    <string name="insight_descriptive">description</string>
+    <string name="export_title">Export and share</string>
+    <string name="export_hint">Share only with the people you choose. Files leave the phone only when you tap share.</string>
+    <string name="export_food">Food log (CSV)</string>
+    <string name="export_metrics">Daily readings (CSV)</string>
+    <string name="export_summary">Clinician summary (PDF)</string>
+    <string name="export_backup">Full backup (JSON)</string>
+    <string name="export_fhir">Health record (FHIR JSON)</string>
+    <string name="export_working">Preparing file…</string>
+    <string name="share">Share</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_body">Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising.</string>
+    <string name="erase">Erase my data</string>
+    <string name="erase_confirm">This permanently deletes every entry, your profile and your reminder settings on this phone. This cannot be undone.</string>
+    <string name="erase_yes">Erase everything</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="language">Language / भाषा</string>
+    <string name="reminders">Daily reminder</string>
+    <string name="reminder_hint">A quiet notification at the time you choose. No streak shaming, no ads.</string>
+    <string name="reminder_time">Reminder time</string>
+    <string name="reminder_on">Reminder on</string>
+    <string name="reminder_off">Reminder off</string>
+    <string name="pin_lock">App lock</string>
+    <string name="pin_hint">Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away.</string>
+    <string name="pin_set">Set PIN</string>
+    <string name="pin_change">Change PIN</string>
+    <string name="pin_remove">Remove PIN</string>
+    <string name="pin_enter">Enter your PIN</string>
+    <string name="pin_wrong">Wrong PIN. Try again.</string>
+    <string name="pin_new">Choose a 4-digit PIN</string>
+    <string name="pin_saved">PIN saved.</string>
+    <string name="pin_removed">PIN removed.</string>
+    <string name="pin_four">A PIN must be exactly 4 digits.</string>
+    <string name="hide_previews">Hide this app in the recent-apps preview</string>
+    <string name="sync_title">Study sync</string>
+    <string name="sync_hint">Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only.</string>
+    <string name="sync_url">Server address</string>
+    <string name="sync_url_ph">https://your-study.example.org</string>
+    <string name="sync_save">Save address</string>
+    <string name="sync_now">Sync now</string>
+    <string name="sync_never">Not synced yet.</string>
+    <string name="sync_ok">Synced. All entries are on the server.</string>
+    <string name="sync_fail">Sync failed. Entries are safe on this phone and will retry.</string>
+    <string name="sync_offline">No internet right now. Entries queued.</string>
+    <string name="sync_need_https">Use an HTTPS address. Health data is never sent unencrypted.</string>
+    <string name="sync_bad_url">That does not look like a valid address.</string>
+    <string name="pending">Pending sync</string>
+    <string name="about">About</string>
+    <string name="about_body">Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising.</string>
+    <string name="about_credit">Product owner: Biswajit Roy Bardhan</string>
+    <string name="read_aloud_unavailable">Hindi speech is not installed on this phone.</string>
+    <string name="back">Back</string>
+    <string name="done">Done</string>
+    <string name="close">Close</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="loading">Loading…</string>
+    <string name="profile">Profile and medicines</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="save">Save</string>
+    <string name="food_library_title">Food library</string>
+    <string name="estimated">estimated</string>
+    <string name="per_portion">per portion</string>
+    <string name="kcal">Energy</string>
+    <string name="carbs">Carbohydrate</string>
+    <string name="protein">Protein</string>
+    <string name="fat">Fat</string>
+    <string name="sodium">Salt (sodium)</string>
+    <string name="uncertainty">Range, not a single number</string>
+    <string name="todays_total">Today\'s estimate</string>
+    <string name="total_carbs">Carbohydrate</string>
+    <string name="range_note">Estimates are ranges because the same dish varies by household. They are for pattern-finding, not counting calories.</string>
+    <string name="notif_channel">Daily reminder</string>
+    <string name="notif_channel_desc">One daily reminder to record your day.</string>
+    <string name="notif_title">Khai Tracker</string>
+    <string name="notif_text">Two quiet minutes: what did you eat, and what did you measure today?</string>
+    <string name="notification_permission">Allow notifications so the daily reminder can reach you.</string>
+    <string name="share_unavailable">No app on this phone can receive the file. Install a mail or file app and try again.</string>
+</resources>

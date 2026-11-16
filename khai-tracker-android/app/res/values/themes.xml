@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KhaiTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/khai_primary</item>
+        <item name="android:colorPrimaryDark">@color/khai_primary_dark</item>
+        <item name="android:colorAccent">@color/khai_primary</item>
+        <item name="android:windowBackground">@color/khai_bg</item>
+        <item name="android:statusBarColor">@color/khai_primary_dark</item>
+        <item name="android:navigationBarColor">@color/khai_surface</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:textColorPrimary">@color/khai_text</item>
+        <item name="android:textColorSecondary">@color/khai_muted</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="KhaiSection">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/khai_text</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="KhaiLabel">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/khai_muted</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+</resources>

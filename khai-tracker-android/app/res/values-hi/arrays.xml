@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="age_band_keys">
+        <item>lt40</item>
+        <item>40_49</item>
+        <item>50_59</item>
+        <item>60_69</item>
+        <item>ge70</item>
+    </string-array>
+    <string-array name="age_bands">
+        <item>40 से कम</item>
+        <item>40–49</item>
+        <item>50–59</item>
+        <item>60–69</item>
+        <item>70 और अधिक</item>
+    </string-array>
+    <string-array name="condition_keys">
+        <item>diabetes_t2</item>
+        <item>prediabetes</item>
+        <item>hypertension</item>
+        <item>cholesterol</item>
+        <item>weight</item>
+        <item>none</item>
+    </string-array>
+    <string-array name="condition_options">
+        <item>मधुमेह (टाइप 2)</item>
+        <item>पूर्व-मधुमेह</item>
+        <item>उच्च रक्तचाप</item>
+        <item>उच्च कोलेस्ट्रॉल</item>
+        <item>वज़न प्रबंधन</item>
+        <item>इनमें से कोई नहीं</item>
+    </string-array>
+    <string-array name="meal_slots">
+        <item>breakfast</item>
+        <item>lunch</item>
+        <item>dinner</item>
+        <item>snacks</item>
+    </string-array>
+</resources>

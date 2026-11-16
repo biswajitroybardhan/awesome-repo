@@ -1,0 +1,24 @@
+# Build output
+build/
+*.apk
+*.aab
+*.apks
+build-log.txt
+
+# Signing material — never commit a real keystore
+keystore/
+*.jks
+*.keystore
+*.p12
+
+# Toolchain pulled in locally (not part of the source)
+tools/kotlinc/
+tools/sdk/
+tools/bundletool.jar
+
+# Local scratch
+*.log
+local.properties
+.gradle/
+.idea/
+captures/
