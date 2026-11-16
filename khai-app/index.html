@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khai Tracker</title>
+<meta name="theme-color" content="#1f5c3a">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="app">
+  <div id="install-banner" class="install-banner hidden">
+    <span data-i18n="install.title">Install Khai Tracker on your home screen for easy access.</span>
+    <button id="btn-install" class="btn small" type="button" data-i18n="install.btn">Install</button>
+  </div>
+  <header class="topbar">
+    <div class="brand">Khai <span class="brand-sub" data-i18n="brand.tracker">Tracker</span></div>
+    <button id="btn-settings" class="icon-btn" title="Settings" aria-label="Settings">&#9881;</button>
+  </header>
+
+  <!-- Onboarding -->
+  <section id="view-onboard" class="view">
+    <div class="card">
+      <h1 data-i18n="onboard.h1">Welcome to Khai Tracker</h1>
+      <p class="muted" data-i18n="onboard.p">A simple food-and-health tracker to support your daily routine. This is a tracking tool only — it does not give medical advice.</p>
+      <label for="p-code" data-i18n="onboard.code">Your participant code</label>
+      <input id="p-code" type="text" placeholder="e.g. K01" autocomplete="off" autocapitalize="characters">
+      <label for="p-age" data-i18n="onboard.age">Age group</label>
+      <select id="p-age">
+        <option value="" data-i18n="onboard.age.ph">Select</option>
+        <option>Under 40</option>
+        <option>40–49</option>
+        <option>50–59</option>
+        <option>60–69</option>
+        <option>70 and above</option>
+      </select>
+      <fieldset>
+        <legend data-i18n="onboard.conds">Conditions (tick all that apply)</legend>
+        <label class="check"><input type="checkbox" class="cond" value="Diabetes (type 2)"> Diabetes (type 2)</label>
+        <label class="check"><input type="checkbox" class="cond" value="Pre-diabetes"> Pre-diabetes</label>
+        <label class="check"><input type="checkbox" class="cond" value="High blood pressure"> High blood pressure</label>
+        <label class="check"><input type="checkbox" class="cond" value="High cholesterol"> High cholesterol</label>
+        <label class="check"><input type="checkbox" class="cond" value="Weight management"> Weight management</label>
+        <label class="check"><input type="checkbox" class="cond" value="None of these"> None of these</label>
+      </fieldset>
+      <div id="med-block">
+        <label for="p-med" data-i18n="onboard.meds">Daily medicines (name + dose)</label>
+        <input id="p-med" type="text" data-i18n-ph="onboard.meds.ph" placeholder="e.g. Metformin 500 mg">
+        <button id="btn-add-med" class="btn ghost small" type="button" data-i18n="onboard.meds.add">+ Add another</button>
+        <ul id="med-list" class="chip-list"></ul>
+      </div>
+      <button id="btn-start" class="btn primary big" data-i18n="onboard.start">Start tracking</button>
+    </div>
+  </section>
+
+  <!-- Main app -->
+  <section id="view-main" class="view hidden">
+    <nav class="tabs">
+      <button data-tab="today" class="tab active" data-i18n="tab.today">Today</button>
+      <button data-tab="history" class="tab" data-i18n="tab.history">History</button>
+      <button data-tab="progress" class="tab" data-i18n="tab.progress">Progress</button>
+    </nav>
+
+    <!-- Today -->
+    <div id="tab-today" class="tabpane">
+      <div class="date-strip"><span id="today-label"></span></div>
+
+      <div class="card">
+        <h2 data-i18n="today.meals">Meals &amp; food</h2>
+        <div id="meal-slots"></div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="today.sups">Supplements</h2>
+        <p class="muted small" data-i18n="today.sups.p">Anything extra you took today (enter name, optional dose).</p>
+        <div class="row">
+          <input id="sup-name" type="text" data-i18n-ph="today.sups.name.ph" placeholder="Supplement name">
+          <input id="sup-dose" type="text" data-i18n-ph="today.sups.dose.ph" placeholder="Dose (optional)">
+        </div>
+        <button id="btn-add-sup" class="btn ghost small" type="button" data-i18n="today.sups.add">+ Add</button>
+        <ul id="sup-list" class="chip-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="today.feel">How are you today?</h2>
+        <div class="field-group">
+          <span class="field-label" data-i18n="today.fasting">Fasting sugar (mg/dL, optional)</span>
+          <input id="r-fasting" type="number" inputmode="numeric" data-i18n-ph="today.fasting.ph" placeholder="blank = not checked">
+        </div>
+        <div class="field-group">
+          <span class="field-label" data-i18n="today.energy">Energy level</span>
+          <div class="rating" data-key="energy">
+            <button data-v="1">1</button><button data-v="2">2</button><button data-v="3">3</button>
+            <button data-v="4">4</button><button data-v="5">5</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <span class="field-label" data-i18n="today.mood">Mood</span>
+          <div class="rating" data-key="mood">
+            <button data-v="1">1</button><button data-v="2">2</button><button data-v="3">3</button>
+            <button data-v="4">4</button><button data-v="5">5</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <span class="field-label" data-i18n="today.sleep">Sleep last night (hours)</span>
+          <input id="r-sleep" type="number" inputmode="decimal" step="0.5" min="0" max="16" data-i18n-ph="today.sleep.ph" placeholder="e.g. 7">
+        </div>
+        <div class="field-group">
+          <span class="field-label" data-i18n="today.note">Note (optional)</span>
+          <input id="r-note" type="text" data-i18n-ph="today.note.ph" placeholder="Anything else from the day">
+        </div>
+        <button id="btn-save-day" class="btn primary" data-i18n="today.save">Save today</button>
+        <p id="save-msg" class="muted small"></p>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div id="tab-history" class="tabpane hidden">
+      <div class="card">
+        <h2 data-i18n="hist.last14">Last 14 days</h2>
+        <div id="calendar" class="calendar"></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="hist.detail">Day detail</h2>
+        <div id="day-detail" class="muted" data-i18n="hist.pick">Pick a day above.</div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div id="tab-progress" class="tabpane hidden">
+      <div class="stats">
+        <div class="stat"><span id="stat-streak">0</span><label data-i18n="prog.streak">Day streak</label></div>
+        <div class="stat"><span id="stat-week">0%</span><label data-i18n="prog.week">This week</label></div>
+        <div class="stat"><span id="stat-total">0</span><label data-i18n="prog.total">Days logged</label></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="prog.export">Export your data</h2>
+        <p class="muted small"><span data-i18n="prog.export.p">Share these with the Khai study coordinator as requested.</span> <span id="exp-code"></span></p>
+        <div class="btn-row">
+          <button id="btn-exp-food" class="btn" data-i18n="prog.export.food">Food log (CSV)</button>
+          <button id="btn-exp-metric" class="btn" data-i18n="prog.export.metric">Daily metrics (CSV)</button>
+          <button id="btn-exp-backup" class="btn ghost" data-i18n="prog.export.backup">Full backup (JSON)</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="prog.privacy">Privacy</h2>
+        <p class="muted small" data-i18n="prog.privacy.p">All data stays on this device. Clear it any time.</p>
+        <button id="btn-reset" class="btn danger ghost" data-i18n="prog.privacy.erase">Erase my data</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section id="view-settings" class="view hidden">
+    <div class="card">
+      <h2 data-i18n="set.title">Settings</h2>
+      <label for="lang-select" data-i18n="lang.label">भाषा / Language</label>
+      <select id="lang-select">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <p id="set-identity" class="muted"></p>
+      <button id="btn-profile-edit" class="btn ghost" data-i18n="set.profile">Edit my profile</button>
+      <button id="btn-back-main" class="btn" data-i18n="set.back">Back</button>
+    </div>
+    <div class="card">
+      <h2 data-i18n="set.sync">Sync</h2>
+      <p class="muted small" data-i18n="set.sync.p">Connect this device so your entries reach the study database. Leave the server URL empty to use this site itself.</p>
+      <label for="sync-url" data-i18n="set.sync.url">Server URL</label>
+      <input id="sync-url" type="url" data-i18n-ph="set.sync.url.ph" placeholder="https://your-app.onrender.com">
+      <button id="btn-save-sync" class="btn ghost small" data-i18n="set.sync.saveurl">Save URL</button>
+      <button id="btn-sync-now" class="btn" data-i18n="set.sync.now">Sync now</button>
+      <p id="sync-status" class="muted small"></p>
+      <p id="sync-hint" class="muted small"></p>
+    </div>
+  </section>
+</div>
+
+<footer class="foot" data-i18n="foot">Khai Tracker — a tracking tool, not medical advice.</footer>
+<script src="lang.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
