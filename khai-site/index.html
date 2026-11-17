@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khai Tracker — your day, measured</title>
+<meta name="description" content="An offline-first, encrypted Android record for chronic care. English and Hindi, a one-page clinician summary, CSV, JSON and FHIR R4 export. A pilot from Khai Foods, Jamshedpur.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Khai Tracker — your day, measured">
+<meta property="og:description" content="An offline-first, encrypted Android record for chronic care. English and Hindi. One page for the clinician. Nothing leaves the phone unless you say so.">
+<meta property="og:url" content="https://khaifoods.in/">
+<meta property="og:image" content="https://khaifoods.in/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="#product">What it does</a>
+      <a href="#loop">The loop</a>
+      <a href="#clinician">For clinicians</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/>
+        </svg>
+      </button>
+      <a class="btn small ghost" href="#download">Download</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ---------------------------------------------------------------- hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Khai Foods · Jamshedpur · Pilot build 1.0.0</p>
+        <h1>Your day,<br><em>measured.</em></h1>
+        <p class="lead">An offline-first record for chronic care. Log the plate in front of you, the medicine you actually took, and the numbers your clinician asked for — in English or हिंदी. Encrypted on the phone, before anything else happens.</p>
+        <div class="hero-actions">
+          <a class="btn" href="files/khai-tracker-1.0.0.apk" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg>
+            Download for Android
+          </a>
+          <a class="btn ghost" href="demo.html">Try the browser demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+          </a>
+        </div>
+        <p class="hero-foot"><span>No account</span><span>No ads</span><span>No analytics</span><span>English + हिंदी</span></p>
+      </div>
+
+      <div>
+        <div class="daycard" role="img" aria-label="Example of a completed day in Khai Tracker: food, medicine status, blood pressure, fasting glucose and weight, with a complete-day ring.">
+          <div class="daycard-top">
+            <div>
+              <div class="daycard-date">Mon 16 Nov · Today</div>
+              <div class="daycard-title">A complete day</div>
+            </div>
+            <svg class="ring" viewBox="0 0 56 56" aria-hidden="true">
+              <circle class="track" cx="28" cy="28" r="22" fill="none" stroke-width="2.5"/>
+              <circle class="value" cx="28" cy="28" r="22" fill="none" stroke-width="2.5"
+                      stroke-linecap="round" stroke-dasharray="138.2" stroke-dashoffset="0"
+                      transform="rotate(-90 28 28)"/>
+              <text x="28" y="32">3/3</text>
+            </svg>
+          </div>
+          <dl style="margin:0">
+            <div class="daycard-row">
+              <dt>Food</dt>
+              <dd><b>2 phulka · dal · bhindi</b><span class="sub">≈ 58 g carbohydrate · 3 items</span></dd>
+            </div>
+            <div class="daycard-row">
+              <dt>Medicine</dt>
+              <dd><b>Metformin — taken</b><span class="sub">Atorvastatin — skipped, noted</span></dd>
+            </div>
+            <div class="daycard-row">
+              <dt>Readings</dt>
+              <dd class="daycard-readings"><span><b>128/82</b> mmHg</span><span><b>106</b> mg/dL fasting</span><span><b>68.4</b> kg</span></dd>
+            </div>
+          </dl>
+          <div class="daycard-foot">
+            <span class="lock">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+              AES-256-GCM · this phone
+            </span>
+            <span>Day complete</span>
+          </div>
+        </div>
+        <p class="hero-caption">Illustrative record. The app stores one encrypted row per participant-day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- figures -->
+  <div class="figures">
+    <div class="wrap">
+      <div class="figure"><b>83</b><span>regional dishes</span></div>
+      <div class="figure"><b>2</b><span>languages, one record</span></div>
+      <div class="figure"><b>5</b><span>export formats</span></div>
+      <div class="figure"><b>0</b><span>third-party libraries</span></div>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------------- loop -->
+  <section class="section" id="loop">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The loop</p>
+          <h2 style="margin-top:14px">A measurement loop, not a wellness feed.</h2>
+        </div>
+        <p>Hospitals digitise what happens inside their walls. Chronic disease happens outside them. Khai Tracker starts at the other end: a few quiet minutes a day, producing the one thing a waiting room cannot — what actually happened between visits.</p>
+      </div>
+
+      <div class="loop">
+        <div class="loop-step">
+          <span class="num">01</span>
+          <h3>Capture</h3>
+          <p>A real plate, a real katori. Medicine status, blood pressure, glucose with its fasting context, weight, sleep, mood.</p>
+          <p class="tagline">Home portions</p>
+        </div>
+        <div class="loop-step">
+          <span class="num">02</span>
+          <h3>Seal</h3>
+          <p>Each day is serialised and encrypted before it is written. The database file contains ciphertext, not names or numbers.</p>
+          <p class="tagline">AES-256-GCM</p>
+        </div>
+        <div class="loop-step">
+          <span class="num">03</span>
+          <h3>Read</h3>
+          <p>A 21-day grid and a one-page sheet show what is missing, not just what is present. Missingness is data too.</p>
+          <p class="tagline">21 days</p>
+        </div>
+        <div class="loop-step">
+          <span class="num">04</span>
+          <h3>Share</h3>
+          <p>Metrics CSV, food CSV, a complete JSON copy, a FHIR R4 bundle, or paper. The participant chooses the destination.</p>
+          <p class="tagline">FHIR R4</p>
+        </div>
+        <div class="loop-step">
+          <span class="num">05</span>
+          <h3>Decide</h3>
+          <p>The clinician reviews and decides. The app never prescribes, adjusts a dose, diagnoses or triages.</p>
+          <p class="tagline">Human in the loop</p>
+        </div>
+      </div>
+
+      <p class="loop-note"><b>The rule.</b> The loop is allowed to be incomplete, but not allowed to lie. A skipped dose stays skipped. A missing reading stays missing. An estimate is labelled as an estimate.</p>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- product -->
+  <section class="section" id="product">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What it does</p>
+          <h2 style="margin-top:14px">Built for the space between visits.</h2>
+        </div>
+        <p>No feed, no streak, no guilt. The app does one job: turn everyday observations into a record that survives a language change, a flat battery and a four-minute appointment.</p>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature">
+          <span class="num">01</span>
+          <h3>Offline, entirely</h3>
+          <p>Every screen works with no network. There is no login wall and no first-launch download. Sync exists, but it is off until a study server is configured.</p>
+        </div>
+        <div class="feature">
+          <span class="num">02</span>
+          <h3>Encrypted per day</h3>
+          <p>AES-256-GCM with a random IV per record and a non-exportable key in the Android Keystore. The participant code and date are bound in as additional authenticated data, so ciphertext cannot be moved between people or days.</p>
+        </div>
+        <div class="feature">
+          <span class="num">03</span>
+          <h3>Bilingual at the record level</h3>
+          <p>Age bands and conditions are stored as stable codes, never display labels. Switching to Hindi does not rewrite the record, and dish names resolve through the library at display time — including after weeks of logging.</p>
+        </div>
+        <div class="feature">
+          <span class="num">04</span>
+          <h3>Real plates, honest ranges</h3>
+          <p>83 regional dishes, measured in katoris, rotis and glasses. Nutrition is a range collapsed to a representative value and always presented as an estimate, because a household portion is not a laboratory measurement.</p>
+        </div>
+        <div class="feature">
+          <span class="num">05</span>
+          <h3>One page, not a data dump</h3>
+          <p>The clinician summary is generated on the phone: completeness, recent readings, flags, medicine status, food frequency and the participant's own note. Designed to be read in under a minute.</p>
+        </div>
+        <div class="feature">
+          <span class="num">06</span>
+          <h3>Interoperable by construction</h3>
+          <p>FHIR R4 with LOINC-coded observations, UCUM units, a real Consent and a Provenance trail. Timestamps carry the day recorded, not an invented clock time. Diet estimates are deliberately kept out of the clinical bundle.</p>
+        </div>
+        <div class="feature">
+          <span class="num">07</span>
+          <h3>Quiet by design</h3>
+          <p>One optional daily reminder. No badge counts, no exact alarms, no re-engagement nags, no advertising identifier. Notification text never contains a reading.</p>
+        </div>
+        <div class="feature">
+          <span class="num">08</span>
+          <h3>Small enough to trust</h3>
+          <p>A 0.9 MB APK built from the framework alone — no AndroidX, no analytics SDK, no transitive dependency surface. The whole build is four Python-driven toolchain steps, reproducible without Gradle or an IDE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- clinician -->
+  <section class="section" id="clinician">
+    <div class="wrap">
+      <div class="sheet-wrap">
+        <div>
+          <p class="eyebrow">For clinicians</p>
+          <h2 style="margin-top:14px">What happened, and what didn't.</h2>
+          <p class="lead" style="margin-top:16px">A clinic does not need another dashboard. It needs one page that answers: how complete is this record, what changed, and where should the conversation start?</p>
+
+          <div class="sheet-points">
+            <div class="sheet-point"><span class="mark">01</span><div><b>Completeness first</b><span>18 of 21 days — and exactly which fields are missing.</span></div></div>
+            <div class="sheet-point"><span class="mark">02</span><div><b>Estimates kept separate</b><span>Food is an estimate. It never enters the FHIR clinical bundle dressed as a measurement.</span></div></div>
+            <div class="sheet-point"><span class="mark">03</span><div><b>Flags are questions</b><span>A prompt for a conversation, never a diagnosis and never a dose change.</span></div></div>
+            <div class="sheet-point"><span class="mark">04</span><div><b>English artefact, Hindi app</b><span>Dish names resolve to their canonical English name in the PDF, whatever language the participant used.</span></div></div>
+          </div>
+
+          <p style="margin-top:24px"><a class="textlink" href="demo.html#print">Generate one from the demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+          </a></p>
+        </div>
+
+        <div>
+          <div class="sheet" role="img" aria-label="Example clinician summary: 88 percent complete, average blood pressure 131 over 84, fasting glucose 112, weight down 0.6 kg, and a five-day table.">
+            <div class="sheet-head">
+              <div class="sheet-brand">Khai Tracker<span>Clinician summary</span></div>
+              <div class="sheet-meta">Participant K01<br>1–21 Nov 2026<br>Generated on device</div>
+            </div>
+            <div class="sheet-kpis">
+              <div class="sheet-kpi"><b>18/21</b><span>days complete</span></div>
+              <div class="sheet-kpi"><b>131/84</b><span>avg BP</span></div>
+              <div class="sheet-kpi"><b>112</b><span>avg fasting</span></div>
+              <div class="sheet-kpi"><b>−0.6</b><span>kg, period</span></div>
+            </div>
+            <table class="sheet-table">
+              <thead><tr><th>Date</th><th>BP</th><th>Glucose</th><th>Weight</th></tr></thead>
+              <tbody>
+                <tr><td>16 Nov</td><td>128/82</td><td>106 fasting</td><td>68.4</td></tr>
+                <tr><td>15 Nov</td><td>134/86</td><td>118 fasting</td><td>68.5</td></tr>
+                <tr><td>14 Nov</td><td>130/84</td><td>—</td><td>68.6</td></tr>
+                <tr><td>13 Nov</td><td>138/88</td><td>142 after food</td><td>68.6</td></tr>
+                <tr><td>12 Nov</td><td>—</td><td>121 fasting</td><td>68.7</td></tr>
+              </tbody>
+            </table>
+            <div class="sheet-notes">
+              <span>Food logged <b>19/21</b><br>Medicine status <b>20/21</b><br>Reading <b>18/21</b></span>
+              <span style="text-align:right">Most frequent: <b>roti ×14</b><br><b>dal ×11</b> · tea ×9<br>Flag: <b>3 days without a reading</b></span>
+            </div>
+            <p class="sheet-stamp">Illustrative record · not a medical device · estimates are estimates · decisions belong to a qualified clinician</p>
+          </div>
+          <p class="sheet-caption">A real one-page PDF is generated on the phone from the participant's own record.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- specs -->
+  <section class="section" id="specs">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Specifications</p>
+          <h2 style="margin-top:14px">Small, plain, inspectable.</h2>
+        </div>
+        <p>No hidden SDKs, no cloud dependency, no proprietary export format. The details below are what the shipped artefact actually claims — and what it does not.</p>
+      </div>
+      <table class="specs">
+        <tbody>
+          <tr><th scope="row">Product</th><td><b>Khai Tracker 1.0.0</b> (version code 1) · native Kotlin, framework widgets only</td></tr>
+          <tr><th scope="row">Platform</th><td>Android 7.0+ (API 24), compiled and targeted at API 35</td></tr>
+          <tr><th scope="row">Package</th><td><code>in.khaifoods.tracker</code></td></tr>
+          <tr><th scope="row">Size</th><td>0.9 MB APK · no AndroidX · no third-party libraries</td></tr>
+          <tr><th scope="row">Languages</th><td>English and हिंदी, with record values stored as stable codes</td></tr>
+          <tr><th scope="row">At rest</th><td>AES-256-GCM per record, random IV, non-exportable Android Keystore key, <code>code|date</code> as AAD. SQLite holds ciphertext only.</td></tr>
+          <tr><th scope="row">Exports</th><td>Metrics CSV · food CSV · complete JSON backup · FHIR R4 bundle · printable clinician summary</td></tr>
+          <tr><th scope="row">Sync</th><td>Optional HTTPS upsert to a study server, keyed by participant code and random device ID. Off by default.</td></tr>
+          <tr><th scope="row">Permissions</th><td>Four, requested only when used: internet · network state · notifications · boot completed</td></tr>
+          <tr><th scope="row">Signing</th><td>APK Signature Scheme v2 + v3 · RSA-4096 · CN=Khai Foods Pvt Ltd</td></tr>
+          <tr><th scope="row">Verification</th><td>30 automated artefact checks cover signatures, badging, permissions, locales, AAB validity and universal-APK freshness. <a href="security.html">Read the security notes</a>.</td></tr>
+          <tr><th scope="row">Not included</th><td>No AI in the clinical path · no diagnosis or dose advice · no pharmacy integration · no wearable ingestion · no account system</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- blueprint -->
+  <section class="section" id="blueprint">
+    <div class="wrap">
+      <div class="teaser">
+        <div>
+          <p class="eyebrow">The larger pattern</p>
+          <h2 style="margin-top:14px">The hospital loop, rebuilt for a phone.</h2>
+          <p class="lead" style="margin-top:16px">Closed-loop medication, a longitudinal record, follow-up without travel, and machine reading under human authority. Khai starts with the smallest node that can carry that loop: one participant, one mid-range Android phone, one clinician with four minutes.</p>
+          <p style="margin-top:20px"><a class="textlink" href="blueprint.html">Read the digital-transformation blueprint
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+          </a></p>
+        </div>
+        <div>
+          <blockquote class="quote">“The loop is allowed to be incomplete, but not allowed to lie.”
+            <cite>Khai design principle · v1.0</cite>
+          </blockquote>
+          <div class="teaser-list" style="margin-top:28px">
+            <div class="teaser-item"><span class="n">L3</span><div><b>Closed-loop medication</b><span>Prescribed ↔ dispensed ↔ actually taken. A discrepancy becomes a task for a person, never an automatic correction.</span></div></div>
+            <div class="teaser-item"><span class="n">L4</span><div><b>Internet-hospital follow-up</b><span>Scheduled review, results conversation, renewal and escalation — with the trigger rules written by clinicians.</span></div></div>
+            <div class="teaser-item"><span class="n">L4</span><div><b>FHIR-first interoperability</b><span>LOINC, UCUM, Consent, Provenance, and a participant-held JSON copy. No proprietary format is the system of record.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- download -->
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="download-panel">
+        <div class="download-grid">
+          <div>
+            <p class="eyebrow">Android · pilot build</p>
+            <h2 style="margin-top:14px">Take it with you.</h2>
+            <p class="lead" style="margin-top:14px">The native APK, signed and ready to sideload. No account, no installer service, no Play Store dependency. The source and the build script ship with it.</p>
+            <div class="download-actions">
+              <a class="btn on-green" href="files/khai-tracker-1.0.0.apk" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg>
+                Download APK · 0.9 MB
+              </a>
+              <a class="btn on-green" style="background:transparent;color:#f5f1e8;border-color:rgba(245,241,232,.4)" href="demo.html">Try the demo</a>
+            </div>
+            <div class="download-meta">
+              <div>SHA-256 <span class="sha-row"><span id="apk-sha">505778d284882d5568c745ffb9382fb59f0e675c0b17592ba6c512a4ba29e31a</span><button class="copy-btn" type="button" data-copy="#apk-sha">Copy</button></span></div>
+              <div style="margin-top:8px">adb install -r khai-tracker-1.0.0.apk</div>
+            </div>
+          </div>
+          <dl class="download-side">
+            <dt>Version</dt><dd>1.0.0 · version code 1</dd>
+            <dt>Requires</dt><dd>Android 7.0 or newer</dd>
+            <dt>Install</dt><dd>Open the file on the phone, allow install from this source, enter the participant code from your coordinator.</dd>
+            <dt>Updates</dt><dd>No update channel yet. A new build is a new sideload.</dd>
+            <dt>Size</dt><dd>0.9 MB · 4 permissions</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="caveat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <div><b>Read this before installing.</b> This is a pilot build signed with a development key. It has passed source checks, a 30-point artefact check and bundletool validation, but it has <b>not yet been run on a physical phone</b>. It is not on Google Play, is not a medical device, and makes no diagnostic or treatment claim. Use the demo to evaluate the interaction; use the app only with a coordinator who understands the limits.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- faq -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Straight answers</p>
+          <h2 style="margin-top:14px">Questions worth asking.</h2>
+        </div>
+        <p>If something here reads like marketing rather than a limit, it is a bug. The honest version is more useful.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Is Khai Tracker a medical device?<span class="plus"></span></summary>
+          <div class="answer"><p>No. It is a measurement and record-keeping tool. It does not diagnose, treat, cure or prevent disease, and it never changes a prescription. Decisions about care belong to a qualified clinician.</p></div>
+        </details>
+        <details>
+          <summary>Does it work without internet?<span class="plus"></span></summary>
+          <div class="answer"><p>Yes, completely. Every screen, the clinician summary and all exports are generated on the phone. Sync is optional and does nothing until a study server address is configured by a coordinator.</p></div>
+        </details>
+        <details>
+          <summary>Where is my data stored?<span class="plus"></span></summary>
+          <div class="answer"><p>In the Android app: encrypted in a local SQLite database, with the key held in the phone's non-exportable Android Keystore. The app is excluded from cloud backup and device transfer. In the browser demo: in this browser's <code>localStorage</code> only — no server, no upload, no cookie.</p></div>
+        </details>
+        <details>
+          <summary>Is the browser demo the real app?<span class="plus"></span></summary>
+          <div class="answer"><p>No. The demo is a faithful browser implementation of the same record shape, food library and rules, so you can try the loop without installing anything. The Android app is native Kotlin. The demo is not encrypted and must not be used for real clinical records.</p></div>
+        </details>
+        <details>
+          <summary>Why isn't it on Google Play?<span class="plus"></span></summary>
+          <div class="answer"><p>Because the remaining gates are real: a production keystore and Play App Signing, a device test pass on low-end hardware, real screenshots, and a monitored privacy mailbox. The build is structurally verifiable today; those operational steps are not done.</p></div>
+        </details>
+        <details>
+          <summary>Can I take my data out?<span class="plus"></span></summary>
+          <div class="answer"><p>Yes. Metrics CSV for a spreadsheet, food CSV for a dietitian, a complete JSON copy, a FHIR R4 bundle for a clinical system, and a one-page printable summary. Exports are plaintext by design and go only to the app you choose in the system share sheet.</p></div>
+        </details>
+        <details>
+          <summary>Who is it for?<span class="plus"></span></summary>
+          <div class="answer"><p>Adults in a Khai Foods observational pilot who are living with a long-term condition, often on a shared family phone with intermittent connectivity. The app is designed for that constraint first, not for a flagship device.</p></div>
+        </details>
+        <details>
+          <summary>Who built it, and is it affiliated with a hospital?<span class="plus"></span></summary>
+          <div class="answer"><p>Khai Foods Pvt Ltd, Jamshedpur, under product owner Biswajit Roy Bardhan. The digital-transformation pattern is informed by publicly described hospital practice, including Zhongshan Hospital, but there is no affiliation with, endorsement by, or derivation from Zhongshan, HIMSS or any named health system.</p></div>
+        </details>
+        <details>
+          <summary>Is there AI in it?<span class="plus"></span></summary>
+          <div class="answer"><p>Not in the clinical path in 1.0.0. The progress screen describes regularities in the participant's own short series, with the number of days behind each statement, and suppresses anything resting on fewer than four paired days. Any future assistance must be evaluated, versioned, overridable and audited before it can influence a decision.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="#product">What it does</a></li>
+          <li><a href="demo.html">Browser demo</a></li>
+          <li><a href="#download">Download APK</a></li>
+          <li><a href="#faq">Limits and answers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Transparency</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="blueprint.html">Blueprint</a></li>
+          <li><a href="security.html#verify">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+          <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+          <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
