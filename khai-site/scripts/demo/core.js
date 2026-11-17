@@ -124,6 +124,25 @@
     downloadToast: '{name} downloaded.',
     footerNote: 'Nothing leaves this browser.',
 
+    planTitle: 'Weekly plan draft',
+    planIntro: 'A draft for a dietitian to review, built only from your own logged days. Illustrative — not advice.',
+    planEmpty: 'Log about a week of food and readings first. A draft needs at least four paired days.',
+    planNotAdvice: 'Illustrative only. Not advice, not a diagnosis. Do not change your food or medicines because of this draft — a qualified clinician decides.',
+    planDraftLabel: 'Draft for review', planEvidence: 'Why this draft',
+    planAccept: 'Accept', planEdit: 'Edit', planReject: 'Reject',
+    planAccepted: 'Marked accepted in this demo.', planRejected: 'Marked rejected in this demo.',
+    planEditHint: 'Editing happens with the clinician in the review meeting; this demo records the decision only.',
+    planDecision: 'Demo decision', planDecisionNone: 'Not reviewed yet',
+    planAcceptedState: 'accepted', planRejectedState: 'rejected', planEditedState: 'edited',
+    planLowConfidence: 'Low confidence — only a few paired days.',
+    planTypePortion: 'Portion', planTypeTiming: 'Timing', planTypeSwap: 'Swap', planTypeRecord: 'Record',
+    escalateTitle: 'Flags for the clinician',
+    escalateBody: 'Raised readings are flagged for a conversation. The app never diagnoses or changes a prescription.',
+    escalateNone: 'No threshold flags in the recent record.',
+    planConfidenceTitle: 'How sure is this?',
+    planConfidenceBody: 'Food values are household-portion estimates shown as ranges, not weighed measurements. Pattern drafts come from a few paired days in one person — they are prompts for a clinician, not findings.',
+    planPaired: 'Built from {n} days that have both food and a reading.', planClear: 'Clear',
+
     bmiNote: 'Not a diagnosis.', weightUnit: 'kg', bpUnit: 'mmHg', glucoseUnit: 'mg/dL', sleepUnit: 'h'
   };
 
@@ -213,6 +232,25 @@
     printHint: 'प्रिंट डायलॉग में “Save as PDF” चुनें — एक पेज का सारांश बनेगा।',
     downloadToast: '{name} डाउनलोड हो गया।',
     footerNote: 'कुछ भी इस ब्राउज़र से बाहर नहीं जाता।',
+
+    planTitle: 'साप्ताहिक योजना का ड्राफ़्ट',
+    planIntro: 'आपके अपने दर्ज दिनों से बना एक ड्राफ़्ट, जिसे आहार विशेषज्ञ देखें। केवल उदाहरण — सलाह नहीं।',
+    planEmpty: 'पहले लगभग एक सप्ताह का खाना और माप दर्ज करें। ड्राफ़्ट के लिए कम से कम चार जुड़े दिन चाहिए।',
+    planNotAdvice: 'केवल उदाहरण। न सलाह, न निदान। इस ड्राफ़्ट के कारण अपना खाना या दवाइयाँ न बदलें — निर्णयोग्य डॉक्टर करते हैं।',
+    planDraftLabel: 'समीक्षा के लिए ड्राफ़्ट', planEvidence: 'यह ड्राफ़्ट क्यों',
+    planAccept: 'स्वीकार', planEdit: 'सुधार', planReject: 'अस्वीकार',
+    planAccepted: 'इस डेमो में स्वीकृत चिह्नित।', planRejected: 'इस डेमो में अस्वीकृत चिह्नित।',
+    planEditHint: 'सुधार डॉक्टर के साथ समीक्षा बैठक में होता है; यह डेमो सिर्फ़ निर्णय दर्ज करता है।',
+    planDecision: 'डेमो निर्णय', planDecisionNone: 'अभी समीक्षा नहीं हुई',
+    planAcceptedState: 'स्वीकृत', planRejectedState: 'अस्वीकृत', planEditedState: 'सुधारा हुआ',
+    planLowConfidence: 'कम भरोसा — जुड़े दिन कम हैं।',
+    planTypePortion: 'मात्रा', planTypeTiming: 'समय', planTypeSwap: 'बदलाव', planTypeRecord: 'रिकॉर्ड',
+    escalateTitle: 'डॉक्टर के लिए चिह्न',
+    escalateBody: 'ऊँचे माप बातचीत के लिए चिह्नित होते हैं। ऐप कभी निदान नहीं करता और न ही दवा बदलता है।',
+    escalateNone: 'हाल के रिकॉर्ड में कोई सीमा चिह्न नहीं।',
+    planConfidenceTitle: 'इसमें कितना भरोसा?',
+    planConfidenceBody: 'खाना घरेलू मात्रा का अनुमान है, सीमा के रूप में — तोलकर नहीं। पैटर्न ड्राफ़्ट एक ही व्यक्ति के कुछ जुड़े दिनों से आते हैं — ये डॉक्टर के लिए संकेत हैं, निष्कर्ष नहीं।',
+    planPaired: '{n} ऐसे दिनों से बना जिनमें खाना और माप दोनों हैं।', planClear: 'हटाएँ',
 
     bmiNote: 'यह निदान नहीं है।', weightUnit: 'कि.ग्रा.', bpUnit: 'mmHg', glucoseUnit: 'mg/dL', sleepUnit: 'घंटे'
   };
@@ -362,6 +400,7 @@
       v: 1,
       profile: null,
       days: {},
+      plan: { decisions: {} },
       settings: { lang: 'en' },
       createdAt: Date.now(),
       deviceId: 'demo-' + Math.random().toString(36).slice(2, 10)
@@ -384,6 +423,8 @@
       if (K.parseISO(d)) cleanDays[d] = K.normalizeDay(d, db.days[d]);
     });
     db.days = cleanDays;
+    db.plan = db.plan && typeof db.plan === 'object' ? db.plan : {};
+    db.plan.decisions = db.plan.decisions && typeof db.plan.decisions === 'object' ? db.plan.decisions : {};
     db.settings = db.settings && typeof db.settings === 'object' ? db.settings : {};
     db.settings.lang = db.settings.lang === 'hi' ? 'hi' : 'en';
     if (!db.deviceId) db.deviceId = 'demo-' + Math.random().toString(36).slice(2, 10);
@@ -592,6 +633,121 @@
     }
     if (!flags.length) flags.push('No threshold flags. Read the daily record above for the pattern.');
     return flags.slice(0, 5);
+  };
+
+  // ---------------------------------------------------------------- plan draft
+  // Illustrative only: a set of review points built from the participant's own
+  // logged days. Nothing here is advice, a diagnosis, or a prescription change.
+
+  K.setPlanDecision = function (id, decision) {
+    if (!K.db) return;
+    K.db.plan = K.db.plan || {};
+    K.db.plan.decisions = K.db.plan.decisions || {};
+    if (decision === 'accepted' || decision === 'edited' || decision === 'rejected') {
+      K.db.plan.decisions[id] = decision;
+    } else {
+      delete K.db.plan.decisions[id];
+    }
+    K.persist();
+  };
+
+  K.planDraft = function () {
+    var entries = K.sortedDays();
+    var byDate = {};
+    entries.forEach(function (e) { byDate[e.date] = e; });
+    var hi = K.lang === 'hi';
+    var paired = entries.filter(function (e) { return K.hasFood(e) && K.hasReading(e); });
+    var decisions = (K.db.plan && K.db.plan.decisions) || {};
+    var items = [];
+
+    // Evening portions vs next fasting reading.
+    var heavy = [], light = [];
+    entries.forEach(function (e) {
+      var next = byDate[K.shift(e.date, 1)];
+      if (!next || next.glucose == null || next.glucoseType !== 'fasting') return;
+      var dinnerCarb = (e.meals.dinner || []).reduce(function (a, f) { return a + f.carb; }, 0);
+      if (!dinnerCarb) return;
+      if (dinnerCarb >= 60) heavy.push(next.glucose); else light.push(next.glucose);
+    });
+    if (heavy.length >= 2 && light.length >= 2) {
+      var fg = K.round(K.average(heavy)), fl = K.round(K.average(light));
+      items.push({
+        id: 'evening-portion', type: 'portion',
+        title: hi ? 'शाम के खाने की मात्रा पर चर्चा करें' : 'Discuss evening meal portions',
+        reason: hi
+          ? 'जिन रातों में 60 ग्राम से अधिक अनुमानित कार्बोहाइड्रेट था, अगली सुबह खाली पेट शुगर औसतन ' + fg + ' mg/dL रही; हल्के खाने के बाद ' + fl + ' mg/dL (' + heavy.length + ' बनाम ' + light.length + ' रातें)।'
+          : 'After dinners over 60 g estimated carbohydrate, next fasting readings averaged ' + fg + ' mg/dL vs ' + fl + ' mg/dL after lighter dinners (' + heavy.length + ' vs ' + light.length + ' evenings).'
+      });
+    }
+
+    // Estimated salt vs systolic.
+    var highNa = [], lowNa = [];
+    entries.forEach(function (e) {
+      if (e.sys == null) return;
+      var sodium = K.totals(e).sodium;
+      if (!sodium) return;
+      if (sodium >= 3000) highNa.push(e.sys); else lowNa.push(e.sys);
+    });
+    if (highNa.length >= 3 && lowNa.length >= 3) {
+      var sh = K.round(K.average(highNa)), sl = K.round(K.average(lowNa));
+      items.push({
+        id: 'salt', type: 'portion',
+        title: hi ? 'नमक की मात्रा देखें' : 'Look at salt in the diet',
+        reason: hi
+          ? 'जिन दिनों अनुमानित सोडियम 3,000 mg से ऊपर था, ऊपरी रक्तचाप औसतन ' + sh + ' mmHg रहा; कम नमक वाले दिनों में ' + sl + ' mmHg (' + highNa.length + ' बनाम ' + lowNa.length + ' दिन)।'
+          : 'On days estimated above 3,000 mg sodium, systolic averaged ' + sh + ' mmHg vs ' + sl + ' mmHg on lower-salt days (' + highNa.length + ' vs ' + lowNa.length + ' days).'
+      });
+    }
+
+    // Sweet drinks.
+    var sweetDays = entries.filter(function (e) {
+      return K.MEALS.some(function (slot) {
+        return (e.meals[slot] || []).some(function (f) {
+          return f.id === 'soft_drink' || f.id === 'juice_packaged' || f.id === 'lassi_sweet';
+        });
+      });
+    });
+    if (sweetDays.length >= 2) {
+      items.push({
+        id: 'sweet-drinks', type: 'swap',
+        title: hi ? 'मीठे पेय पर चर्चा करें' : 'Discuss sweet drinks',
+        reason: hi
+          ? sweetDays.length + ' दिनों में मीठा पेय दर्ज हुआ। आहार विशेषज्ञ विकल्पों पर बात कर सकते हैं — ऐप स्वयं कोई सलाह नहीं देता।'
+          : 'A sweet drink was logged on ' + sweetDays.length + ' days. A dietitian can discuss alternatives; the app itself gives no advice.'
+      });
+    }
+
+    // Logging completeness.
+    if (paired.length < 10) {
+      items.push({
+        id: 'logging', type: 'record',
+        title: hi ? 'रिकॉर्डिंग जारी रखें' : 'Keep the record going',
+        reason: hi
+          ? 'अभी ' + paired.length + ' दिन ऐसे हैं जिनमें खाना और माप दोनों दर्ज हैं। ज़्यादा जुड़े दिन ड्राफ़्ट को डॉक्टर के लिए उपयोगी बनाते हैं।'
+          : 'Only ' + paired.length + ' days currently have both food and a reading. More paired days make any draft more useful to the clinician.'
+      });
+    }
+
+    if (!items.length) {
+      items.push({
+        id: 'steady', type: 'record',
+        title: hi ? 'मौजूदा रिकॉर्ड को आधार के रूप में रखें' : 'Keep the current record as the baseline',
+        reason: hi
+          ? 'इन दिनों में कोई खास पैटर्न नहीं दिखा। लगातार रिकॉर्डिंग ही डॉक्टर के लिए सबसे उपयोगी आधार है।'
+          : 'No single pattern stood out in these days. Consistent logging remains the most useful baseline for the clinician.'
+      });
+    }
+
+    items.forEach(function (it) { it.decision = decisions[it.id] || null; });
+
+    return {
+      ready: paired.length >= 4,
+      pairedDays: paired.length,
+      items: items,
+      flags: K.flags(entries),
+      confidence: paired.length >= 8 ? 'moderate' : 'early',
+      lowConfidence: paired.length < 6
+    };
   };
 
   // ---------------------------------------------------------------- exports

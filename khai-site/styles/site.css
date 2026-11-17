@@ -1122,6 +1122,11 @@ a:hover { color: var(--green); text-decoration-color: var(--green); }
 }
 .status-pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
 .status-pill.ok::before { background: var(--green); }
+.status-pill.demo::before { background: var(--gold); }
+.status-pill.roadmap { color: var(--muted); }
+.status-pill.roadmap::before { background: var(--line-strong); }
+.status-legend { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 1.4em; }
+.status-legend .status-pill { font-size: .625rem; }
 
 /* 404 */
 .notfound {

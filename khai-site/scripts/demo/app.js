@@ -234,6 +234,14 @@
       K.openProfileDialog();
     } else if (act === 'export') {
       doExport(b.getAttribute('data-kind'));
+    } else if (act === 'plan-decision') {
+      var pid = b.getAttribute('data-id');
+      var pdec = b.getAttribute('data-value');
+      K.setPlanDecision(pid, pdec);
+      K.render(true);
+      if (pdec === 'accepted') K.toast(K.t('planAccepted'));
+      else if (pdec === 'rejected') K.toast(K.t('planRejected'));
+      else if (pdec === 'edited') K.toast(K.t('planEditHint'));
     } else if (act === 'load-sample') {
       K.confirm({
         title: K.t('sampleTitle'), body: K.t('sampleBody'),
@@ -321,6 +329,16 @@
         printBtn.focus({ preventScroll: true });
         K.toast(K.t('printHint'));
       }, 120);
+    }
+  }
+
+  // A link to #plan lands on the plan draft inside Progress.
+  if (location.hash === '#plan' && K.db.profile) {
+    K.state.tab = 'progress';
+    K.render();
+    var planEl = document.getElementById('plan');
+    if (planEl) {
+      setTimeout(function () { planEl.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 120);
     }
   }
 

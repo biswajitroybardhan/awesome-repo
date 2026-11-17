@@ -303,7 +303,112 @@ Saying this plainly is part of the product:
 
 Those are the roadmap, not the launch copy.
 
-## 13. Attribution
+## 13. Full function map — Shipped, Demo, Roadmap
+
+The companion website publishes a browsable version of this map at `functions.html`. The convention
+is the same here: **Shipped** is in the signed 1.0.0 Android build (with the caveats in `SECURITY.md`);
+**Demo** is an illustration in the browser page, which has no encryption, Keystore, sync, reminders,
+analytics or upload and is explicitly not for real clinical records; **Roadmap** is part of the
+pattern but needs a server, a clinic, a partner or governance, with the precondition named so it
+cannot be announced as if it were live. A row can carry two labels where the real function ships and
+the demo only illustrates it. Across every row: software reads first, a human decides — nothing here
+diagnoses, prescribes, changes a dose or claims an outcome.
+
+### Capture and instrumentation
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Daily structured capture (food, medicine, BP, glucose, weight, sleep, mood, note) | Shipped | Self-reported; no device ingestion in 1.0 |
+| 83-dish bilingual regional food library | Shipped · Demo | Indian-focused; not a national nutrition database |
+| Offline-first encrypted local record | Shipped | Untested on physical hardware in this build |
+| Full EN/HI interface, stable codes | Shipped · Demo | Consent wording needs native-speaker clinical QA |
+| Daily local reminder | Shipped | Local only; demo has no reminder |
+| Wearable / BLE device ingestion | Roadmap | Precondition: device validation, identity binding, clinical owner for discordant readings |
+
+### Estimation and confidence
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Portion cues, not gram weights | Shipped · Demo | Household measures vary by utensil and cook |
+| Visible estimate ranges | Shipped · Demo | Ranges are illustrative, not clinically validated |
+| Confidence note on pattern drafts | Demo | Heuristic in the browser only; not in the Android clinical path |
+| Completeness as a recording metric | Shipped · Demo | Measures recording, not health |
+
+### Personal pattern detection and exposed reasoning
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Within-person observations (dinner → next fasting reading, salt → systolic, sweet drinks, missed logging) | Shipped · Demo | Associations, not causes; demo needs four paired days |
+| Reasoning shown beside each observation | Demo | Rule-based and deliberately transparent |
+| Anomaly detection and queue prioritisation | Roadmap | Precondition: prospective evaluation, model card, false-positive review, human override |
+| Transcription and translation | Roadmap | Precondition: native-speaker clinical QA; no machine translation for consent |
+
+### Plan drafting with exposed reasoning
+
+Illustrated in the browser demo under **Progress → Weekly plan draft** (`demo.html#plan`). It builds
+review points only from days logged in that browser, never advice, and changes no prescription.
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Draft generation from logged days (≥4 days with food and a reading) | Demo | Illustrative only; no autonomous equivalent in the Android app |
+| Evidence shown per item under "Why this draft" | Demo | Rule-derived; a clinician can see and reject the basis |
+| Accept / Edit / Reject decision stored locally | Demo | Records a decision only; editing happens with the clinician |
+| Fixed-threshold escalation flags | Demo | Thresholds illustrative, not guidelines; no triage to "no action" |
+| Signed `CarePlan` linked to source observations | Roadmap | Precondition: clinician authority, prospective evaluation, SaMD assessment |
+
+### Clinician summary and escalation
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| One-page printable clinician summary | Shipped · Demo | Static document; no reply channel or outcome claim |
+| Flagged items for review | Shipped · Demo | Prompts for conversation, not a triage decision |
+| Alarm / false-positive reduction | Roadmap | Precondition: measured override rates and a clinical owner per rule |
+
+### Interoperability and export
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| FHIR R4 bundle (LOINC, UCUM, Consent, Provenance; diet estimates excluded) | Shipped · Demo | No server or terminology service; day-precision dates |
+| CSV metrics, CSV food, complete JSON backup | Shipped · Demo | No proprietary format is the system of record |
+| Medication and plan resources, national rails, Bulk FHIR | Roadmap | Precondition: local legal basis, residency, named data guardian |
+
+### Store-and-forward, reconciliation, coordinator and audit
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Encrypt locally first, then optional HTTPS upsert | Shipped | Off by default; endpoint, retention and ownership are deployment responsibilities |
+| Last-write-wins conflict handling | Shipped | Simple; clinical reconciliation is roadmap |
+| Clinical reconciliation queue | Roadmap | Precondition: coordinator service and named clinical owner |
+| Participant code, no names | Shipped | Code mapping is a coordinator responsibility |
+| Coordinator dashboard and role-based access | Roadmap | Precondition: data-processing agreement, access review, retention policy |
+| Local audit (consent, sync state, user export); server audit planned | Shipped · Roadmap | No server audit or incident response in this repo |
+
+### Closed-loop medication and follow-up without travel
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Daily administration status per medicine | Shipped | Self-reported; change reason lives in the note |
+| Signed order, dispense and handover with a common identifier | Roadmap | Precondition: dispensing partner, pharmacist, escalation policy |
+| Discrepancy queue with human resolution | Roadmap | Nothing auto-corrected; every discrepancy needs a documented outcome |
+| Record ready for the appointment | Shipped | No scheduling or delivery channel |
+| Scheduling, questionnaire, results conversation, renewal, bounded messaging | Roadmap | Precondition: telemedicine licensing, indemnity, staffed clinic operations |
+
+### Trust, safety, governance and operating model
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| AES-256-GCM at rest, non-exportable key, per-record AAD | Shipped | Development-signed technical preview; open items in `SECURITY.md` |
+| Explicit honesty about what is not true | Shipped · Demo | Permanent by design |
+| DPIA, ethics review, SaMD assessment | Roadmap | Precondition: named data guardian and approvals per deployment |
+| Accessibility and physical-device testing | Roadmap | Not run on hardware in this build |
+| Security operations (keys, incidents, disclosure, dependencies) | Roadmap | See `SECURITY.md` |
+| Reproducible low-resource build (~0.9 MB, minSdk 24) | Shipped | Development key for this preview |
+| Phased rollout, local adapters, federated research analytics | Roadmap | Precondition: local partners, ethics approvals, staffed follow-up |
+
+The pattern is described generically; no named individual or institution is associated with Khai by
+this map.
+
+## 14. Attribution
 
 The digital-transformation pattern described here is public knowledge in digital health. Khai's
 implementation is its own: an offline-first, encrypted, bilingual measurement instrument built by

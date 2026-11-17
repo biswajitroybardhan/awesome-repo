@@ -11,6 +11,7 @@ static file host.
 | `index.html` | Landing page: the product, the closed loop, clinician sheet, download, FAQ |
 | `demo.html` | Interactive browser demo — **clearly marked as a demo**, not for real clinical records |
 | `blueprint.html` | The digital-transformation blueprint: what v1.0 does, what needs a server, roadmap |
+| `functions.html` | Full capability map: every pattern function labelled Shipped, Demo or Roadmap with its honest limit |
 | `security.html` | Encryption, PIN, sync, build notes, APK verification and known gaps |
 | `privacy.html` | Participant-first privacy notice, with a separate warning about the demo |
 | `404.html` | Not-found page |
@@ -52,6 +53,14 @@ It deliberately has **no encryption, Android Keystore, PIN, sync, reminders, ana
 Nothing leaves the browser. Do not enter real clinical records into it. The APK on this site is a
 **development-signed technical preview**, not a Play Store release; verify its SHA-256 as described
 on `security.html`.
+
+The Progress tab also illustrates a **weekly plan draft** (deep link `demo.html#plan`). With at least
+four days that have both food and a reading, it builds review points with the reasoning shown beside
+each one, fixed-threshold escalation flags, a confidence note, and Accept / Edit / Reject decisions
+stored locally under `khai.demo.v1` → `plan.decisions`. It is illustrative only: no advice, no
+diagnosis, no prescription change, and no equivalent autonomous function in the Android app.
+`functions.html` maps the same pattern to Shipped / Demo / Roadmap so a roadmap item is never mistaken
+for a live feature.
 
 ## Attribution and claims
 

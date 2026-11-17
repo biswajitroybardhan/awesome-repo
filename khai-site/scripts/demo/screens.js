@@ -289,6 +289,50 @@
     }
     html += '</div>';
 
+    // weekly plan draft — illustrative, built only from this person's logged days
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    var plan = K.planDraft();
+    html += '<section class="plan-section" id="plan"><h3>' + K.esc(K.t('planTitle')) + '</h3>' +
+      '<p class="plan-intro">' + K.esc(K.t('planIntro')) + '</p>';
+    if (!plan.ready) {
+      html += '<p class="hint">' + K.esc(K.t('planEmpty')) + '</p>';
+    } else {
+      html += '<div class="plan-meta"><span class="pill ' + (plan.lowConfidence ? 'warn' : 'quiet') + '">' +
+        K.esc(K.t(plan.confidence)) + '</span>' +
+        '<span class="hint">' + K.esc(K.t('planPaired').replace('{n}', plan.pairedDays)) + '</span></div>';
+      if (plan.lowConfidence) html += '<p class="hint">' + K.esc(K.t('planLowConfidence')) + '</p>';
+      html += '<p class="hint">' + K.esc(K.t('planConfidenceBody')) + '</p>';
+
+      plan.items.forEach(function (it) {
+        var dec = it.decision;
+        html += '<article class="plan-card' + (dec ? ' decided decided-' + dec : '') + '">' +
+          '<div class="plan-top"><span class="pill ' + K.esc(it.type) + '">' + K.esc(K.t('planType' + cap(it.type))) + '</span>' +
+          '<span class="plan-draft-label">' + K.esc(K.t('planDraftLabel')) + '</span></div>' +
+          '<b>' + K.esc(it.title) + '</b>' +
+          '<div class="plan-evidence"><span>' + K.esc(K.t('planEvidence')) + '</span><p>' + K.esc(it.reason) + '</p></div>';
+        if (dec) {
+          html += '<div class="plan-decision"><span>' + K.esc(K.t('planDecision')) + ': <b>' +
+            K.esc(K.t('plan' + cap(dec) + 'State')) + '</b></span>' +
+            '<button type="button" class="link-btn" data-act="plan-decision" data-id="' + K.attr(it.id) + '" data-value="">' +
+            K.esc(K.t('planClear')) + '</button></div>';
+        } else {
+          html += '<div class="plan-actions">' +
+            '<button type="button" class="btn-app small" data-act="plan-decision" data-id="' + K.attr(it.id) + '" data-value="accepted">' + K.esc(K.t('planAccept')) + '</button>' +
+            '<button type="button" class="btn-app ghost small" data-act="plan-decision" data-id="' + K.attr(it.id) + '" data-value="edited">' + K.esc(K.t('planEdit')) + '</button>' +
+            '<button type="button" class="btn-app ghost small" data-act="plan-decision" data-id="' + K.attr(it.id) + '" data-value="rejected">' + K.esc(K.t('planReject')) + '</button>' +
+            '</div>';
+        }
+        html += '</article>';
+      });
+
+      html += '<div class="plan-flags"><h4>' + K.esc(K.t('escalateTitle')) + '</h4>' +
+        '<p class="hint">' + K.esc(K.t('escalateBody')) + '</p><ul>';
+      plan.flags.forEach(function (f) { html += '<li>' + K.esc(f) + '</li>'; });
+      html += '</ul></div>';
+    }
+    html += '<p class="hint plan-caveat">' + K.esc(K.t('planNotAdvice')) + '</p>';
+    html += '</section>';
+
     if (medSlots > 0) {
       html += '<div style="padding:18px 16px 0"><h3>' + K.esc(K.t('adherence')) + '</h3>' +
         '<div class="estimate-row" style="margin-top:4px"><span>' + K.esc(K.t('last7')) + '</span><span><b>' +
