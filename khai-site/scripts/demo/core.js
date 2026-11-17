@@ -143,6 +143,22 @@
     planConfidenceBody: 'Food values are household-portion estimates shown as ranges, not weighed measurements. Pattern drafts come from a few paired days in one person — they are prompts for a clinician, not findings.',
     planPaired: 'Built from {n} days that have both food and a reading.', planClear: 'Clear',
 
+    hospitalTitle: 'Hospital control room', hospitalBadge: 'Illustration',
+    hospitalIntro: 'A design sketch of the hospital layer built around the same record. The cohort below is synthetic — no real patients, no hospital connection, no clinical decisions.',
+    hospitalBack: 'Back to app', hospitalCaveat: 'Illustration only. Synthetic cohort and sample actions. Nothing here is deployed, and no real patient data is shown.',
+    roleCoordinator: 'Coordinator', roleClinician: 'Clinician', rolePharmacist: 'Pharmacist',
+    roleCoordinatorDesc: 'Sees cohort completeness, the review queue and the audit trail. Cannot change a prescription.',
+    roleClinicianDesc: 'Sees the review pack for assigned participants, with flags and draft items linked to source days.',
+    rolePharmacistDesc: 'Sees the medication discrepancy queue and the prescribed → dispensed → taken checkpoints.',
+    hospCohort: 'Cohort', hospReviewQueue: 'Review queue', hospOpenFlags: 'Open flags', hospOverdue: 'Overdue reviews',
+    hospComplete: 'complete', hospWaiting: 'waiting', hospMarkReviewed: 'Mark reviewed', hospReviewed: 'Reviewed',
+    hospDiscrepancies: 'Medication discrepancies', hospResolve: 'Resolve', hospResolved: 'Resolved',
+    hospDisc1: 'Prescribed but not dispensed', hospDisc2: 'Dispensed but not taken', hospDisc3: 'Changed without a new order',
+    hospReviewPack: "Today's review pack", hospPackIntro: 'Draft points and flags for the selected record, with the reasoning left visible.',
+    hospPackEmpty: 'Log about a week in the participant app to see a review pack here.',
+    hospAudit: 'Audit trail', hospAuditEmpty: 'Actions in this demo appear here.',
+    hospOpenHospital: 'Open hospital control room', hospitalLinkHint: 'A labelled illustration of the hospital layer — not a live system.',
+
     bmiNote: 'Not a diagnosis.', weightUnit: 'kg', bpUnit: 'mmHg', glucoseUnit: 'mg/dL', sleepUnit: 'h'
   };
 
@@ -251,6 +267,22 @@
     planConfidenceTitle: 'इसमें कितना भरोसा?',
     planConfidenceBody: 'खाना घरेलू मात्रा का अनुमान है, सीमा के रूप में — तोलकर नहीं। पैटर्न ड्राफ़्ट एक ही व्यक्ति के कुछ जुड़े दिनों से आते हैं — ये डॉक्टर के लिए संकेत हैं, निष्कर्ष नहीं।',
     planPaired: '{n} ऐसे दिनों से बना जिनमें खाना और माप दोनों हैं।', planClear: 'हटाएँ',
+
+    hospitalTitle: 'अस्पताल नियंत्रण कक्ष', hospitalBadge: 'चित्रण',
+    hospitalIntro: 'उसी रिकॉर्ड के आसपास अस्पताल परत का एक डिज़ाइन चित्र। नीचे दिया समूह काल्पनिक है — कोई असली मरीज़, अस्पताल से कोई कनेक्शन या नैदानिक निर्णय नहीं।',
+    hospitalBack: 'ऐप पर वापस', hospitalCaveat: 'केवल चित्रण। काल्पनिक समूह और नमूना कार्रवाइयाँ। यहाँ कुछ भी तैनात नहीं है और कोई असली मरीज़ डेटा नहीं दिखाया गया।',
+    roleCoordinator: 'समन्वयक', roleClinician: 'डॉक्टर', rolePharmacist: 'फार्मासिस्ट',
+    roleCoordinatorDesc: 'समूह की पूर्णता, समीक्षा कतार और ऑडिट ट्रेल देखते हैं। दवा नहीं बदल सकते।',
+    roleClinicianDesc: 'सौंपे गए रिकॉर्ड का समीक्षा पैकेट देखते हैं, जिसमें चिह्न और मूल दिनों से जुड़े ड्राफ़्ट होते हैं।',
+    rolePharmacistDesc: 'दवा में अंतर की कतार और prescribed → dispensed → taken चरण देखते हैं।',
+    hospCohort: 'समूह', hospReviewQueue: 'समीक्षा कतार', hospOpenFlags: 'खुले चिह्न', hospOverdue: 'देर हो चुकी समीक्षाएँ',
+    hospComplete: 'पूर्ण', hospWaiting: 'प्रतीक्षारत', hospMarkReviewed: 'समीक्षित करें', hospReviewed: 'समीक्षित',
+    hospDiscrepancies: 'दवा में अंतर', hospResolve: 'हल करें', hospResolved: 'हल हुआ',
+    hospDisc1: 'निर्धारित परंतु वितरित नहीं', hospDisc2: 'वितरित परंतु नहीं ली गई', hospDisc3: 'नए आदेश के बिना बदली गई',
+    hospReviewPack: 'आज का समीक्षा पैकेट', hospPackIntro: 'चुने गए रिकॉर्ड के ड्राफ़्ट और चिह्न, कारण सहित।',
+    hospPackEmpty: 'यहाँ समीक्षा पैकेट देखने के लिए प्रतिभागी ऐप में लगभग एक सप्ताह दर्ज करें।',
+    hospAudit: 'ऑडिट ट्रेल', hospAuditEmpty: 'इस डेमो की कार्रवाइयाँ यहाँ दिखेंगी।',
+    hospOpenHospital: 'अस्पताल नियंत्रण कक्ष खोलें', hospitalLinkHint: 'अस्पताल परत का एक चिह्नित चित्रण — कोई जीवंत सिस्टम नहीं।',
 
     bmiNote: 'यह निदान नहीं है।', weightUnit: 'कि.ग्रा.', bpUnit: 'mmHg', glucoseUnit: 'mg/dL', sleepUnit: 'घंटे'
   };
@@ -401,6 +433,7 @@
       profile: null,
       days: {},
       plan: { decisions: {} },
+      hospital: { decisions: {} },
       settings: { lang: 'en' },
       createdAt: Date.now(),
       deviceId: 'demo-' + Math.random().toString(36).slice(2, 10)
@@ -425,6 +458,8 @@
     db.days = cleanDays;
     db.plan = db.plan && typeof db.plan === 'object' ? db.plan : {};
     db.plan.decisions = db.plan.decisions && typeof db.plan.decisions === 'object' ? db.plan.decisions : {};
+    db.hospital = db.hospital && typeof db.hospital === 'object' ? db.hospital : {};
+    db.hospital.decisions = db.hospital.decisions && typeof db.hospital.decisions === 'object' ? db.hospital.decisions : {};
     db.settings = db.settings && typeof db.settings === 'object' ? db.settings : {};
     db.settings.lang = db.settings.lang === 'hi' ? 'hi' : 'en';
     if (!db.deviceId) db.deviceId = 'demo-' + Math.random().toString(36).slice(2, 10);
@@ -648,6 +683,17 @@
     } else {
       delete K.db.plan.decisions[id];
     }
+    K.persist();
+  };
+
+  K.setHospitalDecision = function (id, decision) {
+    if (!K.db) return;
+    K.db.hospital = K.db.hospital || {};
+    K.db.hospital.decisions = K.db.hospital.decisions || {};
+    if (decision) K.db.hospital.decisions[id] = decision; else delete K.db.hospital.decisions[id];
+    K.db.hospital.audit = K.db.hospital.audit || [];
+    K.db.hospital.audit.unshift({ id: id, action: decision, at: Date.now() });
+    K.db.hospital.audit = K.db.hospital.audit.slice(0, 12);
     K.persist();
   };
 

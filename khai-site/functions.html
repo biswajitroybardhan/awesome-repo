@@ -34,6 +34,7 @@
       <a href="index.html#clinician">For clinicians</a>
       <a href="blueprint.html">Blueprint</a>
       <a href="functions.html" aria-current="page">Functions</a>
+      <a href="hospital.html">Hospital</a>
       <a href="security.html">Security</a>
       <a href="demo.html">Demo</a>
     </nav>
@@ -80,6 +81,7 @@
         <li><a href="#followup">10. Follow-up without travel</a></li>
         <li><a href="#trust">11. Trust, safety and governance</a></li>
         <li><a href="#operating">12. Operating model and rollout</a></li>
+        <li><a href="#hospital-layer">13. Hospital deployment layer</a></li>
         <li><a href="#not">What this map is not</a></li>
       </ol>
     </aside>
@@ -233,11 +235,26 @@
         </tbody>
       </table>
 
+      <h2 id="hospital-layer">13. Hospital deployment layer</h2>
+      <p>The hospital is the unit of change: a measurement only closes a loop when a clinic can act on it. The full reference architecture lives in the <a href="hospital.html">hospital deployment blueprint</a>, and the workflow is illustrated — with a synthetic cohort and no real records — in the labelled <a href="demo.html#hospital">hospital control-room demo</a>. The pattern is described generically; no hospital or named individual is associated with Khai.</p>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Hospital control-room illustration</td><td><span class="status-pill demo">Demo</span></td><td>A role-switchable view (coordinator, clinician, pharmacist) in the browser demo with a synthetic cohort, a review queue, a discrepancy queue and an audit trail.</td><td>Local demo objects only. No hospital connection, no real patient data, and decisions do not leave the browser.</td></tr>
+          <tr><td>Coordinator console with ageing queue</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Cohort completeness, open flags, overdue reviews and a review queue where the oldest items surface first.</td><td>Precondition: a coordinator service, a staffed response window and a data-processing agreement.</td></tr>
+          <tr><td>Clinician review pack</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>A one-page pack built from logged days, with flags linked to source days and exposed reasoning.</td><td>Prompts for a conversation, never triage. The demo uses the participant's own recorded days only.</td></tr>
+          <tr><td>Medication discrepancy queue</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Prescribed-but-not-dispensed, dispensed-but-not-taken and changed-without-an-order become owned tasks.</td><td>Nothing is auto-corrected; every discrepancy needs a documented human resolution.</td></tr>
+          <tr><td>Role-based access and audit</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Roles constrain what each view can see; actions appear in an audit trail.</td><td>Permissions are illustrative in the demo. Real access control needs authenticated identities and access review.</td></tr>
+          <tr><td>FHIR/HL7 gateway and national rails</td><td><span class="status-pill roadmap">Roadmap</span></td><td>An HTTPS gateway mapping the record to FHIR R4 Observations, Consent and Provenance, with HL7 v2 adapters and consent-gated exchange where permitted.</td><td>Precondition: a real partner, a target-system specification, local legal basis and a named clinical owner before any integration scaffold is written.</td></tr>
+          <tr><td>Cohort measurement and governance</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Completeness per participant-week, time to clinician review, discrepancies resolved, follow-up kept, and a DPIA before scale.</td><td>Measured by use and outcomes — not by announcements. No site is named as a partner or pilot.</td></tr>
+        </tbody>
+      </table>
+
       <h2 id="not">What this map is not</h2>
       <p>A claim of equivalence to any hospital system, a list of clinical results, or a statement that any roadmap item exists today. It is a design map: a way to see which parts of a clinician-supervised digital-health pattern this small project can honestly own, which parts the browser only illustrates, and which parts must wait for a clinic, a server, a partner and governance. The installed app is a measurement instrument; the demo is a marked illustration. Neither is a medical device and neither makes a diagnosis or treatment claim.</p>
       <blockquote>“The loop is allowed to be incomplete, but not allowed to lie.”<br><span class="mono">Khai design principle · v1.0</span></blockquote>
       <p>Built by <strong>Khai Foods Pvt Ltd</strong> under product owner <strong>Biswajit Roy Bardhan</strong>. The pattern is described generically and no affiliation, endorsement or derivation from any named person or health system is claimed.</p>
-      <p><a class="textlink" href="demo.html#plan">Open the plan-draft illustration in the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
+      <p><a class="textlink" href="demo.html#plan">Open the plan-draft illustration in the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a> &nbsp; <a class="textlink" href="demo.html#hospital">Open the labelled hospital control room <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
     </article>
   </div>
 </main>
@@ -263,6 +280,7 @@
         <li><a href="security.html">Security</a></li>
         <li><a href="blueprint.html">Blueprint</a></li>
         <li><a href="functions.html" aria-current="page">Functions</a></li>
+        <li><a href="hospital.html">Hospital design</a></li>
         <li><a href="security.html#verify">Verification</a></li>
       </ul></div>
       <div class="footer-col"><h3>Contact</h3><ul>

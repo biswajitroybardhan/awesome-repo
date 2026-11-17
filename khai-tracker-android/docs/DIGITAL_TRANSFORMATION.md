@@ -408,7 +408,29 @@ review points only from days logged in that browser, never advice, and changes n
 The pattern is described generically; no named individual or institution is associated with Khai by
 this map.
 
-## 14. Attribution
+## 14. Hospital reference design and labelled demo
+
+The hospital is the unit of change: a measurement only closes a loop when a clinic can act on it. Two
+companion artefacts on the website make that layer concrete without claiming it exists:
+
+- **`hospital.html`** — a reference architecture for a hospital deployment: reference topology,
+  roles and access, a coordinator console with an ageing queue, a clinician review workflow,
+  closed-loop medication checkpoints, a FHIR R4 / HL7 v2 integration contract, identity mapping,
+  governance, phased rollout and the measures that would make it real. Every component is marked
+  Shipped, Demo or Roadmap, and the document states plainly that nothing there is deployed.
+- **`demo.html#hospital`** — a labelled hospital control-room illustration inside the browser demo.
+  Switching between coordinator, clinician and pharmacist roles shows what each can see; a synthetic
+  cohort, a review queue, a medication-discrepancy queue and an audit trail demonstrate the workflow.
+  It uses local demo objects only — no real patient data, no hospital connection, no deployment.
+
+Both artefacts describe the pattern generically. The intended first context is an aspirational
+public-hospital setting in India; no hospital is named as a partner or pilot site, and no deployment,
+endorsement or affiliation is claimed. Naming a site before an agreement exists would be a false
+claim. A real integration scaffold — authenticated gateway, idempotent upserts, FHIR/HL7 mapping,
+consent and identity mapping, and audit events — is deliberately deferred until a partner provides a
+concrete target-system specification.
+
+## 15. Attribution
 
 The digital-transformation pattern described here is public knowledge in digital health. Khai's
 implementation is its own: an offline-first, encrypted, bilingual measurement instrument built by

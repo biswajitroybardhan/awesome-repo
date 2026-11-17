@@ -759,6 +759,60 @@
 .plan-flags ul { margin: 10px 0 0; padding-left: 18px; }
 .plan-flags li { font-size: .75rem; color: var(--ink-2); line-height: 1.55; margin-top: 5px; }
 
+.hospital-link {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; margin: 16px 16px 0; padding: 12px 14px; text-align: left;
+  border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-2);
+  font: inherit; color: var(--ink); cursor: pointer;
+}
+.hospital-link:hover { border-color: var(--green); }
+.hospital-link b { display: block; font-size: .8125rem; font-weight: 600; }
+.hospital-link small { display: block; font-size: .6875rem; color: var(--muted); line-height: 1.5; margin-top: 3px; }
+.hospital-link svg { width: 18px; height: 18px; flex: none; color: var(--green); }
+
+/* ---------------------------------------------------------------- hospital control room */
+
+.hospital-view { padding-bottom: 24px; }
+.hv-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.hospital-view > h2 { margin: 0; }
+.hv-intro { font-size: .75rem; color: var(--ink-2); line-height: 1.6; margin-top: 8px; }
+.hv-roles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.hv-role {
+  min-height: 34px; padding: 0 11px; border: 1px solid var(--line-strong); border-radius: 999px;
+  background: transparent; color: var(--muted); font: 500 .75rem var(--sans); cursor: pointer;
+}
+.hv-role[aria-pressed="true"] { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+.hv-role-desc { font-size: .75rem; color: var(--ink-2); line-height: 1.55; margin-top: 8px; }
+.hospital-view .stat-row { padding: 16px 0 0; }
+
+.hv-panel { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 13px; }
+.hv-panel > h3 { margin: 0 0 10px; font-size: .875rem; }
+.hv-panel > .hint { margin-top: 0; }
+.hv-row { border-top: 1px solid var(--line); padding: 11px 0; }
+.hv-row:first-of-type { border-top: 0; padding-top: 2px; }
+.hv-row.done { opacity: .68; }
+.hv-row-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.hv-row-top b { font-family: var(--mono); font-size: .8125rem; }
+.hv-row p { font-size: .75rem; color: var(--ink-2); margin: 5px 0; line-height: 1.5; }
+.hv-row-meta { display: flex; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: .5625rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 9px; }
+.hv-done { display: inline-block; font: 600 .6875rem var(--sans); color: var(--green); }
+
+.hv-pack-item { border-top: 1px solid var(--line); padding: 10px 0; }
+.hv-pack-item:first-of-type { border-top: 0; }
+.hv-pack-item b { font-size: .8125rem; font-weight: 600; }
+.hv-pack-item p { font-size: .75rem; color: var(--ink-2); line-height: 1.55; margin-top: 4px; }
+.hv-panel .plan-flags { margin-top: 12px; }
+
+.hv-checkpoints { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+.hv-checkpoints span { font-family: var(--mono); font-size: .5625rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.hv-checkpoints i { color: var(--green); font-style: normal; }
+
+.hv-audit { list-style: none; padding: 0; margin: 0; }
+.hv-audit li { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding: 8px 0; font-size: .6875rem; color: var(--ink-2); }
+.hv-audit li:first-child { border-top: 0; padding-top: 0; }
+.hv-audit time { font-family: var(--mono); font-size: .5625rem; color: var(--muted); white-space: nowrap; }
+.hv-caveat { margin-top: 16px; padding: 11px 12px; border: 1px dashed var(--line-strong); border-radius: var(--radius); font-size: .6875rem; line-height: 1.6; color: var(--muted); }
+
 .week-chart { display: flex; gap: 6px; align-items: flex-end; height: 60px; margin-top: 8px; }
 .week-chart .bar-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; height: 100%; }
 .week-chart .bar-col i { display: block; background: var(--green-soft); border: 1px solid color-mix(in srgb, var(--green) 25%, var(--line)); border-radius: 2px 2px 0 0; min-height: 2px; }

@@ -333,6 +333,10 @@
     html += '<p class="hint plan-caveat">' + K.esc(K.t('planNotAdvice')) + '</p>';
     html += '</section>';
 
+    html += '<button class="hospital-link" type="button" data-act="open-hospital">' +
+      '<span><b>' + K.esc(K.t('hospOpenHospital')) + '</b><small>' + K.esc(K.t('hospitalLinkHint')) + '</small></span>' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></button>';
+
     if (medSlots > 0) {
       html += '<div style="padding:18px 16px 0"><h3>' + K.esc(K.t('adherence')) + '</h3>' +
         '<div class="estimate-row" style="margin-top:4px"><span>' + K.esc(K.t('last7')) + '</span><span><b>' +
@@ -342,6 +346,116 @@
     if (!days.length) {
       html += '<div style="padding:20px 16px 0"><button class="btn-app block" type="button" data-act="go-today">' + K.esc(K.t('addFood')) + '</button></div>';
     }
+    html += '</div>';
+    return html;
+  };
+
+  // ---------------------------------------------------------------- hospital control room (illustration)
+
+  K.viewHospital = function () {
+    var hi = K.lang === 'hi';
+    var role = K.state.hospitalRole || 'coordinator';
+    var decisions = (K.db.hospital && K.db.hospital.decisions) || {};
+    var audit = (K.db.hospital && K.db.hospital.audit) || [];
+    var roles = ['coordinator', 'clinician', 'pharmacist'];
+    var roleLabels = { coordinator: K.t('roleCoordinator'), clinician: K.t('roleClinician'), pharmacist: K.t('rolePharmacist') };
+    var roleDescs = { coordinator: K.t('roleCoordinatorDesc'), clinician: K.t('roleClinicianDesc'), pharmacist: K.t('rolePharmacistDesc') };
+
+    var html = '<div class="app-view hospital-view">';
+    html += '<div class="hv-head"><button class="btn-app ghost small" type="button" data-act="close-hospital">← ' + K.esc(K.t('hospitalBack')) + '</button>' +
+      '<span class="pill warn">' + K.esc(K.t('hospitalBadge')) + '</span></div>';
+    html += '<h2>' + K.esc(K.t('hospitalTitle')) + '</h2>';
+    html += '<p class="hv-intro">' + K.esc(K.t('hospitalIntro')) + '</p>';
+
+    html += '<div class="hv-roles" role="group" aria-label="' + K.attr(hi ? 'भूमिका' : 'Role') + '">';
+    roles.forEach(function (r) {
+      html += '<button type="button" class="hv-role" data-act="hospital-role" data-value="' + r + '" aria-pressed="' + (role === r ? 'true' : 'false') + '">' +
+        K.esc(roleLabels[r]) + '</button>';
+    });
+    html += '</div><p class="hv-role-desc">' + K.esc(roleDescs[role]) + '</p>';
+
+    if (role === 'coordinator') {
+      var comp = K.completeness();
+      var realFlags = K.flags(K.sortedDays()).filter(function (f) { return f.indexOf('No threshold flags') !== 0; }).length;
+      var code = (K.db.profile && K.db.profile.code) || (hi ? 'डेमो' : 'DEMO');
+      var queue = [
+        { id: 'q-demo', code: code, complete: comp.pct, flags: realFlags, waiting: 1,
+          reason: hi ? 'आपका डेमो रिकॉर्ड' : 'Your demo record' },
+        { id: 'q-104', code: 'P-104', complete: 62, flags: 2, waiting: 3,
+          reason: hi ? 'तीन दिनों में माप नहीं' : 'No reading for three days' },
+        { id: 'q-117', code: 'P-117', complete: 81, flags: 1, waiting: 2,
+          reason: hi ? 'दवा बदलने की सूचना' : 'Medicine change recorded' },
+        { id: 'q-122', code: 'P-122', complete: 48, flags: 3, waiting: 5,
+          reason: hi ? 'बार-बार ऊँचा रक्तचाप' : 'Repeated high readings' }
+      ];
+      html += '<div class="stat-row"><div class="stat-card"><b>' + (queue.length - 1) + '+5</b><span>' + K.esc(K.t('hospCohort')) + '</span></div>' +
+        '<div class="stat-card"><b>' + realFlags + '</b><span>' + K.esc(K.t('hospOpenFlags')) + '</span></div>' +
+        '<div class="stat-card"><b>2</b><span>' + K.esc(K.t('hospOverdue')) + '</span></div></div>';
+      html += '<div class="hv-panel"><h3>' + K.esc(K.t('hospReviewQueue')) + '</h3>';
+      queue.forEach(function (q) {
+        var done = decisions[q.id];
+        html += '<div class="hv-row' + (done ? ' done' : '') + '"><div class="hv-row-top"><b>' + K.esc(q.code) + '</b>' +
+          '<span class="pill ' + (q.flags > 1 ? 'warn' : 'quiet') + '">' + q.flags + ' ' + K.esc(K.t('hospOpenFlags')) + '</span></div>' +
+          '<p>' + K.esc(q.reason) + '</p>' +
+          '<div class="hv-row-meta"><span>' + q.complete + '% ' + K.esc(K.t('hospComplete')) + '</span><span>' + q.waiting + ' ' + K.esc(K.t('hospWaiting')) + '</span></div>';
+        if (done) {
+          html += '<span class="hv-done">' + K.esc(K.t('hospReviewed')) + '</span>';
+        } else {
+          html += '<button class="btn-app small" type="button" data-act="hospital-decision" data-id="' + K.attr(q.id) + '" data-value="reviewed">' + K.esc(K.t('hospMarkReviewed')) + '</button>';
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+
+    } else if (role === 'clinician') {
+      var plan = K.planDraft();
+      html += '<div class="hv-panel"><h3>' + K.esc(K.t('hospReviewPack')) + '</h3>' +
+        '<p class="hint">' + K.esc(K.t('hospPackIntro')) + '</p>';
+      if (!plan.ready) {
+        html += '<p class="hint">' + K.esc(K.t('hospPackEmpty')) + '</p>';
+      } else {
+        html += '<div class="plan-meta"><span class="pill ' + (plan.lowConfidence ? 'warn' : 'quiet') + '">' + K.esc(K.t(plan.confidence)) + '</span>' +
+          '<span class="hint">' + K.esc(K.t('planPaired').replace('{n}', plan.pairedDays)) + '</span></div>';
+        plan.items.forEach(function (it) {
+          html += '<div class="hv-pack-item"><b>' + K.esc(it.title) + '</b><p>' + K.esc(it.reason) + '</p></div>';
+        });
+        html += '<div class="plan-flags"><h4>' + K.esc(K.t('escalateTitle')) + '</h4><ul>';
+        plan.flags.forEach(function (f) { html += '<li>' + K.esc(f) + '</li>'; });
+        html += '</ul></div>';
+      }
+      html += '</div>';
+
+    } else {
+      var discs = [
+        { id: 'd-1', label: K.t('hospDisc1'), code: 'P-104' },
+        { id: 'd-2', label: K.t('hospDisc2'), code: 'P-117' },
+        { id: 'd-3', label: K.t('hospDisc3'), code: 'P-122' }
+      ];
+      html += '<div class="hv-panel"><h3>' + K.esc(K.t('hospDiscrepancies')) + '</h3>';
+      discs.forEach(function (d) {
+        var done = decisions[d.id];
+        html += '<div class="hv-row' + (done ? ' done' : '') + '"><div class="hv-row-top"><b>' + K.esc(d.code) + '</b></div>' +
+          '<p>' + K.esc(d.label) + '</p>';
+        if (done) html += '<span class="hv-done">' + K.esc(K.t('hospResolved')) + '</span>';
+        else html += '<button class="btn-app small" type="button" data-act="hospital-decision" data-id="' + K.attr(d.id) + '" data-value="resolved">' + K.esc(K.t('hospResolve')) + '</button>';
+        html += '</div>';
+      });
+      html += '<div class="hv-checkpoints"><span>Prescribed</span><i>→</i><span>Dispensed</span><i>→</i><span>Taken</span></div>';
+      html += '</div>';
+    }
+
+    html += '<div class="hv-panel"><h3>' + K.esc(K.t('hospAudit')) + '</h3><ul class="hv-audit">';
+    if (!audit.length) {
+      html += '<li>' + K.esc(K.t('hospAuditEmpty')) + '</li>';
+    } else {
+      audit.slice(0, 6).forEach(function (a) {
+        var when = new Date(a.at);
+        html += '<li><span>' + K.esc(a.id + ' · ' + a.action) + '</span><time>' + K.esc(when.toISOString().slice(0, 16).replace('T', ' ')) + '</time></li>';
+      });
+    }
+    html += '</ul></div>';
+
+    html += '<p class="hv-caveat">' + K.esc(K.t('hospitalCaveat')) + '</p>';
     html += '</div>';
     return html;
   };

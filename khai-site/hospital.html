@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital deployment blueprint — Khai Tracker</title>
+<meta name="description" content="A reference architecture for running the Khai measurement loop inside a hospital: roles, coordinator console, clinician review, closed-loop medication, FHIR/HL7 integration, governance and phased rollout. A design blueprint, not a deployed system. From Khai Foods Pvt Ltd, Jamshedpur.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/hospital.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hospital deployment blueprint — Khai Tracker">
+<meta property="og:description" content="The hospital is the unit of change. A reference design for a clinician-supervised deployment — clearly a blueprint, not a claim of deployment.">
+<meta property="og:url" content="https://khaifoods.in/hospital.html">
+<meta property="og:image" content="https://khaifoods.in/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#product">What it does</a>
+      <a href="index.html#loop">The loop</a>
+      <a href="index.html#clinician">For clinicians</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="functions.html">Functions</a>
+      <a href="hospital.html" aria-current="page">Hospital</a>
+      <a href="security.html">Security</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+      <a class="btn small ghost" href="files/khai-tracker-1.0.0.apk" download>APK</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Hospital deployment · reference design</p>
+      <h1 style="margin-top:14px">The hospital is the unit of change.</h1>
+      <p class="lead">A phone record only closes a loop when a clinic can act on it. This page is a reference architecture for that hospital layer — roles, queues, reconciliation, integration, audit and governance. It is a <strong>design blueprint</strong>: nothing here is deployed, no hospital is named as a partner, and the labelled illustration in the browser demo uses synthetic data only.</p>
+      <div class="page-meta">
+        <span>Khai Foods Pvt Ltd · Jamshedpur</span>
+        <span>Product owner: Biswajit Roy Bardhan</span>
+        <span>Design companion to Khai Tracker 1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#status">1. Status of this document</a></li>
+        <li><a href="#why">2. Why the hospital, not just the phone</a></li>
+        <li><a href="#topology">3. Reference topology</a></li>
+        <li><a href="#roles">4. Roles and access</a></li>
+        <li><a href="#console">5. Coordinator console</a></li>
+        <li><a href="#review">6. Clinician review workflow</a></li>
+        <li><a href="#medication">7. Closed-loop medication</a></li>
+        <li><a href="#integration">8. Integration contract</a></li>
+        <li><a href="#identity">9. Identity and data flow</a></li>
+        <li><a href="#governance">10. Governance and safety</a></li>
+        <li><a href="#rollout">11. Phased rollout</a></li>
+        <li><a href="#real">12. What would make this real</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <h2 id="status">1. Status of this document</h2>
+      <div class="status-legend">
+        <span class="status-pill ok">Shipped</span>
+        <span class="status-pill demo">Demo</span>
+        <span class="status-pill roadmap">Roadmap</span>
+      </div>
+      <p><strong>Shipped</strong> is the participant app and exports in 1.0.0. <strong>Demo</strong> is the labelled hospital control-room illustration in the <a href="demo.html#hospital">browser demo</a>; it uses a synthetic cohort, stores only local demo objects, and has no hospital connection. <strong>Roadmap</strong> is every hospital-side component below: each one needs a partner, a governed environment and a named clinical owner before it can exist. The pattern is described generically; no individual or institution is presented as associated with Khai.</p>
+      <div class="callout"><b>Read this as a blueprint, not an announcement:</b> no hospital deployment, pilot, endorsement or partnership is claimed. The intended first context is a public-hospital setting in India; that is a direction, not an existing site.</div>
+
+      <h2 id="why">2. Why the hospital, not just the phone</h2>
+      <p>An offline-first participant instrument solves the measurement gap: food, medicine status and home readings between visits. It cannot, by itself, close the loop. A measurement that nobody reviews is a data graveyard; a flag that nobody owns is an alarm; a draft that nobody signs is not a plan. The loop only closes when a named clinician receives the record, acts on it, and the action is auditable.</p>
+      <p>That is why the hospital layer is the real unit of change. The phone is the Capture node; the hospital is where Verify, Review, Medication, Follow-up and Operate happen. Building those nodes as a reference design — with explicit roles, queues and governance — lets a real site adopt one loop rather than buy a dashboard nobody opens.</p>
+
+      <h2 id="topology">3. Reference topology</h2>
+      <pre><code>  PARTICIPANT PHONE              [Shipped]
+    encrypted day record · stable code · optional HTTPS upsert
+                   │
+                   ▼
+  INTEGRATION GATEWAY            [Roadmap]
+    auth · idempotency · retry · consent check · payload validation
+                   │
+        ┌──────────┴──────────┐
+        ▼                     ▼
+  FHIR R4 STORE           EXISTING EHR / HIS      [Roadmap]
+  Observations,           ABDM/ABHA where consent permits,
+  Consent, Provenance     HL7 v2 ORU/ORM for legacy feeds
+        │                     │
+        └──────────┬──────────┘
+                   ▼
+  COORDINATOR CONSOLE            [Roadmap]
+    cohort completeness · review queue with ageing · discrepancy queue
+                   │
+                   ▼
+  CLINICIAN REVIEW               [Roadmap · Demo illustration]
+    one-page summary · flags with source days · draft with accept/edit/reject
+                   │  decision stays human
+                   ▼
+  AUDIT + OPERATE                [Roadmap]
+    access log · overrides · incidents · retention · completeness metrics</code></pre>
+      <p>The gateway is the only new trust boundary. It is the point where a participant-controlled record becomes a hospital-controlled record, and where consent, identity mapping and terminology translation must be enforced before anything is stored.</p>
+
+      <h2 id="roles">4. Roles and access</h2>
+      <p>Role-based access is not an admin screen; it is the safety model. The demo illustration lets you switch roles to show what each one can and cannot see.</p>
+      <table>
+        <thead><tr><th>Role</th><th>Sees</th><th>Cannot do</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Participant</td><td>Only their own record and exports</td><td>See other participants or clinical notes</td><td><span class="status-pill ok">Shipped</span></td></tr>
+          <tr><td>Coordinator</td><td>Cohort completeness, review queue, audit</td><td>Change a prescription or diagnosis</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Clinician</td><td>Assigned review packs, flags linked to source days</td><td>Act on a participant they are not assigned to</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Pharmacist</td><td>Discrepancy queue and dispense events</td><td>Alter a prescription without an order</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Administrator</td><td>Configuration, access review, retention</td><td>Read clinical content by default</td><td><span class="status-pill roadmap">Roadmap</span></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="console">5. Coordinator console</h2>
+      <table>
+        <thead><tr><th>Capability</th><th>Purpose</th><th>Honest limit</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Cohort completeness</td><td>Which participants have a usable record this week</td><td>Measures recording, not health</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Review queue with ageing</td><td>Nothing waits silently; oldest items surface first</td><td>Needs a staffed response window</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Escalation flags</td><td>Fixed-threshold prompts for a conversation</td><td>Thresholds set by clinicians, never by product</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Discrepancy queue</td><td>Medication mismatches become owned tasks</td><td>No automatic correction, ever</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="review">6. Clinician review workflow</h2>
+      <p>The clinician artefact stays one page. It separates what was measured, what was missed and what is only self-reported; it shows flags as prompts, never as triage decisions; and it exposes the reasoning behind any plan draft so the clinician can disagree with the basis, not just the conclusion.</p>
+      <ul>
+        <li><strong>Review pack:</strong> completeness, recent readings, medicine status, food frequency and notes — generated from the record, not typed by hand.</li>
+        <li><strong>Flags with source days:</strong> each flag links to the days that produced it, so the clinician can inspect the evidence before acting.</li>
+        <li><strong>Draft with visible reasoning:</strong> every point states the counts and averages behind it. Accept, Edit and Reject are recorded with an author and a timestamp.</li>
+        <li><strong>Override review:</strong> a monthly sample of overrides is reviewed; a rule with a high false-positive rate is retuned or removed.</li>
+      </ul>
+      <p><strong>May not:</strong> diagnose, recommend or alter a dose, triage to "no action" without human sign-off, or hide its uncertainty. If assistance starts to influence decisions, the applicable software-as-a-medical-device regime must be assessed before release.</p>
+
+      <h2 id="medication">7. Closed-loop medication</h2>
+      <table>
+        <thead><tr><th>Checkpoint</th><th>Owner</th><th>v1.0</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Order</td><td>Prescriber</td><td>Profile list only</td><td>Signed <code>MedicationRequest</code></td></tr>
+          <tr><td>Dispense</td><td>Pharmacy</td><td>Nothing</td><td><code>MedicationDispense</code> with a label identifier</td></tr>
+          <tr><td>Handover</td><td>Pharmacy / coordinator</td><td>Nothing</td><td>Scan or confirm at the counter or on the phone</td></tr>
+          <tr><td>Administration</td><td>Participant</td><td>Daily taken / skipped / changed</td><td>Same, plus timing and reason as fields</td></tr>
+          <tr><td>Review</td><td>Clinician / pharmacist</td><td>Clinician reads the sheet</td><td>Task with resolution and audit</td></tr>
+        </tbody>
+      </table>
+      <p>Three discrepancy types are first-class: prescribed but not dispensed, dispensed but not taken, changed without a new order. Each is a task for a person. The loop is allowed to be incomplete, but not allowed to lie.</p>
+
+      <h2 id="integration">8. Integration contract</h2>
+      <p>This is the spec-shaped precursor to a real integration scaffold. Nothing below is implemented; it defines what a partner would have to provide.</p>
+      <table>
+        <thead><tr><th>Layer</th><th>Contract</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Transport</td><td>HTTPS only; JSON <code>POST</code> with participant code, device ID and dated entries; idempotent by (code, date)</td><td><span class="status-pill ok">Shipped</span> client side <span class="status-pill roadmap">Roadmap</span> server side</td></tr>
+          <tr><td>FHIR R4</td><td><code>Patient</code>, <code>Observation</code> (BP, glucose, weight), <code>Consent</code>, <code>Provenance</code>; later <code>MedicationRequest/Dispense/Statement</code>, <code>CarePlan</code></td><td><span class="status-pill ok">Shipped</span> export <span class="status-pill roadmap">Roadmap</span> endpoint</td></tr>
+          <tr><td>Legacy EHR</td><td>HL7 v2 <code>ORU</code> for results and <code>ORM</code> for orders where FHIR is unavailable</td><td><span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>India rails</td><td>ABDM/ABHA identifiers and consent-gated exchange where the participant opts in</td><td><span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Terminology</td><td>LOINC codes, UCUM units, SNOMED CT where licensed, ICD-11 mapping for conditions</td><td><span class="status-pill ok">Shipped</span> LOINC/UCUM <span class="status-pill roadmap">Roadmap</span> rest</td></tr>
+          <tr><td>Events</td><td>New day, flag raised, discrepancy opened, review completed — each with a stable event ID and retry</td><td><span class="status-pill roadmap">Roadmap</span></td></tr>
+          <tr><td>Research</td><td>Bulk export and federated analysis so cohorts can be studied without moving identified records</td><td><span class="status-pill roadmap">Roadmap</span></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="identity">9. Identity and data flow</h2>
+      <p>The app collects no name. A coordinator-issued participant code and a random device ID are the source identity; mapping to a hospital medical-record number happens at the gateway, only with explicit consent, and is recorded in the audit log. A language switch never changes a stored code. Encryption is local first: the network is never the first writer. Sync is optional and off by default. Diet estimates stay out of clinical Observation resources so an estimate never enters a record disguised as a measurement.</p>
+
+      <h2 id="governance">10. Governance and safety</h2>
+      <ul>
+        <li><strong>DPIA before scale.</strong> Health data, vulnerable participants and shared devices: document risks and mitigations, not intentions.</li>
+        <li><strong>Named clinical owner.</strong> Every rule, flag and escalation has a person accountable for it.</li>
+        <li><strong>Consent and revocation.</strong> Timestamped, read aloud in Hindi, revocable by erasing locally; server-side propagation is part of the gateway design.</li>
+        <li><strong>Access review and retention.</strong> Role membership reviewed on a schedule; a documented retention and deletion policy.</li>
+        <li><strong>Audit and incident response.</strong> Access, exports and decisions logged; a disclosure route and a review cadence.</li>
+        <li><strong>Regulatory posture.</strong> v1.0 is not a medical device and makes no diagnostic or treatment claim. Any later assistance that influences a decision triggers a regulatory assessment first.</li>
+      </ul>
+
+      <h2 id="rollout">11. Phased rollout</h2>
+      <p>The order is deliberate: capture, then trust, then share, then act. Each phase has a precondition, so it cannot be announced before it is operable.</p>
+      <table>
+        <thead><tr><th>Phase</th><th>Scope</th><th>Precondition</th></tr></thead>
+        <tbody>
+          <tr><td>0 — Observational</td><td>Small cohort, no intervention, clinician consent, stop rule for adverse events</td><td>Ethics approval and a named physician supervisor</td></tr>
+          <tr><td>1 — One district</td><td>One clinic, one coordinator, one clinician owner; manual where possible</td><td>Data-processing agreement, retention policy, gateway live</td></tr>
+          <tr><td>2 — Several clinics</td><td>Reconciliation queue, follow-up scheduling, regional food and language packs</td><td>Staffed review window and weekly operating review</td></tr>
+          <tr><td>3 — National rails</td><td>Consent-gated exchange, local residency, per-site adapters</td><td>Local legal basis, data guardians and audited access</td></tr>
+        </tbody>
+      </table>
+      <p>No hospital is named as a partner or pilot site in this document. Naming a site before an agreement exists would be a false claim; the design is published so that any site can evaluate it on its merits.</p>
+
+      <h2 id="real">12. What would make this real</h2>
+      <p><strong>Metrics that decide:</strong> record completeness per participant-week; time from record to clinician review; medication discrepancies found and resolved; follow-up kept without travel; escalations with a documented outcome; participant-reported trust and burden.</p>
+      <p><strong>Failure modes to design against:</strong> pilot theatre (a dashboard nobody opens), data graveyards (records nobody acts on), consent drift, automation overreach and toolchain fragility. The countermeasures are one clinician-facing artefact that is measured, a queue with ageing, consent receipts and revocation, language rules plus audit, and a scripted dependency-light build.</p>
+      <div class="callout"><b>The honest line:</b> the participant app and the browser demo exist today. Every hospital component here is a design proposal. See the <a href="functions.html">function map</a> for the Shipped / Demo / Roadmap status of each capability, or <a href="demo.html#hospital">open the labelled hospital illustration</a> to see the workflow without any real data.</div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col"><h3>Product</h3><ul>
+        <li><a href="index.html#product">What it does</a></li>
+        <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
+        <li><a href="index.html#faq">Limits and answers</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Transparency</h3><ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="blueprint.html">Blueprint</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="hospital.html" aria-current="page">Hospital design</a></li>
+        <li><a href="security.html#verify">Verification</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul>
+        <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+        <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+        <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

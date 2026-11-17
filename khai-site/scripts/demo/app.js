@@ -6,7 +6,9 @@
   K.state = {
     tab: 'today',
     date: K.todayISO(),
-    historyDate: K.todayISO()
+    historyDate: K.todayISO(),
+    view: 'participant',
+    hospitalRole: 'coordinator'
   };
 
   var host = null;
@@ -59,7 +61,9 @@
     var html;
     var onboarding = !K.db.profile;
 
-    if (onboarding) {
+    if (K.state.view === 'hospital') {
+      html = K.viewHospital();
+    } else if (onboarding) {
       html = K.viewOnboarding();
     } else if (K.state.tab === 'history') {
       html = K.viewHistory();
@@ -76,7 +80,7 @@
     host.scrollTop = preserveScroll && oldTab === K.state.tab ? scroll : 0;
 
     if (tabs) {
-      tabs.hidden = onboarding;
+      tabs.hidden = onboarding || K.state.view === 'hospital';
       tabs.querySelectorAll('[data-tab]').forEach(function (b) {
         var on = b.getAttribute('data-tab') === K.state.tab;
         b.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -242,6 +246,20 @@
       if (pdec === 'accepted') K.toast(K.t('planAccepted'));
       else if (pdec === 'rejected') K.toast(K.t('planRejected'));
       else if (pdec === 'edited') K.toast(K.t('planEditHint'));
+    } else if (act === 'open-hospital') {
+      K.state.view = 'hospital';
+      K.render();
+      host.scrollTop = 0;
+    } else if (act === 'close-hospital') {
+      K.state.view = 'participant';
+      K.render(true);
+      host.scrollTop = 0;
+    } else if (act === 'hospital-role') {
+      K.state.hospitalRole = b.getAttribute('data-value');
+      K.render(true);
+    } else if (act === 'hospital-decision') {
+      K.setHospitalDecision(b.getAttribute('data-id'), b.getAttribute('data-value'));
+      K.render(true);
     } else if (act === 'load-sample') {
       K.confirm({
         title: K.t('sampleTitle'), body: K.t('sampleBody'),
@@ -262,7 +280,7 @@
           K.db = K.blankDb();
           K.lang = 'en';
           document.documentElement.lang = 'en';
-          K.state = { tab: 'today', date: K.todayISO(), historyDate: K.todayISO() };
+          K.state = { tab: 'today', date: K.todayISO(), historyDate: K.todayISO(), view: 'participant', hospitalRole: 'coordinator' };
           K.persist();
           K.render();
           K.toast(K.t('erasedToast'));
@@ -318,29 +336,38 @@
   if (!host) return;
   K.render();
 
-  // A link from the landing page to #print should land on the export controls.
-  if (location.hash === '#print' && K.db.profile) {
-    K.state.tab = 'settings';
-    K.render();
-    var printBtn = document.querySelector('[data-act="export"][data-kind="print"]');
-    if (printBtn) {
-      setTimeout(function () {
-        printBtn.scrollIntoView({ block: 'center', behavior: 'smooth' });
-        printBtn.focus({ preventScroll: true });
-        K.toast(K.t('printHint'));
-      }, 120);
+  // Deep links: #hospital, #plan and #print. Run at boot and on hash changes so
+  // switching links while already on this page works the same as a fresh load.
+  K.applyHash = function () {
+    var hash = location.hash;
+    if (hash === '#hospital') {
+      K.state.view = 'hospital';
+      K.state.tab = 'progress';
+      K.render();
+    } else if (hash === '#plan' && K.db.profile) {
+      K.state.view = 'participant';
+      K.state.tab = 'progress';
+      K.render();
+      var planEl = document.getElementById('plan');
+      if (planEl) {
+        setTimeout(function () { planEl.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 120);
+      }
+    } else if (hash === '#print' && K.db.profile) {
+      K.state.view = 'participant';
+      K.state.tab = 'settings';
+      K.render();
+      var printBtn = document.querySelector('[data-act="export"][data-kind="print"]');
+      if (printBtn) {
+        setTimeout(function () {
+          printBtn.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          printBtn.focus({ preventScroll: true });
+          K.toast(K.t('printHint'));
+        }, 120);
+      }
     }
-  }
-
-  // A link to #plan lands on the plan draft inside Progress.
-  if (location.hash === '#plan' && K.db.profile) {
-    K.state.tab = 'progress';
-    K.render();
-    var planEl = document.getElementById('plan');
-    if (planEl) {
-      setTimeout(function () { planEl.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 120);
-    }
-  }
+  };
+  K.applyHash();
+  window.addEventListener('hashchange', K.applyHash);
 
   if (!K.storageOk) {
     setTimeout(function () { K.toast(K.t('saveFailed')); }, 800);

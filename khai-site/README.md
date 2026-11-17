@@ -12,6 +12,7 @@ static file host.
 | `demo.html` | Interactive browser demo — **clearly marked as a demo**, not for real clinical records |
 | `blueprint.html` | The digital-transformation blueprint: what v1.0 does, what needs a server, roadmap |
 | `functions.html` | Full capability map: every pattern function labelled Shipped, Demo or Roadmap with its honest limit |
+| `hospital.html` | Hospital deployment blueprint: roles, coordinator console, review, medication, FHIR/HL7 integration and governance — a design, not a deployment |
 | `security.html` | Encryption, PIN, sync, build notes, APK verification and known gaps |
 | `privacy.html` | Participant-first privacy notice, with a separate warning about the demo |
 | `404.html` | Not-found page |
@@ -61,6 +62,17 @@ stored locally under `khai.demo.v1` → `plan.decisions`. It is illustrative onl
 diagnosis, no prescription change, and no equivalent autonomous function in the Android app.
 `functions.html` maps the same pattern to Shipped / Demo / Roadmap so a roadmap item is never mistaken
 for a live feature.
+
+The Progress tab also links to a **hospital control-room illustration** (deep link `demo.html#hospital`).
+It is a role-switchable view — coordinator, clinician, pharmacist — with a synthetic cohort, a review
+queue, a medication-discrepancy queue and an audit trail. Decisions are stored as local demo objects
+under `khai.demo.v1` → `hospital.decisions`, with a rolling `hospital.audit` trail. It is explicitly a
+design illustration: no real patients, no hospital connection, and nothing deployed. `hospital.html`
+publishes the full reference architecture — roles, coordinator console, clinician review, closed-loop
+medication, a FHIR R4 / HL7 v2 integration contract, identity mapping and governance — with each item
+marked Shipped, Demo or Roadmap. The intended first context is an aspirational public-hospital setting
+in India; no hospital is named as a partner or pilot, and no deployment is claimed. A real integration
+scaffold is deliberately deferred until a partner provides a concrete target-system specification.
 
 ## Attribution and claims
 
