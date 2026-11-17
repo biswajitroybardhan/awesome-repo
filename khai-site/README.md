@@ -13,6 +13,7 @@ static file host.
 | `blueprint.html` | The digital-transformation blueprint: what v1.0 does, what needs a server, roadmap |
 | `functions.html` | Full capability map: every pattern function labelled Shipped, Demo or Roadmap with its honest limit |
 | `hospital.html` | Hospital deployment blueprint: roles, coordinator console, review, medication, FHIR/HL7 integration and governance — a design, not a deployment |
+| `assistant.html` | **Khai Guide** — text-only, grounded Q&A from the tool's own help text; no AI, no diagnosis, no advice |
 | `security.html` | Encryption, PIN, sync, build notes, APK verification and known gaps |
 | `privacy.html` | Participant-first privacy notice, with a separate warning about the demo |
 | `404.html` | Not-found page |
@@ -20,6 +21,7 @@ static file host.
 | `scripts/site.js` | Theme, mobile menu, copy buttons, footer year — no network |
 | `scripts/translations.js`, `scripts/i18n.js` | Generated 26-language bundle and the embedded localisation runtime — no network |
 | `scripts/demo/*.js` | The demo's data model, rules, screens and event handling |
+| `scripts/assistant.js` | Deterministic help-text lookup for Khai Guide — fixed translated strings only; no model, no network, no voice |
 | `scripts/foods.js` | Generated 83-dish food library (`window.KHAI_FOODS`) |
 | `assets/` | Mark, icon, social image |
 | `files/` | Signed demo APK plus its `.sha256` checksum |
@@ -121,6 +123,25 @@ medication, a FHIR R4 / HL7 v2 integration contract, identity mapping and govern
 marked Shipped, Demo or Roadmap. The intended first context is an aspirational public-hospital setting
 in India; no hospital is named as a partner or pilot, and no deployment is claimed. A real integration
 scaffold is deliberately deferred until a partner provides a concrete target-system specification.
+
+## Khai Guide (grounded helper, not an AI)
+
+`assistant.html` and the app's Guide tab answer a small set of questions by looking up **fixed strings
+that already ship as the tool's own translated help text**. There is no language model, no training,
+no fine-tuning, no retrieval index over personal records and no network call, so the helper cannot
+invent a claim: an answer is only ever a list of approved strings joined together. Questions it does
+not recognise get the "no answer" string. Questions about readings, medicines, diagnosis or treatment
+are redirected to a qualified clinician, and the non-medical-device footer is shown in the panel.
+It does not interpret the participant's own data, prescribe, or replace a clinician.
+
+The same intent table exists in `scripts/assistant.js` (site) and `AssistantScreen.kt` (app). Answers
+are drawn only from the embedded locale bundle, so they follow the selected language; the 24 draft
+locales remain machine drafts marked for native-speaker clinical/consent review.
+
+**Voice is deliberately not part of this phase.** The choice was "text now, voice later": adding speech
+recognition or text-to-speech for guidance in unreviewed languages would recreate the very risk of
+wrong interpretation the grounded design exists to avoid. The unrelated Android consent read-aloud
+(`TextToSpeech`, Hindi only) remains as it was.
 
 ## Attribution and claims
 

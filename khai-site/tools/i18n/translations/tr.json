@@ -178,5 +178,13 @@
   "hospital_layer": "Hastaneye dağıtım katmanı",
   "callout_blueprint": "Bunu bir duyuru değil, bir plan olarak okuyun: Herhangi bir hastane dağıtımı, pilot uygulama, onay veya ortaklık iddia edilmemektedir.",
   "callout_honest": "Dürüst çizgi: Katılımcı uygulaması ve tarayıcı demosu bugün mevcut. Buradaki her hastane bileşeni bir tasarım önerisidir.",
-  "draft_notice": "Taslak çeviri — klinik kullanımdan önce ana dil konuşan biri tarafından incelenmelidir."
+  "draft_notice": "Taslak çeviri — klinik kullanımdan önce ana dil konuşan biri tarafından incelenmelidir.",
+  "assistantNav": "Kılavuz",
+  "assistantTitle": "Khai Kılavuzu",
+  "assistantIntro": "Yanıtlar yalnızca bu aracın kendi yardım metninden alınır. Yapay zekâ yok, tanı yok, tavsiye yok.",
+  "assistantInputPh": "Bir soru sorun",
+  "assistantSend": "Gönder",
+  "assistantUnknown": "Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım.",
+  "askClinician": "Nitelikli bir sağlık uzmanına danışın.",
+  "assistantLanguageAnswer": "Görüntüleme dilini değiştirmek yalnızca etiketleri değiştirir. Kaydedilen değerler sabit kodlar olarak kalır, böylece hiçbir gün yeniden yazılmaz."
 }

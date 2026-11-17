@@ -164,5 +164,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "ሁለት ጸጥ ያሉ ደቂቃዎች: ምን በልተሃል, እና ዛሬ ምን ለካህ?",
   "notification_permission": "ዕለታዊ አስታዋሽ እርስዎን ማግኘት እንዲችል ማሳወቂያዎችን ይፍቀዱ።",
-  "share_unavailable": "በዚህ ስልክ ላይ ምንም መተግበሪያ ፋይሉን ሊቀበል አይችልም። ደብዳቤ ወይም ፋይል መተግበሪያ ጫን እና እንደገና ሞክር።"
+  "share_unavailable": "በዚህ ስልክ ላይ ምንም መተግበሪያ ፋይሉን ሊቀበል አይችልም። ደብዳቤ ወይም ፋይል መተግበሪያ ጫን እና እንደገና ሞክር።",
+  "assistant_tab": "መመሪያ",
+  "assistant_title": "የካይ መመሪያ",
+  "assistant_intro": "መልሶች የሚገኙት ከዚህ መሳሪያ የራሱ የእርዳታ ጽሑፍ ብቻ ነው። AI የለም፣ ምርመራ የለም፣ ምክር የለም።",
+  "assistant_input_ph": "ጥያቄ ጠይቅ",
+  "assistant_send": "ላክ",
+  "assistant_unknown": "ለዚህ መልስ የለኝም። ስለዚህ መሳሪያ አጠቃቀም ብቻ ነው የምመልሰው።",
+  "ask_clinician": "ብቁ ከሆነ የጤና ባለሙያ ጠይቅ።"
 }

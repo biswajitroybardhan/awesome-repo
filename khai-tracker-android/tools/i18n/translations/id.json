@@ -164,5 +164,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "Dua menit yang tenang: apa yang Anda makan, dan apa yang Anda ukur hari ini?",
   "notification_permission": "Izinkan notifikasi agar pengingat harian dapat sampai kepada Anda.",
-  "share_unavailable": "Tidak ada aplikasi di ponsel ini yang dapat menerima file. Pasang aplikasi email atau pengelola file lalu coba lagi."
+  "share_unavailable": "Tidak ada aplikasi di ponsel ini yang dapat menerima file. Pasang aplikasi email atau pengelola file lalu coba lagi.",
+  "assistant_tab": "Panduan",
+  "assistant_title": "Panduan Khai",
+  "assistant_intro": "Jawaban hanya diambil dari teks bantuan alat ini sendiri. Tanpa AI, tanpa diagnosis, tanpa saran.",
+  "assistant_input_ph": "Ajukan pertanyaan",
+  "assistant_send": "Kirim",
+  "assistant_unknown": "Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini.",
+  "ask_clinician": "Tanyakan kepada tenaga kesehatan yang berkualifikasi."
 }

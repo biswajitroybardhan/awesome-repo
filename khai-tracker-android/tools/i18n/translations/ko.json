@@ -162,5 +162,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "조용한 2분: 오늘 무엇을 먹고 무엇을 측정했나요?",
   "notification_permission": "매일 알림을 받을 수 있도록 알림을 허용해 주세요.",
-  "share_unavailable": "이 휴대전화에는 파일을 받을 수 있는 앱이 없습니다. 메일이나 파일 앱을 설치한 뒤 다시 시도하세요."
+  "share_unavailable": "이 휴대전화에는 파일을 받을 수 있는 앱이 없습니다. 메일이나 파일 앱을 설치한 뒤 다시 시도하세요.",
+  "assistant_tab": "안내",
+  "assistant_title": "Khai 안내",
+  "assistant_intro": "이 도구 자체의 도움말에서만 가져온 답변입니다. AI도, 진단도, 조언도 없습니다.",
+  "assistant_input_ph": "질문을 입력하세요",
+  "assistant_send": "보내기",
+  "assistant_unknown": "그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다.",
+  "ask_clinician": "자격을 갖춘 의료 전문가에게 문의하세요."
 }

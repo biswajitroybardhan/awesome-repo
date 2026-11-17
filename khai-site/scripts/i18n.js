@@ -131,6 +131,7 @@
     if (page === 'security') return 'title_security';
     if (page === 'privacy') return 'title_privacy';
     if (page === '404') return 'title_404';
+    if (page === 'assistant') return 'assistantTitle';
     return null;
   }
 

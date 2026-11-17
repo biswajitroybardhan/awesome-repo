@@ -166,6 +166,13 @@
     <string name="notif_text">Deux minutes tranquilles : qu\\\'avez-vous mangé, et qu\\\'avez-vous mesuré aujourd\\\'hui ?</string>
     <string name="notification_permission">Autorisez les notifications pour recevoir le rappel quotidien.</string>
     <string name="share_unavailable">Aucune application sur ce téléphone ne peut recevoir le fichier. Installez une application de messagerie ou de gestion de fichiers, puis réessayez.</string>
+    <string name="assistant_tab">Guide</string>
+    <string name="assistant_title">Guide Khai</string>
+    <string name="assistant_intro">Des réponses tirées uniquement de l\'aide intégrée à cet outil. Pas d\'IA, pas de diagnostic, pas de conseil.</string>
+    <string name="assistant_input_ph">Posez une question</string>
+    <string name="assistant_send">Envoyer</string>
+    <string name="assistant_unknown">Je n\'ai pas de réponse à cela. Je réponds uniquement aux questions sur l\'utilisation de cet outil.</string>
+    <string name="ask_clinician">Consultez un professionnel de santé qualifié.</string>
     <string name="draft_notice">Traduction provisoire — nécessite une relecture par un locuteur natif avant tout usage clinique.</string>
     <string name="language_hint">Affichage uniquement. Les valeurs enregistrées restent des codes stables : changer de langue ne réécrit jamais une journée. Les traductions en brouillon nécessitent une relecture par un locuteur natif avant tout usage clinique.</string>
 </resources>

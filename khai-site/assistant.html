@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khai Guide</title>
+<meta name="description" content="A grounded question-and-answer helper built from Khai Tracker's own help text. No AI, no diagnosis, no medical advice.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/assistant.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/translations.js" defer></script>
+<script src="scripts/i18n.js" defer></script>
+<script src="scripts/site.js" defer></script>
+<script src="scripts/assistant.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#product">What it does</a>
+      <a href="index.html#loop">The loop</a>
+      <a href="index.html#clinician">For clinicians</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="functions.html">Functions</a>
+      <a href="hospital.html">Hospital</a>
+      <a href="assistant.html">Guide</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+      <a class="btn small ghost" href="files/khai-tracker-1.0.0.apk" download>APK</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow mono">Khai Tracker</p>
+      <h1 style="margin-top:14px">Khai Guide</h1>
+      <p class="lead">Questions answered from this tool's own help text. No AI, no diagnosis, no advice.</p>
+    </div>
+  </section>
+
+  <section class="guide-section">
+    <div class="wrap guide-wrap">
+      <div class="guide-note">
+        <h2 class="guide-note-title">Khai Guide</h2>
+        <p>Questions answered from this tool's own help text. No AI, no diagnosis, no advice.</p>
+        <p>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</p>
+        <p>Nothing leaves this browser.</p>
+      </div>
+
+      <div class="guide-panel">
+        <div class="guide-log" id="guide-log" data-no-i18n role="log" aria-live="polite" aria-label="Questions and answers"></div>
+        <div class="guide-chips" id="guide-chips"></div>
+        <form class="guide-form" id="guide-form">
+          <label class="sr-only" for="guide-input">Ask a question</label>
+          <input id="guide-input" name="question" type="text" autocomplete="off"
+                 placeholder="Ask a question" maxlength="300">
+          <button class="btn small" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col"><h3>Product</h3><ul>
+        <li><a href="index.html#product">What it does</a></li>
+        <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="assistant.html">Guide</a></li>
+        <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
+        <li><a href="index.html#faq">Limits and answers</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Transparency</h3><ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="blueprint.html">Blueprint</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="hospital.html">Hospital design</a></li>
+        <li><a href="security.html#verify">Verification</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul>
+        <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+        <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+        <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -168,4 +168,11 @@
     <string name="notif_text">สองนาทีเงียบๆ วันนี้คุณกินอะไร และคุณวัดอะไรบ้าง?</string>
     <string name="notification_permission">อนุญาตการแจ้งเตือน เพื่อให้การแจ้งเตือนรายวันส่งถึงคุณได้</string>
     <string name="share_unavailable">ไม่มีแอปบนโทรศัพท์เครื่องนี้ที่รับไฟล์ได้ กรุณาติดตั้งแอปอีเมลหรือแอปจัดการไฟล์แล้วลองอีกครั้ง</string>
+    <string name="assistant_tab">คู่มือ</string>
+    <string name="assistant_title">คู่มือ Khai</string>
+    <string name="assistant_intro">คำตอบมาจากข้อความช่วยเหลือของเครื่องมือนี้เท่านั้น ไม่มี AI ไม่มีการวินิจฉัย ไม่มีคำแนะนำ</string>
+    <string name="assistant_input_ph">ถามคำถาม</string>
+    <string name="assistant_send">ส่ง</string>
+    <string name="assistant_unknown">ฉันไม่มีคำตอบสำหรับเรื่องนั้น ฉันตอบเฉพาะคำถามเกี่ยวกับการใช้เครื่องมือนี้</string>
+    <string name="ask_clinician">ถามแพทย์หรือผู้เชี่ยวชาญที่ผ่านการรับรอง</string>
 </resources>

@@ -164,5 +164,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "Dakika mbili za utulivu: ulikula nini, na umepima nini leo?",
   "notification_permission": "Ruhusu arifa ili kikumbusho cha kila siku kiweze kukufikia.",
-  "share_unavailable": "Hakuna programu kwenye simu hii inayoweza kupokea faili. Sakinisha programu ya barua pepe au faili na ujaribu tena."
+  "share_unavailable": "Hakuna programu kwenye simu hii inayoweza kupokea faili. Sakinisha programu ya barua pepe au faili na ujaribu tena.",
+  "assistant_tab": "Mwongozo",
+  "assistant_title": "Mwongozo wa Khai",
+  "assistant_intro": "Majibu yanatokana tu na maandishi ya msaada ya chombo hiki. Hakuna AI, hakuna utambuzi, hakuna ushauri.",
+  "assistant_input_ph": "Uliza swali",
+  "assistant_send": "Tuma",
+  "assistant_unknown": "Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki.",
+  "ask_clinician": "Uliza mtaalamu wa afya aliyehitimu."
 }

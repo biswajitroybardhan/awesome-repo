@@ -168,4 +168,11 @@
     <string name="notif_text">ሁለት ጸጥ ያሉ ደቂቃዎች: ምን በልተሃል, እና ዛሬ ምን ለካህ?</string>
     <string name="notification_permission">ዕለታዊ አስታዋሽ እርስዎን ማግኘት እንዲችል ማሳወቂያዎችን ይፍቀዱ።</string>
     <string name="share_unavailable">በዚህ ስልክ ላይ ምንም መተግበሪያ ፋይሉን ሊቀበል አይችልም። ደብዳቤ ወይም ፋይል መተግበሪያ ጫን እና እንደገና ሞክር።</string>
+    <string name="assistant_tab">መመሪያ</string>
+    <string name="assistant_title">የካይ መመሪያ</string>
+    <string name="assistant_intro">መልሶች የሚገኙት ከዚህ መሳሪያ የራሱ የእርዳታ ጽሑፍ ብቻ ነው። AI የለም፣ ምርመራ የለም፣ ምክር የለም።</string>
+    <string name="assistant_input_ph">ጥያቄ ጠይቅ</string>
+    <string name="assistant_send">ላክ</string>
+    <string name="assistant_unknown">ለዚህ መልስ የለኝም። ስለዚህ መሳሪያ አጠቃቀም ብቻ ነው የምመልሰው።</string>
+    <string name="ask_clinician">ብቁ ከሆነ የጤና ባለሙያ ጠይቅ።</string>
 </resources>

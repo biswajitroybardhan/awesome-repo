@@ -166,6 +166,13 @@
     <string name="notif_text">静かな 2 分間：今日は何を食べ、何を測定しましたか？</string>
     <string name="notification_permission">毎日のリマインダーを受け取れるよう、通知を許可してください。</string>
     <string name="share_unavailable">この端末にはファイルを受け取れるアプリがありません。メールアプリまたはファイルアプリをインストールして、もう一度お試しください。</string>
+    <string name="assistant_tab">ガイド</string>
+    <string name="assistant_title">Khai ガイド</string>
+    <string name="assistant_intro">このツール固有のヘルプテキストからのみ回答します。AIは使わず、診断も助言もしません。</string>
+    <string name="assistant_input_ph">質問を入力</string>
+    <string name="assistant_send">送信</string>
+    <string name="assistant_unknown">その質問には答えられません。このツールの使い方に関する質問にのみ答えます。</string>
+    <string name="ask_clinician">資格のある医療専門家にご相談ください。</string>
     <string name="draft_notice">翻訳ドラフト — 臨床使用前に母語話者の確認が必要です。</string>
     <string name="language_hint">表示のみです。記録された値は安定したコードのままなので、言語を切り替えても日々の記録は書き換わりません。ドラフトの翻訳は、臨床使用前に母語話者の確認が必要です。</string>
 </resources>

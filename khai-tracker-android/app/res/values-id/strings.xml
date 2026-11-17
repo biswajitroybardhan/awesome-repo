@@ -168,4 +168,11 @@
     <string name="notif_text">Dua menit yang tenang: apa yang Anda makan, dan apa yang Anda ukur hari ini?</string>
     <string name="notification_permission">Izinkan notifikasi agar pengingat harian dapat sampai kepada Anda.</string>
     <string name="share_unavailable">Tidak ada aplikasi di ponsel ini yang dapat menerima file. Pasang aplikasi email atau pengelola file lalu coba lagi.</string>
+    <string name="assistant_tab">Panduan</string>
+    <string name="assistant_title">Panduan Khai</string>
+    <string name="assistant_intro">Jawaban hanya diambil dari teks bantuan alat ini sendiri. Tanpa AI, tanpa diagnosis, tanpa saran.</string>
+    <string name="assistant_input_ph">Ajukan pertanyaan</string>
+    <string name="assistant_send">Kirim</string>
+    <string name="assistant_unknown">Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini.</string>
+    <string name="ask_clinician">Tanyakan kepada tenaga kesehatan yang berkualifikasi.</string>
 </resources>

@@ -168,4 +168,11 @@
     <string name="notif_text">Dakika mbili za utulivu: ulikula nini, na umepima nini leo?</string>
     <string name="notification_permission">Ruhusu arifa ili kikumbusho cha kila siku kiweze kukufikia.</string>
     <string name="share_unavailable">Hakuna programu kwenye simu hii inayoweza kupokea faili. Sakinisha programu ya barua pepe au faili na ujaribu tena.</string>
+    <string name="assistant_tab">Mwongozo</string>
+    <string name="assistant_title">Mwongozo wa Khai</string>
+    <string name="assistant_intro">Majibu yanatokana tu na maandishi ya msaada ya chombo hiki. Hakuna AI, hakuna utambuzi, hakuna ushauri.</string>
+    <string name="assistant_input_ph">Uliza swali</string>
+    <string name="assistant_send">Tuma</string>
+    <string name="assistant_unknown">Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki.</string>
+    <string name="ask_clinician">Uliza mtaalamu wa afya aliyehitimu.</string>
 </resources>

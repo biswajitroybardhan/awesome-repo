@@ -166,6 +166,13 @@
     <string name="notif_text">Dois minutos tranquilos: o que você comeu e o que mediu hoje?</string>
     <string name="notification_permission">Permita notificações para receber o lembrete diário.</string>
     <string name="share_unavailable">Nenhum app neste telefone pode receber o arquivo. Instale um app de e-mail ou de arquivos e tente novamente.</string>
+    <string name="assistant_tab">Guia</string>
+    <string name="assistant_title">Guia Khai</string>
+    <string name="assistant_intro">Respostas retiradas apenas do próprio texto de ajuda desta ferramenta. Sem IA, sem diagnóstico, sem conselho.</string>
+    <string name="assistant_input_ph">Faça uma pergunta</string>
+    <string name="assistant_send">Enviar</string>
+    <string name="assistant_unknown">Não tenho resposta para isso. Só respondo a perguntas sobre o uso desta ferramenta.</string>
+    <string name="ask_clinician">Pergunte a um profissional de saúde qualificado.</string>
     <string name="draft_notice">Tradução provisória — requer revisão por falante nativo antes de uso clínico.</string>
     <string name="language_hint">Apenas para exibição. Os valores registados permanecem como códigos estáveis, pelo que mudar de idioma nunca reescreve um dia. As traduções em rascunho exigem revisão por um falante nativo antes de uso clínico.</string>
 </resources>

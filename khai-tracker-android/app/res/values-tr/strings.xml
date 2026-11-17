@@ -166,6 +166,13 @@
     <string name="notif_text">Sessiz iki dakika: Bugün ne yediniz, ne ölçtünüz?</string>
     <string name="notification_permission">Günlük hatırlatıcının size ulaşabilmesi için bildirimlere izin verin.</string>
     <string name="share_unavailable">Bu telefonda dosyayı alabilecek bir uygulama yok. Bir e-posta veya dosya uygulaması kurup tekrar deneyin.</string>
+    <string name="assistant_tab">Kılavuz</string>
+    <string name="assistant_title">Khai Kılavuzu</string>
+    <string name="assistant_intro">Yanıtlar yalnızca bu aracın kendi yardım metninden alınır. Yapay zekâ yok, tanı yok, tavsiye yok.</string>
+    <string name="assistant_input_ph">Bir soru sorun</string>
+    <string name="assistant_send">Gönder</string>
+    <string name="assistant_unknown">Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım.</string>
+    <string name="ask_clinician">Nitelikli bir sağlık uzmanına danışın.</string>
     <string name="draft_notice">Taslak çeviri — klinik kullanımdan önce ana dil konuşan biri tarafından incelenmelidir.</string>
     <string name="language_hint">Yalnızca görüntüleme için. Kaydedilen değerler sabit kodlar olarak kalır, böylece dil değiştirmek bir günü asla yeniden yazmaz. Taslak çevirilerin klinik kullanımdan önce ana dil konuşan biri tarafından incelenmesi gerekir.</string>
 </resources>

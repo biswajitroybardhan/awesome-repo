@@ -168,4 +168,11 @@
     <string name="notif_text">రెండు నిశ్శబ్ద నిమిషాలు: ఈ రోజు మీరు ఏమి తిన్నారు, ఏమి కొలిచారు?</string>
     <string name="notification_permission">రోజువారీ రిమైండర్ మీకు చేరాలంటే సూచనలను అనుమతించండి.</string>
     <string name="share_unavailable">ఈ ఫోన్ లో ఫైల్ ను స్వీకరించే యాప్ లేదు. మెయిల్ లేదా ఫైల్ యాప్ ఇన్ స్టాల్ చేసి మళ్లీ ప్రయత్నించండి.</string>
+    <string name="assistant_tab">గైడ్</string>
+    <string name="assistant_title">ఖాయ్ గైడ్</string>
+    <string name="assistant_intro">ఈ టూల్ స్వంత సహాయక పాఠ్యం నుంచి తీసిన ప్రశ్నలకు సమాధానాలు. AI లేదు, రోగనిర్ధారణ లేదు, సలహా లేదు.</string>
+    <string name="assistant_input_ph">ఒక ప్రశ్న అడగండి</string>
+    <string name="assistant_send">పంపు</string>
+    <string name="assistant_unknown">దీనికి నా వద్ద సమాధానం లేదు. ఈ టూల్ వాడకం గురించిన ప్రశ్నలకు మాత్రమే నేను సమాధానం ఇస్తాను.</string>
+    <string name="ask_clinician">అర్హత కలిగిన వైద్యుడిని అడగండి.</string>
 </resources>

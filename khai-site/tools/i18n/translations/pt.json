@@ -178,5 +178,13 @@
   "hospital_layer": "Camada de implantação hospitalar",
   "callout_blueprint": "Leia como um projeto, não como um anúncio: nenhuma implantação, piloto, endosso ou parceria hospitalar é afirmada.",
   "callout_honest": "A linha honesta: o app do participante e a demonstração no navegador existem hoje. Cada componente hospitalar aqui é uma proposta de projeto.",
-  "draft_notice": "Tradução provisória — requer revisão por falante nativo antes de uso clínico."
+  "draft_notice": "Tradução provisória — requer revisão por falante nativo antes de uso clínico.",
+  "assistantNav": "Guia",
+  "assistantTitle": "Guia Khai",
+  "assistantIntro": "Respostas retiradas apenas do próprio texto de ajuda desta ferramenta. Sem IA, sem diagnóstico, sem conselho.",
+  "assistantInputPh": "Faça uma pergunta",
+  "assistantSend": "Enviar",
+  "assistantUnknown": "Não tenho resposta para isso. Só respondo a perguntas sobre o uso desta ferramenta.",
+  "askClinician": "Pergunte a um profissional de saúde qualificado.",
+  "assistantLanguageAnswer": "Mudar o idioma de exibição altera apenas os rótulos. Os valores registados permanecem como códigos estáveis, pelo que nenhum dia é reescrito."
 }

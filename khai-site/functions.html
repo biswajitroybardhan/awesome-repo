@@ -37,6 +37,7 @@
       <a href="blueprint.html">Blueprint</a>
       <a href="functions.html" aria-current="page">Functions</a>
       <a href="hospital.html">Hospital</a>
+      <a href="assistant.html">Guide</a>
       <a href="security.html">Security</a>
       <a href="demo.html">Demo</a>
     </nav>
@@ -219,6 +220,8 @@
         <tbody>
           <tr><td>Encryption at rest</td><td><span class="status-pill ok">Shipped</span></td><td>AES-256-GCM with a non-exportable AndroidKeyStore key and per-record AAD; only ciphertext is written.</td><td>Development-signed technical preview; security notes list the open items.</td></tr>
           <tr><td>Transparent honesty</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>The site, app and demo state what is not true: no diagnosis, no treatment claim, no affiliation, demo has no encryption.</td><td>None — this is a deliberate, permanent function.</td></tr>
+          <tr><td><a href="assistant.html">Khai Guide</a> — grounded help, not AI</td><td><span class="status-pill ok">Shipped</span></td><td>A text-only helper maps fixed questions to fixed strings from the tool's own translated help text, with a clinician redirect for personal or treatment questions.</td><td>No model, no training, no network and no access to your entries; it cannot interpret readings or give advice. Draft languages stay review-gated.</td></tr>
+          <tr><td>Voice input/output for the Guide</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Speech would let low-literacy and visually impaired participants ask questions aloud.</td><td>Deferred by decision: text now, voice later. Spoken guidance needs native-speaker review before it is safe in the 24 draft languages.</td></tr>
           <tr><td>DPIA and ethics review</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Document risks and mitigations for health data, vulnerable participants and shared devices before scale.</td><td>Precondition: a named data guardian and an ethics approval per deployment.</td></tr>
           <tr><td>Regulatory posture</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Assess the applicable software-as-a-medical-device regime before any assistance influences a decision.</td><td>1.0 makes no such claim and is not presented as a medical device.</td></tr>
           <tr><td>Accessibility and device testing</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Font scaling, TalkBack labels, targets and contrast, verified on real low-vision hardware.</td><td>The app has not yet been run on a physical device in this build.</td></tr>
@@ -274,6 +277,7 @@
       <div class="footer-col"><h3>Product</h3><ul>
         <li><a href="index.html#product">What it does</a></li>
         <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="assistant.html">Guide</a></li>
         <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
         <li><a href="index.html#faq">Limits and answers</a></li>
       </ul></div>

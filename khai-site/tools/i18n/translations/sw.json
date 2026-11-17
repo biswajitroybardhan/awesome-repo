@@ -178,5 +178,13 @@
   "hospital_layer": "Safu ya kupelekwa hospitali",
   "callout_blueprint": "Soma hii kama mwongozo, si tangazo: hakuna kupelekwa hospitalini, majaribio, idhini au ushirikiano unaodaiwa.",
   "callout_honest": "Mstari wa uaminifu: programu ya mshiriki na onyesho la kivinjari zipo leo. Kila sehemu ya hospitali hapa ni pendekezo la kubuni.",
-  "draft_notice": "Tafsiri ya rasimu - inahitaji ukaguzi wa mzungumzaji asilia kabla ya matumizi ya kimatibabu."
+  "draft_notice": "Tafsiri ya rasimu - inahitaji ukaguzi wa mzungumzaji asilia kabla ya matumizi ya kimatibabu.",
+  "assistantNav": "Mwongozo",
+  "assistantTitle": "Mwongozo wa Khai",
+  "assistantIntro": "Majibu yanatokana tu na maandishi ya msaada ya chombo hiki. Hakuna AI, hakuna utambuzi, hakuna ushauri.",
+  "assistantInputPh": "Uliza swali",
+  "assistantSend": "Tuma",
+  "assistantUnknown": "Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki.",
+  "askClinician": "Uliza mtaalamu wa afya aliyehitimu.",
+  "assistantLanguageAnswer": "Kubadilisha lugha ya kuonyesha hubadilisha tu lebo. Thamani zilizohifadhiwa zinabaki kama misimbo thabiti, kwa hiyo siku yoyote haiandikwi upya."
 }

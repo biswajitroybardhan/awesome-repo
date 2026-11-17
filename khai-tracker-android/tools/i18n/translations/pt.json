@@ -162,5 +162,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "Dois minutos tranquilos: o que você comeu e o que mediu hoje?",
   "notification_permission": "Permita notificações para receber o lembrete diário.",
-  "share_unavailable": "Nenhum app neste telefone pode receber o arquivo. Instale um app de e-mail ou de arquivos e tente novamente."
+  "share_unavailable": "Nenhum app neste telefone pode receber o arquivo. Instale um app de e-mail ou de arquivos e tente novamente.",
+  "assistant_tab": "Guia",
+  "assistant_title": "Guia Khai",
+  "assistant_intro": "Respostas retiradas apenas do próprio texto de ajuda desta ferramenta. Sem IA, sem diagnóstico, sem conselho.",
+  "assistant_input_ph": "Faça uma pergunta",
+  "assistant_send": "Enviar",
+  "assistant_unknown": "Não tenho resposta para isso. Só respondo a perguntas sobre o uso desta ferramenta.",
+  "ask_clinician": "Pergunte a um profissional de saúde qualificado."
 }

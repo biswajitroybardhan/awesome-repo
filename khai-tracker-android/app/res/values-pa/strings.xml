@@ -168,4 +168,11 @@
     <string name="notif_text">ਦੋ ਸ਼ਾਂਤ ਮਿੰਟ: ਅੱਜ ਤੁਸੀਂ ਕੀ ਖਾਧਾ, ਅਤੇ ਕੀ ਮਾਪਿਆ?</string>
     <string name="notification_permission">ਰੋਜ਼ਾਨਾ ਰੀਮਾਈਂਡਰ ਤੁਹਾਡੇ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
     <string name="share_unavailable">ਇਸ ਫ਼ੋਨ \'ਤੇ ਕੋਈ ਐਪ ਫ਼ਾਈਲ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕਰ ਸਕਦੀ। ਮੇਲ ਜਾਂ ਫ਼ਾਈਲ ਐਪ ਇੰਸਟਾਲ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+    <string name="assistant_tab">ਗਾਈਡ</string>
+    <string name="assistant_title">ਖਾਈ ਗਾਈਡ</string>
+    <string name="assistant_intro">ਇਸ ਟੂਲ ਦੇ ਆਪਣੇ ਮਦਦ-ਪਾਠ ਤੋਂ ਲਏ ਗਏ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ। ਕੋਈ AI ਨਹੀਂ, ਕੋਈ ਨਿਦਾਨ ਨਹੀਂ, ਕੋਈ ਸਲਾਹ ਨਹੀਂ।</string>
+    <string name="assistant_input_ph">ਇੱਕ ਸਵਾਲ ਪੁਛੋ</string>
+    <string name="assistant_send">ਭੇਜੋ</string>
+    <string name="assistant_unknown">ਮੇਰੇ ਕੋਲ ਇਸਦਾ ਜਵਾਬ ਨਹੀਂ ਹੈ। ਮੈਂ ਸਿਰਫ਼ ਇਸ ਟੂਲ ਦੀ ਵਰਤੋਂ ਬਾਰੇ ਸਵਾਲਾਂ ਦਾ ਜਵਾਬ ਦਿੰਦਾ ਹਾਂ।</string>
+    <string name="ask_clinician">ਕਿਸੇ ਯੋਗ ਡਾਕਟਰ ਤੋਂ ਪੁਛੋ।</string>
 </resources>

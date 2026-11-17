@@ -178,5 +178,13 @@
   "hospital_layer": "병원 도입 계층",
   "callout_blueprint": "발표가 아닌 설계도로 읽어 주세요. 병원 도입, 시범 운영, 추천, 제휴를 주장하지 않습니다.",
   "callout_honest": "솔직히 말하면, 지금 있는 것은 참여자 앱과 브라우저 데모뿐입니다. 여기의 병원 구성 요소는 모두 설계 제안입니다.",
-  "draft_notice": "번역 초안 — 임상 사용 전에 원어민 검토가 필요합니다."
+  "draft_notice": "번역 초안 — 임상 사용 전에 원어민 검토가 필요합니다.",
+  "assistantNav": "안내",
+  "assistantTitle": "Khai 안내",
+  "assistantIntro": "이 도구 자체의 도움말에서만 가져온 답변입니다. AI도, 진단도, 조언도 없습니다.",
+  "assistantInputPh": "질문을 입력하세요",
+  "assistantSend": "보내기",
+  "assistantUnknown": "그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다.",
+  "askClinician": "자격을 갖춘 의료 전문가에게 문의하세요.",
+  "assistantLanguageAnswer": "표시 언어를 바꾸면 레이블만 바뀝니다. 기록된 값은 안정적인 코드로 남아 있어 하루 기록이 다시 작성되지 않습니다."
 }

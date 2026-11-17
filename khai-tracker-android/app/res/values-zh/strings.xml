@@ -166,6 +166,13 @@
     <string name="notif_text">安静的两分钟：今天吃了什么，测量了什么？</string>
     <string name="notification_permission">允许通知，以便每日提醒能够送达。</string>
     <string name="share_unavailable">这部手机上没有可以接收该文件的应用。请安装邮件或文件应用后重试。</string>
+    <string name="assistant_tab">指南</string>
+    <string name="assistant_title">Khai 指南</string>
+    <string name="assistant_intro">答案仅取自本工具自带的帮助文本。没有人工智能，没有诊断，没有建议。</string>
+    <string name="assistant_input_ph">请输入问题</string>
+    <string name="assistant_send">发送</string>
+    <string name="assistant_unknown">我无法回答这个问题。我只能回答有关如何使用本工具的问题。</string>
+    <string name="ask_clinician">请咨询合格的医务人员。</string>
     <string name="draft_notice">翻译草稿 —— 在临床使用前需要母语人士审核。</string>
     <string name="language_hint">仅用于显示。记录值保持为稳定代码，因此切换语言不会重写任何一天的记录。草稿翻译在临床使用之前需要母语人士审核。</string>
 </resources>

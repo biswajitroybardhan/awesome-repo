@@ -168,4 +168,11 @@
     <string name="notif_text">Hai phút nhẹ nhàng: hôm nay bạn ăn gì và đã đo những gì?</string>
     <string name="notification_permission">Hãy cho phép thông báo để nhận lời nhắc hàng ngày.</string>
     <string name="share_unavailable">Không có ứng dụng nào trên điện thoại này có thể nhận tệp. Hãy cài đặt ứng dụng email hoặc quản lý tệp rồi thử lại.</string>
+    <string name="assistant_tab">Hướng dẫn</string>
+    <string name="assistant_title">Hướng dẫn Khai</string>
+    <string name="assistant_intro">Câu trả lời chỉ lấy từ văn bản trợ giúp của chính công cụ này. Không có AI, không chẩn đoán, không tư vấn.</string>
+    <string name="assistant_input_ph">Đặt một câu hỏi</string>
+    <string name="assistant_send">Gửi</string>
+    <string name="assistant_unknown">Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này.</string>
+    <string name="ask_clinician">Hãy hỏi một chuyên gia y tế có trình độ.</string>
 </resources>

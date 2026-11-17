@@ -19,7 +19,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 
-enum class Screen { TODAY, HISTORY, PROGRESS, SETTINGS }
+enum class Screen { TODAY, HISTORY, PROGRESS, ASSISTANT, SETTINGS }
 
 class MainActivity : Activity() {
 
@@ -177,6 +177,7 @@ class MainActivity : Activity() {
             Screen.TODAY -> DateU.pretty(date)
             Screen.HISTORY -> getString(R.string.tab_history)
             Screen.PROGRESS -> getString(R.string.progress_title)
+            Screen.ASSISTANT -> getString(R.string.assistant_title)
             Screen.SETTINGS -> getString(R.string.settings_title)
         }
 
@@ -202,6 +203,7 @@ class MainActivity : Activity() {
             Screen.TODAY -> TodayScreen(this).build()
             Screen.HISTORY -> HistoryScreen(this).build()
             Screen.PROGRESS -> ProgressScreen(this).build()
+            Screen.ASSISTANT -> AssistantScreen(this).build()
             Screen.SETTINGS -> SettingsScreen(this).build()
         }
         setBody(view)
@@ -218,6 +220,7 @@ class MainActivity : Activity() {
             Triple(Screen.TODAY, getString(R.string.tab_today), "\u25C9"),
             Triple(Screen.HISTORY, getString(R.string.tab_history), "\u25A6"),
             Triple(Screen.PROGRESS, getString(R.string.tab_progress), "\u2197"),
+            Triple(Screen.ASSISTANT, getString(R.string.assistant_tab), "\u2753"),
             Triple(Screen.SETTINGS, getString(R.string.tab_settings), "\u2261")
         )
         for ((target, label, glyph) in items) {

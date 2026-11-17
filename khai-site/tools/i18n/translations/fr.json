@@ -178,5 +178,13 @@
   "hospital_layer": "Couche de déploiement hospitalier",
   "callout_blueprint": "À lire comme un schéma, pas comme une annonce : aucun déploiement, pilote, approbation ou partenariat hospitalier n’est revendiqué.",
   "callout_honest": "La ligne honnête : l’application participante et la démo dans le navigateur existent aujourd’hui. Chaque composant hospitalier ici est une proposition de conception.",
-  "draft_notice": "Traduction provisoire — nécessite une relecture par un locuteur natif avant tout usage clinique."
+  "draft_notice": "Traduction provisoire — nécessite une relecture par un locuteur natif avant tout usage clinique.",
+  "assistantNav": "Guide",
+  "assistantTitle": "Guide Khai",
+  "assistantIntro": "Des réponses tirées uniquement de l'aide intégrée à cet outil. Pas d'IA, pas de diagnostic, pas de conseil.",
+  "assistantInputPh": "Posez une question",
+  "assistantSend": "Envoyer",
+  "assistantUnknown": "Je n'ai pas de réponse à cela. Je réponds uniquement aux questions sur l'utilisation de cet outil.",
+  "askClinician": "Consultez un professionnel de santé qualifié.",
+  "assistantLanguageAnswer": "Changer la langue d'affichage ne modifie que les libellés. Les valeurs enregistrées restent des codes stables : aucun jour n'est jamais réécrit."
 }

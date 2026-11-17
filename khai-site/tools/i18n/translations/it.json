@@ -178,5 +178,13 @@
   "hospital_layer": "Livello di implementazione ospedaliera",
   "callout_blueprint": "Da leggere come un progetto, non come un annuncio: non si rivendica alcuna implementazione, pilota, approvazione o partnership ospedaliera.",
   "callout_honest": "La linea onesta: l’app del partecipante e la demo nel browser esistono oggi. Ogni componente ospedaliero qui è una proposta progettuale.",
-  "draft_notice": "Traduzione in bozza — richiede la revisione di un madrelingua prima dell’uso clinico."
+  "draft_notice": "Traduzione in bozza — richiede la revisione di un madrelingua prima dell’uso clinico.",
+  "assistantNav": "Guida",
+  "assistantTitle": "Guida Khai",
+  "assistantIntro": "Risposte tratte solo dal testo di aiuto di questo strumento. Nessuna IA, nessuna diagnosi, nessun consiglio.",
+  "assistantInputPh": "Fai una domanda",
+  "assistantSend": "Invia",
+  "assistantUnknown": "Non ho una risposta per questo. Rispondo solo alle domande sull'uso di questo strumento.",
+  "askClinician": "Chiedi a un professionista sanitario qualificato.",
+  "assistantLanguageAnswer": "Cambiare la lingua di visualizzazione modifica solo le etichette. I valori registrati restano codici stabili, quindi nessun giorno viene riscritto."
 }

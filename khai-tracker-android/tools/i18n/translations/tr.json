@@ -162,5 +162,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "Sessiz iki dakika: Bugün ne yediniz, ne ölçtünüz?",
   "notification_permission": "Günlük hatırlatıcının size ulaşabilmesi için bildirimlere izin verin.",
-  "share_unavailable": "Bu telefonda dosyayı alabilecek bir uygulama yok. Bir e-posta veya dosya uygulaması kurup tekrar deneyin."
+  "share_unavailable": "Bu telefonda dosyayı alabilecek bir uygulama yok. Bir e-posta veya dosya uygulaması kurup tekrar deneyin.",
+  "assistant_tab": "Kılavuz",
+  "assistant_title": "Khai Kılavuzu",
+  "assistant_intro": "Yanıtlar yalnızca bu aracın kendi yardım metninden alınır. Yapay zekâ yok, tanı yok, tavsiye yok.",
+  "assistant_input_ph": "Bir soru sorun",
+  "assistant_send": "Gönder",
+  "assistant_unknown": "Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım.",
+  "ask_clinician": "Nitelikli bir sağlık uzmanına danışın."
 }

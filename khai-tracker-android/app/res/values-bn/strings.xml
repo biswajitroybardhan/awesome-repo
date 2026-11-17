@@ -168,4 +168,11 @@
     <string name="notif_text">দুই মিনিট শান্তভাবে: আজ কী খেয়েছেন এবং কী মেপেছেন?</string>
     <string name="notification_permission">দৈনিক রিমাইন্ডার পেতে বিজ্ঞপ্তির অনুমতি দিন।</string>
     <string name="share_unavailable">এই ফোনে কোনো অ্যাপ ফাইলটি গ্রহণ করতে পারবে না। একটি মেইল বা ফাইল অ্যাপ ইনস্টল করে আবার চেষ্টা করুন।</string>
+    <string name="assistant_tab">গাইড</string>
+    <string name="assistant_title">খাই গাইড</string>
+    <string name="assistant_intro">এই টুলের নিজস্ব সহায়তা পাঠ থেকে নেওয়া প্রশ্নের উত্তর। কোনো AI নেই, কোনো রোগনির্ণয় নেই, কোনো পরামর্শ নেই।</string>
+    <string name="assistant_input_ph">একটি প্রশ্ন জিজ্ঞাসা করুন</string>
+    <string name="assistant_send">পাঠান</string>
+    <string name="assistant_unknown">এর উত্তর আমার কাছে নেই। আমি শুধু এই টুল ব্যবহার সম্পর্কে প্রশ্নের উত্তর দিতে পারি।</string>
+    <string name="ask_clinician">একজন যোগ্য চিকিৎসকের সাথে পরামর্শ করুন।</string>
 </resources>

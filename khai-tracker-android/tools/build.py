@@ -225,8 +225,16 @@ def dex(classes):
         for f in files:
             if f.endswith(".class"):
                 class_files.append(os.path.join(base, f))
-    run([D8, "--release", "--min-api", MIN_SDK, "--lib", ANDROID_JAR,
-         "--output", out] + class_files + [KOTLIN_STDLIB])
+    # Windows caps the command line around 32k; D8 accepts an @argfile instead.
+    # This R8 build reads one literal argument per line (no quote stripping),
+    # so each path is written bare on its own line — spaces are preserved.
+    argfile = os.path.join(BUILD, "d8-args.txt")
+    args = ["--release", "--min-api", MIN_SDK, "--lib", ANDROID_JAR,
+            "--output", out] + class_files + [KOTLIN_STDLIB]
+    with open(argfile, "w", encoding="utf-8", newline="\n") as fh:
+        for arg in args:
+            fh.write(arg + "\n")
+    run([D8, "@" + argfile])
     return os.path.join(out, "classes.dex")
 
 

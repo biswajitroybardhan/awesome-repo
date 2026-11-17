@@ -162,5 +162,12 @@
   "notif_title": "Khai Tracker",
   "notif_text": "Deux minutes tranquilles : qu\\'avez-vous mangé, et qu\\'avez-vous mesuré aujourd\\'hui ?",
   "notification_permission": "Autorisez les notifications pour recevoir le rappel quotidien.",
-  "share_unavailable": "Aucune application sur ce téléphone ne peut recevoir le fichier. Installez une application de messagerie ou de gestion de fichiers, puis réessayez."
+  "share_unavailable": "Aucune application sur ce téléphone ne peut recevoir le fichier. Installez une application de messagerie ou de gestion de fichiers, puis réessayez.",
+  "assistant_tab": "Guide",
+  "assistant_title": "Guide Khai",
+  "assistant_intro": "Des réponses tirées uniquement de l'aide intégrée à cet outil. Pas d'IA, pas de diagnostic, pas de conseil.",
+  "assistant_input_ph": "Posez une question",
+  "assistant_send": "Envoyer",
+  "assistant_unknown": "Je n'ai pas de réponse à cela. Je réponds uniquement aux questions sur l'utilisation de cet outil.",
+  "ask_clinician": "Consultez un professionnel de santé qualifié."
 }

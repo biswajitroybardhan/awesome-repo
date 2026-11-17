@@ -168,4 +168,11 @@
     <string name="notif_text">दोन शांत मिनिटे: आज तुम्ही काय खाल्ले व काय मापले?</string>
     <string name="notification_permission">रोजचे स्मरणपत्र तुम्हापर्यंत पोहोचण्यासाठी सूचनांना परवानगी द्या.</string>
     <string name="share_unavailable">या फोनमध्ये फाइल स्वीकारणारे कोणतेही अ‍ॅप नाही. मेल किंवा फाइल अ‍ॅप स्थापित करून पुन्हा प्रयत्न करा.</string>
+    <string name="assistant_tab">मार्गदर्शक</string>
+    <string name="assistant_title">खाई मार्गदर्शक</string>
+    <string name="assistant_intro">या टूलच्या स्वतःच्या मदत-मजकूरमधून काढलेली प्रश्नांची उत्तरे. कोणताही AI नाही, निदान नाही, सल्ला नाही.</string>
+    <string name="assistant_input_ph">एक प्रश्न विचारा</string>
+    <string name="assistant_send">पाठवा</string>
+    <string name="assistant_unknown">याचे उत्तर माझ्याकडे नाही. मी फक्त या टूलच्या वापराविषयीच्या प्रश्नांची उत्तरे देतो.</string>
+    <string name="ask_clinician">एका पात्र वैद्यकीय तज्ञाकडे विचारा.</string>
 </resources>

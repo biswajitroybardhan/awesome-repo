@@ -178,5 +178,13 @@
   "hospital_layer": "医院部署层级",
   "callout_blueprint": "请将此内容视为蓝图，而非公告：我们不声称有任何医院部署、试点、背书或合作关系。",
   "callout_honest": "实话实说：目前只有参与者应用和浏览器演示存在。此处每个医院相关组件都只是设计提案。",
-  "draft_notice": "翻译草稿 —— 在临床使用前需要母语人士审核。"
+  "draft_notice": "翻译草稿 —— 在临床使用前需要母语人士审核。",
+  "assistantNav": "指南",
+  "assistantTitle": "Khai 指南",
+  "assistantIntro": "答案仅取自本工具自带的帮助文本。没有人工智能，没有诊断，没有建议。",
+  "assistantInputPh": "请输入问题",
+  "assistantSend": "发送",
+  "assistantUnknown": "我无法回答这个问题。我只能回答有关如何使用本工具的问题。",
+  "askClinician": "请咨询合格的医务人员。",
+  "assistantLanguageAnswer": "切换显示语言只会更改标签。记录的值保持为稳定代码，因此任何一天的记录都不会被重写。"
 }

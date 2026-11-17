@@ -166,6 +166,13 @@
     <string name="notif_text">دو پرسکون منٹ: آج آپ نے کیا کھایا، اور کیا ناپا؟</string>
     <string name="notification_permission">روزانہ یاد دہانی تک پہنچنے کے لیے اطلاعات کی اجازت دیں۔</string>
     <string name="share_unavailable">اس فون پر کوئی ایپ فائل وصول نہیں کر سکتی۔ میل یا فائل ایپ انسٹال کر کے دوبارہ کوشش کریں۔</string>
+    <string name="assistant_tab">رہنما</string>
+    <string name="assistant_title">خائی رہنما</string>
+    <string name="assistant_intro">اس ٹول کی اپنی مدد کے متن سے لیے گئے سوالات کے جوابات۔ نہ کوئی AI، نہ تشخیص، نہ مشورہ۔</string>
+    <string name="assistant_input_ph">ایک سوال پوچھیں</string>
+    <string name="assistant_send">بھیجیں</string>
+    <string name="assistant_unknown">میرے پاس اس کا جواب نہیں ہے۔ میں صرف اس ٹول کے استعمال کے بارے میں سوالات کا جواب دیتا ہوں۔</string>
+    <string name="ask_clinician">کسی قابل ڈاکٹر سے پوچھیں۔</string>
     <string name="draft_notice">مسودۂ ترجمہ — طبی استعمال سے پہلے مقامی بولنے والے کی جانب سے جائزہ ضروری ہے۔</string>
     <string name="language_hint">صرف نمایش کے لیے۔ ریکارڈ شدہ اعداد مستحکم کوڈز رہتے ہیں، اس لیے زبان بدلنے سے کسی دن کا ریکارڈ دوبارہ نہیں لکھا جاتا۔ مسودہ ترجموں کو طبی استعمال سے پہلے فطری بولنے والے کی جانچ کی ضرورت ہے۔</string>
 </resources>

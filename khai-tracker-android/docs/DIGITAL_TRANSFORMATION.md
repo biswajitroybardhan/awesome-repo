@@ -123,7 +123,7 @@ repository, no appointment workflow and no dispense data.
 | Clinician review | One-page PDF with completeness, flags, food frequency, notes | Static document; no reply channel |
 | Interoperability | FHIR R4 `Bundle` (Patient, Observation for BP/glucose/weight, Consent, Provenance) | No server, no terminology server, no `MedicationStatement` yet |
 | Follow-up | Daily reminder; record ready to share at an appointment | No scheduling, no teleconsultation |
-| AI | None in the clinical path | Deliberate; see §9 |
+| AI | No model in the clinical path; a grounded, deterministic Guide answers tool-usage questions from fixed help text | Deliberate; see §9 |
 | Audit | Consent timestamp; local sync state; export is user-initiated | No server-side audit trail in this repo |
 | Language | 26-locale registry: full EN/HI UI and consent audio via system TTS; 24 more locales drafted and visibly marked review-required | Drafts are machine-authored, not human-reviewed, and not for clinical use; TTS availability varies by phone |
 | Low-resource design | Offline-first, no AndroidX, ~1.2 MB, minSdk 24 | Untested on real hardware as of this build |
@@ -226,6 +226,16 @@ train on participant data without consent; hide its uncertainty.
 **Evaluation contract.** Every model ships with: intended use, population, validation data,
 sensitivity/specificity at the chosen threshold, known failure modes, a human-override path, and a
 monthly review of overrides. If a model cannot be evaluated, it does not enter the clinical path.
+
+**Shipped now — Khai Guide, not AI.** The site (`assistant.html`) and the app's Guide tab map a fixed
+set of intents to fixed strings that already ship as the tool's own translated help text. There is no
+model, no training, no fine-tuning, no network call and no access to the participant's entries, so
+there is nothing to hallucinate and nothing to train. It answers "how do I use this tool" questions;
+personal interpretation, diagnosis and treatment questions are refused with a hard clinician
+redirect, and the non-medical-device disclaimer is shown inside the panel. Its 24 draft locales stay
+review-gated like the rest of the translated copy. Voice input/output is deferred by product decision
+("text now, voice later"); the app's system `TextToSpeech` reads only the Hindi consent text and is
+not part of the Guide.
 
 ## 10. Operating model for "the whole world"
 
@@ -346,6 +356,14 @@ diagnoses, prescribes, changes a dose or claims an outcome.
 | Reasoning shown beside each observation | Demo | Rule-based and deliberately transparent |
 | Anomaly detection and queue prioritisation | Roadmap | Precondition: prospective evaluation, model card, false-positive review, human override |
 | Transcription and translation | Roadmap | Precondition: native-speaker clinical QA; no machine translation for consent |
+
+### Assistance (grounded, not AI)
+
+| Function | Status | Where / honest limit |
+| --- | --- | --- |
+| Grounded help-text lookup (site Guide and app Guide tab) | Shipped | Fixed intents → fixed translated strings; no model, no training, no network, no access to personal entries |
+| Refusal and clinician redirect for diagnosis / treatment questions | Shipped | Hard-coded; never interprets the participant's readings |
+| Voice input/output for the Guide | Roadmap | Deferred by decision: text now, voice later; spoken guidance requires native-speaker review first |
 
 ### Plan drafting with exposed reasoning
 

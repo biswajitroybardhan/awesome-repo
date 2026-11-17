@@ -166,6 +166,13 @@
     <string name="notif_text">Due minuti di calma: cosa ha mangiato e cosa ha misurato oggi?</string>
     <string name="notification_permission">Consenta le notifiche per ricevere il promemoria giornaliero.</string>
     <string name="share_unavailable">Nessuna app su questo telefono può ricevere il file. Installi un\\\'app di posta o di gestione file e riprovi.</string>
+    <string name="assistant_tab">Guida</string>
+    <string name="assistant_title">Guida Khai</string>
+    <string name="assistant_intro">Risposte tratte solo dal testo di aiuto di questo strumento. Nessuna IA, nessuna diagnosi, nessun consiglio.</string>
+    <string name="assistant_input_ph">Fai una domanda</string>
+    <string name="assistant_send">Invia</string>
+    <string name="assistant_unknown">Non ho una risposta per questo. Rispondo solo alle domande sull\'uso di questo strumento.</string>
+    <string name="ask_clinician">Chiedi a un professionista sanitario qualificato.</string>
     <string name="draft_notice">Traduzione in bozza — richiede la revisione di un madrelingua prima dell’uso clinico.</string>
     <string name="language_hint">Solo per la visualizzazione. I valori registrati restano codici stabili, quindi il cambio di lingua non riscrive mai una giornata. Le traduzioni in bozza richiedono la revisione di un madrelingua prima dell\'uso clinico.</string>
 </resources>

@@ -1,4 +1,12 @@
 {
+  "assistantNav": "Guide",
+  "assistantTitle": "Khai Guide",
+  "assistantIntro": "Questions answered from this tool's own help text. No AI, no diagnosis, no advice.",
+  "assistantInputPh": "Ask a question",
+  "assistantSend": "Send",
+  "assistantUnknown": "I don't have an answer for that. I only answer questions about using this tool.",
+  "askClinician": "Ask a qualified clinician.",
+  "assistantLanguageAnswer": "Switching the display language changes labels only. Recorded values stay as stable codes, so a day is never rewritten.",
   "demoBadge": "Demo",
   "tabToday": "Today",
   "skip": "Skip to demo",

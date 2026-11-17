@@ -166,6 +166,13 @@
     <string name="notif_text">دقيقتان هادئتان: ماذا أكلت، وماذا قِست اليوم؟</string>
     <string name="notification_permission">اسمح بالإشعارات ليصل إليك التذكير اليومي.</string>
     <string name="share_unavailable">لا يوجد تطبيق على هذا الهاتف يمكنه استقبال الملف. ثبّت تطبيق بريد أو ملفات وأعد المحاولة.</string>
+    <string name="assistant_tab">دليل</string>
+    <string name="assistant_title">دليل خاي</string>
+    <string name="assistant_intro">إجابات مأخوذة فقط من نص المساعدة الخاص بهذه الأداة. لا ذكاء اصطناعي، ولا تشخيص، ولا نصيحة.</string>
+    <string name="assistant_input_ph">اطرح سؤالاً</string>
+    <string name="assistant_send">إرسال</string>
+    <string name="assistant_unknown">لا أملك إجابة عن هذا. أجيب فقط عن الأسئلة الخاصة باستخدام هذه الأداة.</string>
+    <string name="ask_clinician">اسأل أخصائياً مؤهلاً.</string>
     <string name="draft_notice">ترجمة مسودة — تحتاج مراجعة من متحدث أصلي قبل الاستخدام السريري.</string>
     <string name="language_hint">للعرض فقط. تظل قيم السجلات رموزًا ثابتة، لذا لا يؤدي تغيير اللغة إلى إعادة كتابة أي يوم. تحتاج اللغات المسودة إلى مراجعة من متحدث أصلي قبل الاستخدام السريري.</string>
 </resources>

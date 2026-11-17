@@ -178,5 +178,13 @@
   "hospital_layer": "Lớp triển khai tại bệnh viện",
   "callout_blueprint": "Hãy đọc đây như một bản thiết kế, không phải thông báo: không triển khai, thí điểm, xác nhận hay quan hệ đối tác bệnh viện nào được tuyên bố.",
   "callout_honest": "Dòng nói thẳng: ứng dụng người tham gia và bản demo trên trình duyệt hiện đã tồn tại. Mọi thành phần bệnh viện tại đây đều là đề xuất thiết kế.",
-  "draft_notice": "Bản dịch nháp — cần người bản ngữ xem lại trước khi dùng trong trường hợp lâm sàng."
+  "draft_notice": "Bản dịch nháp — cần người bản ngữ xem lại trước khi dùng trong trường hợp lâm sàng.",
+  "assistantNav": "Hướng dẫn",
+  "assistantTitle": "Hướng dẫn Khai",
+  "assistantIntro": "Câu trả lời chỉ lấy từ văn bản trợ giúp của chính công cụ này. Không có AI, không chẩn đoán, không tư vấn.",
+  "assistantInputPh": "Đặt một câu hỏi",
+  "assistantSend": "Gửi",
+  "assistantUnknown": "Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này.",
+  "askClinician": "Hãy hỏi một chuyên gia y tế có trình độ.",
+  "assistantLanguageAnswer": "Đổi ngôn ngữ hiển thị chỉ thay đổi nhãn. Các giá trị đã ghi vẫn là mã cố định, nên không ngày nào bị ghi lại."
 }

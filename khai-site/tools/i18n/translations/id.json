@@ -178,5 +178,13 @@
   "hospital_layer": "Lapisan penerapan di rumah sakit",
   "callout_blueprint": "Bacalah ini sebagai rancangan, bukan pengumuman: tidak ada penerapan, uji coba, dukungan, atau kemitraan rumah sakit yang diklaim.",
   "callout_honest": "Garis jujurnya: aplikasi peserta dan demo browser sudah ada saat ini. Setiap komponen rumah sakit di sini adalah usulan desain.",
-  "draft_notice": "Terjemahan draf — memerlukan tinjauan penutur asli sebelum penggunaan klinis."
+  "draft_notice": "Terjemahan draf — memerlukan tinjauan penutur asli sebelum penggunaan klinis.",
+  "assistantNav": "Panduan",
+  "assistantTitle": "Panduan Khai",
+  "assistantIntro": "Jawaban hanya diambil dari teks bantuan alat ini sendiri. Tanpa AI, tanpa diagnosis, tanpa saran.",
+  "assistantInputPh": "Ajukan pertanyaan",
+  "assistantSend": "Kirim",
+  "assistantUnknown": "Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini.",
+  "askClinician": "Tanyakan kepada tenaga kesehatan yang berkualifikasi.",
+  "assistantLanguageAnswer": "Mengubah bahasa tampilan hanya mengubah label. Nilai yang tersimpan tetap berupa kode stabil, sehingga tidak ada hari yang ditulis ulang."
 }

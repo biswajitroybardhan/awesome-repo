@@ -1,4 +1,11 @@
 {
+  "assistant_tab": "Guide",
+  "assistant_title": "Khai Guide",
+  "assistant_intro": "Questions answered from this tool's own help text. No AI, no diagnosis, no advice.",
+  "assistant_input_ph": "Ask a question",
+  "assistant_send": "Send",
+  "assistant_unknown": "I don't have an answer for that. I only answer questions about using this tool.",
+  "ask_clinician": "Ask a qualified clinician.",
   "app_name": "Khai Tracker",
   "brand": "Khai",
   "brand_sub": "Tracker",
