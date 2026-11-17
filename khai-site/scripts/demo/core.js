@@ -22,19 +22,19 @@
   K.MON_LONG_HI = ['जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्तूबर', 'नवंबर', 'दिसंबर'];
 
   K.AGE_BANDS = [
-    { key: 'lt40', en: 'Under 40', hi: '40 से कम' },
-    { key: '40_49', en: '40–49', hi: '40–49' },
-    { key: '50_59', en: '50–59', hi: '50–59' },
-    { key: '60_69', en: '60–69', hi: '60–69' },
-    { key: 'ge70', en: '70 and above', hi: '70 और उससे अधिक' }
+    { key: 'lt40', kind: 'age', en: 'Under 40', hi: '40 से कम' },
+    { key: '40_49', kind: 'age', en: '40–49', hi: '40–49' },
+    { key: '50_59', kind: 'age', en: '50–59', hi: '50–59' },
+    { key: '60_69', kind: 'age', en: '60–69', hi: '60–69' },
+    { key: 'ge70', kind: 'age', en: '70 and above', hi: '70 और उससे अधिक' }
   ];
   K.CONDITIONS = [
-    { key: 'diabetes_t2', en: 'Diabetes (type 2)', hi: 'मधुमेह (टाइप 2)' },
-    { key: 'prediabetes', en: 'Pre-diabetes', hi: 'प्री-डायबिटीज़' },
-    { key: 'hypertension', en: 'High blood pressure', hi: 'उच्च रक्तचाप' },
-    { key: 'cholesterol', en: 'High cholesterol', hi: 'उच्च कोलेस्ट्रॉल' },
-    { key: 'weight', en: 'Weight management', hi: 'वज़न प्रबंधन' },
-    { key: 'none', en: 'None of these', hi: 'इनमें से कोई नहीं' }
+    { key: 'diabetes_t2', kind: 'condition', en: 'Diabetes (type 2)', hi: 'मधुमेह (टाइप 2)' },
+    { key: 'prediabetes', kind: 'condition', en: 'Pre-diabetes', hi: 'प्री-डायबिटीज़' },
+    { key: 'hypertension', kind: 'condition', en: 'High blood pressure', hi: 'उच्च रक्तचाप' },
+    { key: 'cholesterol', kind: 'condition', en: 'High cholesterol', hi: 'उच्च कोलेस्ट्रॉल' },
+    { key: 'weight', kind: 'condition', en: 'Weight management', hi: 'वज़न प्रबंधन' },
+    { key: 'none', kind: 'condition', en: 'None of these', hi: 'इनमें से कोई नहीं' }
   ];
 
   var EN = {
@@ -289,6 +289,7 @@
 
   K.lang = 'en';
   K.t = function (key, vars) {
+    if (window.KhaiI18n && KhaiI18n.has(key)) return KhaiI18n.t(key, vars);
     var dict = K.lang === 'hi' ? HI : EN;
     var s = dict[key] != null ? dict[key] : (EN[key] != null ? EN[key] : key);
     if (vars) Object.keys(vars).forEach(function (v) {
@@ -296,7 +297,13 @@
     });
     return s;
   };
-  K.label = function (obj) { return K.lang === 'hi' ? obj.hi : obj.en; };
+  K.label = function (obj) {
+    if (window.KhaiI18n && obj.kind) {
+      var key = obj.kind + '_' + obj.key;
+      if (KhaiI18n.has(key)) return KhaiI18n.t(key);
+    }
+    return K.lang === 'hi' ? obj.hi : obj.en;
+  };
   K.ageLabel = function (key) {
     var a = K.AGE_BANDS.filter(function (x) { return x.key === key; })[0];
     return a ? K.label(a) : '—';
@@ -461,7 +468,9 @@
     db.hospital = db.hospital && typeof db.hospital === 'object' ? db.hospital : {};
     db.hospital.decisions = db.hospital.decisions && typeof db.hospital.decisions === 'object' ? db.hospital.decisions : {};
     db.settings = db.settings && typeof db.settings === 'object' ? db.settings : {};
-    db.settings.lang = db.settings.lang === 'hi' ? 'hi' : 'en';
+    var valid = (window.KhaiI18n && KhaiI18n.languages ? KhaiI18n.languages : [])
+      .map(function (l) { return l.code; });
+    if (valid.indexOf(db.settings.lang) < 0) db.settings.lang = 'en';
     if (!db.deviceId) db.deviceId = 'demo-' + Math.random().toString(36).slice(2, 10);
     if (!db.createdAt) db.createdAt = Date.now();
     K.db = db;

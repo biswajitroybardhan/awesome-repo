@@ -72,14 +72,28 @@ class SettingsScreen(private val a: MainActivity) {
     // ---------------------------------------------------------------- language
 
     private fun languageCard(): View = Ui.section(a, a.getString(R.string.language)) { c ->
-        c.addView(Ui.segmented(
-            a,
-            listOf("English", "हिन्दी"),
-            if (a.prefs.lang.startsWith("hi")) 1 else 0
-        ) { idx ->
-            val code = if (idx == 1) "hi" else "en"
-            if (code != a.prefs.lang) a.switchLanguage(code)
-        })
+        c.addView(Ui.body(a, a.getString(R.string.language_hint)))
+        val current = Languages.find(a.prefs.lang)
+        val shortDraft = a.getString(R.string.draft_notice).split(" — ").first()
+        val label = current.native + if (current.isDraft) " · $shortDraft" else ""
+        c.addView(Ui.smallButton(a, label, false) { showLanguagePicker() })
+    }
+
+    private fun showLanguagePicker() {
+        val shortDraft = a.getString(R.string.draft_notice).split(" — ").first()
+        val labels = Languages.ALL.map { lang ->
+            lang.native + if (lang.isDraft) " · $shortDraft" else ""
+        }.toTypedArray<String>()
+        val checked = Languages.ALL.indexOfFirst { it.code == a.prefs.lang }
+        AlertDialog.Builder(a)
+            .setTitle(a.getString(R.string.language))
+            .setSingleChoiceItems(labels, if (checked < 0) 0 else checked) { dialog, which ->
+                val code = Languages.ALL[which].code
+                dialog.dismiss()
+                if (code != a.prefs.lang) a.switchLanguage(code)
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
     // ---------------------------------------------------------------- reminders

@@ -18,7 +18,6 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import java.util.Locale
 
 enum class Screen { TODAY, HISTORY, PROGRESS, SETTINGS }
 
@@ -381,7 +380,7 @@ class MainActivity : Activity() {
         tts = TextToSpeech(this) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val engine = tts
-                val res = engine?.setLanguage(Locale("hi", "IN"))
+                val res = engine?.setLanguage(Languages.locale(prefs.lang))
                 if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
                     toast(getString(R.string.read_aloud_unavailable))
                 } else {

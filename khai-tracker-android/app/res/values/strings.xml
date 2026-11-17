@@ -116,6 +116,8 @@
     <!-- Settings -->
     <string name="settings_title">Settings</string>
     <string name="language">Language / भाषा</string>
+    <string name="language_hint">Display only. Record values stay as stable codes, so switching never rewrites a day. Draft languages need native-speaker review before clinical use.</string>
+    <string name="draft_notice">Draft translation — requires native-speaker review before clinical use.</string>
     <string name="reminders">Daily reminder</string>
     <string name="reminder_hint">A quiet notification at the time you choose. No streak shaming, no ads.</string>
     <string name="reminder_time">Reminder time</string>
@@ -149,7 +151,7 @@
     <string name="about">About</string>
     <string name="about_body">Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising.</string>
     <string name="about_credit">Product owner: Biswajit Roy Bardhan</string>
-    <string name="read_aloud_unavailable">Hindi speech is not installed on this phone.</string>
+    <string name="read_aloud_unavailable">Speech for this language is not installed on this phone.</string>
     <string name="back">Back</string>
     <string name="done">Done</string>
     <string name="close">Close</string>

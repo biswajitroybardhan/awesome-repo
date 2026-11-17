@@ -110,6 +110,8 @@
 
     <string name="settings_title">सेटिंग</string>
     <string name="language">भाषा / Language</string>
+    <string name="language_hint">सिर्फ़ दिखावट। रिकॉर्ड मान स्थिर कोड में रहते हैं, इसलिए भाषा बदलने से दिन नहीं बदलता। ड्राफ़्ट भाषाओं को क्लिनिकल उपयोग से पहले मूल भाषी समीक्षा चाहिए।</string>
+    <string name="draft_notice">ड्राफ़्ट अनुवाद — क्लिनिकल उपयोग से पहले मूल भाषी समीक्षा आवश्यक है।</string>
     <string name="reminders">रोज़ का रिमाइंडर</string>
     <string name="reminder_hint">आपके चुने समय पर एक शांत सूचना। कोई डर नहीं, कोई विज्ञापन नहीं।</string>
     <string name="reminder_time">रिमाइंडर का समय</string>
@@ -143,7 +145,7 @@
     <string name="about">ऐप के बारे में</string>
     <string name="about_body">खाई ट्रैकर 1.0.0\nखाई फ़ूड्स प्रा. लि., जमशेदपुर, झारखंड, भारत द्वारा निर्मित।\n\nसाझा फ़ोन, कमज़ोर नेटवर्क और मिलेजुले भारतीय थाली के लिए बनाया गया। ऑफ़लाइन पहले। कोई तीसरे पक्ष का विश्लेषण नहीं। कोई विज्ञापन नहीं।</string>
     <string name="about_credit">उत्पाद स्वामी: बिस्वजीत रॉय बर्धन</string>
-    <string name="read_aloud_unavailable">इस फ़ोन पर हिंदी वाणी स्थापित नहीं है।</string>
+    <string name="read_aloud_unavailable">इस भाषा की वाणी इस फ़ोन पर स्थापित नहीं है।</string>
     <string name="back">वापस</string>
     <string name="done">हो गया</string>
     <string name="close">बंद करें</string>

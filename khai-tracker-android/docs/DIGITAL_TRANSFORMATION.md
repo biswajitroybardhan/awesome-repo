@@ -125,8 +125,8 @@ repository, no appointment workflow and no dispense data.
 | Follow-up | Daily reminder; record ready to share at an appointment | No scheduling, no teleconsultation |
 | AI | None in the clinical path | Deliberate; see §9 |
 | Audit | Consent timestamp; local sync state; export is user-initiated | No server-side audit trail in this repo |
-| Language | Full EN/HI UI and consent audio via system TTS | No other languages yet; TTS availability varies by phone |
-| Low-resource design | Offline-first, no AndroidX, ~0.9 MB, minSdk 24 | Untested on real hardware as of this build |
+| Language | 26-locale registry: full EN/HI UI and consent audio via system TTS; 24 more locales drafted and visibly marked review-required | Drafts are machine-authored, not human-reviewed, and not for clinical use; TTS availability varies by phone |
+| Low-resource design | Offline-first, no AndroidX, ~1.2 MB, minSdk 24 | Untested on real hardware as of this build |
 
 ## 6. Roadmap
 
@@ -287,8 +287,12 @@ rewriting it.
   vulnerability disclosure, dependency review. See `SECURITY.md`.
 - **Accessibility.** Font scaling, TalkBack labels, 44–48 dp targets, contrast. Test with a real
   low-vision user, not only a checklist.
-- **Language QA.** Hindi is reviewed by a native speaker for clinical and consent wording; machine
-  translation is not acceptable for consent.
+- **Language QA.** English and Hindi are reviewed by native speakers for clinical and consent
+  wording; machine translation is not acceptable for consent. The other 24 locales in the 26-language
+  registry are machine-authored drafts, shown with a visible review-required notice in the app and on
+  the site. Each must pass native-speaker clinical and consent review before any real use and may
+  then be marked shipped. Dish names stay in their familiar original form; only UI chrome and caveats
+  are translated. Long-form static-site article prose remains English.
 
 ## 12. What is deliberately absent from v1.0
 
@@ -402,7 +406,7 @@ review points only from days logged in that browser, never advice, and changes n
 | DPIA, ethics review, SaMD assessment | Roadmap | Precondition: named data guardian and approvals per deployment |
 | Accessibility and physical-device testing | Roadmap | Not run on hardware in this build |
 | Security operations (keys, incidents, disclosure, dependencies) | Roadmap | See `SECURITY.md` |
-| Reproducible low-resource build (~0.9 MB, minSdk 24) | Shipped | Development key for this preview |
+| Reproducible low-resource build (~1.2 MB, minSdk 24) | Shipped | Development key for this preview |
 | Phased rollout, local adapters, federated research analytics | Roadmap | Precondition: local partners, ethics approvals, staffed follow-up |
 
 The pattern is described generically; no named individual or institution is associated with Khai by

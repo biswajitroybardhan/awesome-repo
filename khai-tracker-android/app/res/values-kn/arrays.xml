@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Draft translation · requires native-speaker review before clinical use. -->
+    <!-- Labels and codes are parallel arrays: index i of one names index i of the other. -->
+
+    <string-array name="age_band_keys">
+        <item>lt40</item>
+        <item>40_49</item>
+        <item>50_59</item>
+        <item>60_69</item>
+        <item>ge70</item>
+    </string-array>
+
+    <string-array name="age_bands">
+        <item>40 ಕ್ಕಿಂತ ಕಡಿಮೆ</item>
+        <item>40–49</item>
+        <item>50–59</item>
+        <item>60–69</item>
+        <item>70 ಮತ್ತು ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು</item>
+    </string-array>
+
+    <string-array name="condition_keys">
+        <item>diabetes_t2</item>
+        <item>prediabetes</item>
+        <item>hypertension</item>
+        <item>cholesterol</item>
+        <item>weight</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="condition_options">
+        <item>ಮಧುಮೇಹ (ವಿಧ 2)</item>
+        <item>ಪೂರ್ವ-ಮಧುಮೇಹ</item>
+        <item>ಅಧಿಕ ರಕ್ತದೊತ್ತಡ</item>
+        <item>ಅಧಿಕ ಕೊಲೆಸ್ಟ್ರಾಲ್</item>
+        <item>ತೂಕ ನಿರ್ವಹಣೆ</item>
+        <item>ಇವುಗಳಲ್ಲಿ ಯಾವುದೂ ಇಲ್ಲ</item>
+    </string-array>
+
+    <string-array name="meal_slots">
+        <item>breakfast</item>
+        <item>lunch</item>
+        <item>dinner</item>
+        <item>snacks</item>
+    </string-array>
+
+</resources>

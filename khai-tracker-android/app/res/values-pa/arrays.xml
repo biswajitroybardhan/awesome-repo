@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Draft translation · requires native-speaker review before clinical use. -->
+    <!-- Labels and codes are parallel arrays: index i of one names index i of the other. -->
+
+    <string-array name="age_band_keys">
+        <item>lt40</item>
+        <item>40_49</item>
+        <item>50_59</item>
+        <item>60_69</item>
+        <item>ge70</item>
+    </string-array>
+
+    <string-array name="age_bands">
+        <item>40 ਤੋਂ ਘੱਟ</item>
+        <item>40–49</item>
+        <item>50–59</item>
+        <item>60–69</item>
+        <item>70 ਅਤੇ ਇਸ ਤੋਂ ਵੱਧ</item>
+    </string-array>
+
+    <string-array name="condition_keys">
+        <item>diabetes_t2</item>
+        <item>prediabetes</item>
+        <item>hypertension</item>
+        <item>cholesterol</item>
+        <item>weight</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="condition_options">
+        <item>ਸ਼ੂਗਰ (ਟਾਈਪ 2)</item>
+        <item>ਪ੍ਰੀ-ਡਾਇਬਟੀਜ਼</item>
+        <item>ਉੱਚ ਬਲੱਡ ਪ੍ਰੈਸ਼ਰ</item>
+        <item>ਉੱਚ ਕੋਲੈਸਟ੍ਰੋਲ</item>
+        <item>ਭਾਰ ਪ੍ਰਬੰਧਨ</item>
+        <item>ਇਹਨਾਂ ਵਿੱਚੋਂ ਕੋਈ ਨਹੀਂ</item>
+    </string-array>
+
+    <string-array name="meal_slots">
+        <item>breakfast</item>
+        <item>lunch</item>
+        <item>dinner</item>
+        <item>snacks</item>
+    </string-array>
+
+</resources>

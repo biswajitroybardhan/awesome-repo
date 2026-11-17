@@ -18,10 +18,58 @@ static file host.
 | `404.html` | Not-found page |
 | `styles/site.css`, `styles/demo.css` | Design systems for the marketing pages and the demo |
 | `scripts/site.js` | Theme, mobile menu, copy buttons, footer year — no network |
+| `scripts/translations.js`, `scripts/i18n.js` | Generated 26-language bundle and the embedded localisation runtime — no network |
 | `scripts/demo/*.js` | The demo's data model, rules, screens and event handling |
 | `scripts/foods.js` | Generated 83-dish food library (`window.KHAI_FOODS`) |
 | `assets/` | Mark, icon, social image |
 | `files/` | Signed demo APK plus its `.sha256` checksum |
+
+## Languages
+
+The site and the browser demo share one embedded translation bundle
+(`scripts/translations.js`), generated from `tools/i18n/` in the Android repo. It carries **26
+languages** and makes no network request to load them.
+
+| Status | Languages | Use |
+| --- | --- | --- |
+| **Shipped** (human-reviewed) | `en` English, `hi` Hindi | Application copy and consent are reviewed; read-aloud still depends on the phone's installed voice |
+| **Draft** (native review required) | `bn`, `ta`, `te`, `mr`, `gu`, `kn`, `ml`, `pa`, `ur`, `fr`, `de`, `pt`, `it`, `ru`, `zh`, `ja`, `ko`, `ar`, `tr`, `vi`, `id`, `th`, `sw`, `am` | UI preview only — **not for real clinical records** |
+
+The 24 draft locales are machine-authored drafts, never presented as human-reviewed. Every draft
+page shows a visible "draft translation" banner, and each draft option in the switcher is marked as
+such. They must be reviewed by a native speaker for clinical and consent wording before any real
+use. `ar` and `ur` switch the document to a right-to-left layout.
+
+**What is translated:** all browser-demo chrome, consent text, caveat and demo banners, form labels,
+navigation, buttons and the language picker; plus the page titles, navigation and footer of all
+eight HTML pages. Dish names are deliberately kept in their familiar original form — only the UI
+around them is translated.
+
+**What is not translated:** the long-form article prose inside `blueprint.html`, `functions.html`,
+`hospital.html`, `security.html` and `privacy.html` remains English. Titles, navigation, banners and
+footers are localised, but the article body is not. In the demo, the 180-key translated dictionary
+covers the core recording loop, consent, caveats, progress, exports and the hospital view; the
+remaining minor demo labels (about 130 keys in the original demo dictionary) have no draft
+translation and fall back to English in non-English locales. These are known gaps, stated plainly
+rather than implying full-page or full-demo translation.
+
+**Selecting a language:** use the header switcher, the language button in the demo, or `?lang=xx`
+(for example `demo.html?lang=ta`). The choice persists in `localStorage` as `khai.lang`.
+
+### Adding or reviewing a language
+
+1. Add a row to `khai-tracker-android/tools/i18n/languages.json` (`code`, English name, native name,
+   `shipped`/`draft`) and to `Languages.kt` in the Android app.
+2. Translate `en-app.json` and `en-web.json` into
+   `khai-tracker-android/tools/i18n/translations/<code>.json` and
+   `khai-site/tools/i18n/translations/<code>.json`, preserving every key and placeholder. Check them
+   with `py tools/i18n/validate.py`.
+3. Add that locale's two label arrays (`age_bands`, `condition_options`) and the speech-unavailable
+   string to `tools/i18n/extras.json`.
+4. From the Android repo run `py tools/i18n/generate.py` and `py tools/i18n/generate_site.py`. These
+   write the Android `values-<code>/` resources and regenerate `scripts/translations.js`.
+5. Only after a native speaker has reviewed clinical and consent wording in **both** app and site
+   may the locale's `status` be flipped to `shipped` and its draft banner removed.
 
 ## Running locally
 

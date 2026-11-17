@@ -277,6 +277,19 @@ a:hover { color: var(--green); text-decoration-color: var(--green); }
   --btn-fg: var(--green-deep);
   border-color: #fff;
 }
+/* In dark mode --paper is nearly black, so a green-deep label on it fails contrast. */
+:root[data-theme="dark"] .btn.on-green {
+  --btn-bg: #e9efe7;
+  --btn-fg: #10291b;
+  border-color: #e9efe7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn.on-green {
+    --btn-bg: #e9efe7;
+    --btn-fg: #10291b;
+    border-color: #e9efe7;
+  }
+}
 
 .textlink {
   display: inline-flex;
@@ -306,6 +319,30 @@ a:hover { color: var(--green); text-decoration-color: var(--green); }
 }
 .iconbtn:hover { border-color: var(--line-strong); color: var(--green); }
 .iconbtn svg { width: 18px; height: 18px; }
+
+.i18n-lang select {
+  height: 44px;
+  max-width: 156px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: .8rem;
+  cursor: pointer;
+}
+.i18n-lang select:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.i18n-draft-notice {
+  position: relative;
+  z-index: 60;
+  padding: 8px 16px;
+  background: #72520a;
+  color: #fff;
+  font-size: .78rem;
+  line-height: 1.4;
+  text-align: center;
+}
 
 /* ---------------------------------------------------------------- header */
 
@@ -1198,4 +1235,5 @@ a:hover { color: var(--green); text-decoration-color: var(--green); }
   .footer-grid { grid-template-columns: 1fr; }
   .download-panel { padding: 24px 20px; }
   .prose h2 { font-size: 1.45rem; }
+  .i18n-lang select { max-width: 104px; font-size: .72rem; }
 }

@@ -36,13 +36,16 @@
   // ---------------------------------------------------------------- render
 
   K.setLang = function (lang) {
-    K.lang = lang === 'hi' ? 'hi' : 'en';
+    var codes = (window.KhaiI18n && KhaiI18n.languages ? KhaiI18n.languages : [])
+      .map(function (l) { return l.code; });
+    K.lang = codes.indexOf(lang) >= 0 ? lang : 'en';
     if (K.db) {
       K.db.settings = K.db.settings || {};
       K.db.settings.lang = K.lang;
       K.persist();
     }
-    document.documentElement.lang = K.lang;
+    if (window.KhaiI18n) KhaiI18n.set(K.lang);
+    else document.documentElement.lang = K.lang;
     K.render();
   };
 
@@ -93,8 +96,9 @@
     if (badge) badge.textContent = K.t('demoBadge');
     var langBtn = document.querySelector('[data-act="toggle-lang"]');
     if (langBtn) {
-      langBtn.textContent = K.t('langName');
-      langBtn.setAttribute('aria-label', K.t('langSwitchLabel') + ': ' + K.t('langName'));
+      var nativeName = window.KhaiI18n ? KhaiI18n.nativeName(K.lang) : (K.lang === 'hi' ? 'हिन्दी' : 'English');
+      langBtn.textContent = nativeName;
+      langBtn.setAttribute('aria-label', K.t('language') + ': ' + nativeName);
     }
     var brandSub = document.querySelector('[data-brand-sub]');
     if (brandSub) brandSub.textContent = K.t('brandSub');
@@ -233,7 +237,8 @@
     } else if (act === 'set-lang') {
       K.setLang(b.getAttribute('data-value'));
     } else if (act === 'toggle-lang') {
-      K.setLang(K.lang === 'hi' ? 'en' : 'hi');
+      if (typeof window.KhaiOpenLanguageDialog === 'function') window.KhaiOpenLanguageDialog();
+      else K.setLang(K.lang === 'hi' ? 'en' : 'hi');
     } else if (act === 'edit-profile') {
       K.openProfileDialog();
     } else if (act === 'export') {
@@ -330,7 +335,13 @@
   // ---------------------------------------------------------------- boot
 
   K.load();
-  document.documentElement.lang = K.lang;
+  if (window.KhaiI18n) {
+    var requestedLang = KhaiI18n.requested();
+    if (requestedLang && requestedLang !== K.lang) K.setLang(requestedLang);
+    else KhaiI18n.set(K.lang, { persist: false });
+  } else {
+    document.documentElement.lang = K.lang;
+  }
   host = document.getElementById('app-host');
   tabs = document.getElementById('app-tabs');
   if (!host) return;

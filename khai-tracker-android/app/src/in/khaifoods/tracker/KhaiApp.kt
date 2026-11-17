@@ -35,7 +35,7 @@ object Lang {
     fun wrap(base: android.content.Context): android.content.Context {
         val code = base.getSharedPreferences("khai_settings", android.content.Context.MODE_PRIVATE)
             .getString("lang", "en") ?: "en"
-        val locale = Locale(code)
+        val locale = Languages.locale(code)
         Locale.setDefault(locale)
         val config = Configuration(base.resources.configuration)
         config.setLocales(LocaleList(locale))

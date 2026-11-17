@@ -49,25 +49,73 @@ def parse_strings(path):
     return out
 
 
+def locale_codes():
+    """Every shipped or drafted locale except the base English resources."""
+    path = os.path.join(ROOT, "tools", "i18n", "languages.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            langs = json.load(f)["languages"]
+        return [x["code"] for x in langs if x["code"] != "en"]
+    except (OSError, ValueError, KeyError):
+        return ["hi"]
+
+
 def check_strings():
     base = parse_strings(os.path.join(RES, "values", "strings.xml"))
-    hindi = parse_strings(os.path.join(RES, "values-hi", "strings.xml"))
-    for name in base:
-        if name not in hindi:
-            warn("Hindi missing: %s" % name)
-    for name in hindi:
-        if name not in base:
-            err("Hindi string with no English original: %s" % name)
-    # Same substitution tokens on both sides, or the Hindi layout breaks at runtime.
-    for name, node in base.items():
-        if name not in hindi:
+    checked = 0
+    for code in locale_codes():
+        path = os.path.join(RES, "values-" + code, "strings.xml")
+        if not os.path.exists(path):
+            err("missing strings.xml for locale %s" % code)
             continue
-        a = sorted(set(re.findall(r"%\d*\$?[sd]", "".join(node.itertext()))))
-        b = sorted(set(re.findall(r"%\d*\$?[sd]", "".join(hindi[name].itertext()))))
-        if a != b:
-            err("Placeholder mismatch for %s: en=%s hi=%s" % (name, a, b))
-    print("  strings: %d English, %d Hindi" % (len(base), len(hindi)))
+        other = parse_strings(path)
+        for name in base:
+            if name not in other:
+                err("%s missing: %s" % (code, name))
+        for name in other:
+            if name not in base:
+                err("%s string with no English original: %s" % (code, name))
+        # Same substitution tokens on both sides, or the layout breaks at runtime.
+        for name, node in base.items():
+            if name not in other:
+                continue
+            a = sorted(set(re.findall(r"%\d*\$?[sd]", "".join(node.itertext()))))
+            b = sorted(set(re.findall(r"%\d*\$?[sd]", "".join(other[name].itertext()))))
+            if a != b:
+                err("Placeholder mismatch for %s: en=%s %s=%s" % (name, a, code, b))
+        checked += 1
+    print("  strings: %d English, %d locale files" % (len(base), checked))
     return set(base)
+
+
+def parse_array(path, name):
+    root = ET.parse(path).getroot()
+    node = root.find("./string-array[@name='%s']" % name)
+    return [] if node is None else ["".join(item.itertext()) for item in node.findall("item")]
+
+
+def check_arrays():
+    base_path = os.path.join(RES, "values", "arrays.xml")
+    names = ("age_band_keys", "age_bands", "condition_keys", "condition_options", "meal_slots")
+    base = {name: parse_array(base_path, name) for name in names}
+    checked = 0
+    for code in locale_codes():
+        path = os.path.join(RES, "values-" + code, "arrays.xml")
+        if not os.path.exists(path):
+            err("missing arrays.xml for locale %s" % code)
+            continue
+        for name in names:
+            value = parse_array(path, name)
+            if not value:
+                err("%s missing string-array %s" % (code, name))
+                continue
+            if name in ("age_bands", "condition_options"):
+                if len(value) != len(base[name]):
+                    err("%s %s has %d items, expected %d" % (code, name, len(value), len(base[name])))
+            elif value != base[name]:
+                err("%s changed stable array %s" % (code, name))
+        checked += 1
+    print("  arrays: %d locale files, key arrays unchanged" % checked)
 
 
 # ---------------------------------------------------------------- resources used from code
@@ -252,6 +300,7 @@ def check_versions():
 def main():
     print("Khai Tracker static checks")
     check_strings()
+    check_arrays()
     declared = declared_resources()
     check_code_references(declared)
     check_density_coverage()

@@ -1,0 +1,31 @@
+{
+  "note": "Marketable worldwide set: largest speaker bases plus official languages of major health markets. 'shipped' languages have human-reviewed copy; 'draft' languages are machine-authored drafts that require native-speaker clinical review before real use.",
+  "languages": [
+    { "code": "en", "name": "English", "native": "English", "status": "shipped" },
+    { "code": "hi", "name": "Hindi", "native": "हिन्दी", "status": "shipped" },
+    { "code": "bn", "name": "Bengali", "native": "বাংলা", "status": "draft" },
+    { "code": "ta", "name": "Tamil", "native": "தமிழ்", "status": "draft" },
+    { "code": "te", "name": "Telugu", "native": "తెలుగు", "status": "draft" },
+    { "code": "mr", "name": "Marathi", "native": "मराठी", "status": "draft" },
+    { "code": "gu", "name": "Gujarati", "native": "ગુજરાતી", "status": "draft" },
+    { "code": "kn", "name": "Kannada", "native": "ಕನ್ನಡ", "status": "draft" },
+    { "code": "ml", "name": "Malayalam", "native": "മലയാളം", "status": "draft" },
+    { "code": "pa", "name": "Punjabi", "native": "ਪੰਜਾਬੀ", "status": "draft" },
+    { "code": "ur", "name": "Urdu", "native": "اردو", "status": "draft" },
+    { "code": "fr", "name": "French", "native": "Français", "status": "draft" },
+    { "code": "de", "name": "German", "native": "Deutsch", "status": "draft" },
+    { "code": "pt", "name": "Portuguese", "native": "Português", "status": "draft" },
+    { "code": "it", "name": "Italian", "native": "Italiano", "status": "draft" },
+    { "code": "ru", "name": "Russian", "native": "Русский", "status": "draft" },
+    { "code": "zh", "name": "Chinese", "native": "中文", "status": "draft" },
+    { "code": "ja", "name": "Japanese", "native": "日本語", "status": "draft" },
+    { "code": "ko", "name": "Korean", "native": "한국어", "status": "draft" },
+    { "code": "ar", "name": "Arabic", "native": "العربية", "status": "draft" },
+    { "code": "tr", "name": "Turkish", "native": "Türkçe", "status": "draft" },
+    { "code": "vi", "name": "Vietnamese", "native": "Tiếng Việt", "status": "draft" },
+    { "code": "id", "name": "Indonesian", "native": "Bahasa Indonesia", "status": "draft" },
+    { "code": "th", "name": "Thai", "native": "ไทย", "status": "draft" },
+    { "code": "sw", "name": "Swahili", "native": "Kiswahili", "status": "draft" },
+    { "code": "am", "name": "Amharic", "native": "አማርኛ", "status": "draft" }
+  ]
+}
