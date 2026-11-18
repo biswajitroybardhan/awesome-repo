@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Internal release readiness status for Khai Tracker 1.0.0 — NO-GO.">
+  <title>Release readiness — Khai Tracker 1.0.0</title>
+  <style>
+    :root {
+      --ink: #16231d;
+      --ink-2: #3d5147;
+      --muted: #61736b;
+      --line: #d7e0da;
+      --paper: #ffffff;
+      --soft: #f4f7f5;
+      --green: #176b45;
+      --green-soft: #e6f2eb;
+      --amber: #8a5a00;
+      --amber-soft: #fff6df;
+      --red: #9a2b2b;
+      --red-soft: #fdeaea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--soft);
+      color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 56px; }
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+    h1 { margin: 0 0 8px; font-size: 1.9rem; line-height: 1.25; }
+    h2 { font-size: 1.25rem; margin: 30px 0 12px; }
+    p { margin: 0 0 12px; }
+    .eyebrow {
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .meta { color: var(--muted); font-size: .86rem; }
+    .decision {
+      display: inline-block;
+      background: var(--red-soft);
+      color: var(--red);
+      border: 1px solid #e8b9b9;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-weight: 700;
+      font-size: .85rem;
+      margin: 6px 0 14px;
+    }
+    .notice {
+      background: var(--amber-soft);
+      border-left: 4px solid var(--amber);
+      color: #5d3f00;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 0 0 20px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+    .table-scroll { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+    caption { text-align: left; font-weight: 700; margin-bottom: 10px; }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    thead th { background: var(--green-soft); color: var(--ink); }
+    tbody th { background: var(--soft); white-space: nowrap; }
+    .status {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: .76rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .none { background: var(--red-soft); color: var(--red); }
+    .partial { background: var(--amber-soft); color: var(--amber); }
+    .ready { background: var(--green-soft); color: var(--green); }
+    code {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: .86em;
+    }
+    ul { margin: 0 0 12px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+    footer {
+      color: var(--muted);
+      font-size: .82rem;
+      text-align: center;
+      padding: 18px 10px 0;
+    }
+    a { color: var(--green); }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e8efe9;
+        --ink-2: #c3d0c7;
+        --muted: #93a89b;
+        --line: #3a4b41;
+        --paper: #1c2922;
+        --soft: #142019;
+        --green: #7fd3a6;
+        --green-soft: #213b2d;
+        --amber: #f0c36d;
+        --amber-soft: #3d321b;
+        --red: #ff9a9a;
+        --red-soft: #402426;
+      }
+    }
+    @media print {
+      body { background: #fff; }
+      .wrap { max-width: none; padding: 0; }
+      header, .card { border: 0; padding: 0; margin-bottom: 14px; }
+      .table-scroll { overflow: visible; }
+      tr { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="eyebrow">Internal status · not a public claim</div>
+      <h1>Release readiness — Khai Tracker 1.0.0</h1>
+      <p class="decision">Decision: NO-GO</p>
+      <p>The build is structurally verifiable. It is not released. This page records what could be
+        prepared without a device, a Play Console account, a live domain, working mailboxes, or
+        native-speaker reviewers. Preparing a runbook is not the same as completing it.</p>
+      <p class="meta">Source: <code>docs/RELEASE_READINESS.md</code> · status at commit <code>c28d202</code></p>
+    </header>
+
+    <p class="notice"><strong>Read this before sharing.</strong> No blocker below is closed. Nothing on
+      this page proves that a screen renders, a keystroke is saved, a notification fires, a PDF fits,
+      a URL resolves, a mailbox is read, or a translation is safe.</p>
+
+    <section class="card">
+      <h2>Blocker status</h2>
+      <div class="table-scroll">
+        <table>
+          <caption>Six release blockers, with what was prepared and what remains</caption>
+          <thead>
+            <tr>
+              <th scope="col">Blocker</th>
+              <th scope="col">Status</th>
+              <th scope="col">Prepared now</th>
+              <th scope="col">Still required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Physical-device testing</th>
+              <td><span class="status none">Not executed</span></td>
+              <td><code>tools/device_smoke.ps1</code> installs the signed APK on an attached device,
+                records model, Android version and signature, collects fatal logcat lines, and prompts
+                for real screen captures. It refuses to run with no device.</td>
+              <td>Connect an Android 7–9 phone and an Android 13+ phone, run the script, complete every
+                row of <code>TESTING.md</code>, and sign §11.</td>
+            </tr>
+            <tr>
+              <th scope="row">Production keystore / Play App Signing</th>
+              <td><span class="status partial">Partially prepared</span></td>
+              <td><code>tools/release_key.ps1</code> generated a dedicated 4096-bit RSA
+                <strong>upload</strong> key outside the repo, with a random password in a user-only file.
+                A test build signed with it passed 30/30 verification checks.</td>
+              <td>Enrol in Play App Signing in Play Console; back up the upload key; upload the AAB to
+                Internal testing and install through Play. Google holds the app signing key.</td>
+            </tr>
+            <tr>
+              <th scope="row">Real screenshots</th>
+              <td><span class="status none">Not captured</span></td>
+              <td>The device script captures five real screens (<code>01-onboarding</code> …
+                <code>05-guide</code>) into <code>build/device-check/</code> as a tester navigates.</td>
+              <td>Run it on a real device, review the PNGs, and prepare Play Store listing assets.
+                No screenshots were fabricated.</td>
+            </tr>
+            <tr>
+              <th scope="row">Live privacy URL</th>
+              <td><span class="status none">Not live</span></td>
+              <td><code>khai-site/DEPLOY.md</code>, <code>robots.txt</code>, <code>sitemap.xml</code>
+                and <code>.well-known/security.txt</code> are ready.</td>
+              <td>Publish the static folder over HTTPS and verify all eleven URLs in
+                <code>DEPLOY.md</code> §2 return 200, including
+                <code>https://khaifoods.in/privacy.html</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Monitored mailboxes</th>
+              <td><span class="status none">Not established</span></td>
+              <td><code>khai-site/MAILBOXES.md</code> has provisioning, monitoring, escalation and
+                acknowledgement templates. The site honestly says the process is to be established.</td>
+              <td>Create and monitor both addresses, assign two named owners each, and run a delivery
+                and escalation drill before removing the site's placeholder wording.</td>
+            </tr>
+            <tr>
+              <th scope="row">Native-speaker review of 24 drafts</th>
+              <td><span class="status none">Not reviewed</span></td>
+              <td><code>tools/i18n/review_packets.py</code> generated 24 side-by-side packets in
+                <code>docs/review/</code>, each with a sign-off form. All report zero machine-check
+                problems, which is not human approval.</td>
+              <td>Native speakers with clinical and consent competence review and sign each packet;
+                record approval and regenerate the locale resources.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What is actually verifiable offline</h2>
+      <ul>
+        <li><code>py tools/check.py</code> — static source consistency, 0 warnings.</li>
+        <li><code>py tools/i18n/validate.py</code> — 48 files, 0 problems, 0 pending.</li>
+        <li><code>py tools/build.py</code> — signed APK, AAB and universal APK; byte-identical on repeat builds.</li>
+        <li><code>py tools/verify.py --sha256 cb450196111230aeaf105896e3e6bdf8b34b178484a2df64636b538fe963f126</code>
+          — 30/30 checks for the development-signed site APK.</li>
+        <li>Site APK pinned at <code>dde6cd319873f732e94488052277484da2dc3491162713c543838d2174f563c2</code>.</li>
+      </ul>
+      <p>These checks prove structure and signing only. They do not prove usability, safety,
+        deployment, or that any mailbox is monitored.</p>
+    </section>
+
+    <footer>
+      Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.
+    </footer>
+  </main>
+</body>
+</html>
