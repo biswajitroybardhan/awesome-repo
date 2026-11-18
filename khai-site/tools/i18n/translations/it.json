@@ -186,5 +186,6 @@
   "assistantSend": "Invia",
   "assistantUnknown": "Non ho una risposta per questo. Rispondo solo alle domande sull'uso di questo strumento.",
   "askClinician": "Chiedi a un professionista sanitario qualificato.",
-  "assistantLanguageAnswer": "Cambiare la lingua di visualizzazione modifica solo le etichette. I valori registrati restano codici stabili, quindi nessun giorno viene riscritto."
+  "assistantLanguageAnswer": "Cambiare la lingua di visualizzazione modifica solo le etichette. I valori registrati restano codici stabili, quindi nessun giorno viene riscritto.",
+  "assistantListen": "Ascolta"
 }

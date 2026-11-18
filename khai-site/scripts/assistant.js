@@ -5,21 +5,37 @@
  * cannot invent a claim. Personal interpretation, diagnosis and treatment
  * questions are refused and redirected to a clinician.
  *
- * Voice input/output is deliberately not present yet; this is text only.
+ * Answers can be read aloud by the browser's own speech synthesis. There is no
+ * microphone input and no network request from this page.
  */
 (function () {
   'use strict';
 
   var I = window.KhaiI18n;
+  var synth = window.speechSynthesis || null;
   var FALLBACK = {
     assistantIntro: "Questions answered from this tool's own help text. No AI, no diagnosis, no advice.",
     assistantUnknown: 'I don\'t have an answer for that. I only answer questions about using this tool.',
-    askClinician: 'Ask a qualified clinician.'
+    askClinician: 'Ask a qualified clinician.',
+    assistantListen: 'Listen'
   };
 
   function T(key) {
     if (I && typeof I.t === 'function') return I.t(key);
     return FALLBACK[key] || key;
+  }
+
+  function stopSpeech() {
+    if (synth) synth.cancel();
+  }
+
+  function speak(text) {
+    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') return;
+    stopSpeech();
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = (I && I.code) ? I.code : 'en';
+    utterance.rate = 0.95;
+    synth.speak(utterance);
   }
 
   // Answer keys are all existing translated help strings. Nothing here is
@@ -167,6 +183,14 @@
     var body = document.createElement('p');
     body.textContent = text;
     row.appendChild(body);
+    if (role === 'guide' && synth && typeof SpeechSynthesisUtterance !== 'undefined') {
+      var listen = document.createElement('button');
+      listen.type = 'button';
+      listen.className = 'guide-listen';
+      listen.textContent = T('assistantListen');
+      listen.addEventListener('click', function () { speak(text); });
+      row.appendChild(listen);
+    }
     log.appendChild(row);
     log.scrollTop = log.scrollHeight;
   }
@@ -186,6 +210,7 @@
   function reset() {
     // The intro and the non-medical claim are already shown in the page note;
     // repeating them in the log is noise, not an answer.
+    stopSpeech();
     log.textContent = '';
     renderChips();
   }
@@ -205,5 +230,6 @@
   });
 
   window.addEventListener('khai:languagechange', reset);
+  window.addEventListener('beforeunload', stopSpeech);
   reset();
 })();

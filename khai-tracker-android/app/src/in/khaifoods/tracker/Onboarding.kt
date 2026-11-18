@@ -159,7 +159,7 @@ class OnboardingView(private val a: MainActivity, private val editMode: Boolean 
         content.addView(Ui.heading(a, a.getString(R.string.consent_title)))
         content.addView(Ui.body(a, a.getString(R.string.consent_body), muted = false))
         content.addView(Ui.smallButton(a, a.getString(R.string.consent_listen), false) {
-            a.speakHindi(a.getString(R.string.consent_body))
+            a.speak(a.getString(R.string.consent_body))
         })
         val consentBox = CheckBox(a).apply {
             text = a.getString(R.string.consent_check)

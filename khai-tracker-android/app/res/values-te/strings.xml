@@ -175,4 +175,5 @@
     <string name="assistant_send">పంపు</string>
     <string name="assistant_unknown">దీనికి నా వద్ద సమాధానం లేదు. ఈ టూల్ వాడకం గురించిన ప్రశ్నలకు మాత్రమే నేను సమాధానం ఇస్తాను.</string>
     <string name="ask_clinician">అర్హత కలిగిన వైద్యుడిని అడగండి.</string>
+    <string name="assistant_listen">వినండి</string>
 </resources>

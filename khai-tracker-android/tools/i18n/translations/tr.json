@@ -169,5 +169,6 @@
   "assistant_input_ph": "Bir soru sorun",
   "assistant_send": "Gönder",
   "assistant_unknown": "Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım.",
-  "ask_clinician": "Nitelikli bir sağlık uzmanına danışın."
+  "ask_clinician": "Nitelikli bir sağlık uzmanına danışın.",
+  "assistant_listen": "Dinle"
 }

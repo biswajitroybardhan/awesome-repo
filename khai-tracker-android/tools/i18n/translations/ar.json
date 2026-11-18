@@ -169,5 +169,6 @@
   "assistant_input_ph": "اطرح سؤالاً",
   "assistant_send": "إرسال",
   "assistant_unknown": "لا أملك إجابة عن هذا. أجيب فقط عن الأسئلة الخاصة باستخدام هذه الأداة.",
-  "ask_clinician": "اسأل أخصائياً مؤهلاً."
+  "ask_clinician": "اسأل أخصائياً مؤهلاً.",
+  "assistant_listen": "استمع"
 }

@@ -186,5 +186,6 @@
   "assistantSend": "Kirim",
   "assistantUnknown": "Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini.",
   "askClinician": "Tanyakan kepada tenaga kesehatan yang berkualifikasi.",
-  "assistantLanguageAnswer": "Mengubah bahasa tampilan hanya mengubah label. Nilai yang tersimpan tetap berupa kode stabil, sehingga tidak ada hari yang ditulis ulang."
+  "assistantLanguageAnswer": "Mengubah bahasa tampilan hanya mengubah label. Nilai yang tersimpan tetap berupa kode stabil, sehingga tidak ada hari yang ditulis ulang.",
+  "assistantListen": "Dengarkan"
 }

@@ -175,4 +175,5 @@
     <string name="assistant_send">Gửi</string>
     <string name="assistant_unknown">Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này.</string>
     <string name="ask_clinician">Hãy hỏi một chuyên gia y tế có trình độ.</string>
+    <string name="assistant_listen">Nghe</string>
 </resources>

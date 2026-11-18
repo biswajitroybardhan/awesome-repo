@@ -243,7 +243,12 @@ def package_apk(unsigned, classes_dex):
     apk = os.path.join(BUILD, "khai-tracker-%s-unsigned.apk" % VERSION_NAME)
     shutil.copyfile(unsigned, apk)
     with zipfile.ZipFile(apk, "a", zipfile.ZIP_DEFLATED) as z:
-        z.write(classes_dex, "classes.dex")
+        # A fixed timestamp keeps the signed APK byte-identical across rebuilds;
+        # z.write() would embed the dex file's changing mtime instead.
+        info = zipfile.ZipInfo("classes.dex", date_time=(1980, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_DEFLATED
+        with open(classes_dex, "rb") as dex_file:
+            z.writestr(info, dex_file.read())
     return apk
 
 

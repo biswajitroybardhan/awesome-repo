@@ -173,6 +173,7 @@
     <string name="assistant_send">Senden</string>
     <string name="assistant_unknown">Dafür habe ich keine Antwort. Ich beantworte nur Fragen zur Nutzung dieses Werkzeugs.</string>
     <string name="ask_clinician">Fragen Sie eine qualifizierte Fachperson.</string>
+    <string name="assistant_listen">Anhören</string>
     <string name="draft_notice">Entwurf der Übersetzung – vor klinischer Nutzung von Muttersprachlern zu prüfen.</string>
     <string name="language_hint">Nur für die Anzeige. Die aufgezeichneten Werte bleiben stabile Codes, sodass ein Sprachwechsel keinen Tag überschreibt. Entwürfe benötigen vor der klinischen Nutzung eine Prüfung durch Muttersprachler.</string>
 </resources>

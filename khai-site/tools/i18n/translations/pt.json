@@ -186,5 +186,6 @@
   "assistantSend": "Enviar",
   "assistantUnknown": "Não tenho resposta para isso. Só respondo a perguntas sobre o uso desta ferramenta.",
   "askClinician": "Pergunte a um profissional de saúde qualificado.",
-  "assistantLanguageAnswer": "Mudar o idioma de exibição altera apenas os rótulos. Os valores registados permanecem como códigos estáveis, pelo que nenhum dia é reescrito."
+  "assistantLanguageAnswer": "Mudar o idioma de exibição altera apenas os rótulos. Os valores registados permanecem como códigos estáveis, pelo que nenhum dia é reescrito.",
+  "assistantListen": "Ouvir"
 }

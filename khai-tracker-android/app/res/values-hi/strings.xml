@@ -5,6 +5,7 @@
     <string name="assistant_intro">इस टूल की अपनी सहायता-पाठ से निकाले गए प्रश्नों के उत्तर। कोई AI नहीं, कोई निदान नहीं, कोई सलाह नहीं।</string>
     <string name="assistant_input_ph">कोई प्रश्न पूछें</string>
     <string name="assistant_send">भेजें</string>
+    <string name="assistant_listen">सुनें</string>
     <string name="assistant_unknown">मेरे पास इसका उत्तर नहीं है। मैं सिर्फ़ इस टूल के इस्तेमाल के प्रश्नों का उत्तर देता हूँ।</string>
     <string name="ask_clinician">किसी योग्य चिकित्सक से पूछें।</string>
 

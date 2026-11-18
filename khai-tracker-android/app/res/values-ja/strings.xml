@@ -173,6 +173,7 @@
     <string name="assistant_send">送信</string>
     <string name="assistant_unknown">その質問には答えられません。このツールの使い方に関する質問にのみ答えます。</string>
     <string name="ask_clinician">資格のある医療専門家にご相談ください。</string>
+    <string name="assistant_listen">読み上げ</string>
     <string name="draft_notice">翻訳ドラフト — 臨床使用前に母語話者の確認が必要です。</string>
     <string name="language_hint">表示のみです。記録された値は安定したコードのままなので、言語を切り替えても日々の記録は書き換わりません。ドラフトの翻訳は、臨床使用前に母語話者の確認が必要です。</string>
 </resources>

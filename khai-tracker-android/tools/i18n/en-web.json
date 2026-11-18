@@ -186,5 +186,6 @@
   "hospital_layer": "Hospital deployment layer",
   "callout_blueprint": "Read this as a blueprint, not an announcement: no hospital deployment, pilot, endorsement or partnership is claimed.",
   "callout_honest": "The honest line: the participant app and the browser demo exist today. Every hospital component here is a design proposal.",
-  "draft_notice": "Draft translation — requires native-speaker review before clinical use."
+  "draft_notice": "Draft translation — requires native-speaker review before clinical use.",
+  "assistantListen": "Listen"
 }

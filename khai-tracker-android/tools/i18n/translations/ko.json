@@ -169,5 +169,6 @@
   "assistant_input_ph": "질문을 입력하세요",
   "assistant_send": "보내기",
   "assistant_unknown": "그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다.",
-  "ask_clinician": "자격을 갖춘 의료 전문가에게 문의하세요."
+  "ask_clinician": "자격을 갖춘 의료 전문가에게 문의하세요.",
+  "assistant_listen": "듣기"
 }

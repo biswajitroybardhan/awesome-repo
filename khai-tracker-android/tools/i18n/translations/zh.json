@@ -169,5 +169,6 @@
   "assistant_input_ph": "请输入问题",
   "assistant_send": "发送",
   "assistant_unknown": "我无法回答这个问题。我只能回答有关如何使用本工具的问题。",
-  "ask_clinician": "请咨询合格的医务人员。"
+  "ask_clinician": "请咨询合格的医务人员。",
+  "assistant_listen": "朗读"
 }

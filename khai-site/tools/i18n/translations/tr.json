@@ -186,5 +186,6 @@
   "assistantSend": "Gönder",
   "assistantUnknown": "Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım.",
   "askClinician": "Nitelikli bir sağlık uzmanına danışın.",
-  "assistantLanguageAnswer": "Görüntüleme dilini değiştirmek yalnızca etiketleri değiştirir. Kaydedilen değerler sabit kodlar olarak kalır, böylece hiçbir gün yeniden yazılmaz."
+  "assistantLanguageAnswer": "Görüntüleme dilini değiştirmek yalnızca etiketleri değiştirir. Kaydedilen değerler sabit kodlar olarak kalır, böylece hiçbir gün yeniden yazılmaz.",
+  "assistantListen": "Dinle"
 }

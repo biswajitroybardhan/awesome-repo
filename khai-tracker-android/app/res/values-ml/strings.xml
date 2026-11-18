@@ -175,4 +175,5 @@
     <string name="assistant_send">അയയ്ക്കുക</string>
     <string name="assistant_unknown">ഇതിന് എന്റെ പക്കൽ ഉത്തരമില്ല. ഈ ഉപകരണം ഉപയോഗിക്കുന്നതിനെക്കുറിച്ചുള്ള ചോദ്യങ്ങൾക്ക് മാത്രമേ ഞാൻ ഉത്തരം നൽകുന്നുള്ളൂ.</string>
     <string name="ask_clinician">ഒരു യോഗ്യതയുള്ള ഡോക്ടറോട് ചോദിക്കുക.</string>
+    <string name="assistant_listen">കേൾക്കുക</string>
 </resources>

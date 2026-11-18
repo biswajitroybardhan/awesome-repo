@@ -175,4 +175,5 @@
     <string name="assistant_send">Tuma</string>
     <string name="assistant_unknown">Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki.</string>
     <string name="ask_clinician">Uliza mtaalamu wa afya aliyehitimu.</string>
+    <string name="assistant_listen">Sikiliza</string>
 </resources>

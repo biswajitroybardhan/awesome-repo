@@ -173,6 +173,7 @@
     <string name="assistant_send">보내기</string>
     <string name="assistant_unknown">그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다.</string>
     <string name="ask_clinician">자격을 갖춘 의료 전문가에게 문의하세요.</string>
+    <string name="assistant_listen">듣기</string>
     <string name="draft_notice">번역 초안 — 임상 사용 전에 원어민 검토가 필요합니다.</string>
     <string name="language_hint">표시용입니다. 기록된 값은 안정적인 코드로 유지되므로 언어를 바꿔도 하루 기록이 다시 작성되지 않습니다. 초안 번역은 임상 사용 전에 원어민 검토가 필요합니다.</string>
 </resources>

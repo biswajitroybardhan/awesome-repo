@@ -171,5 +171,6 @@
   "assistant_input_ph": "Uliza swali",
   "assistant_send": "Tuma",
   "assistant_unknown": "Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki.",
-  "ask_clinician": "Uliza mtaalamu wa afya aliyehitimu."
+  "ask_clinician": "Uliza mtaalamu wa afya aliyehitimu.",
+  "assistant_listen": "Sikiliza"
 }

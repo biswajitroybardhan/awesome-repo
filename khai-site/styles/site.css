@@ -1262,6 +1262,19 @@ a:hover { color: var(--green); text-decoration-color: var(--green); }
   transition: background .15s var(--ease), border-color .15s var(--ease);
 }
 .guide-chip:hover { background: var(--green-soft); border-color: var(--green); }
+.guide-listen {
+  font: inherit;
+  font-size: .72rem;
+  color: var(--green);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 2px 0 1px;
+  margin: 6px 0 0;
+  margin-inline-start: 15px;
+  cursor: pointer;
+}
+.guide-listen:hover { color: var(--green-deep); border-bottom-color: var(--green); }
 .guide-form {
   display: flex;
   gap: 10px;

@@ -169,5 +169,6 @@
   "assistant_input_ph": "Frage eingeben",
   "assistant_send": "Senden",
   "assistant_unknown": "Dafür habe ich keine Antwort. Ich beantworte nur Fragen zur Nutzung dieses Werkzeugs.",
-  "ask_clinician": "Fragen Sie eine qualifizierte Fachperson."
+  "ask_clinician": "Fragen Sie eine qualifizierte Fachperson.",
+  "assistant_listen": "Anhören"
 }

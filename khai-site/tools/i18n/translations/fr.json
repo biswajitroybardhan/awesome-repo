@@ -186,5 +186,6 @@
   "assistantSend": "Envoyer",
   "assistantUnknown": "Je n'ai pas de réponse à cela. Je réponds uniquement aux questions sur l'utilisation de cet outil.",
   "askClinician": "Consultez un professionnel de santé qualifié.",
-  "assistantLanguageAnswer": "Changer la langue d'affichage ne modifie que les libellés. Les valeurs enregistrées restent des codes stables : aucun jour n'est jamais réécrit."
+  "assistantLanguageAnswer": "Changer la langue d'affichage ne modifie que les libellés. Les valeurs enregistrées restent des codes stables : aucun jour n'est jamais réécrit.",
+  "assistantListen": "Écouter"
 }

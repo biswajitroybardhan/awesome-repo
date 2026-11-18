@@ -171,5 +171,6 @@
   "assistant_input_ph": "ਇੱਕ ਸਵਾਲ ਪੁਛੋ",
   "assistant_send": "ਭੇਜੋ",
   "assistant_unknown": "ਮੇਰੇ ਕੋਲ ਇਸਦਾ ਜਵਾਬ ਨਹੀਂ ਹੈ। ਮੈਂ ਸਿਰਫ਼ ਇਸ ਟੂਲ ਦੀ ਵਰਤੋਂ ਬਾਰੇ ਸਵਾਲਾਂ ਦਾ ਜਵਾਬ ਦਿੰਦਾ ਹਾਂ।",
-  "ask_clinician": "ਕਿਸੇ ਯੋਗ ਡਾਕਟਰ ਤੋਂ ਪੁਛੋ।"
+  "ask_clinician": "ਕਿਸੇ ਯੋਗ ਡਾਕਟਰ ਤੋਂ ਪੁਛੋ।",
+  "assistant_listen": "ਸੁਣੋ"
 }

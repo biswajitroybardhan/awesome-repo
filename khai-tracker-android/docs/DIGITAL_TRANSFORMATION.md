@@ -233,9 +233,11 @@ model, no training, no fine-tuning, no network call and no access to the partici
 there is nothing to hallucinate and nothing to train. It answers "how do I use this tool" questions;
 personal interpretation, diagnosis and treatment questions are refused with a hard clinician
 redirect, and the non-medical-device disclaimer is shown inside the panel. Its 24 draft locales stay
-review-gated like the rest of the translated copy. Voice input/output is deferred by product decision
-("text now, voice later"); the app's system `TextToSpeech` reads only the Hindi consent text and is
-not part of the Guide.
+review-gated like the rest of the translated copy. Each Guide answer can now be read aloud with the
+device's own text-to-speech, using the same fixed string. Voice input remains deferred: it would need
+a microphone permission and, in browsers, usually a cloud recognition service. No audio is captured,
+nothing is recorded and no network request is added. The app's consent read-aloud uses the same TTS
+helper; voice availability depends on the voices installed on the phone.
 
 ## 10. Operating model for "the whole world"
 
@@ -363,7 +365,8 @@ diagnoses, prescribes, changes a dose or claims an outcome.
 | --- | --- | --- |
 | Grounded help-text lookup (site Guide and app Guide tab) | Shipped | Fixed intents → fixed translated strings; no model, no training, no network, no access to personal entries |
 | Refusal and clinician redirect for diagnosis / treatment questions | Shipped | Hard-coded; never interprets the participant's readings |
-| Voice input/output for the Guide | Roadmap | Deferred by decision: text now, voice later; spoken guidance requires native-speaker review first |
+| Read-aloud for Guide answers | Shipped | Device text-to-speech reads the same fixed strings; no mic, no recording, no network; draft-language voices need review |
+| Voice input for the Guide | Roadmap | Deferred: needs a microphone permission and usually a cloud recognition service; spoken drafts need native-speaker review first |
 
 ### Plan drafting with exposed reasoning
 

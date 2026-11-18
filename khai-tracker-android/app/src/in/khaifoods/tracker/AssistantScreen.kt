@@ -19,7 +19,8 @@ import android.widget.TextView
  * helper cannot invent a claim. Personal interpretation, diagnosis and
  * treatment questions are redirected to a qualified clinician.
  *
- * Voice input/output is deliberately not present yet; this is text only.
+ * Answers can be read aloud by the phone's own text-to-speech engine. There is
+ * no microphone input and no network call; the helper still uses text only.
  */
 class AssistantScreen(private val a: MainActivity) {
 
@@ -167,6 +168,14 @@ class AssistantScreen(private val a: MainActivity) {
         var input: EditText? = null
 
         fun addMessage(mine: Boolean, text: String) {
+            val wrapper = Ui.v(a).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    if (mine) gravity = Gravity.END
+                    topMargin = a.dp(6)
+                }
+            }
             val bubble = TextView(a).apply {
                 this.text = text
                 textSize = 14f
@@ -176,12 +185,19 @@ class AssistantScreen(private val a: MainActivity) {
                 setPadding(a.dp(12), a.dp(10), a.dp(12), a.dp(10))
                 layoutParams = LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    if (mine) gravity = Gravity.END
-                    topMargin = a.dp(6)
-                }
+                )
             }
-            log.addView(bubble)
+            wrapper.addView(bubble)
+            if (!mine) {
+                wrapper.addView(Ui.smallButton(a, a.str(R.string.assistant_listen), false) {
+                    a.speak(text)
+                }.apply {
+                    layoutParams = LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                    ).apply { topMargin = a.dp(2) }
+                })
+            }
+            log.addView(wrapper)
             scroll?.post { scroll?.fullScroll(View.FOCUS_DOWN) }
         }
 

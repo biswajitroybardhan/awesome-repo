@@ -171,5 +171,6 @@
   "assistant_input_ph": "ጥያቄ ጠይቅ",
   "assistant_send": "ላክ",
   "assistant_unknown": "ለዚህ መልስ የለኝም። ስለዚህ መሳሪያ አጠቃቀም ብቻ ነው የምመልሰው።",
-  "ask_clinician": "ብቁ ከሆነ የጤና ባለሙያ ጠይቅ።"
+  "ask_clinician": "ብቁ ከሆነ የጤና ባለሙያ ጠይቅ።",
+  "assistant_listen": "ያዳምጡ"
 }

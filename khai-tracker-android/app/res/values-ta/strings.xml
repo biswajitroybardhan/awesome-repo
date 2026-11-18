@@ -175,4 +175,5 @@
     <string name="assistant_send">அனுப்பு</string>
     <string name="assistant_unknown">இதற்கு என்னிடம் பதில் இல்லை. இந்தக் கருவியைப் பயன்படுத்துவது பற்றிய கேள்விகளுக்கு மட்டுமே நான் பதிலளிக்கிறேன்.</string>
     <string name="ask_clinician">ஒரு தகுதியான மருத்துவரிடம் கேளுங்கள்.</string>
+    <string name="assistant_listen">கேளுங்கள்</string>
 </resources>

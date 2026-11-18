@@ -169,5 +169,6 @@
   "assistant_input_ph": "Posez une question",
   "assistant_send": "Envoyer",
   "assistant_unknown": "Je n'ai pas de réponse à cela. Je réponds uniquement aux questions sur l'utilisation de cet outil.",
-  "ask_clinician": "Consultez un professionnel de santé qualifié."
+  "ask_clinician": "Consultez un professionnel de santé qualifié.",
+  "assistant_listen": "Écouter"
 }

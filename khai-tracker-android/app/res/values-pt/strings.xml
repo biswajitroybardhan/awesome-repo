@@ -173,6 +173,7 @@
     <string name="assistant_send">Enviar</string>
     <string name="assistant_unknown">Não tenho resposta para isso. Só respondo a perguntas sobre o uso desta ferramenta.</string>
     <string name="ask_clinician">Pergunte a um profissional de saúde qualificado.</string>
+    <string name="assistant_listen">Ouvir</string>
     <string name="draft_notice">Tradução provisória — requer revisão por falante nativo antes de uso clínico.</string>
     <string name="language_hint">Apenas para exibição. Os valores registados permanecem como códigos estáveis, pelo que mudar de idioma nunca reescreve um dia. As traduções em rascunho exigem revisão por um falante nativo antes de uso clínico.</string>
 </resources>

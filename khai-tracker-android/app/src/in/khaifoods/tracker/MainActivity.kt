@@ -173,6 +173,7 @@ class MainActivity : Activity() {
     fun render() {
         // Any half-typed field belongs to the day being left behind.
         if (this::body.isInitialized) flushEntry()
+        stopSpeech()
         title.text = when (screen) {
             Screen.TODAY -> DateU.pretty(date)
             Screen.HISTORY -> getString(R.string.tab_history)
@@ -374,10 +375,12 @@ class MainActivity : Activity() {
         if (prefs.syncUrl.isNotBlank()) Sync.tryBackground(this)
     }
 
-    fun speakHindi(text: String) {
+    /** Reads text aloud with the phone's own TTS engine. No microphone, no network. */
+    fun speak(text: String) {
+        val utteranceId = "khai_speech_" + System.currentTimeMillis()
         val existing = tts
         if (existing != null) {
-            existing.speak(text, TextToSpeech.QUEUE_FLUSH, null, "khai_consent")
+            existing.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
             return
         }
         tts = TextToSpeech(this) { status ->
@@ -385,14 +388,18 @@ class MainActivity : Activity() {
                 val engine = tts
                 val res = engine?.setLanguage(Languages.locale(prefs.lang))
                 if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    toast(getString(R.string.read_aloud_unavailable))
+                    runOnUiThread { toast(getString(R.string.read_aloud_unavailable)) }
                 } else {
-                    engine?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "khai_consent")
+                    engine?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
                 }
             } else {
-                toast(getString(R.string.read_aloud_unavailable))
+                runOnUiThread { toast(getString(R.string.read_aloud_unavailable)) }
             }
         }
+    }
+
+    fun stopSpeech() {
+        tts?.stop()
     }
 
     fun switchLanguage(code: String) {

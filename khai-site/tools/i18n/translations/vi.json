@@ -186,5 +186,6 @@
   "assistantSend": "Gửi",
   "assistantUnknown": "Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này.",
   "askClinician": "Hãy hỏi một chuyên gia y tế có trình độ.",
-  "assistantLanguageAnswer": "Đổi ngôn ngữ hiển thị chỉ thay đổi nhãn. Các giá trị đã ghi vẫn là mã cố định, nên không ngày nào bị ghi lại."
+  "assistantLanguageAnswer": "Đổi ngôn ngữ hiển thị chỉ thay đổi nhãn. Các giá trị đã ghi vẫn là mã cố định, nên không ngày nào bị ghi lại.",
+  "assistantListen": "Nghe"
 }

@@ -171,5 +171,6 @@
   "assistant_input_ph": "Ajukan pertanyaan",
   "assistant_send": "Kirim",
   "assistant_unknown": "Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini.",
-  "ask_clinician": "Tanyakan kepada tenaga kesehatan yang berkualifikasi."
+  "ask_clinician": "Tanyakan kepada tenaga kesehatan yang berkualifikasi.",
+  "assistant_listen": "Dengarkan"
 }

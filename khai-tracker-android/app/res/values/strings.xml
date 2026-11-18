@@ -6,6 +6,7 @@
     <string name="assistant_intro">Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice.</string>
     <string name="assistant_input_ph">Ask a question</string>
     <string name="assistant_send">Send</string>
+    <string name="assistant_listen">Listen</string>
     <string name="assistant_unknown">I don\'t have an answer for that. I only answer questions about using this tool.</string>
     <string name="ask_clinician">Ask a qualified clinician.</string>
 

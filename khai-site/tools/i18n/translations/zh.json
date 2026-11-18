@@ -186,5 +186,6 @@
   "assistantSend": "发送",
   "assistantUnknown": "我无法回答这个问题。我只能回答有关如何使用本工具的问题。",
   "askClinician": "请咨询合格的医务人员。",
-  "assistantLanguageAnswer": "切换显示语言只会更改标签。记录的值保持为稳定代码，因此任何一天的记录都不会被重写。"
+  "assistantLanguageAnswer": "切换显示语言只会更改标签。记录的值保持为稳定代码，因此任何一天的记录都不会被重写。",
+  "assistantListen": "朗读"
 }

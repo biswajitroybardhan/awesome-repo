@@ -186,5 +186,6 @@
   "assistantSend": "Senden",
   "assistantUnknown": "Dafür habe ich keine Antwort. Ich beantworte nur Fragen zur Nutzung dieses Werkzeugs.",
   "askClinician": "Fragen Sie eine qualifizierte Fachperson.",
-  "assistantLanguageAnswer": "Ein Wechsel der Anzeigesprache ändert nur die Beschriftungen. Gespeicherte Werte bleiben stabile Codes, sodass kein Tag überschrieben wird."
+  "assistantLanguageAnswer": "Ein Wechsel der Anzeigesprache ändert nur die Beschriftungen. Gespeicherte Werte bleiben stabile Codes, sodass kein Tag überschrieben wird.",
+  "assistantListen": "Anhören"
 }

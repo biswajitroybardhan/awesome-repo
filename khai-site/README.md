@@ -21,7 +21,7 @@ static file host.
 | `scripts/site.js` | Theme, mobile menu, copy buttons, footer year — no network |
 | `scripts/translations.js`, `scripts/i18n.js` | Generated 26-language bundle and the embedded localisation runtime — no network |
 | `scripts/demo/*.js` | The demo's data model, rules, screens and event handling |
-| `scripts/assistant.js` | Deterministic help-text lookup for Khai Guide — fixed translated strings only; no model, no network, no voice |
+| `scripts/assistant.js` | Deterministic help-text lookup for Khai Guide — fixed translated strings only; no model, no network; answers can be read aloud by the browser |
 | `scripts/foods.js` | Generated 83-dish food library (`window.KHAI_FOODS`) |
 | `assets/` | Mark, icon, social image |
 | `files/` | Signed demo APK plus its `.sha256` checksum |
@@ -138,10 +138,12 @@ The same intent table exists in `scripts/assistant.js` (site) and `AssistantScre
 are drawn only from the embedded locale bundle, so they follow the selected language; the 24 draft
 locales remain machine drafts marked for native-speaker clinical/consent review.
 
-**Voice is deliberately not part of this phase.** The choice was "text now, voice later": adding speech
-recognition or text-to-speech for guidance in unreviewed languages would recreate the very risk of
-wrong interpretation the grounded design exists to avoid. The unrelated Android consent read-aloud
-(`TextToSpeech`, Hindi only) remains as it was.
+**Voice is output-only.** Each Guide answer has a "Listen" control that reads the same fixed string
+with the browser's or phone's own text-to-speech. There is no microphone input, no new permission,
+no recording and no network request from the site; voice availability depends on the voices installed
+on the device. Speech recognition remains deferred, and spoken wording in the 24 draft languages is
+still machine-authored and requires native-speaker clinical/consent review before real use. The app's
+consent read-aloud uses the same `TextToSpeech` helper.
 
 ## Attribution and claims
 

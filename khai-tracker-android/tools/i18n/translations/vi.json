@@ -171,5 +171,6 @@
   "assistant_input_ph": "Đặt một câu hỏi",
   "assistant_send": "Gửi",
   "assistant_unknown": "Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này.",
-  "ask_clinician": "Hãy hỏi một chuyên gia y tế có trình độ."
+  "ask_clinician": "Hãy hỏi một chuyên gia y tế có trình độ.",
+  "assistant_listen": "Nghe"
 }

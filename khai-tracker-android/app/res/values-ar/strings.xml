@@ -173,6 +173,7 @@
     <string name="assistant_send">إرسال</string>
     <string name="assistant_unknown">لا أملك إجابة عن هذا. أجيب فقط عن الأسئلة الخاصة باستخدام هذه الأداة.</string>
     <string name="ask_clinician">اسأل أخصائياً مؤهلاً.</string>
+    <string name="assistant_listen">استمع</string>
     <string name="draft_notice">ترجمة مسودة — تحتاج مراجعة من متحدث أصلي قبل الاستخدام السريري.</string>
     <string name="language_hint">للعرض فقط. تظل قيم السجلات رموزًا ثابتة، لذا لا يؤدي تغيير اللغة إلى إعادة كتابة أي يوم. تحتاج اللغات المسودة إلى مراجعة من متحدث أصلي قبل الاستخدام السريري.</string>
 </resources>
