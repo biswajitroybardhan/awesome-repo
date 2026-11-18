@@ -25,6 +25,8 @@ static file host.
 | `scripts/foods.js` | Generated 83-dish food library (`window.KHAI_FOODS`) |
 | `assets/` | Mark, icon, social image |
 | `files/` | Signed demo APK plus its `.sha256` checksum |
+| `robots.txt`, `sitemap.xml`, `.well-known/security.txt` | Static host discovery files; no runtime behaviour |
+| `DEPLOY.md`, `MAILBOXES.md` | Honest runbooks for publishing the site and establishing contact mailboxes — neither is complete yet |
 
 ## Languages
 
