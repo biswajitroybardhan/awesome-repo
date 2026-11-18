@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 
 /**
@@ -47,23 +48,23 @@ class AssistantScreen(private val a: MainActivity) {
             listOf(
                 "reading", "blood pressure", "sugar", "glucose", "weight", "pulse",
                 "interpret", "normal", "high", "low", "my numbers", "bp",
-                a.str(R.string.vitals_title), a.str(R.string.insights_title)
+                a.str(R.string.vitals_title)
             ),
-            listOf(R.string.insights_title, R.string.insights_empty, R.string.insights_caveat, R.string.ask_clinician)
+            listOf(R.string.vitals_hint, R.string.insights_empty, R.string.insights_caveat, R.string.ask_clinician)
         ),
         Intent(
             listOf(
                 "medicine", "medication", "drug", "dose", "tablet", "pill",
                 "missed a dose", a.str(R.string.meds_title)
             ),
-            listOf(R.string.meds_title, R.string.meds_hint, R.string.ask_clinician)
+            listOf(R.string.disclaimer, R.string.meds_hint, R.string.ask_clinician)
         ),
         Intent(
             listOf(
                 "export", "download", "csv", "fhir", "json", "print", "share",
                 "backup", a.str(R.string.export_title)
             ),
-            listOf(R.string.export_title, R.string.export_hint, R.string.ask_clinician)
+            listOf(R.string.export_hint, R.string.privacy_body, R.string.ask_clinician)
         ),
         Intent(
             listOf(
@@ -88,7 +89,7 @@ class AssistantScreen(private val a: MainActivity) {
         Intent(
             listOf(
                 "pattern", "trend", "progress", "completeness", "streak", "insight",
-                "a week", a.str(R.string.progress_title)
+                "a week", a.str(R.string.progress_title), a.str(R.string.insights_title)
             ),
             listOf(R.string.insights_empty, R.string.completeness_hint, R.string.insights_caveat)
         ),
@@ -160,6 +161,11 @@ class AssistantScreen(private val a: MainActivity) {
         }
         content.addView(log)
 
+        // The enclosing scroll view is built at the end of this method. Keep a
+        // reference so each new answer can be brought into view.
+        var scroll: ScrollView? = null
+        var input: EditText? = null
+
         fun addMessage(mine: Boolean, text: String) {
             val bubble = TextView(a).apply {
                 this.text = text
@@ -176,8 +182,19 @@ class AssistantScreen(private val a: MainActivity) {
                 }
             }
             log.addView(bubble)
+            scroll?.post { scroll?.fullScroll(View.FOCUS_DOWN) }
         }
-        addMessage(false, a.str(R.string.assistant_intro) + "\n\n" + a.str(R.string.disclaimer))
+
+        fun ask(question: String) {
+            val q = question.trim()
+            if (q.isEmpty()) return
+            addMessage(true, q)
+            addMessage(false, answerFor(q))
+            input?.setText("")
+        }
+
+        // The intro and the non-medical claim are already shown above this log;
+        // repeating them here would push the first real answer off screen.
 
         // ---- suggested questions, from the current locale's own help labels
         val chips = listOf(
@@ -185,32 +202,29 @@ class AssistantScreen(private val a: MainActivity) {
             R.string.export_title, R.string.privacy_title, R.string.insights_title,
             R.string.language
         ).map { a.str(it) }
-        content.addView(Ui.chipRow(a, chips))
+        content.addView(Ui.chipRow(a, chips) { ask(it) })
 
         // ---- question box
         val row = Ui.h(a)
-        val input = Ui.input(a, a.str(R.string.assistant_input_ph)).apply {
+        val inputView = Ui.input(a, a.str(R.string.assistant_input_ph)).apply {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
             maxLines = 4
             layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
         }
-        val send = Ui.button(a, a.str(R.string.assistant_send), true) {
-            val q = input.text.toString().trim()
-            if (q.isEmpty()) return@button
-            addMessage(true, q)
-            addMessage(false, answerFor(q))
-            input.setText("")
-        }
+        input = inputView
+        val send = Ui.button(a, a.str(R.string.assistant_send), true) { ask(inputView.text.toString()) }
         send.isAllCaps = false
         send.typeface = Typeface.create("sans-serif-medium", Typeface.NORMAL)
         send.layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         ).apply { topMargin = a.dp(10); marginStart = a.dp(8) }
-        row.addView(input)
+        row.addView(inputView)
         row.addView(send)
         content.addView(row)
 
-        return Ui.scroll(a, content)
+        val result = Ui.scroll(a, content)
+        scroll = result
+        return result
     }
 }
 

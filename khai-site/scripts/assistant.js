@@ -29,7 +29,9 @@
       id: 'device',
       match: ['medical device', 'is this a device', 'diagnose', 'diagnosis',
               'is it approved', 'fda', 'certified', 'do you diagnose', 'a doctor'],
-      q: null,
+      // The translated footer doubles as the match phrase so this intent is
+      // reachable in every locale, not just English.
+      q: 'footer_not_medical',
       a: ['footer_not_medical', 'escalateBody', 'askClinician']
     },
     {
@@ -44,14 +46,14 @@
       match: ['reading', 'blood pressure', 'sugar', 'glucose', 'weight', 'pulse',
               'interpret', 'normal', 'high', 'low', 'my numbers', 'bp'],
       q: 'vitalsTitle',
-      a: ['insightsTitle', 'insightsEmpty', 'escalateBody', 'askClinician']
+      a: ['bmiNote', 'insightsEmpty', 'escalateBody', 'askClinician']
     },
     {
       id: 'medicines',
       match: ['medicine', 'medication', 'drug', 'dose', 'tablet', 'pill',
               'metformin', 'missed a dose'],
       q: 'medsTitle',
-      a: ['medsLabel', 'planNotAdvice', 'askClinician']
+      a: ['planNotAdvice', 'escalateBody', 'askClinician']
     },
     {
       id: 'export',
@@ -93,7 +95,7 @@
       match: ['hospital', 'clinic', 'cohort', 'pilot', 'deployment', 'partner',
               'real patient'],
       q: 'hospitalTitle',
-      a: ['hospitalIntro', 'footer_hospital_design']
+      a: ['hospitalIntro', 'callout_blueprint']
     },
     {
       id: 'about',
@@ -182,8 +184,9 @@
   }
 
   function reset() {
+    // The intro and the non-medical claim are already shown in the page note;
+    // repeating them in the log is noise, not an answer.
     log.textContent = '';
-    addMessage('guide', T('assistantIntro') + '\n\n' + T('footer_not_medical'));
     renderChips();
   }
 

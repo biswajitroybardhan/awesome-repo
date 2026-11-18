@@ -73,6 +73,20 @@
     if (!byText[norm]) byText[norm] = key;
   });
 
+  // Remember which English key each node came from. Translating the current
+  // text back to English only worked for the first switch; keeping the source
+  // key makes en -> hi -> ar -> en deterministic.
+  var textSources = new WeakMap();
+  var attrSources = new WeakMap();
+
+  function normalizeText(value) {
+    return String(value || '').trim().replace(/\s+/g, ' ');
+  }
+
+  function keyFor(value) {
+    return byText[normalizeText(value)] || null;
+  }
+
   function skipElement(el) {
     while (el && el !== document.body) {
       if (el.nodeType !== 1) return true;
@@ -85,11 +99,8 @@
   }
 
   function translated(value) {
-    var raw = String(value || '');
-    var norm = raw.trim().replace(/\s+/g, ' ');
-    var key = byText[norm];
-    if (!key) return null;
-    return I.t(key);
+    var key = keyFor(value);
+    return key ? I.t(key) : null;
   }
 
   function translateTextNodes() {
@@ -98,11 +109,17 @@
     while ((node = walker.nextNode())) {
       if (!node.nodeValue || !node.nodeValue.trim()) continue;
       if (skipElement(node.parentElement)) continue;
-      var value = translated(node.nodeValue);
-      if (value == null) continue;
       var raw = node.nodeValue;
-      var lead = (raw.match(/^\s*/) || [''])[0];
-      var tail = (raw.match(/\s*$/) || [''])[0];
+      var entry = textSources.get(node);
+      if (!entry) {
+        var key = keyFor(raw);
+        if (!key) continue;
+        entry = { raw: raw, key: key };
+        textSources.set(node, entry);
+      }
+      var value = I.t(entry.key);
+      var lead = (entry.raw.match(/^\s*/) || [''])[0];
+      var tail = (entry.raw.match(/\s*$/) || [''])[0];
       node.nodeValue = lead + value + tail;
     }
   }
@@ -112,10 +129,20 @@
     for (var i = 0; i < nodes.length; i++) {
       var el = nodes[i];
       if (skipElement(el)) continue;
+      var stored = attrSources.get(el);
+      if (!stored) {
+        stored = Object.create(null);
+        attrSources.set(el, stored);
+      }
       ['aria-label', 'title', 'placeholder', 'alt'].forEach(function (name) {
         if (!el.hasAttribute(name)) return;
-        var value = translated(el.getAttribute(name));
-        if (value != null) el.setAttribute(name, value);
+        var key = stored[name];
+        if (!key) {
+          key = keyFor(el.getAttribute(name));
+          if (!key) return;
+          stored[name] = key;
+        }
+        el.setAttribute(name, I.t(key));
       });
     }
   }
@@ -190,7 +217,15 @@
     ensureSwitcher();
     ensureNotice();
     var select = document.getElementById('i18n-lang-select');
-    if (select) select.value = I.code;
+    if (select) {
+      select.setAttribute('aria-label', I.t('language'));
+      var draftTag = ' · ' + I.t('draft_notice').split(' — ')[0];
+      DATA.languages.forEach(function (lang, index) {
+        var option = select.options[index];
+        if (option) option.textContent = lang.native + (lang.status === 'draft' ? draftTag : '');
+      });
+      select.value = I.code;
+    }
     window.dispatchEvent(new CustomEvent('khai:languagechange', { detail: { lang: I.code } }));
   }
 

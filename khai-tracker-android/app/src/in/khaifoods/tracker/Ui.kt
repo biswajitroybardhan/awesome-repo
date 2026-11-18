@@ -195,6 +195,26 @@ object Ui {
         }
     }
 
+    /** Same row, but each chip asks the question it is labelled with. */
+    fun chipRow(ctx: Context, items: List<String>, onClick: (String) -> Unit): HorizontalScrollView {
+        val row = h(ctx)
+        items.forEach { text ->
+            row.addView(chip(ctx, text).apply {
+                isClickable = true
+                isFocusable = true
+                contentDescription = text
+                setOnClickListener { onClick(text) }
+            })
+        }
+        return HorizontalScrollView(ctx).apply {
+            isHorizontalScrollBarEnabled = false
+            addView(row)
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply { topMargin = ctx.dp(4) }
+        }
+    }
+
     fun pill(ctx: Context, text: String, bg: Int, fg: Int): TextView = TextView(ctx).apply {
         this.text = text
         textSize = 12.5f
