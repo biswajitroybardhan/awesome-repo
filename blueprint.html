@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital-transformation blueprint — Khai Tracker</title>
+<meta name="description" content="A staged blueprint for a closed-loop, clinician-led digital health system: what Khai Tracker 1.0 already does, what needs a server, and what must not be claimed. From Khai Foods Pvt Ltd, Jamshedpur.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/blueprint.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital-transformation blueprint — Khai Tracker">
+<meta property="og:description" content="From one participant and one phone to a closed loop: a staged, honest plan for digital transformation in chronic care.">
+<meta property="og:url" content="https://khaifoods.in/blueprint.html">
+<meta property="og:image" content="https://khaifoods.in/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/translations.js" defer></script>
+<script src="scripts/i18n.js" defer></script>
+<script src="scripts/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#product">What it does</a>
+      <a href="index.html#loop">The loop</a>
+      <a href="index.html#clinician">For clinicians</a>
+      <a href="blueprint.html" aria-current="page">Blueprint</a>
+      <a href="functions.html">Functions</a>
+      <a href="hospital.html">Hospital</a>
+      <a href="assistant.html">Guide</a>
+      <a href="security.html">Security</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+      <a class="btn small ghost" href="files/khai-tracker-1.0.0.apk" download>APK</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">The larger pattern</p>
+      <h1 style="margin-top:14px">The hospital loop, rebuilt for the whole world.</h1>
+      <p class="lead">Digital transformation is not an app. It is a closed loop around a person, with a clinician holding the pen. This blueprint separates what Khai Tracker already does from what needs a clinic, a server and a governance model — and says plainly where the app stops.</p>
+      <div class="page-meta">
+        <span>Khai Foods Pvt Ltd · Jamshedpur</span>
+        <span>Product owner: Biswajit Roy Bardhan</span>
+        <span>Companion to Khai Tracker 1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#pattern">The pattern worth copying</a></li>
+        <li><a href="#phone">Why the phone first</a></li>
+        <li><a href="#loop">The Khai loop</a></li>
+        <li><a href="#maturity">Maturity model</a></li>
+        <li><a href="#ships">What v1.0 actually ships</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#fhir">Interoperability</a></li>
+        <li><a href="#medication">Closed-loop medication</a></li>
+        <li><a href="#ai">Clinician-in-the-loop AI</a></li>
+        <li><a href="#operating">Operating model</a></li>
+        <li><a href="#governance">Governance and safety</a></li>
+        <li><a href="#absent">Deliberately absent</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <h2 id="pattern">1. The pattern worth copying</h2>
+      <p>A hospital that has genuinely digitised is not one that bought an electronic health record. It is one where five things are true at the same time:</p>
+      <ol>
+        <li><strong>Every order and every dose is identified.</strong> Prescribing, dispensing and administration carry the same identifier, and a mismatch is caught before it reaches the patient.</li>
+        <li><strong>The record is longitudinal, not episodic.</strong> A clinician sees months, not just the last visit — including what the patient did not do.</li>
+        <li><strong>Follow-up does not require travel.</strong> Review, results, renewal and escalation reach the person where they live.</li>
+        <li><strong>Software reads first, humans decide.</strong> Machines triage; a named clinician remains accountable for every clinical decision.</li>
+        <li><strong>The system is operated, not installed.</strong> Owners, metrics, audit trails, incident reviews and a loop that improves itself.</li>
+      </ol>
+      <p>Zhongshan Hospital (Fudan University, Shanghai) is a widely cited example of this pattern at hospital scale: closed-loop medication management, an integrated data platform, internet-hospital follow-up and AI used as a second reader under clinician authority. We use it as an engineer uses a reference design — not as a source of software, contracts or results. <strong>No affiliation, endorsement or derivation from Zhongshan, HIMSS or any named health system is claimed.</strong></p>
+      <div class="callout"><b>The question this project asks:</b> what is the minimum viable version of that loop for a participant with a mid-range Android phone, intermittent connectivity, a shared family device, and a clinician who has four minutes?</div>
+
+      <h2 id="phone">2. Why the phone is the right first node</h2>
+      <p>Hospitals digitise what happens inside their walls. Chronic disease happens outside them. The measurements that matter — food, adherence, home blood pressure, weight, sleep, wellbeing — are produced daily by the participant and are invisible until the next appointment.</p>
+      <p>Khai Tracker starts at that end of the loop: the unit of entry is a real plate in a real kitchen, not a 100 g reference portion; ranges are honest, so the record says “estimate” where it estimates; the record survives language changes, SIM swaps and flat batteries because it is encrypted locally first; and the clinician artefact is one page built to be read in under a minute.</p>
+      <p>The hospital-grade loop is then rebuilt in the only order that works outside a hospital: <strong>capture, then trust, then share, then act.</strong></p>
+
+      <h2 id="loop">3. The Khai loop</h2>
+      <pre><code>  CAPTURE    food (ranged, regional) · medicines (taken/skipped/changed)
+             BP · pulse · glucose (fasting/post-food) · weight · sleep · mood
+                  │  encrypted locally, offline-first
+                  ▼
+  VERIFY     AES-256-GCM at rest · per-record AAD · stable codes
+             completeness, missingness and uncertainty kept visible
+                  │  optional HTTPS upsert
+                  ▼
+  RECORD     participant timeline · clinician PDF · CSV · FHIR R4 bundle
+                  │  review, not automation
+                  ▼
+  REVIEW     one page: measured / missed / self-reported
+             flags are prompts for a conversation
+                  │  decision stays human
+                  ▼
+  MEDICATION prescribed ↔ dispensed ↔ actually taken
+             discrepancy surfaced, never auto-corrected
+                  │  follow-up without travel
+                  ▼
+  FOLLOW-UP  scheduled review · results conversation · renewal · escalation
+                  │  audit and learn
+                  ▼
+  OPERATE    consent receipts · audit trail · completeness metrics · incidents</code></pre>
+      <p>The loop is allowed to be incomplete, but not allowed to lie. A skipped dose stays skipped. A missing reading stays missing. An estimate is labelled as an estimate.</p>
+
+      <h2 id="maturity">4. Maturity model</h2>
+      <table>
+        <thead><tr><th>Level</th><th>Name</th><th>Definition</th><th>Where Khai is</th></tr></thead>
+        <tbody>
+          <tr><td>L0</td><td>Paper / memory</td><td>No reliable record between visits</td><td>—</td></tr>
+          <tr><td>L1</td><td>Capture</td><td>Patient-generated record exists, offline, on their own device</td><td><strong>v1.0</strong></td></tr>
+          <tr><td>L2</td><td>Portable record</td><td>Encrypted, exportable in clinical formats, reviewable by a clinician</td><td><strong>v1.0</strong></td></tr>
+          <tr><td>L3</td><td>Connected review</td><td>Records reach a coordinator system, with reconciliation and follow-up</td><td>v1.1–1.2</td></tr>
+          <tr><td>L4</td><td>Closed loop</td><td>Medication loop, follow-up, audit and outcome metrics run continuously</td><td>v2.x</td></tr>
+        </tbody>
+      </table>
+      <p>v1.0 is honestly <strong>L2</strong>. It earns that level because the record is encrypted, coded, exportable as FHIR R4 and legible on one page. It does not earn L3: there is no coordinator console in this repository, no appointment workflow and no dispense data.</p>
+
+      <h2 id="ships">5. What v1.0 ships, mapped to the pattern</h2>
+      <table>
+        <thead><tr><th>Pattern element</th><th>v1.0 implementation</th><th>Honest limitation</th></tr></thead>
+        <tbody>
+          <tr><td>Identity without names</td><td>Coordinator-issued participant code; random device ID</td><td>Code collisions are a coordinator responsibility</td></tr>
+          <tr><td>Medication loop</td><td>Per-medicine status each day; skipped/changed is first-class</td><td>No prescription, dispense or pharmacy event yet</td></tr>
+          <tr><td>Longitudinal record</td><td>Encrypted day records, 21-day grid, full history in exports</td><td>Local to one phone until sync is configured</td></tr>
+          <tr><td>Clinician review</td><td>One-page PDF with completeness, flags, food frequency and notes</td><td>Static document; no reply channel</td></tr>
+          <tr><td>Interoperability</td><td>FHIR R4 bundle: Patient, BP/glucose/weight Observations, Consent, Provenance</td><td>No hosted server or terminology service; a local v2 sync reference server exists for tests only. No <code>MedicationStatement</code> yet</td></tr>
+          <tr><td>Follow-up</td><td>Daily reminder; record ready to share at an appointment</td><td>No scheduling, no teleconsultation</td></tr>
+          <tr><td>AI</td><td>None in the clinical path</td><td>Deliberate; see §9</td></tr>
+          <tr><td>Audit</td><td>Consent timestamp, local sync state, user-initiated export</td><td>The local reference server records metadata-only sync audit; no deployed audit trail or incident response</td></tr>
+          <tr><td>Language</td><td>Full EN/HI UI; consent read aloud with system TTS</td><td>No other languages; TTS availability varies</td></tr>
+          <tr><td>Low-resource design</td><td>Offline-first, no AndroidX, ~1.2 MB, minSdk 24</td><td>Not yet run on physical hardware as of this build</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="roadmap">6. Roadmap, with preconditions</h2>
+      <p>Each step names its precondition, so it cannot be “announced” without being operable.</p>
+
+      <h3>v1.1 — Coordinator console and a real FHIR endpoint</h3>
+      <p>Server-side participant timeline, completeness dashboard and clinician inbox; a FHIR R4 facade over the existing sync store; LOINC, UCUM, SNOMED CT where licensed, ICD-11 mapping for conditions; consent receipts and revocation propagated to the server. <strong>Precondition:</strong> data-processing agreement, named clinical owner, retention policy and an audit log with access review.</p>
+
+      <h3>v1.2 — Closed-loop medication reconciliation</h3>
+      <p><code>MedicationRequest</code> → <code>MedicationDispense</code> → <code>MedicationStatement</code> as three linked resources. Dispense events come from a pharmacy or coordinator; the app records what was actually taken. A discrepancy queue covers prescribed-but-not-dispensed, dispensed-but-not-taken, and changed-without-an-order. Every discrepancy is a task for a human. <strong>Precondition:</strong> a dispensing partner, a named pharmacist and an escalation policy.</p>
+
+      <h3>v2.0 — Internet-hospital follow-up</h3>
+      <p>Appointment scheduling, pre-visit questionnaire, results conversation and renewal workflow; escalation rules written by clinicians, not by product; asynchronous messaging with read receipts and a clinician roster, never open-ended chat; BLE blood-pressure and glucose ingestion with device identity and manual fallback. <strong>Precondition:</strong> clinical governance, telemedicine licensing per jurisdiction, indemnity and a real clinic operations team.</p>
+
+      <h3>v2.1 — Clinician-in-the-loop assistance</h3>
+      <p>Prioritise the review queue and surface patterns worth a conversation; detect anomalies with an explanation and links to raw days; translate and read instructions aloud. No diagnosis, no dose suggestion, no autonomous action. Every model carries a version, a validation set, a false-positive review and an audit trail. <strong>Precondition:</strong> prospective evaluation, model cards and published human-override rates.</p>
+
+      <h3>v3.0 — Multi-country operating model</h3>
+      <p>Per-country data residency, consent text and legal basis with one clinical core and local adapters; bulk FHIR export for research; federated analytics so cohorts can be studied without moving identified records; an offline-first reference implementation for other low-resource sites. <strong>Precondition:</strong> local partners, ethics approvals and the discipline to say no where follow-up cannot be staffed.</p>
+
+      <h2 id="fhir">7. Interoperability position</h2>
+      <p><strong>Now.</strong> FHIR R4 collection bundle, LOINC-coded observations, UCUM units, a real <code>Consent</code> with a timestamp and <code>Provenance</code>. Diet estimates are deliberately excluded so an estimate never enters a clinical record disguised as a measurement.</p>
+      <p><strong>Next.</strong> <code>MedicationRequest</code>, <code>MedicationStatement</code>, <code>MedicationDispense</code>, <code>CarePlan</code>, <code>QuestionnaireResponse</code>, <code>DiagnosticReport</code>, <code>Encounter</code>; SMART on FHIR launch for clinician apps; Bulk FHIR for research; <code>$everything</code> patient access.</p>
+      <p><strong>National and regional rails.</strong> India: ABDM/ABHA identifiers and health-information exchange where consent permits. EU: EHDS-compatible export and data residency. US: USCDI-aligned resources and TEFCA-capable exchange. The app keeps its own stable participant code as source identity and maps to national identifiers only with explicit consent.</p>
+      <div class="callout"><b>The rule:</b> no proprietary format is the system of record. The JSON backup exists so a participant can leave with everything even if Khai disappears.</div>
+
+      <h2 id="medication">8. Closed-loop medication, concretely</h2>
+      <table>
+        <thead><tr><th>Checkpoint</th><th>Question</th><th>v1.0</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Order</td><td>What was prescribed, by whom, when?</td><td>Profile list only</td><td>Signed <code>MedicationRequest</code></td></tr>
+          <tr><td>Dispense</td><td>What left the pharmacy?</td><td>Nothing</td><td><code>MedicationDispense</code> + label identifier</td></tr>
+          <tr><td>Handover</td><td>What did the patient receive?</td><td>Nothing</td><td>Scan/confirm at counter or on phone</td></tr>
+          <tr><td>Administration</td><td>What was actually taken?</td><td>Daily status per medicine</td><td>Same, plus timing and reason for change</td></tr>
+          <tr><td>Review</td><td>Is the discrepancy understood?</td><td>Clinician reads the PDF</td><td>Task queue with resolution and audit</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="ai">9. Clinician-in-the-loop AI: what it may and may not do</h2>
+      <p><strong>May:</strong> prioritise the review queue; detect a pattern worth a conversation; transcribe and translate; summarise a long record with links to source days; flag a missing measurement.</p>
+      <p><strong>May not:</strong> diagnose; recommend or alter a dose; triage to “no action” without human sign-off; train on participant data without consent; hide its uncertainty.</p>
+      <p><strong>Evaluation contract.</strong> Every model ships with intended use, population, validation data, sensitivity and specificity at the chosen threshold, known failure modes, a human-override path and a monthly review of overrides. If a model cannot be evaluated, it does not enter the clinical path. None of this exists in v1.0.</p>
+
+      <h2 id="operating">10. Operating model for “the whole world”</h2>
+      <p>Global does not mean launching everywhere. It means the same core can be operated locally without rewriting it.</p>
+      <h3>Phase A — one district, done properly</h3>
+      <p>50–200 participants, one clinic, one coordinator, one clinician owner. Success is measured by completeness and by whether the clinician actually uses the one-pager. Everything that can stay manual stays manual; only the loop is automated.</p>
+      <h3>Phase B — one state, several clinics</h3>
+      <p>Coordinator console, discrepancy queue and follow-up scheduling; language packs and food libraries per region; weekly operating review of completeness, missingness, escalations and incidents.</p>
+      <h3>Phase C — multi-country pilots</h3>
+      <p>Data residency and consent per country, local clinical owner and formulary; interoperability adapters per national rail; one clinical core, many local edges.</p>
+      <h3>Phase D — reference implementation</h3>
+      <p>Publish the offline-first client, the FHIR profile and the operating manual. Let other sites run the loop with their own food library and language pack. Keep the brand on the standard, not on the data.</p>
+      <p><strong>Metrics that decide whether this is real:</strong> record completeness per participant-week and missingness by field; time from record to clinician review; medication discrepancies found and resolved; follow-up kept without travel; escalations with a documented outcome; participant-reported trust and burden (two questions, monthly).</p>
+      <p><strong>Failure modes to design against:</strong> pilot theatre (dashboards nobody opens), data graveyards (records nobody acts on), consent drift, automation overreach and toolchain fragility. The countermeasures are one clinician-facing artefact that is measured, a review queue with ageing, consent receipts and revocation, audit plus language rules, and a scripted dependency-light build.</p>
+
+      <h2 id="governance">11. Governance and safety</h2>
+      <ul>
+        <li><strong>DPIA before scale.</strong> Health data, vulnerable participants, shared devices: document risks and mitigations, not intentions.</li>
+        <li><strong>Ethics and consent.</strong> Timestamped consent in the app, read aloud in Hindi, revocable by erasing data; server-side revocation is planned for v1.1.</li>
+        <li><strong>Regulatory posture.</strong> v1.0 makes no diagnostic or treatment claim and is not presented as a medical device. If future assistance influences decisions, the applicable software-as-a-medical-device regime must be assessed before release.</li>
+        <li><strong>Security operations.</strong> Key management, a documented pinning decision, incident response, vulnerability disclosure and dependency review. See <a href="security.html">security notes</a>.</li>
+        <li><strong>Accessibility.</strong> Font scaling, TalkBack labels, 44–48 dp targets and contrast, tested with a real low-vision user — not only a checklist.</li>
+        <li><strong>Language QA.</strong> Hindi reviewed by a native speaker for clinical and consent wording. Machine translation is not acceptable for consent.</li>
+      </ul>
+
+      <h2 id="absent">12. What is deliberately absent from v1.0</h2>
+      <p>No AI in the clinical path. No hosted server, coordinator console or appointment workflow; a local v2 sync reference server exists for testing only. No prescription, dispense or pharmacy integration. No wearable ingestion. No account system or cloud identity. No outcome claims and no comparison to any hospital's published results. Those are the roadmap, not the launch copy.</p>
+      <blockquote>“The loop is allowed to be incomplete, but not allowed to lie.”<br><span class="mono">Khai design principle · v1.0</span></blockquote>
+      <p>This implementation is its own: an offline-first, encrypted, bilingual measurement instrument built by <strong>Khai Foods Pvt Ltd</strong> under product owner <strong>Biswajit Roy Bardhan</strong>, designed for participants usually left out of “hospital-grade” digital programmes.</p>
+      <p><a class="textlink" href="demo.html">Try the browser demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col"><h3>Product</h3><ul>
+        <li><a href="index.html#product">What it does</a></li>
+        <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="assistant.html">Guide</a></li>
+        <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
+        <li><a href="index.html#faq">Limits and answers</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Transparency</h3><ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="blueprint.html" aria-current="page">Blueprint</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="hospital.html">Hospital design</a></li>
+        <li><a href="security.html#verify">Verification</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul>
+        <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+        <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+        <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

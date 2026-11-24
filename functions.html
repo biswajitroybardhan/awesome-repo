@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Function map — Khai Tracker</title>
+<meta name="description" content="A complete, honestly-labelled capability map for the Khai Tracker digital-health pattern: what ships in the Android app, what the browser demo illustrates, and what remains roadmap with named preconditions. From Khai Foods Pvt Ltd, Jamshedpur.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/functions.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Function map — Khai Tracker">
+<meta property="og:description" content="Every function in the pattern, marked Shipped, Demo or Roadmap — with the honest limit stated beside each one.">
+<meta property="og:url" content="https://khaifoods.in/functions.html">
+<meta property="og:image" content="https://khaifoods.in/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/translations.js" defer></script>
+<script src="scripts/i18n.js" defer></script>
+<script src="scripts/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#product">What it does</a>
+      <a href="index.html#loop">The loop</a>
+      <a href="index.html#clinician">For clinicians</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="functions.html" aria-current="page">Functions</a>
+      <a href="hospital.html">Hospital</a>
+      <a href="assistant.html">Guide</a>
+      <a href="security.html">Security</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+      <a class="btn small ghost" href="files/khai-tracker-1.0.0.apk" download>APK</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Capability map</p>
+      <h1 style="margin-top:14px">Every function, honestly labelled.</h1>
+      <p class="lead">This is the full pattern the project follows, from a phone-based measurement instrument to a clinician-supervised closed loop. Each function is marked as <strong>Shipped</strong> in the Android build, <strong>Demo</strong> where the browser page illustrates it, or <strong>Roadmap</strong> with a named precondition. The pattern is described generically: no named person or institution is associated with Khai.</p>
+      <div class="page-meta">
+        <span>Khai Foods Pvt Ltd · Jamshedpur</span>
+        <span>Product owner: Biswajit Roy Bardhan</span>
+        <span>Companion to Khai Tracker 1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#legend">How to read this map</a></li>
+        <li><a href="#capture">1. Capture and instrumentation</a></li>
+        <li><a href="#estimation">2. Estimation and confidence</a></li>
+        <li><a href="#patterns">3. Personal pattern detection</a></li>
+        <li><a href="#plan">4. Plan drafting with exposed reasoning</a></li>
+        <li><a href="#clinician">5. Clinician summary and escalation</a></li>
+        <li><a href="#interop">6. Interoperability and export</a></li>
+        <li><a href="#sync">7. Store-and-forward and reconciliation</a></li>
+        <li><a href="#coordinator">8. Coordinator, roles and audit</a></li>
+        <li><a href="#medication">9. Closed-loop medication</a></li>
+        <li><a href="#followup">10. Follow-up without travel</a></li>
+        <li><a href="#trust">11. Trust, safety and governance</a></li>
+        <li><a href="#operating">12. Operating model and rollout</a></li>
+        <li><a href="#hospital-layer">13. Hospital deployment layer</a></li>
+        <li><a href="#not">What this map is not</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <h2 id="legend">How to read this map</h2>
+      <div class="status-legend">
+        <span class="status-pill ok">Shipped</span>
+        <span class="status-pill demo">Demo</span>
+        <span class="status-pill roadmap">Roadmap</span>
+      </div>
+      <p><strong>Shipped</strong> means it is in the signed 1.0.0 Android build in this repository, with the caveats in the security notes. <strong>Demo</strong> means the browser page shows an illustration of the function using plain browser storage — it is explicitly not a clinical record and has no encryption, Keystore, sync, reminders, analytics or upload. <strong>Roadmap</strong> means the function is part of the pattern but needs a server, a clinic, a partner or governance before it can exist honestly; the precondition is named, so it cannot be announced as if it were live. A row can carry two labels where the real function ships and the demo only illustrates it.</p>
+      <div class="callout"><b>The rule across every row:</b> software reads first, a human decides. Nothing in this map diagnoses, prescribes, changes a dose or claims an outcome. Flags and drafts are prompts for a conversation, never instructions.</div>
+
+      <h2 id="capture">1. Capture and instrumentation</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Daily structured capture</td><td><span class="status-pill ok">Shipped</span></td><td>One record per day: meals by portion cue, medicine status, BP, pulse, glucose with context, weight, sleep, mood and a note.</td><td>Self-reported; no device ingestion in 1.0.</td></tr>
+          <tr><td>Regional food library</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>83 dishes with English and Hindi names, tags and ranged estimates; the same library drives app and demo.</td><td>Indian-focused set; not a national nutrition database.</td></tr>
+          <tr><td>Offline-first local record</td><td><span class="status-pill ok">Shipped</span></td><td>Day records are encrypted with AES-256-GCM before being written; the app works with no network.</td><td>Not yet exercised on physical hardware in this build.</td></tr>
+          <tr><td>Bilingual EN/HI interface</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Full English and Hindi UI; values stay as stable codes, so switching language does not change the record.</td><td>Two languages only; consent text needs native-speaker clinical review.</td></tr>
+          <tr><td>Reminder at a set time</td><td><span class="status-pill ok">Shipped</span></td><td>A daily local notification prompts recording.</td><td>Local only; no clinician-facing adherence alert. Demo has no reminder.</td></tr>
+          <tr><td>Wearable / device ingestion</td><td><span class="status-pill roadmap">Roadmap</span></td><td>BLE blood-pressure and glucose readings with device identity and a manual fallback.</td><td>Precondition: device validation, identity binding and a clinical owner for discordant readings.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="estimation">2. Estimation and confidence</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Portion cues, not gram weights</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Household portions are the unit of entry; food values are stored as ranges.</td><td>Still an estimate; household measures vary by utensil and cook.</td></tr>
+          <tr><td>Visible estimate ranges</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>The record and clinician sheet label food energy and nutrients as estimates, never as measurements.</td><td>Ranges are illustrative, not clinically validated.</td></tr>
+          <tr><td>Confidence and missingness</td><td><span class="status-pill demo">Demo</span></td><td>The plan draft shows a confidence label and explains that patterns come from a few paired days in one person.</td><td>Heuristic in the demo; not a statistical model. Not in the Android clinical path.</td></tr>
+          <tr><td>Completeness as a metric</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>A 21-day window counts days that have food, a reading and — where prescribed — medicine status.</td><td>Measures recording, not health.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="patterns">3. Personal pattern detection</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Within-person observations</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Insights compare a person's own days — heavier dinners against the next fasting reading, estimated salt against systolic, sweet drinks, and missed logging days.</td><td>Small samples; associations only, not causes. Demo needs four paired days before it says anything.</td></tr>
+          <tr><td>Exposure of the reasoning</td><td><span class="status-pill demo">Demo</span></td><td>Each observation states the counts and averages it used, so the clinician can see the basis and disagree.</td><td>Rule-based, not machine learning; deliberately transparent.</td></tr>
+          <tr><td>Anomaly and queue prioritisation</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Surface a long record efficiently: prioritise review, flag a missing measurement, link each flag to source days.</td><td>Precondition: prospective evaluation, model card, false-positive review and a human-override path. None of this is in 1.0.</td></tr>
+          <tr><td>Transcription and translation</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Read instructions aloud and translate a long record for review.</td><td>Precondition: native-speaker clinical QA; machine translation is not acceptable for consent.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="plan">4. Plan drafting with exposed reasoning</h2>
+      <p>The browser demo illustrates this function inside the <strong>Progress → Weekly plan draft</strong> section. You can open it directly with the <a href="demo.html#plan">plan-draft deep link</a>. It is a set of review points built only from the days you logged in that browser — never advice, and it does not change any prescription.</p>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Draft generation from logged days</td><td><span class="status-pill demo">Demo</span></td><td>With at least four days that have both food and a reading, the demo builds review points under portion, swap and record types.</td><td>Illustrative only; requires a qualified clinician to review. No equivalent autonomous function in the Android app.</td></tr>
+          <tr><td>Exposed reasoning per item</td><td><span class="status-pill demo">Demo</span></td><td>Every draft point states the evidence — the counts and averages that produced it — under “Why this draft”.</td><td>Rule-derived and deliberately simple; a clinician can see and reject the basis.</td></tr>
+          <tr><td>Human review decision</td><td><span class="status-pill demo">Demo</span></td><td>Accept, Edit or Reject each point; the decision is stored locally in the demo and shown back on the card.</td><td>Records a decision only. Editing happens with the clinician; the demo cannot change a plan or a prescription.</td></tr>
+          <tr><td>Clinician escalation flags</td><td><span class="status-pill demo">Demo</span></td><td>Fixed-threshold flags (for example repeated readings at or above 140/90 mmHg) are listed for a conversation.</td><td>Thresholds are illustrative, not guidelines; the app never diagnoses or triages to “no action”.</td></tr>
+          <tr><td>Formulated care plan in the record</td><td><span class="status-pill roadmap">Roadmap</span></td><td>A signed <code>CarePlan</code> linked to the observations it came from, with version and authorship.</td><td>Precondition: named clinician authority, prospective evaluation and a governing software-as-a-medical-device assessment.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="clinician">5. Clinician summary and escalation</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>One-page clinician summary</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>A printable, English-language sheet with completeness, readings, medicine status, food frequency, flags and notes.</td><td>A static document; no reply channel and no outcome claim.</td></tr>
+          <tr><td>Flagged items for review</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Repeated high readings, changed medicines, weight movement and a food-led record are surfaced.</td><td>Prompts for a conversation, not a triage decision. Demo thresholds are illustrative.</td></tr>
+          <tr><td>Alarm reduction</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Tune thresholds against false positives so a clinician is not overwhelmed.</td><td>Precondition: measured override rates and a clinical owner for every rule.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="interop">6. Interoperability and export</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>FHIR R4 bundle</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Patient, BP/glucose/weight Observations with LOINC codes and UCUM units, Consent and Provenance; diet estimates deliberately excluded.</td><td>No hosted FHIR or terminology service; day-precision dates only.</td></tr>
+          <tr><td>CSV and JSON export</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>Metrics CSV, food CSV and a complete JSON backup so a participant can leave with everything.</td><td>No proprietary format is the system of record.</td></tr>
+          <tr><td>Medication and plan resources</td><td><span class="status-pill roadmap">Roadmap</span></td><td><code>MedicationRequest</code>, <code>MedicationDispense</code>, <code>MedicationStatement</code>, <code>CarePlan</code>, <code>QuestionnaireResponse</code>.</td><td>SNOMED CT where licensed; national rails only with explicit consent.</td></tr>
+          <tr><td>Bulk and national-rail exchange</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Bulk FHIR for research, SMART on FHIR launch, and consent-gated exchange with national health systems.</td><td>Precondition: local legal basis, residency and a named data guardian per jurisdiction.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="sync">7. Store-and-forward and reconciliation</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Encrypted local store first</td><td><span class="status-pill ok">Shipped</span></td><td>The day record is encrypted on the device; the network is never the first writer.</td><td>Device security depends on the phone and its PIN.</td></tr>
+          <tr><td>Optional HTTPS upsert</td><td><span class="status-pill ok">Shipped</span></td><td>With a configured endpoint, days are upserted over HTTPS with a participant code and device ID; sync is off by default.</td><td>This site bundles no server; a local v2 reference server exists for tests. The endpoint, retention and ownership remain deployment responsibilities.</td></tr>
+          <tr><td>Conflict handling</td><td><span class="status-pill ok">Shipped</span></td><td>Later edits to the same date win by timestamp, so a corrected day does not silently revert.</td><td>Last-write-wins is simple; clinical reconciliation is roadmap.</td></tr>
+          <tr><td>Clinical reconciliation</td><td><span class="status-pill roadmap">Roadmap</span></td><td>A review queue for conflicting or missing data, with a human resolution and an audit record.</td><td>Precondition: a coordinator service and a named clinical owner.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="coordinator">8. Coordinator, roles and audit</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Participant code, no names</td><td><span class="status-pill ok">Shipped</span></td><td>A coordinator-issued code and a random device ID identify a record; the app collects no name.</td><td>Code collisions and identity mapping are a coordinator responsibility.</td></tr>
+          <tr><td>Coordinator dashboard</td><td><span class="status-pill roadmap">Roadmap</span></td><td>A participant timeline, completeness dashboard and clinician inbox with an ageing review queue.</td><td>Precondition: data-processing agreement, access review and retention policy.</td></tr>
+          <tr><td>Role-based access</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Participant, coordinator, clinician and administrator see only what their role requires.</td><td>Not in 1.0; the app itself is single-participant and local.</td></tr>
+          <tr><td>Audit trail</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill roadmap">Roadmap</span></td><td>Consent timestamp, local sync state and user-initiated export are recorded locally; server-side access logging is planned.</td><td>The local reference server records sync metadata only; no deployed server audit, access review or incident response exists.</td></tr>
+          <tr><td>Consent and revocation</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill roadmap">Roadmap</span></td><td>Timestamped in-app consent, read aloud in Hindi; erasing data revokes locally. Server-side propagation is planned.</td><td>Language QA with a native speaker is still required.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="medication">9. Closed-loop medication</h2>
+      <p>The loop is described concretely in the <a href="blueprint.html#medication">blueprint</a>. In 1.0 the app records only what the participant reports actually happened.</p>
+      <table>
+        <thead><tr><th>Checkpoint</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Administration</td><td><span class="status-pill ok">Shipped</span></td><td>Daily status per medicine: taken, skipped or changed, with a reason in the note.</td><td>Self-reported; no timing or source of the change captured as a field.</td></tr>
+          <tr><td>Order, dispense and handover</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Linked signed request, dispense event and handover confirmation using a common identifier.</td><td>Precondition: a dispensing partner, a named pharmacist and an escalation policy.</td></tr>
+          <tr><td>Discrepancy queue</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Prescribed-but-not-dispensed, dispensed-but-not-taken and changed-without-an-order become tasks for a human.</td><td>Nothing is auto-corrected; every discrepancy needs a documented resolution.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="followup">10. Follow-up without travel</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Record ready for the appointment</td><td><span class="status-pill ok">Shipped</span></td><td>The one-page sheet and exports make the between-visit record legible in four minutes.</td><td>No scheduling or delivery channel.</td></tr>
+          <tr><td>Appointment and questionnaire</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Scheduling, a pre-visit questionnaire, a results conversation and a renewal workflow.</td><td>Precondition: telemedicine licensing, indemnity and a real clinic operations team.</td></tr>
+          <tr><td>Asynchronous clinician messaging</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Rostered, bounded messaging with read receipts — never open-ended chat.</td><td>Precondition: clinical governance and a staffed response window.</td></tr>
+          <tr><td>Internet-hospital pattern</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Follow-up, results and escalation reach the person where they live.</td><td>Not claimed by 1.0; it is the direction of travel, not a shipped service.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="trust">11. Trust, safety and governance</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Encryption at rest</td><td><span class="status-pill ok">Shipped</span></td><td>AES-256-GCM with a non-exportable AndroidKeyStore key and per-record AAD; only ciphertext is written.</td><td>Development-signed technical preview; security notes list the open items.</td></tr>
+          <tr><td>Transparent honesty</td><td><span class="status-pill ok">Shipped</span> <span class="status-pill demo">Demo</span></td><td>The site, app and demo state what is not true: no diagnosis, no treatment claim, no affiliation, demo has no encryption.</td><td>None — this is a deliberate, permanent function.</td></tr>
+          <tr><td><a href="assistant.html">Khai Guide</a> — grounded help, not AI</td><td><span class="status-pill ok">Shipped</span></td><td>A text-only helper maps fixed questions to fixed strings from the tool's own translated help text, with a clinician redirect for personal or treatment questions.</td><td>No model, no training, no network and no access to your entries; it cannot interpret readings or give advice. Draft languages stay review-gated.</td></tr>
+          <tr><td><a href="assistant.html">Khai Guide</a> — read aloud</td><td><span class="status-pill ok">Shipped</span></td><td>Each fixed answer has a Listen control using the device's own text-to-speech, in the selected language where a voice is installed.</td><td>Output only: no microphone, no recording, no new permission and no network request from the site. Spoken drafts still need native-speaker review.</td></tr>
+          <tr><td>Voice input for the Guide</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Speech recognition would let low-literacy and visually impaired participants ask questions aloud.</td><td>Deferred: browser recognition usually sends audio to a cloud service, which would break the no-network promise.</td></tr>
+          <tr><td>DPIA and ethics review</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Document risks and mitigations for health data, vulnerable participants and shared devices before scale.</td><td>Precondition: a named data guardian and an ethics approval per deployment.</td></tr>
+          <tr><td>Regulatory posture</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Assess the applicable software-as-a-medical-device regime before any assistance influences a decision.</td><td>1.0 makes no such claim and is not presented as a medical device.</td></tr>
+          <tr><td>Accessibility and device testing</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Font scaling, TalkBack labels, targets and contrast, verified on real low-vision hardware.</td><td>The app has not yet been run on a physical device in this build.</td></tr>
+          <tr><td>Security operations</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Key management, incident response, vulnerability disclosure and dependency review.</td><td>See the <a href="security.html">security notes</a> for the current gaps.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="operating">12. Operating model and rollout</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Reproducible low-resource build</td><td><span class="status-pill ok">Shipped</span></td><td>A scripted, dependency-light framework-only build; a ~1.2 MB APK for minSdk 24.</td><td>Signed with a development key for this technical preview.</td></tr>
+          <tr><td>Phased rollout</td><td><span class="status-pill roadmap">Roadmap</span></td><td>One district properly, then several clinics, then multi-country pilots, then a published reference implementation.</td><td>Measured by completeness and clinician use — not by announcements.</td></tr>
+          <tr><td>Local adapters, one clinical core</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Language packs, regional food libraries and national interoperability adapters around one core.</td><td>Precondition: local partners and the discipline to say no where follow-up cannot be staffed.</td></tr>
+          <tr><td>Federated analytics for research</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Study cohorts without moving identified records out of their jurisdiction.</td><td>Precondition: ethics approvals, residency and participant consent.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="hospital-layer">13. Hospital deployment layer</h2>
+      <p>The hospital is the unit of change: a measurement only closes a loop when a clinic can act on it. The full reference architecture lives in the <a href="hospital.html">hospital deployment blueprint</a>, and the workflow is illustrated — with a synthetic cohort and no real records — in the labelled <a href="demo.html#hospital">hospital control-room demo</a>. The pattern is described generically; no hospital or named individual is associated with Khai.</p>
+      <table>
+        <thead><tr><th>Function</th><th>Status</th><th>What it means here</th><th>Honest limit</th></tr></thead>
+        <tbody>
+          <tr><td>Hospital control-room illustration</td><td><span class="status-pill demo">Demo</span></td><td>A role-switchable view (coordinator, clinician, pharmacist) in the browser demo with a synthetic cohort, a review queue, a discrepancy queue and an audit trail.</td><td>Local demo objects only. No hospital connection, no real patient data, and decisions do not leave the browser.</td></tr>
+          <tr><td>Coordinator console with ageing queue</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Cohort completeness, open flags, overdue reviews and a review queue where the oldest items surface first.</td><td>Precondition: a coordinator service, a staffed response window and a data-processing agreement.</td></tr>
+          <tr><td>Clinician review pack</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>A one-page pack built from logged days, with flags linked to source days and exposed reasoning.</td><td>Prompts for a conversation, never triage. The demo uses the participant's own recorded days only.</td></tr>
+          <tr><td>Medication discrepancy queue</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Prescribed-but-not-dispensed, dispensed-but-not-taken and changed-without-an-order become owned tasks.</td><td>Nothing is auto-corrected; every discrepancy needs a documented human resolution.</td></tr>
+          <tr><td>Role-based access and audit</td><td><span class="status-pill demo">Demo</span> <span class="status-pill roadmap">Roadmap</span></td><td>Roles constrain what each view can see; actions appear in an audit trail.</td><td>Permissions are illustrative in the demo. Real access control needs authenticated identities and access review.</td></tr>
+          <tr><td>FHIR/HL7 gateway and national rails</td><td><span class="status-pill roadmap">Roadmap</span></td><td>An HTTPS gateway mapping the record to FHIR R4 Observations, Consent and Provenance, with HL7 v2 adapters and consent-gated exchange where permitted.</td><td>Precondition: a real partner, a target-system specification, local legal basis and a named clinical owner before any integration scaffold is written.</td></tr>
+          <tr><td>Cohort measurement and governance</td><td><span class="status-pill roadmap">Roadmap</span></td><td>Completeness per participant-week, time to clinician review, discrepancies resolved, follow-up kept, and a DPIA before scale.</td><td>Measured by use and outcomes — not by announcements. No site is named as a partner or pilot.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="not">What this map is not</h2>
+      <p>A claim of equivalence to any hospital system, a list of clinical results, or a statement that any roadmap item exists today. It is a design map: a way to see which parts of a clinician-supervised digital-health pattern this small project can honestly own, which parts the browser only illustrates, and which parts must wait for a clinic, a server, a partner and governance. The installed app is a measurement instrument; the demo is a marked illustration. Neither is a medical device and neither makes a diagnosis or treatment claim.</p>
+      <blockquote>“The loop is allowed to be incomplete, but not allowed to lie.”<br><span class="mono">Khai design principle · v1.0</span></blockquote>
+      <p>Built by <strong>Khai Foods Pvt Ltd</strong> under product owner <strong>Biswajit Roy Bardhan</strong>. The pattern is described generically and no affiliation, endorsement or derivation from any named person or health system is claimed.</p>
+      <p><a class="textlink" href="demo.html#plan">Open the plan-draft illustration in the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a> &nbsp; <a class="textlink" href="demo.html#hospital">Open the labelled hospital control room <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col"><h3>Product</h3><ul>
+        <li><a href="index.html#product">What it does</a></li>
+        <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="assistant.html">Guide</a></li>
+        <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
+        <li><a href="index.html#faq">Limits and answers</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Transparency</h3><ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="blueprint.html">Blueprint</a></li>
+        <li><a href="functions.html" aria-current="page">Functions</a></li>
+        <li><a href="hospital.html">Hospital design</a></li>
+        <li><a href="security.html#verify">Verification</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul>
+        <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+        <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+        <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

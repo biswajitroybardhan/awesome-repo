@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security — Khai Tracker</title>
+<meta name="description" content="What Khai Tracker protects, what it does not, how the APK is signed and verified, and the known gaps before a production rollout.">
+<meta name="theme-color" content="#f5f1e8">
+<link rel="canonical" href="https://khaifoods.in/security.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Security — Khai Tracker">
+<meta property="og:description" content="Encryption at rest, a four-digit PIN, HTTPS-only sync, signed builds — and the honest list of what is not yet hardened.">
+<meta property="og:url" content="https://khaifoods.in/security.html">
+<meta property="og:image" content="https://khaifoods.in/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles/site.css">
+<script src="scripts/translations.js" defer></script>
+<script src="scripts/i18n.js" defer></script>
+<script src="scripts/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#product">What it does</a>
+      <a href="index.html#loop">The loop</a>
+      <a href="index.html#clinician">For clinicians</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="functions.html">Functions</a>
+      <a href="hospital.html">Hospital</a>
+      <a href="assistant.html">Guide</a>
+      <a href="security.html" aria-current="page">Security</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="iconbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+      <a class="btn small ghost" href="files/khai-tracker-1.0.0.apk" download>APK</a>
+      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Transparency</p>
+      <h1 style="margin-top:14px">Security, stated precisely.</h1>
+      <p class="lead">This page is for the people who review and operate the app, not just the people who use it. It says what is protected, what is not, and what must change before a real pilot. No claim here exceeds what the shipped build actually does.</p>
+      <div class="page-meta">
+        <span>Khai Tracker 1.0.0 · in.khaifoods.tracker</span>
+        <span>Build: development signing key</span>
+        <span>Not a medical device</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#stores">What it stores</a></li>
+        <li><a href="#encryption">Encryption at rest</a></li>
+        <li><a href="#device">Device protections</a></li>
+        <li><a href="#pin">The PIN</a></li>
+        <li><a href="#network">Network and sync</a></li>
+        <li><a href="#exports">Exports and sharing</a></li>
+        <li><a href="#thirdparties">Logging &amp; third parties</a></li>
+        <li><a href="#build">Build &amp; supply chain</a></li>
+        <li><a href="#verify">Verify the APK</a></li>
+        <li><a href="#gaps">Known gaps</a></li>
+        <li><a href="#report">Report a vulnerability</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+
+      <h2 id="stores">1. What it stores</h2>
+      <p>Per participant, per day: food items (library id, label, quantity, unit, estimated energy and macronutrients); medicine name, dose and the day's status (taken / skipped / changed); systolic, diastolic, pulse, glucose and context, weight, energy, mood, sleep, a free-text note; and a timestamp.</p>
+      <p>Profile: participant code, age-band code, condition codes, medicine list, consent version and timestamp, a random device ID and creation time — all encrypted with the same Keystore key. Settings: language, reminder on/off and time, PIN hash/salt and failure count, optional sync URL, per-device token, optional SPKI pin, explicit sync consent, last sync status and a "hide previews" flag that is on by default.</p>
+      <p><strong>None of this is a name, phone number, address or government identifier.</strong> See the <a href="privacy.html">privacy notice</a> for how it is used.</p>
+
+      <h2 id="encryption">2. Encryption at rest</h2>
+      <ul>
+        <li>Algorithm: AES-256-GCM, 128-bit tag, random 96-bit IV per record.</li>
+        <li>Key: generated inside <code>AndroidKeyStore</code> under alias <code>khai_record_key_v1</code>, non-exportable, <code>setUserAuthenticationRequired(false)</code> so background sync works while the screen is off.</li>
+        <li>Associated data: <code>code|date</code>. Moving a ciphertext row to another participant or date makes decryption fail.</li>
+        <li>Storage: a SQLite table <code>entries(code, date, iv, ct, updated_ms, dirty)</code>. There is no plaintext column.</li>
+        <li>Profile: conditions, medicines, age band and consent metadata are encrypted with the same Keystore-backed key under AAD <code>khai-profile-v1</code>. Only non-sensitive settings stay in <code>SharedPreferences</code>.</li>
+        <li>Erase: rows, encrypted profile, settings and the Keystore alias are deleted, so residual bytes are undecryptable. Generated export files are deleted too.</li>
+      </ul>
+      <div class="callout"><b>Threat-model consequence:</b> this protects the database file, a stolen powered-off phone, a backup and forensic extraction of app storage. It does <strong>not</strong> protect against an attacker who can run code as the app's user on an unlocked device, because the app can obtain the key. The PIN is an interface gate, not a second key.</div>
+
+      <h2 id="device">3. Device protections relied upon</h2>
+      <ul>
+        <li>Android file-based encryption for the whole device.</li>
+        <li>App sandbox — <code>/data/data/in.khaifoods.tracker</code> is not readable by other apps.</li>
+        <li><code>android:allowBackup="false"</code>, with extraction rules excluding database, prefs, files and external storage from cloud backup and device transfer.</li>
+        <li><code>FLAG_SECURE</code> is on by default when "hide previews" is left untouched, stopping recent-app thumbnails and screenshots. A participant can turn it off knowingly.</li>
+        <li>HTTPS-only network security config; cleartext is disabled at the manifest and the config.</li>
+      </ul>
+
+      <h2 id="pin">4. The PIN</h2>
+      <p>Four digits, salted, PBKDF2-HMAC-SHA1, 120 000 iterations, 256-bit output, constant-time compare. Re-locks after 60 seconds in the background. Failed attempts now trigger exponential backoff from 5 seconds up to 5 minutes, and the gate is disabled while the wait runs. Removing it requires access to the unlocked app — the same trust boundary.</p>
+      <p>A four-digit PIN has 10 000 possibilities, so the hash is a speed bump, not a defence against offline brute force if the salt and hash leak. Its real job is to keep a family member or a borrower out of the interface. <strong>PIN is not two-factor authentication and does not add cryptographic protection.</strong></p>
+
+      <h2 id="network">5. Network, sync and analysis</h2>
+      <p>Sync is off until an institution address, a per-device bearer token and explicit consent are configured in Settings. The app accepts an absolute <code>https://</code> URL only, rejects embedded credentials, query strings and fragments, never follows redirects, and retries once on transport failure. It sends only days still marked unsynced: <code>{schema, code, device_id, days: {date: entry}}</code> to <code>POST {base}/api/sync</code>.</p>
+      <p>An optional SPKI pin (base64 SHA-256 of the server public key) adds certificate pinning on top of system trust anchors. A 2xx response is not sufficient: the server must return <code>accepted_dates</code>, and the app clears the unsynced flag only for dates confirmed in that response.</p>
+      <p>The browser demo has <strong>no sync at all</strong> — nothing leaves the browser. The app has no ads, advertising identifier or third-party analytics SDK. Institution staff may analyse trends only in records synced under the recorded consent, under a signed data-processing agreement; no automated care decisions are made from them.</p>
+      <p>A local v2 reference server implements token issue/revocation, per-code authorisation, encrypted-at-rest storage, metadata-only audit, erasure and retention, and passes 10 contract tests. It is not hosted and is not connected to any device. <strong>Still required before real data:</strong> a named institution endpoint, a public-CA certificate, a documented pin-rotation path, hosted retention and erasure controls, a DPIA and a penetration test. The app cannot make a hosted server secure; the contract is in <code>khai-tracker-android/docs/SECURE_SYNC.md</code>.</p>
+
+      <h2 id="exports">6. Exports and sharing</h2>
+      <p>Files are written to the app's private cache and exposed through a non-exported <code>ContentProvider</code> with a one-shot read grant on the share intent. Every provider method validates the filename and serves only existing regular cache files.</p>
+      <p>Exported files are plaintext by design — they are meant to be read by a clinician. The participant chooses the destination app; Khai does not upload them. CSV cells that begin with a spreadsheet formula character are prefixed with an apostrophe, so a free-text note cannot become a formula when staff open the file. Files older than 24 hours are removed when a new export is written, and “Erase my data” deletes the whole export cache.</p>
+
+      <h2 id="thirdparties">7. Logging and third parties</h2>
+      <p>No third-party analytics, crash reporting, advertising or attribution libraries are linked. Institution-side trend analysis runs on the server under consent, not in an SDK on the phone. There are no <code>Log.*</code> calls in the shipped source; exceptions are caught and ignored rather than printed with record content. The only network endpoint is the institution server the participant configures. There is one optional, inexact daily reminder whose notification text contains no clinical values.</p>
+
+      <h2 id="build">8. Build and supply chain</h2>
+      <p>The APK is built by <code>tools/build.py</code> from locally installed JDK 17, Android SDK 35, Kotlin 2.0.21 and a SHA-256-pinned <code>bundletool.jar</code>. Release signing uses the dedicated 4096-bit RSA upload key held outside the repository. Signing passwords are read from a user-only file or environment; the build redacts them from output, passes them to <code>apksigner</code> through an environment variable and gives <code>bundletool</code> only a short-lived password file. No dependency manager is used, so there is no transitive dependency surface. <code>tools/check.py</code> asserts the security controls and <code>tools/verify.py</code> checks the artefacts.</p>
+      <div class="caveat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span><b>Upload key, not a Store listing.</b> This APK is signed by the dedicated upload key and is a technical preview. Enrol in Play App Signing before distribution; Google will then hold the app signing key that users actually trust.</span></div>
+
+      <h2 id="verify">9. Verify the APK</h2>
+      <p>The downloadable file is signed and hashed. Compare before installing:</p>
+      <pre><code>File:     khai-tracker-1.0.0.apk
+Package:  in.khaifoods.tracker
+Version:  1.0.0 (versionCode 1)
+Size:     1,284,457 bytes
+SHA-256:  40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f</code></pre>
+      <p>On Windows PowerShell:</p>
+      <pre><code>Get-FileHash .\khai-tracker-1.0.0.apk -Algorithm SHA256</code></pre>
+      <p>On macOS or Linux:</p>
+      <pre><code>shasum -a 256 khai-tracker-1.0.0.apk</code></pre>
+      <p>The machine-readable value is in <code>files/khai-tracker-1.0.0.apk.sha256</code>. Verify the signing certificate too: <code>apksigner verify --print-certs khai-tracker-1.0.0.apk</code> (from Android build tools). The build gate confirmed v2 and v3 signatures, v1 false, RSA 4096, subject <code>CN=Khai Foods Pvt Ltd, OU=Khai Tracker upload</code>, certificate SHA-256 <code>20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b</code>. A mismatch means the file is not the one built here — do not install it. Publish the Play app-signing fingerprint through an independent channel once Console issues it.</p>
+
+      <h2 id="gaps">10. Pre-production checklist</h2>
+      <ul>
+        <li>Enrol Play App Signing; back up the upload key in a team vault; publish the Play signing fingerprint out of band.</li>
+        <li>Provision the institution endpoint, issue and revoke per-device tokens, and test token rotation.</li>
+        <li>Publish the SPKI pin with a documented rotation plan and test a refused wrong-certificate connection.</li>
+        <li>Test full, partial and missing <code>accepted_dates</code> responses; add job-scheduler sync with backoff and visible progress.</li>
+        <li>Decide explicitly whether a privacy-preserving crash reporter is wanted; none is shipped today.</li>
+        <li>Run a DPIA and a penetration test on the phone + server pair.</li>
+        <li>Confirm the legal basis, clinic licence and consent text per jurisdiction.</li>
+        <li>Set real, monitored privacy and security mailboxes.</li>
+        <li>Execute the app on physical devices across Android 7–15 and record the results.</li>
+      </ul>
+
+      <h2 id="report">11. Reporting a vulnerability</h2>
+      <p>Email <a href="mailto:security@khaifoods.in">security@khaifoods.in</a> with the build version, device and Android version, steps to reproduce and the impact. Please do not include participant data. We aim to acknowledge within seven days. Until the mailbox is monitored before public launch, treat this as a disclosure process to establish, not a live SLA.</p>
+      <p><a class="textlink" href="privacy.html">Read the privacy notice <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="assets/mark.svg" alt="" width="32" height="32">
+          <span class="brand-name"><b>Khai</b><span>Tracker</span></span>
+        </a>
+        <p>A measurement instrument for the space between visits. Built in Jamshedpur for phones that are shared, batteries that are low, and clinics that are far away.</p>
+      </div>
+      <div class="footer-col"><h3>Product</h3><ul>
+        <li><a href="index.html#product">What it does</a></li>
+        <li><a href="demo.html">Browser demo</a></li>
+        <li><a href="assistant.html">Guide</a></li>
+        <li><a href="files/khai-tracker-1.0.0.apk" download>Download APK</a></li>
+        <li><a href="index.html#faq">Limits and answers</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Transparency</h3><ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="security.html" aria-current="page">Security</a></li>
+        <li><a href="blueprint.html">Blueprint</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="hospital.html">Hospital design</a></li>
+        <li><a href="security.html#verify">Verification</a></li>
+      </ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul>
+        <li><a href="mailto:privacy@khaifoods.in">privacy@khaifoods.in</a></li>
+        <li><a href="mailto:security@khaifoods.in">security@khaifoods.in</a></li>
+        <li>Khai Foods Pvt Ltd<br>Jamshedpur, Jharkhand, India</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Khai Foods Pvt Ltd · Product owner Biswajit Roy Bardhan</span>
+      <span>Not a medical device. No affiliation with Zhongshan Hospital, HIMSS or any named health system.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
