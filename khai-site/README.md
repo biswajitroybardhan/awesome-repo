@@ -92,7 +92,7 @@ Any static host works (GitHub Pages, Netlify, S3, nginx). Requirements:
 - Serve `index.html` for `/` and map unknown paths to `404.html` if the host supports it.
 - Serve `.html`, `.css`, `.js`, `.svg`, `.png` and `.apk` with their normal MIME types. For the APK,
   `application/vnd.android.package-archive` is ideal; `application/octet-stream` also works.
-- No redirects are needed. Canonical URLs assume `https://KHAI.com/`.
+- No redirects are needed. Canonical URLs assume `https://biswajitroybardhan.github.io/awesome-repo/`.
 - HTTPS is recommended so the copy-to-clipboard button can use the modern Clipboard API. There is a
   `document.execCommand` fallback for other contexts.
 

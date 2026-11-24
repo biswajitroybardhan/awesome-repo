@@ -1,6 +1,6 @@
 # Mailbox runbook — NOT YET PROVISIONED OR MONITORED
 
-The site links to `Privacy@KHAI.com` and `Security@KHAI.com`. Those addresses
+The site links to `biswajitroybardhan@gmail.com` and `biswajitroybardhan1@gmail.com`. Those addresses
 are **not confirmed to exist or be monitored**. The site says so explicitly:
 
 - `privacy.html` §10: "Replace this with a monitored mailbox before public launch."
