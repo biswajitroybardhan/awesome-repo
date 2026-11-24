@@ -1,9 +1,10 @@
 # Secure institution sync and analysis
 
 This document is the contract for the only network path in Khai Tracker. It is written for an
-institution that wants to license the tool and analyse programme trends. No such server exists in
-this repository, and no data has been collected by this project. The client will not send anything
-until all of the conditions below are met.
+institution that wants to license the tool and analyse programme trends. A reference implementation
+and its contract tests live in [`../../khai-sync-server`](../../khai-sync-server/README.md). It is
+not hosted, no institution endpoint is configured, and no real data has been collected by this
+project. The client will not send anything until all of the conditions below are met.
 
 ## 1. What the app sends
 
@@ -47,7 +48,10 @@ JSON response names it:
 ```
 
 Anything else leaves the record queued. A 4xx stops the retry loop; a transport failure retries
-once. A partial acknowledgement is treated as a retryable failure.
+once. A partial acknowledgement marks only the named dates synced and leaves the rest queued for
+the next manual, save or resume push; the current client does not retry the remainder inside the
+same call. The reference server is all-or-nothing, so partial acknowledgements should not occur in
+normal operation.
 
 ## 3. Server obligations
 
@@ -66,6 +70,9 @@ once. A partial acknowledgement is treated as a retryable failure.
 | Incident response | Monitored security mailbox, breach notification process, and a named owner for revoking all device tokens. |
 
 ## 4. Deployment checklist before real data
+
+The local reference server passes its HTTP/TLS/storage contract tests. That is not the same as a
+deployed, configured service and does not close any item below.
 
 - [ ] Institution endpoint and TLS certificate are provided; SPKI pin calculated and recorded.
 - [ ] Token issuance, rotation and revocation tested on a named device.

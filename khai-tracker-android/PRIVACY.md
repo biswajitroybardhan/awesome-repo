@@ -72,9 +72,10 @@ The app requests nothing at first launch.
 
 - **On the phone:** data stays until you erase it. *Settings → Progress → Privacy → Erase my data*
   deletes the records, the encryption key, the profile, settings and the PIN, irreversibly.
-- **On the study server:** retained for the study period and statutory audit requirements, then
-  anonymised or deleted. To request earlier removal, email the contact above with your participant
-  code; rows are purged within 7 days.
+- **On the institution server:** retained for the configured study period and statutory audit
+  requirements, then anonymised or deleted. An erasure request is handled under the institution's
+  documented process; the deletion timeline must be published and tested before real data is
+  accepted. No hosted server or monitored mailbox is live yet.
 - Uninstalling the app removes the local database and the Keystore key. Exported files you already
   saved or shared are outside the app's control.
 

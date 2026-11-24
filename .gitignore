@@ -30,3 +30,6 @@ khai-tracker-android/keystore/
 khai-tracker-android/tools/kotlinc/
 khai-tracker-android/tools/bundletool.jar
 khai-tracker-android/build-log.txt
+
+# local institution sync database, keys and certificates - never commit
+khai-sync-server/local/

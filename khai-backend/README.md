@@ -1,5 +1,9 @@
 # Khai Backend — multi-participant sync + coordinator dashboard
 
+> **Legacy PWA server only. Do not point the native Android app at this server.** It does not
+> implement `khai-sync-v2`, per-device bearer tokens or `accepted_dates`, so Android days will never
+> be marked synced. The v2 reference server is in [`../khai-sync-server`](../khai-sync-server/README.md).
+
 Serves the **Khai Tracker PWA** and the **study database** from one process
 (Python + Flask + SQLite). One URL = app + sync + coordinator exports.
 

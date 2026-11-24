@@ -94,8 +94,9 @@ Notes:
 - Profiles written by early builds contained display labels; `Profile.from` maps the known ones on
   read. Unknown keys survive as-is rather than being silently dropped.
 - `conditionKeys` may contain `none_of_these`, which is mutually exclusive in the UI.
-- The profile is not encrypted at rest, but contains no readings, notes or direct identifiers. It is
-  inside the app sandbox and excluded from backup.
+- The profile is encrypted at rest with the same Keystore-backed AES-256-GCM key as day records.
+  Legacy plaintext profiles are migrated on read. It is inside the app sandbox and excluded from
+  backup.
 
 ## 5. What leaves the phone
 
@@ -103,18 +104,24 @@ Notes:
 
 ```json
 {
+  "schema": "khai-sync-v2",
   "code": "K01",
   "device_id": "9f0c…",
   "days": { "2026-11-16": { …the record above… } }
 }
 ```
 
-- Full upsert of every local day for that participant, idempotent on `(code, date)`.
-- HTTPS only; the app refuses `http://` before opening a socket.
-- The device is the source of truth. The server must apply last-write-wins using `updatedAt`, and
-  must never delete a day the device did not delete.
-- There is no per-device authentication token in 1.0.0. The server must authorise strictly on the
-  participant code and the study's own access controls.
+- Only days whose local `dirty` flag is set are sent. Retries are keyed by `(code, date)`, so a
+  dropped connection cannot duplicate a record.
+- HTTPS only; the app refuses `http://` before opening a socket. A bearer token is unique to one
+  device, and explicit consent must be recorded in Settings before any request is sent.
+- The device is the source of truth. The server must apply an idempotent upsert on `(code, date)`
+  and must never delete a day the device did not delete.
+- A 2xx status alone is not success. The server must return `accepted_dates`, and the app clears
+  `dirty` only for dates named in that response.
+- The participant code is not an authentication secret. The token is per-device and revocable; see
+  [`SECURE_SYNC.md`](SECURE_SYNC.md) and the reference server in
+  [`../../khai-sync-server/README.md`](../../khai-sync-server/README.md).
 
 ### Exports
 
@@ -173,4 +180,4 @@ separate, explicit request.
 3. No estimate presented as a measurement in a clinical artefact.
 4. No language change may mutate stored values.
 5. No migration may drop ciphertext it cannot decrypt — fail visibly instead.
-6. `dirty` is cleared only after a 2xx response, never optimistically.
+6. `dirty` is cleared only for dates named in an `accepted_dates` response, never optimistically.

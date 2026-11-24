@@ -121,10 +121,10 @@ repository, no appointment workflow and no dispense data.
 | Medication loop | Per-medicine status each day; skipped/changed is first-class data | No prescription, dispense or pharmacy event yet |
 | Longitudinal record | Encrypted day records, 21-day grid, full history in exports | Local to one phone until sync is configured |
 | Clinician review | One-page PDF with completeness, flags, food frequency, notes | Static document; no reply channel |
-| Interoperability | FHIR R4 `Bundle` (Patient, Observation for BP/glucose/weight, Consent, Provenance) | No server, no terminology server, no `MedicationStatement` yet |
+| Interoperability | FHIR R4 `Bundle` (Patient, Observation for BP/glucose/weight, Consent, Provenance) | No hosted server or terminology server; only a local v2 sync reference server exists. No `MedicationStatement` yet |
 | Follow-up | Daily reminder; record ready to share at an appointment | No scheduling, no teleconsultation |
 | AI | No model in the clinical path; a grounded, deterministic Guide answers tool-usage questions from fixed help text | Deliberate; see §9 |
-| Audit | Consent timestamp; local sync state; export is user-initiated | No server-side audit trail in this repo |
+| Audit | Consent timestamp; local sync state; export is user-initiated | The reference server has a local metadata-only audit table; no deployed server audit or incident response exists |
 | Language | 26-locale registry: full EN/HI UI and consent audio via system TTS; 24 more locales drafted and visibly marked review-required | Drafts are machine-authored, not human-reviewed, and not for clinical use; TTS availability varies by phone |
 | Low-resource design | Offline-first, no AndroidX, ~1.2 MB, minSdk 24 | Untested on real hardware as of this build |
 
@@ -311,7 +311,8 @@ rewriting it.
 Saying this plainly is part of the product:
 
 - No AI in the clinical path.
-- No server in this repository, no coordinator console, no appointment workflow.
+- No hosted server, coordinator console or appointment workflow. A local v2 sync reference server
+  exists for contract testing only.
 - No prescription, dispense or pharmacy integration.
 - No wearable or BLE device ingestion.
 - No account system and no cloud identity.
@@ -393,7 +394,7 @@ review points only from days logged in that browser, never advice, and changes n
 
 | Function | Status | Where / honest limit |
 | --- | --- | --- |
-| FHIR R4 bundle (LOINC, UCUM, Consent, Provenance; diet estimates excluded) | Shipped · Demo | No server or terminology service; day-precision dates |
+| FHIR R4 bundle (LOINC, UCUM, Consent, Provenance; diet estimates excluded) | Shipped · Demo | No hosted FHIR or terminology service; day-precision dates |
 | CSV metrics, CSV food, complete JSON backup | Shipped · Demo | No proprietary format is the system of record |
 | Medication and plan resources, national rails, Bulk FHIR | Roadmap | Precondition: local legal basis, residency, named data guardian |
 
@@ -406,7 +407,7 @@ review points only from days logged in that browser, never advice, and changes n
 | Clinical reconciliation queue | Roadmap | Precondition: coordinator service and named clinical owner |
 | Participant code, no names | Shipped | Code mapping is a coordinator responsibility |
 | Coordinator dashboard and role-based access | Roadmap | Precondition: data-processing agreement, access review, retention policy |
-| Local audit (consent, sync state, user export); server audit planned | Shipped · Roadmap | No server audit or incident response in this repo |
+| Local audit (consent, sync state, user export); server audit in reference server | Shipped · Local test only | No deployed server audit or incident response; hosted coordinator controls remain roadmap |
 
 ### Closed-loop medication and follow-up without travel
 

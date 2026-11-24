@@ -190,27 +190,40 @@ Language combinations to run on each device:
 
 ## 9. Sync
 
-Use a test server only. Never point a test device at production data.
+Use the reference v2 server in [`../../khai-sync-server`](../../khai-sync-server/README.md) on a test
+host with a certificate the device trusts. Never point a test device at production data. The legacy
+`khai-backend` cannot produce `accepted_dates` and cannot mark Android days synced; do not use it
+for this section.
+
+First run the automated server contract suite on the workstation:
+
+```powershell
+py khai-sync-server/test_sync.py
+# expected: 10 tests, OK
+```
 
 | Test | Expected | Pass |
 | --- | --- | --- |
 | No server address set | "Not synced yet", no network calls (verify in a proxy) | ☐ |
 | `http://` address | Rejected: "Use an HTTPS address" | ☐ |
 | Malformed address | "Not a valid address" | ☐ |
-| Valid HTTPS, online, tap Sync now | Success message; server row count increases by the expected days | ☐ |
+| Missing bearer token | Failure message; no request reaches `/api/sync` | ☐ |
+| Valid HTTPS + token + consent, tap Sync now | Success message; server `days` count increases by the expected dates | ☐ |
 | Sync twice | Idempotent; server still has one row per participant-day | ☐ |
+| Revoke the device token, tap Sync now | 401; failure message; data still local | ☐ |
+| Change participant code on server side | 403 `cross_participant_denied`; no silent merge | ☐ |
+| Two device tokens, same participant code | Each token writes only its bound device ID; day upserts remain keyed by `(code, date)` | ☐ |
+| Configure an SPKI pin from a different certificate | TLS failure; no record is acknowledged | ☐ |
 | Airplane mode, tap Sync now | Offline message, entries remain pending, no data loss | ☐ |
-| Server returns 500 | Failure message; data still local; retry later works | ☐ |
-| Server returns 401/403 | Failure message, no retry storm | ☐ |
-| Self-signed certificate | Rejected (expected); document it for coordinators | ☐ |
-| Change participant code on server side | Mismatch surfaced; no silent merge | ☐ |
-| Two devices, same participant code | Last-write-wins is observable and documented | ☐ |
+| Server returns 500 (mock proxy) | Failure message; data still local; retry later works | ☐ |
+| Self-signed certificate without installed CA | Rejected (expected); document it for coordinators | ☐ |
 
-Server-side check with the existing backend:
+Server-side check with the v2 test database:
 
 ```powershell
-# inspect what actually arrived (test database only)
-py -c "import sqlite3;c=sqlite3.connect('khai-backend/data/khai.db');print(c.execute('select code,date,updated_ms from entries order by updated_ms desc limit 5').fetchall())"
+# inspect metadata only; day payloads are encrypted and must not be logged
+py -c "import sqlite3;c=sqlite3.connect('khai-sync-server/local/sync.db');print(c.execute('select code,date,updated_at from days order by updated_at desc limit 5').fetchall())"
+py -c "import sqlite3;c=sqlite3.connect('khai-sync-server/local/sync.db');print(c.execute('select at,event,token_id,code,detail from audit order by id desc limit 5').fetchall())"
 ```
 
 ---

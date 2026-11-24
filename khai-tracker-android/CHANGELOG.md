@@ -14,12 +14,18 @@ increments `versionCode`.
 - Sync now requires HTTPS, a per-device bearer token, explicit consent, hostname verification,
   TLS 1.2+, optional SPKI pinning, no redirects, pending days only, and an `accepted_dates`
   acknowledgement before records are marked synced.
+- A reference `khai-sync-v2` server was added in `khai-sync-server/` with revocable device tokens,
+  encrypted-at-rest records, minimal audit logging, erasure/retention CLI and 10 passing local
+  HTTPS contract tests. It is not hosted or connected to any device.
+- Stale sync documentation was corrected: the legacy `khai-backend` is not the v2 target, and
+  `dirty` is cleared only for dates named in an acknowledgement.
 - Unreviewed draft languages are no longer selectable in the app; a stale draft preference falls
   back to English.
 - Store, privacy, security and release-readiness copy now describes institution-controlled sync and
   trend analysis accurately, with no blanket "no data collected" claim.
-- The static site ships a restrictive CSP and security headers. The release remains NO-GO until a
-  real server, device testing, Play enrolment and native-speaker review are complete.
+- The static site ships a restrictive CSP and security headers. The release remains NO-GO until the
+  server is actually hosted, device testing is complete, Play enrolment is done and native speakers
+  review the draft languages.
 
 ## 1.0.0 — versionCode 1
 

@@ -131,7 +131,8 @@ requires PIN-derived encryption, sync must move to a foreground, unlocked-only m
 
 Email **security@khaifoods.in** *(replace with the monitored mailbox before publishing)* with the
 build version, device/Android version, steps, and impact. Please do not include participant data.
-We aim to acknowledge within 7 days.
+We aim to acknowledge within 7 days. Until the mailbox is provisioned and monitored, this is a
+disclosure process to establish, not a live SLA.
 
 ## 12. Pre-production hardening checklist
 

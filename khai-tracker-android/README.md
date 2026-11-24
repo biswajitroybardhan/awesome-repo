@@ -23,7 +23,7 @@ FHIR R4 file on request. It never diagnoses, never doses and never changes a pre
 | Artefact checks (`tools/verify.py`) | Pass, 31 checks — signature, badging, permissions, AAB, locales, universal APK |
 | APK signed (v2 + v3) | Yes, 4096-bit RSA, CN=Khai Foods Pvt Ltd |
 | AAB validates with bundletool | Yes, with SHA-256-pinned bundletool |
-| Institution sync backend | **Not provided** — client contract is in `docs/SECURE_SYNC.md` |
+| Institution sync backend | **Reference server built, not deployed** — see `../khai-sync-server/README.md` and `docs/SECURE_SYNC.md` |
 | Run on a physical Android device | **Not yet** — this build environment has no hypervisor and no attached phone |
 | Play screenshots | **Not yet** — must be real device captures, not renders |
 
@@ -91,8 +91,10 @@ change never rewrites the record.
   device transfer.
 - PIN is stored as a salted PBKDF2-HMAC-SHA1 hash (120 000 iterations). It is a UI gate, not a
   second encryption layer — see [`SECURITY.md`](SECURITY.md) for the honest threat model.
-- Sync is opt-in, HTTPS-only, and sends a full idempotent upsert to `POST /api/sync`
-  (`{code, device_id, days}`) matching the existing `khai-backend` contract.
+- Sync is opt-in, HTTPS-only, and sends only dirty days to `POST /api/sync` with schema
+  `khai-sync-v2`, a per-device bearer token and recorded consent. It clears a day only after the
+  server acknowledges that exact date. See [`docs/SECURE_SYNC.md`](docs/SECURE_SYNC.md) and the
+  reference server in [`../khai-sync-server`](../khai-sync-server/README.md).
 - Exports: food CSV, metrics CSV, clinician PDF, full JSON backup, FHIR R4 collection bundle
   (vitals and weight only; diet estimates stay out of clinical records).
 
@@ -101,9 +103,9 @@ change never rewrites the record.
 ```
 app/AndroidManifest.xml
 app/assets/foods.json              # 83 regional dishes, ranges and meal slots
-app/res/values|values-hi           # 164 strings each, arrays of stable codes
+app/res/values|values-hi           # 184 strings each, arrays of stable codes
 app/res/mipmap-*                   # launcher icons incl. adaptive
-app/src/in/khaifoods/tracker/      # 21 Kotlin files, framework widgets only
+app/src/in/khaifoods/tracker/      # 23 Kotlin files, framework widgets only
 tools/build.py                     # aapt2/kotlinc/d8/apksigner/bundletool pipeline
 tools/check.py                     # pre-upload static gate (source)
 tools/verify.py                    # pre-upload artefact gate (APK/AAB)

@@ -222,13 +222,16 @@
             </tr>
             <tr>
               <th scope="row">Institution sync backend</th>
-              <td><span class="status none">Not provided</span></td>
-              <td>The app requires a per-device bearer token, explicit consent, optional SPKI pinning,
-                HTTPS-only parsing with no redirects and an <code>accepted_dates</code> acknowledgement
-                before clearing dirty flags. <code>docs/SECURE_SYNC.md</code> defines the contract.</td>
-              <td>Provision a named endpoint, issue and revoke device tokens, supply and rotate the pin,
-                implement the acknowledgement, define retention and access controls, and complete a
-                DPIA and penetration test. No server exists in this workspace.</td>
+              <td><span class="status partial">Reference server built; not deployed</span></td>
+              <td><code>khai-sync-server/</code> implements <code>khai-sync-v2</code> with revocable
+                per-device tokens, consent binding, TLS 1.2+, HSTS, no redirects, encrypted records,
+                token-hash storage, minimal audit logs, atomic <code>accepted_dates</code>, erasure and
+                retention CLI. <code>py ../khai-sync-server/test_sync.py</code> passes 10 contract
+                tests. <code>docs/SECURE_SYNC.md</code> defines the contract.</td>
+              <td>Provision DNS, hosting and a public-CA certificate; supply the data key through a
+                secret manager; issue and rotate tokens on named devices; record the SPKI pin;
+                configure retention and encrypted backups; assign named staff and incident owners;
+                complete a DPIA and penetration test. Nothing is live.</td>
             </tr>
             <tr>
               <th scope="row">Clinic/institution licence and revenue</th>
@@ -248,6 +251,9 @@
       <ul>
         <li><code>py tools/check.py</code> — static source consistency plus the post-audit security assertions, 0 warnings.</li>
         <li><code>py tools/i18n/validate.py</code> — 48 files, 0 problems, 0 pending.</li>
+        <li><code>py ../khai-sync-server/test_sync.py</code> — 10 local HTTPS contract tests covering
+          bearer auth, revocation, two-code isolation, validation, atomic writes, idempotent retries,
+          encryption at rest, audit redaction, erasure, retention and SPKI pin output.</li>
         <li><code>py tools/build.py</code> — APK, AAB and universal APK signed with the dedicated upload key;
           secrets come from a user-only file or environment, never from source or argv.</li>
         <li><code>py tools/verify.py --sha256 20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b</code>
@@ -255,8 +261,8 @@
         <li>Site APK pinned at <code>40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f</code>
           (1,284,457 bytes).</li>
       </ul>
-      <p>These checks prove structure and signing only. They do not prove usability, safety,
-        deployment, or that any mailbox is monitored.</p>
+      <p>These checks prove local structure, contract behaviour and signing only. They do not prove
+        usability, safety, deployment, or that any mailbox is monitored.</p>
     </section>
 
     <footer>

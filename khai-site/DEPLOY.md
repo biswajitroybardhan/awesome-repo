@@ -29,7 +29,9 @@ For GitHub Pages specifically: repository Settings → Pages → deploy from a b
 then select the branch and `/root` (or `/docs` only if the files are moved there).
 A custom domain requires DNS entries under the domain owner's control.
 
-> This workspace is not pushed to any remote. Publishing cannot be done from here.
+> No deployment has been performed from this workspace. An `origin` remote is configured, but no
+> GitHub authentication or hosting/DNS credentials are available here. Publishing still requires
+> access that has not been supplied.
 
 ## 2. Verify after publishing
 
@@ -68,6 +70,14 @@ Get-Content khai-site\files\khai-tracker-1.0.0.apk.sha256
 
 The two hashes must match. The pinned value at the time this runbook was written was
 `40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f`.
+
+The same page, header and APK checks are available as one script once the site is live:
+
+```powershell
+powershell -File khai-site\tools\verify_deploy.ps1 -BaseUrl https://khaifoods.in
+```
+
+It exits non-zero if any check fails. It does not publish anything.
 
 ## 3. Before public launch
 

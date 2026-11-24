@@ -152,10 +152,10 @@
           <tr><td>Medication loop</td><td>Per-medicine status each day; skipped/changed is first-class</td><td>No prescription, dispense or pharmacy event yet</td></tr>
           <tr><td>Longitudinal record</td><td>Encrypted day records, 21-day grid, full history in exports</td><td>Local to one phone until sync is configured</td></tr>
           <tr><td>Clinician review</td><td>One-page PDF with completeness, flags, food frequency and notes</td><td>Static document; no reply channel</td></tr>
-          <tr><td>Interoperability</td><td>FHIR R4 bundle: Patient, BP/glucose/weight Observations, Consent, Provenance</td><td>No server, terminology server or <code>MedicationStatement</code> yet</td></tr>
+          <tr><td>Interoperability</td><td>FHIR R4 bundle: Patient, BP/glucose/weight Observations, Consent, Provenance</td><td>No hosted server or terminology service; a local v2 sync reference server exists for tests only. No <code>MedicationStatement</code> yet</td></tr>
           <tr><td>Follow-up</td><td>Daily reminder; record ready to share at an appointment</td><td>No scheduling, no teleconsultation</td></tr>
           <tr><td>AI</td><td>None in the clinical path</td><td>Deliberate; see §9</td></tr>
-          <tr><td>Audit</td><td>Consent timestamp, local sync state, user-initiated export</td><td>No server-side audit trail in this repository</td></tr>
+          <tr><td>Audit</td><td>Consent timestamp, local sync state, user-initiated export</td><td>The local reference server records metadata-only sync audit; no deployed audit trail or incident response</td></tr>
           <tr><td>Language</td><td>Full EN/HI UI; consent read aloud with system TTS</td><td>No other languages; TTS availability varies</td></tr>
           <tr><td>Low-resource design</td><td>Offline-first, no AndroidX, ~1.2 MB, minSdk 24</td><td>Not yet run on physical hardware as of this build</td></tr>
         </tbody>
@@ -226,7 +226,7 @@
       </ul>
 
       <h2 id="absent">12. What is deliberately absent from v1.0</h2>
-      <p>No AI in the clinical path. No server in this repository, no coordinator console, no appointment workflow. No prescription, dispense or pharmacy integration. No wearable ingestion. No account system or cloud identity. No outcome claims and no comparison to any hospital's published results. Those are the roadmap, not the launch copy.</p>
+      <p>No AI in the clinical path. No hosted server, coordinator console or appointment workflow; a local v2 sync reference server exists for testing only. No prescription, dispense or pharmacy integration. No wearable ingestion. No account system or cloud identity. No outcome claims and no comparison to any hospital's published results. Those are the roadmap, not the launch copy.</p>
       <blockquote>“The loop is allowed to be incomplete, but not allowed to lie.”<br><span class="mono">Khai design principle · v1.0</span></blockquote>
       <p>This implementation is its own: an offline-first, encrypted, bilingual measurement instrument built by <strong>Khai Foods Pvt Ltd</strong> under product owner <strong>Biswajit Roy Bardhan</strong>, designed for participants usually left out of “hospital-grade” digital programmes.</p>
       <p><a class="textlink" href="demo.html">Try the browser demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></p>
