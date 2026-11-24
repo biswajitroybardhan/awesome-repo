@@ -6,9 +6,8 @@ no build step and no runtime network calls. Nothing here has been published.
 Check from this machine before starting:
 
 ```powershell
-Resolve-DnsName khaifoods.in
-# At the time this runbook was written the domain did not resolve here, so the
-# privacy URL could not be verified as live.
+Resolve-DnsName KHAI.com
+# After DNS is configured, confirm it resolves before verifying the live site.
 ```
 
 ## 1. Publish
@@ -18,7 +17,7 @@ Pick one static host (GitHub Pages, S3 + CloudFront, Netlify, or a normal web se
 - Publish the **contents** of `khai-site/` at the domain root, not the folder itself.
 - Keep these files at the root: `index.html`, `privacy.html`, `security.html`,
   `robots.txt`, `sitemap.xml`, `_headers`, and the hidden `.well-known/security.txt`.
-- Serve over HTTPS. Several pages reference `https://khaifoods.in/...` as their
+- Serve over HTTPS. Several pages reference `https://KHAI.com/...` as their
   canonical URL; HTTP would conflict with those references.
 - Do not add a build step or a CDN script. That would break the site's no-network design.
 - Apply the security headers in `_headers`. Netlify reads it automatically; on GitHub Pages,
@@ -40,19 +39,19 @@ $pages = 'index.html','functions.html','blueprint.html','hospital.html',
          'assistant.html','demo.html','security.html','privacy.html',
          'robots.txt','sitemap.xml','.well-known/security.txt'
 foreach ($p in $pages) {
-  try { $r = Invoke-WebRequest "https://khaifoods.in/$p" -UseBasicParsing
+  try { $r = Invoke-WebRequest "https://KHAI.com/$p" -UseBasicParsing
         "{0} {1}" -f $r.StatusCode, $p }
   catch { "FAIL $p : $($_.Exception.Message)" }
 }
 ```
 
 All eleven must return 200. The exact privacy URL that must be live is
-`https://khaifoods.in/privacy.html`.
+`https://KHAI.com/privacy.html`.
 
 Check that the security headers are present (adjust the host if `_headers` is not supported):
 
 ```powershell
-$r = Invoke-WebRequest https://khaifoods.in/ -UseBasicParsing
+$r = Invoke-WebRequest https://KHAI.com/ -UseBasicParsing
 $r.Headers['Content-Security-Policy']
 $r.Headers['X-Content-Type-Options']
 $r.Headers['Referrer-Policy']
@@ -63,7 +62,7 @@ The CSP must include `connect-src 'none'`; the other two must be `nosniff` and `
 Verify the downloadable APK too:
 
 ```powershell
-Invoke-WebRequest https://khaifoods.in/files/khai-tracker-1.0.0.apk -OutFile apk-check.apk
+Invoke-WebRequest https://KHAI.com/files/khai-tracker-1.0.0.apk -OutFile apk-check.apk
 (Get-FileHash apk-check.apk -Algorithm SHA256).Hash.ToLowerInvariant()
 Get-Content khai-site\files\khai-tracker-1.0.0.apk.sha256
 ```
@@ -74,7 +73,7 @@ The two hashes must match. The pinned value at the time this runbook was written
 The same page, header and APK checks are available as one script once the site is live:
 
 ```powershell
-powershell -File khai-site\tools\verify_deploy.ps1 -BaseUrl https://khaifoods.in
+powershell -File khai-site\tools\verify_deploy.ps1 -BaseUrl https://KHAI.com
 ```
 
 It exits non-zero if any check fails. It does not publish anything.

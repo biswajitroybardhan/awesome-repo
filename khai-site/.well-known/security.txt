@@ -1,5 +1,5 @@
-Contact: mailto:security@khaifoods.in
+Contact: mailto:Security@KHAI.com
 Expires: 2027-11-18T00:00:00Z
 Preferred-Languages: en, hi
-Canonical: https://khaifoods.in/.well-known/security.txt
-Policy: https://khaifoods.in/security.html
+Canonical: https://KHAI.com/.well-known/security.txt
+Policy: https://KHAI.com/security.html

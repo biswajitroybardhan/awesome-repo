@@ -2,7 +2,7 @@
 
 **App:** Khai Tracker (`in.khaifoods.tracker`)
 **Owner:** Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India
-**Contact:** privacy@khaifoods.in *(replace with the monitored mailbox before publishing)*
+**Contact:** Privacy@KHAI.com *(replace with the monitored mailbox before publishing)*
 **Effective date:** on first public release
 
 This policy describes the Android app. It does not describe the separate web app or the study
@@ -109,6 +109,6 @@ acceptance. The current version of this policy is linkable from the Play Store l
 
 ## 13. Contact
 
-Privacy questions, access requests and deletion requests: **privacy@khaifoods.in**
+Privacy questions, access requests and deletion requests: **Privacy@KHAI.com**
 
 Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khaifoods.in/sitemap.xml
+Sitemap: https://KHAI.com/sitemap.xml
