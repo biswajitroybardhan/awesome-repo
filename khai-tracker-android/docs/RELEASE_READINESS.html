@@ -176,11 +176,12 @@
                 row of <code>TESTING.md</code>, and sign §11.</td>
             </tr>
             <tr>
-              <th scope="row">Production keystore / Play App Signing</th>
+              <th scope="row">Upload signing / Play App Signing</th>
               <td><span class="status partial">Partially prepared</span></td>
               <td><code>tools/release_key.ps1</code> generated a dedicated 4096-bit RSA
-                <strong>upload</strong> key outside the repo, with a random password in a user-only file.
-                A test build signed with it passed 30/30 verification checks.</td>
+                <strong>upload</strong> key outside the repo. The current APK, universal APK and AAB
+                are signed with it and pass 31/31 checks. Signing secrets no longer appear in source
+                or on build command lines.</td>
               <td>Enrol in Play App Signing in Play Console; back up the upload key; upload the AAB to
                 Internal testing and install through Play. Google holds the app signing key.</td>
             </tr>
@@ -216,7 +217,26 @@
                 <code>docs/review/</code>, each with a sign-off form. All report zero machine-check
                 problems, which is not human approval.</td>
               <td>Native speakers with clinical and consent competence review and sign each packet;
-                record approval and regenerate the locale resources.</td>
+                record approval and regenerate the locale resources. Draft locales are no longer
+                selectable in the app picker.</td>
+            </tr>
+            <tr>
+              <th scope="row">Institution sync backend</th>
+              <td><span class="status none">Not provided</span></td>
+              <td>The app requires a per-device bearer token, explicit consent, optional SPKI pinning,
+                HTTPS-only parsing with no redirects and an <code>accepted_dates</code> acknowledgement
+                before clearing dirty flags. <code>docs/SECURE_SYNC.md</code> defines the contract.</td>
+              <td>Provision a named endpoint, issue and revoke device tokens, supply and rotate the pin,
+                implement the acknowledgement, define retention and access controls, and complete a
+                DPIA and penetration test. No server exists in this workspace.</td>
+            </tr>
+            <tr>
+              <th scope="row">Clinic/institution licence and revenue</th>
+              <td><span class="status none">Not concluded</span></td>
+              <td>Chosen direction: institutional licensing plus Play and direct-APK distribution, with
+                no ads or third-party analytics SDKs.</td>
+              <td>Lawyer-reviewed licence and data-processing terms, pricing, a named partner, Play
+                Console access and a live contract/payment path. No money has been collected.</td>
             </tr>
           </tbody>
         </table>
@@ -226,12 +246,14 @@
     <section class="card">
       <h2>What is actually verifiable offline</h2>
       <ul>
-        <li><code>py tools/check.py</code> — static source consistency, 0 warnings.</li>
+        <li><code>py tools/check.py</code> — static source consistency plus the post-audit security assertions, 0 warnings.</li>
         <li><code>py tools/i18n/validate.py</code> — 48 files, 0 problems, 0 pending.</li>
-        <li><code>py tools/build.py</code> — signed APK, AAB and universal APK; byte-identical on repeat builds.</li>
-        <li><code>py tools/verify.py --sha256 cb450196111230aeaf105896e3e6bdf8b34b178484a2df64636b538fe963f126</code>
-          — 30/30 checks for the development-signed site APK.</li>
-        <li>Site APK pinned at <code>dde6cd319873f732e94488052277484da2dc3491162713c543838d2174f563c2</code>.</li>
+        <li><code>py tools/build.py</code> — APK, AAB and universal APK signed with the dedicated upload key;
+          secrets come from a user-only file or environment, never from source or argv.</li>
+        <li><code>py tools/verify.py --sha256 20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b</code>
+          — 31/31 checks for the upload-key-signed artefacts.</li>
+        <li>Site APK pinned at <code>40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f</code>
+          (1,284,457 bytes).</li>
       </ul>
       <p>These checks prove structure and signing only. They do not prove usability, safety,
         deployment, or that any mailbox is monitored.</p>

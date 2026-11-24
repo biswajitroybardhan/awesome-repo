@@ -6,8 +6,10 @@ import android.app.TimePickerDialog
 import android.content.pm.PackageManager
 import android.os.Build
 import android.text.InputType
+import android.util.Base64
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Switch
@@ -81,14 +83,14 @@ class SettingsScreen(private val a: MainActivity) {
 
     private fun showLanguagePicker() {
         val shortDraft = a.getString(R.string.draft_notice).split(" — ").first()
-        val labels = Languages.ALL.map { lang ->
+        val labels = Languages.SHIPPED.map { lang ->
             lang.native + if (lang.isDraft) " · $shortDraft" else ""
         }.toTypedArray<String>()
-        val checked = Languages.ALL.indexOfFirst { it.code == a.prefs.lang }
+        val checked = Languages.SHIPPED.indexOfFirst { it.code == a.prefs.lang }
         AlertDialog.Builder(a)
             .setTitle(a.getString(R.string.language))
             .setSingleChoiceItems(labels, if (checked < 0) 0 else checked) { dialog, which ->
-                val code = Languages.ALL[which].code
+                val code = Languages.SHIPPED[which].code
                 dialog.dismiss()
                 if (code != a.prefs.lang) a.switchLanguage(code)
             }
@@ -231,11 +233,32 @@ class SettingsScreen(private val a: MainActivity) {
         url.inputType = InputType.TYPE_TEXT_VARIATION_URI
         c.addView(Ui.field(a, a.getString(R.string.sync_url), url))
 
+        val token = Ui.input(a, a.getString(R.string.sync_token_ph))
+        token.setText(a.prefs.syncToken)
+        token.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        c.addView(Ui.field(a, a.getString(R.string.sync_token), token))
+
+        val pin = Ui.input(a, a.getString(R.string.sync_pin_ph))
+        pin.setText(a.prefs.syncPin)
+        c.addView(Ui.field(a, a.getString(R.string.sync_pin), pin))
+
+        val consent = CheckBox(a).apply {
+            text = a.getString(R.string.sync_consent)
+            isChecked = a.prefs.syncConsent
+            textSize = 13f
+            setTextColor(a.color(R.color.khai_text))
+            setPadding(0, a.dp(6), 0, a.dp(4))
+        }
+        c.addView(consent)
+
         val r = Ui.h(a)
         r.addView(Ui.rowButton(a, a.getString(R.string.sync_save), false, 1f) {
             val value = url.text.toString().trim().trimEnd('/')
             if (value.isEmpty()) {
                 a.prefs.syncUrl = ""
+                a.prefs.syncToken = ""
+                a.prefs.syncPin = ""
+                a.prefs.syncConsent = false
                 a.toast(a.getString(R.string.sync_never))
                 a.render()
                 return@rowButton
@@ -244,7 +267,24 @@ class SettingsScreen(private val a: MainActivity) {
                 a.toast(a.getString(R.string.sync_need_https))
                 return@rowButton
             }
+            val suppliedToken = token.text.toString().trim()
+            if (suppliedToken.isEmpty()) {
+                a.toast(a.getString(R.string.sync_auth_missing))
+                return@rowButton
+            }
+            val suppliedPin = pin.text.toString().trim()
+            if (suppliedPin.isNotEmpty() && !validPin(suppliedPin)) {
+                a.toast(a.getString(R.string.sync_bad_pin))
+                return@rowButton
+            }
+            if (!consent.isChecked) {
+                a.toast(a.getString(R.string.sync_no_consent))
+                return@rowButton
+            }
             a.prefs.syncUrl = value
+            a.prefs.syncToken = suppliedToken
+            a.prefs.syncPin = suppliedPin
+            a.prefs.syncConsent = true
             a.toast(a.getString(R.string.sync_save))
             a.render()
         })
@@ -267,6 +307,13 @@ class SettingsScreen(private val a: MainActivity) {
             setPadding(0, a.dp(8), 0, 0)
         }
         c.addView(status)
+    }
+
+    private fun validPin(value: String): Boolean = try {
+        val compact = value.replace(Regex("\\s"), "")
+        compact.isNotEmpty() && Base64.decode(compact, Base64.DEFAULT).size == 32
+    } catch (e: Exception) {
+        false
     }
 
     private fun statusText(): String {

@@ -170,5 +170,15 @@
   "assistant_send": "送信",
   "assistant_unknown": "その質問には答えられません。このツールの使い方に関する質問にのみ答えます。",
   "ask_clinician": "資格のある医療専門家にご相談ください。",
-  "assistant_listen": "読み上げ"
+  "assistant_listen": "読み上げ",
+  "pin_locked": "Too many attempts. Try again in %1$d s.",
+  "sync_token": "Access token",
+  "sync_token_ph": "Issued by your coordinator",
+  "sync_pin": "Server key pin (optional)",
+  "sync_pin_ph": "Base64 SHA-256 of the server public key",
+  "sync_consent": "I agree that syncing sends my records to this server for authorised review and trend analysis.",
+  "sync_auth_missing": "Enter the access token issued by your coordinator.",
+  "sync_bad_pin": "The server key pin must be a 32-byte SHA-256 value in base64.",
+  "sync_no_consent": "Confirm consent before syncing.",
+  "sync_ack_fail": "The server did not confirm which records it saved. Nothing was marked synced."
 }

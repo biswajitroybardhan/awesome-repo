@@ -47,6 +47,9 @@ object Languages {
         LanguageInfo("am", "አማርኛ", "draft", "am-ET")
     )
 
+    /** Only reviewed languages may be chosen for real records. Drafts stay in the review packets. */
+    val SHIPPED = ALL.filter { !it.isDraft }
+
     fun find(code: String?): LanguageInfo = ALL.firstOrNull { it.code == code } ?: ALL[0]
 
     fun native(code: String?): String = find(code).native

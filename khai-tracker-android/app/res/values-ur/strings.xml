@@ -174,6 +174,16 @@
     <string name="assistant_unknown">میرے پاس اس کا جواب نہیں ہے۔ میں صرف اس ٹول کے استعمال کے بارے میں سوالات کا جواب دیتا ہوں۔</string>
     <string name="ask_clinician">کسی قابل ڈاکٹر سے پوچھیں۔</string>
     <string name="assistant_listen">سنیں</string>
+    <string name="pin_locked">Too many attempts. Try again in %1$d s.</string>
+    <string name="sync_token">Access token</string>
+    <string name="sync_token_ph">Issued by your coordinator</string>
+    <string name="sync_pin">Server key pin (optional)</string>
+    <string name="sync_pin_ph">Base64 SHA-256 of the server public key</string>
+    <string name="sync_consent">I agree that syncing sends my records to this server for authorised review and trend analysis.</string>
+    <string name="sync_auth_missing">Enter the access token issued by your coordinator.</string>
+    <string name="sync_bad_pin">The server key pin must be a 32-byte SHA-256 value in base64.</string>
+    <string name="sync_no_consent">Confirm consent before syncing.</string>
+    <string name="sync_ack_fail">The server did not confirm which records it saved. Nothing was marked synced.</string>
     <string name="draft_notice">مسودۂ ترجمہ — طبی استعمال سے پہلے مقامی بولنے والے کی جانب سے جائزہ ضروری ہے۔</string>
     <string name="language_hint">صرف نمایش کے لیے۔ ریکارڈ شدہ اعداد مستحکم کوڈز رہتے ہیں، اس لیے زبان بدلنے سے کسی دن کا ریکارڈ دوبارہ نہیں لکھا جاتا۔ مسودہ ترجموں کو طبی استعمال سے پہلے فطری بولنے والے کی جانچ کی ضرورت ہے۔</string>
 </resources>

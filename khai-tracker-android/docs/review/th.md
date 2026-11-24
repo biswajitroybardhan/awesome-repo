@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | เกี่ยวกับ |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nสร้างโดย Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nออกแบบมาสำหรับโทรศัพท์ที่ใช้ร่วมกัน เครือข่ายที่ไม่เสถียร และอาหารอินเดียที่หลากหลาย ทำงานแบบออฟไลน์ก่อน ไม่มีการวิเคราะห์จากบริษัทภายนอก ไม่มีโฆษณา |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nสร้างโดย Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nออกแบบมาสำหรับโทรศัพท์ที่ใช้ร่วมกัน เครือข่ายที่ไม่เสถียร และอาหารอินเดียที่หลากหลาย ทำงานแบบออฟไลน์ก่อน ไม่มีการวิเคราะห์จากบริษัทภายนอก ไม่มีโฆษณา |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | เจ้าของผลิตภัณฑ์: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + เพิ่มอาหาร |  |
 | `add_medicines` | Add medicines | เพิ่มยา |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ถามแพทย์หรือผู้เชี่ยวชาญที่ผ่านการรับรอง |  |
 | `assistant_input_ph` | Ask a question | ถามคำถาม |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | คำตอบมาจากข้อความช่วยเหลือของเครื่องมือนี้เท่านั้น ไม่มี AI ไม่มีการวินิจฉัย ไม่มีคำแนะนำ |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | คำตอบมาจากข้อความช่วยเหลือของเครื่องมือนี้เท่านั้น ไม่มี AI ไม่มีการวินิจฉัย ไม่มีคำแนะนำ |  |
 | `assistant_listen` | Listen | ฟัง |  |
 | `assistant_send` | Send | ส่ง |  |
 | `assistant_tab` | Guide | คู่มือ |  |
 | `assistant_title` | Khai Guide | คู่มือ Khai |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | ฉันไม่มีคำตอบสำหรับเรื่องนั้น ฉันตอบเฉพาะคำถามเกี่ยวกับการใช้เครื่องมือนี้ |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | ฉันไม่มีคำตอบสำหรับเรื่องนั้น ฉันตอบเฉพาะคำถามเกี่ยวกับการใช้เครื่องมือนี้ |  |
 | `back` | Back | ย้อนกลับ |  |
 | `bp_dia` | Diastolic (lower) | ไดแอสโตลิก (ตัวล่าง) |  |
 | `bp_sys` | Systolic (upper) | ซิสโตลิก (ตัวบน) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN ต้องมี 4 ตัวเท่านั้น |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | มีประโยชน์บนโทรศัพท์ที่ใช้ร่วมกันในครอบครัว จะขอ PIN 4 ตัวเมื่อเปิดแอป และอีกครั้งหลังจากออกจากแอปไปหนึ่งนาที |  |
 | `pin_lock` | App lock | ล็อกแอป |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | เลือก PIN 4 ตัว |  |
 | `pin_remove` | Remove PIN | ลบ PIN |  |
 | `pin_removed` | PIN removed. | ลบ PIN แล้ว |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | ตั้ง PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN ไม่ถูกต้อง กรุณาลองอีกครั้ง |  |
 | `portion_q` | Portion | ขนาดรับประทาน |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | รายการของคุณถูกเข้ารหัสบนอุปกรณ์นี้ด้วยกุญแจที่เก็บไว้ในที่เก็บกุญแจที่ปลอดภัยของโทรศัพท์เครื่องนี้ ไม่มีการส่งข้อมูลไปที่ใดเว้นแต่คุณกำหนดเซิร์ฟเวอร์การศึกษา ไม่มีการวิเคราะห์ข้อมูลและไม่มีโฆษณา |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | รายการของคุณถูกเข้ารหัสบนอุปกรณ์นี้ด้วยกุญแจที่เก็บไว้ในที่เก็บกุญแจที่ปลอดภัยของโทรศัพท์เครื่องนี้ ไม่มีการส่งข้อมูลไปที่ใดเว้นแต่คุณกำหนดเซิร์ฟเวอร์การศึกษา ไม่มีการวิเคราะห์ข้อมูลและไม่มีโฆษณา |  |
 | `privacy_title` | Privacy | ความเป็นส่วนตัว |  |
 | `profile` | Profile and medicines | โปรไฟล์และยา |  |
 | `progress_title` | Progress | ความก้าวหน้า |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | นอนเมื่อคืน (ชั่วโมง) |  |
 | `sodium` | Salt (sodium) | เกลือ (โซเดียม) |  |
 | `streak` | Day streak | จำนวนวันต่อเนื่อง |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | ที่อยู่นี้ดูเหมือนจะไม่ถูกต้อง |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | ซิงก์ไม่สำเร็จ รายการยังปลอดภัยบนโทรศัพท์เครื่องนี้และจะลองใหม่ |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | ไม่บังคับ ผู้ประสานงานจะให้ที่อยู่เซิร์ฟเวอร์แก่คุณ ปล่อยว่างไว้หากต้องการเก็บข้อมูลไว้บนโทรศัพท์เครื่องนี้เท่านั้น |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | ใช้ที่อยู่ HTTPS ข้อมูลสุขภาพจะไม่ถูกส่งโดยไม่เข้ารหัส |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | ไม่บังคับ ผู้ประสานงานจะให้ที่อยู่เซิร์ฟเวอร์แก่คุณ ปล่อยว่างไว้หากต้องการเก็บข้อมูลไว้บนโทรศัพท์เครื่องนี้เท่านั้น |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | ใช้ที่อยู่ HTTPS ข้อมูลสุขภาพจะไม่ถูกส่งโดยไม่เข้ารหัส |  |
 | `sync_never` | Not synced yet. | ยังไม่เคยซิงก์ |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | ซิงก์ตอนนี้ |  |
 | `sync_offline` | No internet right now. Entries queued. | ขณะนี้ไม่มีอินเทอร์เน็ต รายการอยู่ในคิวแล้ว |  |
 | `sync_ok` | Synced. All entries are on the server. | ซิงก์แล้ว รายการทั้งหมดอยู่บนเซิร์ฟเวอร์ |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | บันทึกที่อยู่ |  |
-| `sync_title` | Study sync | การซิงก์การศึกษา |  |
+| `sync_title` | Institution sync | การซิงก์การศึกษา |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | ที่อยู่เซิร์ฟเวอร์ |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | ประวัติ |  |

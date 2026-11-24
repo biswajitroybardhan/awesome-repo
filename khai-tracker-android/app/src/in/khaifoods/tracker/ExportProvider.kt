@@ -18,27 +18,29 @@ class ExportProvider : ContentProvider() {
 
     override fun onCreate(): Boolean = true
 
-    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
+    private fun resolve(uri: Uri): Pair<String, File>? {
         val ctx = context ?: return null
         val name = uri.lastPathSegment ?: return null
         if (name.contains("..") || name.contains('/') || name.contains('\\')) return null
-        val f = File(File(ctx.cacheDir, "exports"), name)
-        if (!f.exists()) return null
-        return ParcelFileDescriptor.open(f, ParcelFileDescriptor.MODE_READ_ONLY)
+        val file = File(File(ctx.cacheDir, "exports"), name)
+        if (!file.exists() || !file.isFile) return null
+        return name to file
+    }
+
+    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
+        val file = resolve(uri)?.second ?: return null
+        return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
     }
 
     override fun getType(uri: Uri): String = when {
-        uri.lastPathSegment?.endsWith(".pdf") == true -> "application/pdf"
-        uri.lastPathSegment?.endsWith(".csv") == true -> "text/csv"
-        else -> "application/json"
+        resolve(uri)?.first?.endsWith(".pdf") == true -> "application/pdf"
+        resolve(uri)?.first?.endsWith(".csv") == true -> "text/csv"
+        else -> "application/octet-stream"
     }
 
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?,
                        selectionArgs: Array<out String>?, sortOrder: String?): Cursor? {
-        val ctx = context ?: return null
-        val name = uri.lastPathSegment ?: return null
-        val file = File(File(ctx.cacheDir, "exports"), name)
-        if (!file.exists()) return null
+        val (name, file) = resolve(uri) ?: return null
         // Some receivers (mail clients, Drive) ask for a display name and size before opening.
         // Answering properly means the attachment arrives with a sensible filename.
         val columns = projection ?: arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)

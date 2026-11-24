@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | பற்றி |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ஆல் உருவாக்கப்பட்டது.\n\nபகிரப்பட்ட ஃபோன்கள், தடைபடும் வலையமைப்புகள் மற்றும் கலந்த இந்திய உணவுகளுக்காக வடிவமைக்கப்பட்டது. முதலில் ஆஃப்லைன். மூன்றாம் தரப்பு பகுப்பாய்வு இல்லை. விளம்பரம் இல்லை. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ஆல் உருவாக்கப்பட்டது.\n\nபகிரப்பட்ட ஃபோன்கள், தடைபடும் வலையமைப்புகள் மற்றும் கலந்த இந்திய உணவுகளுக்காக வடிவமைக்கப்பட்டது. முதலில் ஆஃப்லைன். மூன்றாம் தரப்பு பகுப்பாய்வு இல்லை. விளம்பரம் இல்லை. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | தயாரிப்பு உரிமையாளர்: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + உணவு சேர்க்க |  |
 | `add_medicines` | Add medicines | மருந்துகளைச் சேர்க்க |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ஒரு தகுதியான மருத்துவரிடம் கேளுங்கள். |  |
 | `assistant_input_ph` | Ask a question | ஒரு கேள்வி கேளுங்கள் |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | இந்தக் கருவியின் சொந்த உதவி உரையிலிருந்து எடுக்கப்பட்ட பதில்கள். AI இல்லை, நோயறிதி இல்லை, ஆலோசனை இல்லை. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | இந்தக் கருவியின் சொந்த உதவி உரையிலிருந்து எடுக்கப்பட்ட பதில்கள். AI இல்லை, நோயறிதி இல்லை, ஆலோசனை இல்லை. |  |
 | `assistant_listen` | Listen | கேளுங்கள் |  |
 | `assistant_send` | Send | அனுப்பு |  |
 | `assistant_tab` | Guide | வழிகாட்டி |  |
 | `assistant_title` | Khai Guide | கை வழிகாட்டி |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | இதற்கு என்னிடம் பதில் இல்லை. இந்தக் கருவியைப் பயன்படுத்துவது பற்றிய கேள்விகளுக்கு மட்டுமே நான் பதிலளிக்கிறேன். |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | இதற்கு என்னிடம் பதில் இல்லை. இந்தக் கருவியைப் பயன்படுத்துவது பற்றிய கேள்விகளுக்கு மட்டுமே நான் பதிலளிக்கிறேன். |  |
 | `back` | Back | பின் செல் |  |
 | `bp_dia` | Diastolic (lower) | டயாஸ்டோலிக் (கீழ்) |  |
 | `bp_sys` | Systolic (upper) | சிஸ்டோலிக் (மேல்) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN சரியாக 4 இலக்கங்களைக் கொண்டிருக்க வேண்டும். |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | குடும்பத்தினர் பகிரும் ஃபோனில் பயனுள்ளதாக இருக்கும். பயன்பாடு திறக்கப்படும்போது 4 இலக்க PIN கேட்கப்படும், ஒரு நிமிடம் விலகியிருந்த பிறகும் மீண்டும் கேட்கப்படும். |  |
 | `pin_lock` | App lock | பயன்பாட்டுப் பூட்டு |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4 இலக்க PIN தேர்ந்தெடுக்கவும் |  |
 | `pin_remove` | Remove PIN | PIN அகற்ற |  |
 | `pin_removed` | PIN removed. | PIN அகற்றப்பட்டது. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN அமை |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN தவறு. மீண்டும் முயற்சிக்கவும். |  |
 | `portion_q` | Portion | அளவு |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | உங்கள் பதிவுகள் இந்தச் சாதனத்தில், இந்த ஃபோனின் பாதுகாப்பான முக்கிய சேமிப்பகத்தில் வைக்கப்பட்டுள்ள ஒரு சாவியால் மறைகுறியாக்கப்பட்டுள்ளன. நீங்கள் ஒரு ஆய்வு சேவையகத்தை அமைக்கும் வரை எதுவும் எங்கும் அனுப்பப்படுவதில்லை. பகுப்பாய்வு இல்லை, விளம்பரம் இல்லை. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | உங்கள் பதிவுகள் இந்தச் சாதனத்தில், இந்த ஃபோனின் பாதுகாப்பான முக்கிய சேமிப்பகத்தில் வைக்கப்பட்டுள்ள ஒரு சாவியால் மறைகுறியாக்கப்பட்டுள்ளன. நீங்கள் ஒரு ஆய்வு சேவையகத்தை அமைக்கும் வரை எதுவும் எங்கும் அனுப்பப்படுவதில்லை. பகுப்பாய்வு இல்லை, விளம்பரம் இல்லை. |  |
 | `privacy_title` | Privacy | தனியுரிமை |  |
 | `profile` | Profile and medicines | சுயவிவரம் மற்றும் மருந்துகள் |  |
 | `progress_title` | Progress | முன்னேற்றம் |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | நேற்று இரவு தூக்கம் (மணிகள்) |  |
 | `sodium` | Salt (sodium) | உப்பு (சோடியம்) |  |
 | `streak` | Day streak | தொடர் நாட்கள் |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | அது செல்லுபடியாகும் முகவரி போல் தோன்றவில்லை. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | ஒத்திசைவு தோல்வியடைந்தது. பதிவுகள் இந்த ஃபோனில் பாதுகாப்பாக உள்ளன, மீண்டும் முயற்சிக்கப்படும். |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | விரும்பினால் மட்டும். உங்கள் ஒருங்கிணைப்பாளர் ஒரு சேவையக முகவரி தருவார். அனைத்தையும் இந்த ஃபோனிலேயே வைக்க வெறுமையாக விட்டுவிடவும். |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS முகவரியைப் பயன்படுத்தவும். சுகாதாரத் தகவல்கள் ஒருபோதும் மறைகுறியாக்கப்படாமல் அனுப்பப்படுவதில்லை. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | விரும்பினால் மட்டும். உங்கள் ஒருங்கிணைப்பாளர் ஒரு சேவையக முகவரி தருவார். அனைத்தையும் இந்த ஃபோனிலேயே வைக்க வெறுமையாக விட்டுவிடவும். |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS முகவரியைப் பயன்படுத்தவும். சுகாதாரத் தகவல்கள் ஒருபோதும் மறைகுறியாக்கப்படாமல் அனுப்பப்படுவதில்லை. |  |
 | `sync_never` | Not synced yet. | இதுவரை ஒத்திசைக்கப்படவில்லை. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | இப்போது ஒத்திசை |  |
 | `sync_offline` | No internet right now. Entries queued. | தற்போது இணையம் இல்லை. பதிவுகள் வரிசையில் வைக்கப்பட்டுள்ளன. |  |
 | `sync_ok` | Synced. All entries are on the server. | ஒத்திசைக்கப்பட்டது. அனைத்து பதிவுகளும் சேவையகத்தில் உள்ளன. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | முகவரியைச் சேமி |  |
-| `sync_title` | Study sync | ஆய்வு ஒத்திசைவு |  |
+| `sync_title` | Institution sync | ஆய்வு ஒத்திசைவு |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | சேவையக முகவரி |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | வரலாறு |  |

@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | ਬਾਰੇ |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ।\n\nਸਾਂਝੇ ਫ਼ੋਨਾਂ, ਰੁਕ-ਰੁਕ ਕੇ ਚਲਦੇ ਨੈੱਟਵਰਕ ਅਤੇ ਵੱਖ-ਵੱਖ ਭਾਰਤੀ ਖਾਣਿਆਂ ਲਈ ਤਿਆਰ ਕੀਤਾ ਗਿਆ। ਪਹਿਲਾਂ ਔਫ਼ਲਾਈਨ। ਕੋਈ ਤੀਜੀ-ਧਿਰ ਵਿਸ਼ਲੇਸ਼ਣ ਨਹੀਂ। ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ। |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ।\n\nਸਾਂਝੇ ਫ਼ੋਨਾਂ, ਰੁਕ-ਰੁਕ ਕੇ ਚਲਦੇ ਨੈੱਟਵਰਕ ਅਤੇ ਵੱਖ-ਵੱਖ ਭਾਰਤੀ ਖਾਣਿਆਂ ਲਈ ਤਿਆਰ ਕੀਤਾ ਗਿਆ। ਪਹਿਲਾਂ ਔਫ਼ਲਾਈਨ। ਕੋਈ ਤੀਜੀ-ਧਿਰ ਵਿਸ਼ਲੇਸ਼ਣ ਨਹੀਂ। ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ। |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | ਉਤਪਾਦ ਮਾਲਕ: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + ਭੋਜਨ ਜੋੜੋ |  |
 | `add_medicines` | Add medicines | ਦਵਾਈਆਂ ਜੋੜੋ |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ਕਿਸੇ ਯੋਗ ਡਾਕਟਰ ਤੋਂ ਪੁਛੋ। |  |
 | `assistant_input_ph` | Ask a question | ਇੱਕ ਸਵਾਲ ਪੁਛੋ |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | ਇਸ ਟੂਲ ਦੇ ਆਪਣੇ ਮਦਦ-ਪਾਠ ਤੋਂ ਲਏ ਗਏ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ। ਕੋਈ AI ਨਹੀਂ, ਕੋਈ ਨਿਦਾਨ ਨਹੀਂ, ਕੋਈ ਸਲਾਹ ਨਹੀਂ। |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | ਇਸ ਟੂਲ ਦੇ ਆਪਣੇ ਮਦਦ-ਪਾਠ ਤੋਂ ਲਏ ਗਏ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ। ਕੋਈ AI ਨਹੀਂ, ਕੋਈ ਨਿਦਾਨ ਨਹੀਂ, ਕੋਈ ਸਲਾਹ ਨਹੀਂ। |  |
 | `assistant_listen` | Listen | ਸੁਣੋ |  |
 | `assistant_send` | Send | ਭੇਜੋ |  |
 | `assistant_tab` | Guide | ਗਾਈਡ |  |
 | `assistant_title` | Khai Guide | ਖਾਈ ਗਾਈਡ |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | ਮੇਰੇ ਕੋਲ ਇਸਦਾ ਜਵਾਬ ਨਹੀਂ ਹੈ। ਮੈਂ ਸਿਰਫ਼ ਇਸ ਟੂਲ ਦੀ ਵਰਤੋਂ ਬਾਰੇ ਸਵਾਲਾਂ ਦਾ ਜਵਾਬ ਦਿੰਦਾ ਹਾਂ। |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | ਮੇਰੇ ਕੋਲ ਇਸਦਾ ਜਵਾਬ ਨਹੀਂ ਹੈ। ਮੈਂ ਸਿਰਫ਼ ਇਸ ਟੂਲ ਦੀ ਵਰਤੋਂ ਬਾਰੇ ਸਵਾਲਾਂ ਦਾ ਜਵਾਬ ਦਿੰਦਾ ਹਾਂ। |  |
 | `back` | Back | ਪਿੱਛੇ |  |
 | `bp_dia` | Diastolic (lower) | ਡਾਇਸਟੋਲਿਕ (ਹੇਠਲਾ) |  |
 | `bp_sys` | Systolic (upper) | ਸਿਸਟੋਲਿਕ (ਉਪਰਲਾ) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN ਵਿੱਚ ਬਿਲਕੁਲ 4 ਅੰਕ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ। |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | ਪਰਿਵਾਰ ਨਾਲ ਸਾਂਝੇ ਫ਼ੋਨ 'ਤੇ ਲਾਭਦਾਇਕ। ਐਪ ਖੋਲ੍ਹਣ 'ਤੇ 4-ਅੰਕਾਂ ਦਾ PIN ਮੰਗਿਆ ਜਾਂਦਾ ਹੈ, ਅਤੇ ਇੱਕ ਮਿੰਟ ਦੂਰ ਰਹਿਣ ਤੋਂ ਬਾਅਦ ਦੁਬਾਰਾ ਮੰਗਿਆ ਜਾਂਦਾ ਹੈ। |  |
 | `pin_lock` | App lock | ਐਪ ਲਾਕ |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4-ਅੰਕਾਂ ਦਾ PIN ਚੁਣੋ |  |
 | `pin_remove` | Remove PIN | PIN ਹਟਾਓ |  |
 | `pin_removed` | PIN removed. | PIN ਹਟਾਇਆ ਗਿਆ। |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN ਸੈੱਟ ਕਰੋ |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN ਗਲਤ ਹੈ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ। |  |
 | `portion_q` | Portion | ਮਾਤਰਾ |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | ਤੁਹਾਡੀਆਂ ਐਂਟਰੀਆਂ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇਸ ਫ਼ੋਨ ਦੇ ਸੁਰੱਖਿਅਤ ਕੀ-ਸਟੋਰ ਵਿੱਚ ਰੱਖੀ ਕੁੰਜੀ ਨਾਲ ਏਨਕ੍ਰਿਪਟ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ। ਤੁਹਾਡੇ ਵੱਲੋਂ ਅਧਿਐਨ ਸਰਵਰ ਸੈੱਟ ਕੀਤੇ ਬਿਨਾਂ ਕਿਤੇ ਵੀ ਕੁਝ ਨਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ। ਕੋਈ ਵਿਸ਼ਲੇਸ਼ਣ ਨਹੀਂ, ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ। |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | ਤੁਹਾਡੀਆਂ ਐਂਟਰੀਆਂ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇਸ ਫ਼ੋਨ ਦੇ ਸੁਰੱਖਿਅਤ ਕੀ-ਸਟੋਰ ਵਿੱਚ ਰੱਖੀ ਕੁੰਜੀ ਨਾਲ ਏਨਕ੍ਰਿਪਟ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ। ਤੁਹਾਡੇ ਵੱਲੋਂ ਅਧਿਐਨ ਸਰਵਰ ਸੈੱਟ ਕੀਤੇ ਬਿਨਾਂ ਕਿਤੇ ਵੀ ਕੁਝ ਨਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ। ਕੋਈ ਵਿਸ਼ਲੇਸ਼ਣ ਨਹੀਂ, ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ। |  |
 | `privacy_title` | Privacy | ਗੋਪਨੀਯਤਾ |  |
 | `profile` | Profile and medicines | ਪ੍ਰੋਫ਼ਾਈਲ ਅਤੇ ਦਵਾਈਆਂ |  |
 | `progress_title` | Progress | ਤਰੱਕੀ |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | ਕੱਲ੍ਹ ਰਾਤ ਦੀ ਨੀਂਦ (ਘੰਟੇ) |  |
 | `sodium` | Salt (sodium) | ਨਮਕ (ਸੋਡੀਅਮ) |  |
 | `streak` | Day streak | ਦਿਨਾਂ ਦੀ ਲੜੀ |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | ਇਹ ਇੱਕ ਵੈਧ ਪਤਾ ਨਹੀਂ ਲੱਗਦਾ। |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | ਸਿੰਕ ਫੇਲ੍ਹ ਹੋਇਆ। ਐਂਟਰੀਆਂ ਇਸ ਫ਼ੋਨ 'ਤੇ ਸੁਰੱਖਿਅਤ ਹਨ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਹੋਵੇਗੀ। |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | ਵਿਕਲਪਿਕ। ਤੁਹਾਡਾ ਕੋਆਰਡੀਨੇਟਰ ਸਰਵਰ ਦਾ ਪਤਾ ਦਿੰਦਾ ਹੈ। ਸਭ ਕੁਝ ਸਿਰਫ਼ ਇਸ ਫ਼ੋਨ 'ਤੇ ਰੱਖਣ ਲਈ ਖਾਲੀ ਛੱਡੋ। |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS ਪਤਾ ਵਰਤੋ। ਸਿਹਤ ਡਾਟਾ ਕਦੇ ਵੀ ਬਿਨਾਂ ਏਨਕ੍ਰਿਪਸ਼ਨ ਨਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ। |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | ਵਿਕਲਪਿਕ। ਤੁਹਾਡਾ ਕੋਆਰਡੀਨੇਟਰ ਸਰਵਰ ਦਾ ਪਤਾ ਦਿੰਦਾ ਹੈ। ਸਭ ਕੁਝ ਸਿਰਫ਼ ਇਸ ਫ਼ੋਨ 'ਤੇ ਰੱਖਣ ਲਈ ਖਾਲੀ ਛੱਡੋ। |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS ਪਤਾ ਵਰਤੋ। ਸਿਹਤ ਡਾਟਾ ਕਦੇ ਵੀ ਬਿਨਾਂ ਏਨਕ੍ਰਿਪਸ਼ਨ ਨਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ। |  |
 | `sync_never` | Not synced yet. | ਹਾਲੇ ਸਿੰਕ ਨਹੀਂ ਹੋਇਆ। |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | ਹੁਣ ਸਿੰਕ ਕਰੋ |  |
 | `sync_offline` | No internet right now. Entries queued. | ਇਸ ਵੇਲੇ ਇੰਟਰਨੈੱਟ ਨਹੀਂ ਹੈ। ਐਂਟਰੀਆਂ ਕਤਾਰ ਵਿੱਚ ਹਨ। |  |
 | `sync_ok` | Synced. All entries are on the server. | ਸਿੰਕ ਹੋ ਗਿਆ। ਸਾਰੀਆਂ ਐਂਟਰੀਆਂ ਸਰਵਰ 'ਤੇ ਹਨ। |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | ਪਤਾ ਸਾਂਭੋ |  |
-| `sync_title` | Study sync | ਅਧਿਐਨ ਸਿੰਕ |  |
+| `sync_title` | Institution sync | ਅਧਿਐਨ ਸਿੰਕ |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | ਸਰਵਰ ਦਾ ਪਤਾ |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | ਇਤਿਹਾਸ |  |

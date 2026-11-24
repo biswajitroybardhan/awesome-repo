@@ -810,6 +810,8 @@
   function csv(v) {
     v = v == null ? '' : String(v);
     if (!v) return '';
+    // Spreadsheet-safe: never let a cell be interpreted as a formula.
+    if (/^[=+\-@\t\r]/.test(v)) v = "'" + v;
     return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
   }
 

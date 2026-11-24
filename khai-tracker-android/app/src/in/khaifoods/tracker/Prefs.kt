@@ -2,6 +2,7 @@ package `in`.khaifoods.tracker
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Base64
 import org.json.JSONArray
 import org.json.JSONObject
 import java.security.MessageDigest
@@ -21,8 +22,13 @@ class Prefs(context: Context) {
         context.applicationContext.getSharedPreferences("khai_settings", Context.MODE_PRIVATE)
 
     var lang: String
-        get() = sp.getString("lang", "en") ?: "en"
-        set(v) = sp.edit().putString("lang", v).apply()
+        get() {
+            val saved = sp.getString("lang", "en") ?: "en"
+            return if (Languages.SHIPPED.any { it.code == saved }) saved else "en"
+        }
+        set(v) = sp.edit().putString(
+            "lang", if (Languages.SHIPPED.any { it.code == v }) v else "en"
+        ).apply()
 
     var deviceId: String
         get() {
@@ -45,7 +51,7 @@ class Prefs(context: Context) {
         set(v) = sp.edit().putInt("reminder_min", v).apply()
 
     var hidePreviews: Boolean
-        get() = sp.getBoolean("hide_previews", false)
+        get() = sp.getBoolean("hide_previews", true)
         set(v) = sp.edit().putBoolean("hide_previews", v).apply()
 
     var syncUrl: String
@@ -64,6 +70,21 @@ class Prefs(context: Context) {
         get() = sp.getString("last_sync_msg", "") ?: ""
         set(v) = sp.edit().putString("last_sync_msg", v).apply()
 
+    /** Per-device bearer credential issued by the institution. Never a participant password. */
+    var syncToken: String
+        get() = sp.getString("sync_token", "") ?: ""
+        set(v) = sp.edit().putString("sync_token", v.trim()).apply()
+
+    /** Base64 SHA-256 of the server's SPKI. Empty means system trust anchors only. */
+    var syncPin: String
+        get() = sp.getString("sync_pin", "") ?: ""
+        set(v) = sp.edit().putString("sync_pin", v.trim()).apply()
+
+    /** Explicit, revocable consent to send this participant's records to the configured server. */
+    var syncConsent: Boolean
+        get() = sp.getBoolean("sync_consent", false)
+        set(v) = sp.edit().putBoolean("sync_consent", v).apply()
+
     var pinHash: String
         get() = sp.getString("pin_hash", "") ?: ""
         set(v) = sp.edit().putString("pin_hash", v).apply()
@@ -80,17 +101,46 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("onboard_done", false)
         set(v) = sp.edit().putBoolean("onboard_done", v).apply()
 
-    // ---- profile (non-clinical identity + conditions/medicines) ----
+    // ---- profile (identity + conditions/medicines; health metadata, so encrypted) ----
+    private companion object {
+        const val PROFILE_PLAIN = "profile"
+        const val PROFILE_ENC = "profile_enc"
+    }
+
     fun saveProfile(p: Profile) {
+        val plain = p.toJson().toString()
+        val (iv, ct) = Crypto.encrypt(plain, "khai-profile-v1")
+        val packed = Base64.encodeToString(iv, Base64.DEFAULT) + "." +
+                     Base64.encodeToString(ct, Base64.DEFAULT)
         sp.edit()
-            .putString("profile", p.toJson().toString())
+            .putString(PROFILE_ENC, packed)
+            .remove(PROFILE_PLAIN)
             .putBoolean("onboard_done", true)
             .apply()
     }
 
     fun profile(): Profile? {
-        val raw = sp.getString("profile", null) ?: return null
-        return try { Profile.from(JSONObject(raw)) } catch (e: Exception) { null }
+        val enc = sp.getString(PROFILE_ENC, null)
+        if (!enc.isNullOrEmpty()) {
+            return try {
+                val parts = enc.split(".", limit = 2)
+                val iv = Base64.decode(parts[0], Base64.DEFAULT)
+                val ct = Base64.decode(parts[1], Base64.DEFAULT)
+                val json = Crypto.decrypt(iv, ct, "khai-profile-v1")
+                Profile.from(JSONObject(json))
+            } catch (e: Exception) {
+                null
+            }
+        }
+        // One-time migration from the old plaintext profile.
+        val raw = sp.getString(PROFILE_PLAIN, null) ?: return null
+        return try {
+            val p = Profile.from(JSONObject(raw))
+            saveProfile(p)
+            p
+        } catch (e: Exception) {
+            null
+        }
     }
 
     fun code(): String = profile()?.code ?: ""
@@ -106,13 +156,45 @@ class Prefs(context: Context) {
 
     fun checkPin(pin: String): Boolean {
         if (!pinEnabled || pinHash.isEmpty()) return true
-        return constantTimeEquals(hashPin(pin, pinSalt), pinHash)
+        if (pinBlockSeconds() > 0) return false
+        if (!constantTimeEquals(hashPin(pin, pinSalt), pinHash)) {
+            recordPinFailure()
+            return false
+        }
+        clearPinFailures()
+        return true
     }
 
     fun clearPin() {
         pinEnabled = false
         pinHash = ""
         pinSalt = ""
+        clearPinFailures()
+    }
+
+    var pinFailures: Int
+        get() = sp.getInt("pin_failures", 0)
+        private set(v) = sp.edit().putInt("pin_failures", v).apply()
+
+    var pinBlockedUntil: Long
+        get() = sp.getLong("pin_blocked_until", 0L)
+        private set(v) = sp.edit().putLong("pin_blocked_until", v).apply()
+
+    /** Exponential backoff: 5 s, 10 s, 20 s … capped at 5 minutes. */
+    fun recordPinFailure(): Long {
+        val attempt = pinFailures + 1
+        pinFailures = attempt
+        val seconds = minOf(5 * (1 shl minOf(attempt - 1, 6)), 300)
+        pinBlockedUntil = System.currentTimeMillis() + seconds * 1000L
+        return seconds.toLong()
+    }
+
+    fun pinBlockSeconds(): Long =
+        maxOf(0L, (pinBlockedUntil - System.currentTimeMillis()) / 1000L)
+
+    fun clearPinFailures() {
+        pinFailures = 0
+        pinBlockedUntil = 0L
     }
 
     private fun hashPin(pin: String, saltHex: String): String {

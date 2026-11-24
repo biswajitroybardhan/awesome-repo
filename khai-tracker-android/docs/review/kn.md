@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | ಬಗ್ಗೆ |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ರಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ.\n\nಹಂಚಿಕೆಯ ಫೋನ್‍ಗಳು, ಅಸ್ಥಿರ ನೆಟ್‍ವರ್ಕ್‍ಗಳು ಮತ್ತು ವಿವಿಧ ಭಾರತೀಯ ಆಹಾರಗಳಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ಆಫ್‍ಲೈನ್ ಮೊದಲು. ಯಾವುದೇ ಮೂರನೇ ಪಕ್ಷದ ವಿಶ್ಲೇಷಣೆ ಇಲ್ಲ. ಜಾಹೀರಾತು ಇಲ್ಲ. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ರಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ.\n\nಹಂಚಿಕೆಯ ಫೋನ್‍ಗಳು, ಅಸ್ಥಿರ ನೆಟ್‍ವರ್ಕ್‍ಗಳು ಮತ್ತು ವಿವಿಧ ಭಾರತೀಯ ಆಹಾರಗಳಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ಆಫ್‍ಲೈನ್ ಮೊದಲು. ಯಾವುದೇ ಮೂರನೇ ಪಕ್ಷದ ವಿಶ್ಲೇಷಣೆ ಇಲ್ಲ. ಜಾಹೀರಾತು ಇಲ್ಲ. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | ಉತ್ಪನ್ನದ ಜವಾಬ್ದಾರರು: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + ಆಹಾರ ಸೇರಿಸಿ |  |
 | `add_medicines` | Add medicines | ಔಷಧಗಳನ್ನು ಸೇರಿಸಿ |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ಅರ್ಹ ವೈದ್ಯರನ್ನು ಕೇಳಿ. |  |
 | `assistant_input_ph` | Ask a question | ಒಂದು ಪ್ರಶ್ನೆ ಕೇಳಿ |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | ಈ ಉಪಕರಣದ ಸ್ವಂತ ಸಹಾಯ ಪಠ್ಯದಿಂದ ತೆಗೆದುಕೊಂಡ ಪ್ರಶ್ನೆಗಳ ಉತ್ತರಗಳು. ಯಾವುದೇ AI ಇಲ್ಲ, ರೋಗನಿರ್ಣಯ ಇಲ್ಲ, ಸಲಹೆ ಇಲ್ಲ. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | ಈ ಉಪಕರಣದ ಸ್ವಂತ ಸಹಾಯ ಪಠ್ಯದಿಂದ ತೆಗೆದುಕೊಂಡ ಪ್ರಶ್ನೆಗಳ ಉತ್ತರಗಳು. ಯಾವುದೇ AI ಇಲ್ಲ, ರೋಗನಿರ್ಣಯ ಇಲ್ಲ, ಸಲಹೆ ಇಲ್ಲ. |  |
 | `assistant_listen` | Listen | ಕೇಳಿರಿ |  |
 | `assistant_send` | Send | ಕಳುಹಿಸಿ |  |
 | `assistant_tab` | Guide | ಮಾರ್ಗದರ್ಶಿ |  |
 | `assistant_title` | Khai Guide | ಖಾಯಿ ಮಾರ್ಗದರ್ಶಿ |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | ಇದಕ್ಕೆ ನನ್ನಲ್ಲಿ ಉತ್ತರವಿಲ್ಲ. ಈ ಉಪಕರಣವನ್ನು ಬಳಸುವುದರ ಬಗ್ಗೆ ಮಾತ್ರ ನಾನು ಉತ್ತರಿಸುತ್ತೇನೆ. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | ಇದಕ್ಕೆ ನನ್ನಲ್ಲಿ ಉತ್ತರವಿಲ್ಲ. ಈ ಉಪಕರಣವನ್ನು ಬಳಸುವುದರ ಬಗ್ಗೆ ಮಾತ್ರ ನಾನು ಉತ್ತರಿಸುತ್ತೇನೆ. |  |
 | `back` | Back | ಹಿಂದೆ |  |
 | `bp_dia` | Diastolic (lower) | ಡಯಾಸ್ಟೊಲಿಕ್ (ಕೆಳಗಿನ) |  |
 | `bp_sys` | Systolic (upper) | ಸಿಸ್ಟೊಲಿಕ್ (ಮೇಲಿನ) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN ನಲ್ಲಿ ನಿಖರವಾಗಿ 4 ಅಂಕಗಳಿರಬೇಕು. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | ಕುಟುಂಬದ ಹಂಚಿಕೆಯ ಫೋನ್‍ನಲ್ಲಿ ಉಪಯುಕ್ತ. ಆ್ಯಪ್ ತೆರೆದಾಗ 4-ಅಂಕಿಯ PIN ಕೇಳಲಾಗುತ್ತದೆ, ಮತ್ತು ಒಂದು ನಿಮಿಷ ದೂರವಿದ್ದ ನಂತರ ಮತ್ತೆ ಕೇಳಲಾಗುತ್ತದೆ. |  |
 | `pin_lock` | App lock | ಆ್ಯಪ್ ಲಾಕ್ |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4-ಅಂಕಿಯ PIN ಆಯ್ಕೆ ಮಾಡಿ |  |
 | `pin_remove` | Remove PIN | PIN ತೆಗೆದುಹಾಕಿ |  |
 | `pin_removed` | PIN removed. | PIN ತೆಗೆದುಹಾಕಲಾಗಿದೆ. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN ಹೊಂದಿಸಿ |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN ತಪ್ಪಾಗಿದೆ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. |  |
 | `portion_q` | Portion | ಪ್ರಮಾಣ |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | ನಿಮ್ಮ ದಾಖಲೆಗಳು ಈ ಸಾಧನದಲ್ಲಿ, ಈ ಫೋನ್‍ನ ಸುರಕ್ಷಿತ ಕೀ ಸಂಗ್ರಹದಲ್ಲಿರುವ ಕೀಯಿಂದ ಗುಪ್ತಲಿಖಿತವಾಗಿವೆ. ನೀವು ಅಧ್ಯಯನ ಸರ್ವರ್ ಹೊಂದಿಸದ ಹೊರತು ಏನೂ ಎಲ್ಲಿಯೂ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಯಾವುದೇ ವಿಶ್ಲೇಷಣೆ ಇಲ್ಲ, ಜಾಹೀರಾತು ಇಲ್ಲ. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | ನಿಮ್ಮ ದಾಖಲೆಗಳು ಈ ಸಾಧನದಲ್ಲಿ, ಈ ಫೋನ್‍ನ ಸುರಕ್ಷಿತ ಕೀ ಸಂಗ್ರಹದಲ್ಲಿರುವ ಕೀಯಿಂದ ಗುಪ್ತಲಿಖಿತವಾಗಿವೆ. ನೀವು ಅಧ್ಯಯನ ಸರ್ವರ್ ಹೊಂದಿಸದ ಹೊರತು ಏನೂ ಎಲ್ಲಿಯೂ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಯಾವುದೇ ವಿಶ್ಲೇಷಣೆ ಇಲ್ಲ, ಜಾಹೀರಾತು ಇಲ್ಲ. |  |
 | `privacy_title` | Privacy | ಗೌಪ್ಯತೆ |  |
 | `profile` | Profile and medicines | ಪ್ರೊಫೈಲ್ ಮತ್ತು ಔಷಧಗಳು |  |
 | `progress_title` | Progress | ಪ್ರಗತಿ |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | ನಿನ್ನ ರಾತ್ರಿಯ ನಿದ್ರೆ (ಗಂಟೆಗಳು) |  |
 | `sodium` | Salt (sodium) | ಉಪ್ಪು (ಸೋಡಿಯಂ) |  |
 | `streak` | Day streak | ದಿನಗಳ ಸರಣಿ |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | ಅದು ಮಾನ್ಯ ವಿಳಾಸದಂತೆ ಕಾಣುತ್ತಿಲ್ಲ. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | ಸಿಂಕ್ ವಿಫಲವಾಯಿತು. ದಾಖಲೆಗಳು ಈ ಫೋನ್‍ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿವೆ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲಾಗುವುದು. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | ಐಚ್ಛಿಕ. ನಿಮ್ಮ ಸಂಯೋಜಕರು ಸರ್ವರ್ ವಿಳಾಸ ನೀಡುತ್ತಾರೆ. ಎಲ್ಲವನ್ನೂ ಈ ಫೋನ್‍ನಲ್ಲಿಯೇ ಇಡಲು ಖಾಲಿ ಬಿಡಿ. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS ವಿಳಾಸ ಬಳಸಿ. ಆರೋಗ್ಯ ಡೇಟಾವನ್ನು ಎಂದಿಗೂ ಗುಪ್ತಲಿಖಿತವಾಗಿಸದೆ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | ಐಚ್ಛಿಕ. ನಿಮ್ಮ ಸಂಯೋಜಕರು ಸರ್ವರ್ ವಿಳಾಸ ನೀಡುತ್ತಾರೆ. ಎಲ್ಲವನ್ನೂ ಈ ಫೋನ್‍ನಲ್ಲಿಯೇ ಇಡಲು ಖಾಲಿ ಬಿಡಿ. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS ವಿಳಾಸ ಬಳಸಿ. ಆರೋಗ್ಯ ಡೇಟಾವನ್ನು ಎಂದಿಗೂ ಗುಪ್ತಲಿಖಿತವಾಗಿಸದೆ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. |  |
 | `sync_never` | Not synced yet. | ಇನ್ನೂ ಸಿಂಕ್ ಆಗಿಲ್ಲ. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | ಈಗ ಸಿಂಕ್ ಮಾಡಿ |  |
 | `sync_offline` | No internet right now. Entries queued. | ಈಗ ಇಂಟರ್ನೆಟ್ ಇಲ್ಲ. ದಾಖಲೆಗಳು ಸರತಿಯಲ್ಲಿವೆ. |  |
 | `sync_ok` | Synced. All entries are on the server. | ಸಿಂಕ್ ಆಗಿದೆ. ಎಲ್ಲಾ ದಾಖಲೆಗಳು ಸರ್ವರ್‍ನಲ್ಲಿವೆ. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | ವಿಳಾಸ ಉಳಿಸಿ |  |
-| `sync_title` | Study sync | ಅಧ್ಯಯನ ಸಿಂಕ್ |  |
+| `sync_title` | Institution sync | ಅಧ್ಯಯನ ಸಿಂಕ್ |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | ಸರ್ವರ್ ವಿಳಾಸ |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | ಇತಿಹಾಸ |  |

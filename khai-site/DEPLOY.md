@@ -17,10 +17,13 @@ Pick one static host (GitHub Pages, S3 + CloudFront, Netlify, or a normal web se
 
 - Publish the **contents** of `khai-site/` at the domain root, not the folder itself.
 - Keep these files at the root: `index.html`, `privacy.html`, `security.html`,
-  `robots.txt`, `sitemap.xml`, and the hidden `.well-known/security.txt`.
+  `robots.txt`, `sitemap.xml`, `_headers`, and the hidden `.well-known/security.txt`.
 - Serve over HTTPS. Several pages reference `https://khaifoods.in/...` as their
   canonical URL; HTTP would conflict with those references.
-- Do not add a build step or a CDN script. That would break the no-network promise.
+- Do not add a build step or a CDN script. That would break the site's no-network design.
+- Apply the security headers in `_headers`. Netlify reads it automatically; on GitHub Pages,
+  S3/CloudFront or a normal web server, set the same headers in the host configuration. The
+  CSP allows this site's inline CSS/JS and local downloads but sets `connect-src 'none'`.
 
 For GitHub Pages specifically: repository Settings → Pages → deploy from a branch,
 then select the branch and `/root` (or `/docs` only if the files are moved there).
@@ -44,6 +47,17 @@ foreach ($p in $pages) {
 All eleven must return 200. The exact privacy URL that must be live is
 `https://khaifoods.in/privacy.html`.
 
+Check that the security headers are present (adjust the host if `_headers` is not supported):
+
+```powershell
+$r = Invoke-WebRequest https://khaifoods.in/ -UseBasicParsing
+$r.Headers['Content-Security-Policy']
+$r.Headers['X-Content-Type-Options']
+$r.Headers['Referrer-Policy']
+```
+
+The CSP must include `connect-src 'none'`; the other two must be `nosniff` and `no-referrer`.
+
 Verify the downloadable APK too:
 
 ```powershell
@@ -53,7 +67,7 @@ Get-Content khai-site\files\khai-tracker-1.0.0.apk.sha256
 ```
 
 The two hashes must match. The pinned value at the time this runbook was written was
-`dde6cd319873f732e94488052277484da2dc3491162713c543838d2174f563c2`.
+`40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f`.
 
 ## 3. Before public launch
 

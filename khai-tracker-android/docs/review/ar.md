@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | حول |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nمن إنتاج Khai Foods Pvt Ltd، جامشيدبور، جاركهاند، الهند.\n\nمصمّم للهواتف المشتركة والشبكات المتقطعة والوجبات الهندية المتنوّعة. يعمل دون اتصال أولًا. لا تحليلات من طرف ثالث. لا إعلانات. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nمن إنتاج Khai Foods Pvt Ltd، جامشيدبور، جاركهاند، الهند.\n\nمصمّم للهواتف المشتركة والشبكات المتقطعة والوجبات الهندية المتنوّعة. يعمل دون اتصال أولًا. لا تحليلات من طرف ثالث. لا إعلانات. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | مالك المنتج: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + إضافة طعام |  |
 | `add_medicines` | Add medicines | إضافة أدوية |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | اسأل أخصائياً مؤهلاً. |  |
 | `assistant_input_ph` | Ask a question | اطرح سؤالاً |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | إجابات مأخوذة فقط من نص المساعدة الخاص بهذه الأداة. لا ذكاء اصطناعي، ولا تشخيص، ولا نصيحة. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | إجابات مأخوذة فقط من نص المساعدة الخاص بهذه الأداة. لا ذكاء اصطناعي، ولا تشخيص، ولا نصيحة. |  |
 | `assistant_listen` | Listen | استمع |  |
 | `assistant_send` | Send | إرسال |  |
 | `assistant_tab` | Guide | دليل |  |
 | `assistant_title` | Khai Guide | دليل خاي |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | لا أملك إجابة عن هذا. أجيب فقط عن الأسئلة الخاصة باستخدام هذه الأداة. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | لا أملك إجابة عن هذا. أجيب فقط عن الأسئلة الخاصة باستخدام هذه الأداة. |  |
 | `back` | Back | رجوع |  |
 | `bp_dia` | Diastolic (lower) | الانبساطي (الأدنى) |  |
 | `bp_sys` | Systolic (upper) | الانقباضي (الأعلى) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | يجب أن يتكوّن PIN من 4 خانات بالضبط. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | مفيد على هاتف مشترك مع العائلة. يُطلب رقم PIN من 4 خانات عند فتح التطبيق، ومرة أخرى بعد دقيقة من الغياب. |  |
 | `pin_lock` | App lock | قفل التطبيق |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | اختر رقم PIN من 4 خانات |  |
 | `pin_remove` | Remove PIN | إزالة PIN |  |
 | `pin_removed` | PIN removed. | تمت إزالة PIN. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | تعيين PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN غير صحيح. حاول مرة أخرى. |  |
 | `portion_q` | Portion | الحصة |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | إدخالاتك مشفّرة على هذا الجهاز بمفتاح محفوظ في مخزن المفاتيح الآمن في هذا الهاتف. لا يُرسل أي شيء إلى أي مكان ما لم تضع عنوان خادم دراسة. لا يوجد تحليلات ولا إعلانات. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | إدخالاتك مشفّرة على هذا الجهاز بمفتاح محفوظ في مخزن المفاتيح الآمن في هذا الهاتف. لا يُرسل أي شيء إلى أي مكان ما لم تضع عنوان خادم دراسة. لا يوجد تحليلات ولا إعلانات. |  |
 | `privacy_title` | Privacy | الخصوصية |  |
 | `profile` | Profile and medicines | الملف الشخصي والأدوية |  |
 | `progress_title` | Progress | التقدّم |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | نوم الليلة الماضية (ساعات) |  |
 | `sodium` | Salt (sodium) | الملح (الصوديوم) |  |
 | `streak` | Day streak | أيام متتالية |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | لا يبدو هذا عنوانًا صالحًا. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | فشلت المزامنة. الإدخالات آمنة على هذا الهاتف وستُعاد المحاولة. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | اختياري. يزوّدك المنسّق بعنوان الخادم. اتركه فارغًا لإبقاء كل شيء على هذا الهاتف فقط. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | استخدم عنوان HTTPS. لا تُرسل البيانات الصحية غير مشفّرة أبدًا. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | اختياري. يزوّدك المنسّق بعنوان الخادم. اتركه فارغًا لإبقاء كل شيء على هذا الهاتف فقط. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | استخدم عنوان HTTPS. لا تُرسل البيانات الصحية غير مشفّرة أبدًا. |  |
 | `sync_never` | Not synced yet. | لم تتم المزامنة بعد. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | زامن الآن |  |
 | `sync_offline` | No internet right now. Entries queued. | لا يوجد اتصال بالإنترنت الآن. الإدخالات في الانتظار. |  |
 | `sync_ok` | Synced. All entries are on the server. | تمت المزامنة. جميع الإدخالات على الخادم. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | حفظ العنوان |  |
-| `sync_title` | Study sync | مزامنة الدراسة |  |
+| `sync_title` | Institution sync | مزامنة الدراسة |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | عنوان الخادم |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | السجل |  |

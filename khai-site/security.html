@@ -89,7 +89,7 @@
 
       <h2 id="stores">1. What it stores</h2>
       <p>Per participant, per day: food items (library id, label, quantity, unit, estimated energy and macronutrients); medicine name, dose and the day's status (taken / skipped / changed); systolic, diastolic, pulse, glucose and context, weight, energy, mood, sleep, a free-text note; and a timestamp.</p>
-      <p>Profile: participant code, age-band code, condition codes, medicine list, consent version and timestamp, a random device ID and creation time. Settings: language, reminder on/off and time, PIN hash and salt, optional sync URL, last sync status and a "hide previews" flag.</p>
+      <p>Profile: participant code, age-band code, condition codes, medicine list, consent version and timestamp, a random device ID and creation time — all encrypted with the same Keystore key. Settings: language, reminder on/off and time, PIN hash/salt and failure count, optional sync URL, per-device token, optional SPKI pin, explicit sync consent, last sync status and a "hide previews" flag that is on by default.</p>
       <p><strong>None of this is a name, phone number, address or government identifier.</strong> See the <a href="privacy.html">privacy notice</a> for how it is used.</p>
 
       <h2 id="encryption">2. Encryption at rest</h2>
@@ -98,7 +98,8 @@
         <li>Key: generated inside <code>AndroidKeyStore</code> under alias <code>khai_record_key_v1</code>, non-exportable, <code>setUserAuthenticationRequired(false)</code> so background sync works while the screen is off.</li>
         <li>Associated data: <code>code|date</code>. Moving a ciphertext row to another participant or date makes decryption fail.</li>
         <li>Storage: a SQLite table <code>entries(code, date, iv, ct, updated_ms, dirty)</code>. There is no plaintext column.</li>
-        <li>Erase: rows are deleted and the Keystore alias is deleted, so residual bytes are undecryptable.</li>
+        <li>Profile: conditions, medicines, age band and consent metadata are encrypted with the same Keystore-backed key under AAD <code>khai-profile-v1</code>. Only non-sensitive settings stay in <code>SharedPreferences</code>.</li>
+        <li>Erase: rows, encrypted profile, settings and the Keystore alias are deleted, so residual bytes are undecryptable. Generated export files are deleted too.</li>
       </ul>
       <div class="callout"><b>Threat-model consequence:</b> this protects the database file, a stolen powered-off phone, a backup and forensic extraction of app storage. It does <strong>not</strong> protect against an attacker who can run code as the app's user on an unlocked device, because the app can obtain the key. The PIN is an interface gate, not a second key.</div>
 
@@ -107,51 +108,53 @@
         <li>Android file-based encryption for the whole device.</li>
         <li>App sandbox — <code>/data/data/in.khaifoods.tracker</code> is not readable by other apps.</li>
         <li><code>android:allowBackup="false"</code>, with extraction rules excluding database, prefs, files and external storage from cloud backup and device transfer.</li>
-        <li><code>FLAG_SECURE</code> when "hide previews" is on, stopping recent-app thumbnails and screenshots.</li>
+        <li><code>FLAG_SECURE</code> is on by default when "hide previews" is left untouched, stopping recent-app thumbnails and screenshots. A participant can turn it off knowingly.</li>
         <li>HTTPS-only network security config; cleartext is disabled at the manifest and the config.</li>
       </ul>
 
       <h2 id="pin">4. The PIN</h2>
-      <p>Four digits, salted, PBKDF2-HMAC-SHA1, 120 000 iterations, 256-bit output, constant-time compare. Re-locks after 60 seconds in the background. Removing it requires access to the unlocked app — the same trust boundary.</p>
+      <p>Four digits, salted, PBKDF2-HMAC-SHA1, 120 000 iterations, 256-bit output, constant-time compare. Re-locks after 60 seconds in the background. Failed attempts now trigger exponential backoff from 5 seconds up to 5 minutes, and the gate is disabled while the wait runs. Removing it requires access to the unlocked app — the same trust boundary.</p>
       <p>A four-digit PIN has 10 000 possibilities, so the hash is a speed bump, not a defence against offline brute force if the salt and hash leak. Its real job is to keep a family member or a borrower out of the interface. <strong>PIN is not two-factor authentication and does not add cryptographic protection.</strong></p>
 
-      <h2 id="network">5. Network and sync</h2>
-      <p>Sync is opt-in and requires an <code>https://</code> base URL. It retries once on transport failure, does not follow redirects and rejects non-2xx responses without retry on 4xx. The payload is a full upsert of all local days for one participant: <code>{code, device_id, days: {date: entry}}</code>. The contract is <code>POST {base}/api/sync</code>.</p>
-      <p>The browser demo has <strong>no sync at all</strong> — nothing leaves the browser. In the app, sync is off by default.</p>
-      <p><strong>Known gaps before production:</strong> no certificate pinning; no per-device authentication token (the server must add one and the app must send it); no request signing or replay protection beyond idempotent upsert; the participant code is the only subject identifier, so server-side authorisation must be strict; and sync runs on a background thread with no visible progress or backoff schedule.</p>
+      <h2 id="network">5. Network, sync and analysis</h2>
+      <p>Sync is off until an institution address, a per-device bearer token and explicit consent are configured in Settings. The app accepts an absolute <code>https://</code> URL only, rejects embedded credentials, query strings and fragments, never follows redirects, and retries once on transport failure. It sends only days still marked unsynced: <code>{schema, code, device_id, days: {date: entry}}</code> to <code>POST {base}/api/sync</code>.</p>
+      <p>An optional SPKI pin (base64 SHA-256 of the server public key) adds certificate pinning on top of system trust anchors. A 2xx response is not sufficient: the server must return <code>accepted_dates</code>, and the app clears the unsynced flag only for dates confirmed in that response.</p>
+      <p>The browser demo has <strong>no sync at all</strong> — nothing leaves the browser. The app has no ads, advertising identifier or third-party analytics SDK. Institution staff may analyse trends only in records synced under the recorded consent, under a signed data-processing agreement; no automated care decisions are made from them.</p>
+      <p><strong>Still required before real data:</strong> a named institution endpoint, token issue/revocation, a documented pin-rotation path, strict server-side authorisation per participant code, retention and erasure controls, a DPIA and a penetration test. The app cannot make a server secure; the server contract is recorded in <code>khai-tracker-android/docs/SECURE_SYNC.md</code>.</p>
 
       <h2 id="exports">6. Exports and sharing</h2>
-      <p>Files are written to the app's private cache and exposed through a non-exported <code>ContentProvider</code> with a one-shot read grant on the share intent. The provider rejects path traversal in file names and serves only existing cache files.</p>
-      <p>Exported files are plaintext by design — they are meant to be read by a clinician. The participant chooses the destination app; Khai does not upload them. The cache is not cleared automatically, so export cache expiry is a pre-production task.</p>
+      <p>Files are written to the app's private cache and exposed through a non-exported <code>ContentProvider</code> with a one-shot read grant on the share intent. Every provider method validates the filename and serves only existing regular cache files.</p>
+      <p>Exported files are plaintext by design — they are meant to be read by a clinician. The participant chooses the destination app; Khai does not upload them. CSV cells that begin with a spreadsheet formula character are prefixed with an apostrophe, so a free-text note cannot become a formula when staff open the file. Files older than 24 hours are removed when a new export is written, and “Erase my data” deletes the whole export cache.</p>
 
       <h2 id="thirdparties">7. Logging and third parties</h2>
-      <p>No analytics, crash reporting, advertising or attribution libraries are linked. There are no <code>Log.*</code> calls in the shipped source; exceptions are caught and ignored rather than printed with record content. The only network endpoint is the study server the participant configures. There is one optional, inexact daily reminder whose notification text contains no clinical values.</p>
+      <p>No third-party analytics, crash reporting, advertising or attribution libraries are linked. Institution-side trend analysis runs on the server under consent, not in an SDK on the phone. There are no <code>Log.*</code> calls in the shipped source; exceptions are caught and ignored rather than printed with record content. The only network endpoint is the institution server the participant configures. There is one optional, inexact daily reminder whose notification text contains no clinical values.</p>
 
       <h2 id="build">8. Build and supply chain</h2>
-      <p>The APK is built by <code>tools/build.py</code> from locally installed JDK 17, Android SDK 35, Kotlin 2.0.21 and <code>bundletool.jar</code>. Release signing uses a 4096-bit RSA key. No dependency manager is used, so there is no transitive dependency surface. <code>tools/check.py</code> is the release gate and the build is reproducible without Gradle or an IDE.</p>
-      <div class="caveat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span><b>Development key.</b> The keystore currently in the repository is a generated development key, not a production signing identity. Replace it and enrol in Play App Signing before any real distribution. This APK is a technical preview, not a Play Store release.</span></div>
+      <p>The APK is built by <code>tools/build.py</code> from locally installed JDK 17, Android SDK 35, Kotlin 2.0.21 and a SHA-256-pinned <code>bundletool.jar</code>. Release signing uses the dedicated 4096-bit RSA upload key held outside the repository. Signing passwords are read from a user-only file or environment; the build redacts them from output, passes them to <code>apksigner</code> through an environment variable and gives <code>bundletool</code> only a short-lived password file. No dependency manager is used, so there is no transitive dependency surface. <code>tools/check.py</code> asserts the security controls and <code>tools/verify.py</code> checks the artefacts.</p>
+      <div class="caveat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span><b>Upload key, not a Store listing.</b> This APK is signed by the dedicated upload key and is a technical preview. Enrol in Play App Signing before distribution; Google will then hold the app signing key that users actually trust.</span></div>
 
       <h2 id="verify">9. Verify the APK</h2>
       <p>The downloadable file is signed and hashed. Compare before installing:</p>
       <pre><code>File:     khai-tracker-1.0.0.apk
 Package:  in.khaifoods.tracker
 Version:  1.0.0 (versionCode 1)
-SHA-256:  dde6cd319873f732e94488052277484da2dc3491162713c543838d2174f563c2</code></pre>
+Size:     1,284,457 bytes
+SHA-256:  40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f</code></pre>
       <p>On Windows PowerShell:</p>
       <pre><code>Get-FileHash .\khai-tracker-1.0.0.apk -Algorithm SHA256</code></pre>
       <p>On macOS or Linux:</p>
       <pre><code>shasum -a 256 khai-tracker-1.0.0.apk</code></pre>
-      <p>The machine-readable value is in <code>files/khai-tracker-1.0.0.apk.sha256</code>. Verify the signing certificate too: <code>apksigner verify --print-certs khai-tracker-1.0.0.apk</code> (from Android build tools). The build gate confirmed v2 and v3 signatures, v1 false, RSA 4096, subject <code>CN=Khai Foods Pvt Ltd</code>. A mismatch means the file is not the one built here — do not install it.</p>
+      <p>The machine-readable value is in <code>files/khai-tracker-1.0.0.apk.sha256</code>. Verify the signing certificate too: <code>apksigner verify --print-certs khai-tracker-1.0.0.apk</code> (from Android build tools). The build gate confirmed v2 and v3 signatures, v1 false, RSA 4096, subject <code>CN=Khai Foods Pvt Ltd, OU=Khai Tracker upload</code>, certificate SHA-256 <code>20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b</code>. A mismatch means the file is not the one built here — do not install it. Publish the Play app-signing fingerprint through an independent channel once Console issues it.</p>
 
       <h2 id="gaps">10. Pre-production checklist</h2>
       <ul>
-        <li>Replace the development keystore; enrol Play App Signing; store the upload key in a vault.</li>
-        <li>Add server authentication and per-device credentials; document key rotation.</li>
-        <li>Decide on certificate pinning with a documented rotation plan.</li>
-        <li>Add export cache expiry, and a job-scheduler sync with backoff and progress.</li>
-        <li>Add a privacy-preserving crash reporter or explicitly accept its absence.</li>
+        <li>Enrol Play App Signing; back up the upload key in a team vault; publish the Play signing fingerprint out of band.</li>
+        <li>Provision the institution endpoint, issue and revoke per-device tokens, and test token rotation.</li>
+        <li>Publish the SPKI pin with a documented rotation plan and test a refused wrong-certificate connection.</li>
+        <li>Test full, partial and missing <code>accepted_dates</code> responses; add job-scheduler sync with backoff and visible progress.</li>
+        <li>Decide explicitly whether a privacy-preserving crash reporter is wanted; none is shipped today.</li>
         <li>Run a DPIA and a penetration test on the phone + server pair.</li>
-        <li>Confirm the legal basis and consent text per jurisdiction.</li>
+        <li>Confirm the legal basis, clinic licence and consent text per jurisdiction.</li>
         <li>Set real, monitored privacy and security mailboxes.</li>
         <li>Execute the app on physical devices across Android 7–15 and record the results.</li>
       </ul>

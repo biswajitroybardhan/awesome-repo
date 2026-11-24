@@ -297,6 +297,72 @@ def check_versions():
     print("  version: %s (%s)" % (m_name.group(1) if m_name else "?", m_code.group(1) if m_code else "?"))
 
 
+def check_security():
+    """Assert the controls that are easy to lose silently during a future edit."""
+    manifest_path = os.path.join(APP, "AndroidManifest.xml")
+    root = ET.parse(manifest_path).getroot()
+    ns = "{http://schemas.android.com/apk/res/android}"
+    app = root.find("application")
+    for component in ("provider", "receiver", "service"):
+        for node in app.findall(component):
+            name = node.get(ns + "name")
+            if node.get(ns + "exported") != "false":
+                err("%s %s must declare android:exported=false" % (component, name))
+
+    net = read(os.path.join(APP, "res", "xml", "network_security_config.xml"))
+    if '<certificates src="system" />' not in net or 'src="user"' in net:
+        err("network config must trust system anchors only")
+    if 'cleartextTrafficPermitted="false"' not in net:
+        err("network config must disable cleartext")
+
+    build = read(os.path.join(ROOT, "tools", "build.py"))
+    if 'or "khai-release-2026"' in build or '"pass:" + KEYSTORE_PASS' in build:
+        err("build.py must not embed or pass a signing password on the command line")
+    if '"env:" + SIGNING_PASS_ENV' not in build or '"file:" + pass_file' not in build:
+        err("build.py must use env:/file: signing secret inputs")
+    if "2d4ad908faea64047c1cc9cb747e6aa667c6ab192e09607bd16b67246a8cd6ae" not in build:
+        err("bundletool.jar SHA-256 is not pinned in build.py")
+
+    sync = read(os.path.join(SRC, "Sync.kt"))
+    for needle, label in (
+        ('R.string.sync_no_consent', "explicit sync consent"),
+        ('"Authorization", "Bearer $token"', "per-device bearer token"),
+        ('accepted_dates', "server persistence acknowledgement"),
+        ('sslSocketFactory = pinnedSocketFactory(pin)', "optional server key pinning"),
+        ('hostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier()', "hostname verification"),
+        ('SSLContext.getInstance("TLSv1.2")', "TLS 1.2 minimum"),
+    ):
+        if needle not in sync:
+            err("sync is missing %s" % label)
+    if 'pendingDates' not in sync:
+        err("sync must send only dirty days, not the whole record")
+
+    exports = read(os.path.join(SRC, "Exports.kt"))
+    if 'in "=+-@\\t\\r"' not in exports:
+        err("CSV export still allows spreadsheet formula injection")
+    if 'fun clearCache' not in exports:
+        err("export cache cannot be cleared")
+    if 'Exports.clearCache' not in read(os.path.join(SRC, "MainActivity.kt")):
+        err("erase must delete generated export files")
+
+    prefs = read(os.path.join(SRC, "Prefs.kt"))
+    if 'Crypto.encrypt(plain, "khai-profile-v1")' not in prefs:
+        err("profile is not encrypted with the Keystore-backed key")
+    if 'recordPinFailure' not in prefs:
+        err("PIN has no backoff after failed attempts")
+    if 'Languages.SHIPPED.any' not in prefs:
+        err("a stale draft language preference can survive the shipped-only picker")
+
+    if 'val SHIPPED' not in read(os.path.join(SRC, "Languages.kt")):
+        err("draft languages are not separated from shipped languages")
+    settings = read(os.path.join(SRC, "SettingsScreen.kt"))
+    if 'Languages.SHIPPED' not in settings:
+        err("language picker still offers unreviewed drafts")
+
+    print("  security: manifest, transport, signing, sync, exports, profile, PIN, languages")
+    return len(errors) == 0
+
+
 def main():
     print("Khai Tracker static checks")
     check_strings()
@@ -306,6 +372,7 @@ def main():
     check_density_coverage()
     check_foods()
     check_manifest()
+    check_security()
     check_versions()
 
     for w in warnings:

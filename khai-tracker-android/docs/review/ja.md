@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | このアプリについて |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd（インド、ジャールカンド州ジャムシェドプル）が制作\n\n共有端末、不安定なネットワーク、インドのさまざまな食事に合わせて設計。オフライン優先。サードパーティの解析なし。広告なし。 |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd（インド、ジャールカンド州ジャムシェドプル）が制作\n\n共有端末、不安定なネットワーク、インドのさまざまな食事に合わせて設計。オフライン優先。サードパーティの解析なし。広告なし。 |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | 製品責任者: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + 食品を追加 |  |
 | `add_medicines` | Add medicines | 薬を追加 |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | 資格のある医療専門家にご相談ください。 |  |
 | `assistant_input_ph` | Ask a question | 質問を入力 |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | このツール固有のヘルプテキストからのみ回答します。AIは使わず、診断も助言もしません。 |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | このツール固有のヘルプテキストからのみ回答します。AIは使わず、診断も助言もしません。 |  |
 | `assistant_listen` | Listen | 読み上げ |  |
 | `assistant_send` | Send | 送信 |  |
 | `assistant_tab` | Guide | ガイド |  |
 | `assistant_title` | Khai Guide | Khai ガイド |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | その質問には答えられません。このツールの使い方に関する質問にのみ答えます。 |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | その質問には答えられません。このツールの使い方に関する質問にのみ答えます。 |  |
 | `back` | Back | 戻る |  |
 | `bp_dia` | Diastolic (lower) | 拡張期（下） |  |
 | `bp_sys` | Systolic (upper) | 収縮期（上） |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN はちょうど 4 桁で入力してください。 |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | 家族と共有する端末に便利です。アプリを開くときと、離れて 1 分後に戻ったときに 4 桁の PIN を入力します。 |  |
 | `pin_lock` | App lock | アプリロック |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4 桁の PIN を選んでください |  |
 | `pin_remove` | Remove PIN | PIN を削除 |  |
 | `pin_removed` | PIN removed. | PIN を削除しました。 |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN を設定 |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN が違います。もう一度お試しください。 |  |
 | `portion_q` | Portion | 分量 |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | 入力内容は、この端末のセキュアキーストアに保管される鍵で端末上で暗号化されます。研究サーバーを設定しない限り、どこにも送信されません。解析ツールも広告もありません。 |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | 入力内容は、この端末のセキュアキーストアに保管される鍵で端末上で暗号化されます。研究サーバーを設定しない限り、どこにも送信されません。解析ツールも広告もありません。 |  |
 | `privacy_title` | Privacy | プライバシー |  |
 | `profile` | Profile and medicines | プロフィールと薬 |  |
 | `progress_title` | Progress | 進捗 |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | 昨夜の睡眠（時間） |  |
 | `sodium` | Salt (sodium) | 塩分（ナトリウム） |  |
 | `streak` | Day streak | 連続記録日数 |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | 有効なアドレスではないようです。 |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | 同期に失敗しました。記録はこの端末に安全に保存されており、再試行されます。 |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | 任意です。コーディネーターがサーバーアドレスを指定します。空欄にすると、すべてこの端末内に保存されます。 |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS アドレスを使用してください。健康データが暗号化されずに送信されることはありません。 |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | 任意です。コーディネーターがサーバーアドレスを指定します。空欄にすると、すべてこの端末内に保存されます。 |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS アドレスを使用してください。健康データが暗号化されずに送信されることはありません。 |  |
 | `sync_never` | Not synced yet. | まだ同期していません。 |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | 今すぐ同期 |  |
 | `sync_offline` | No internet right now. Entries queued. | 現在インターネットに接続されていません。記録は送信待ちです。 |  |
 | `sync_ok` | Synced. All entries are on the server. | 同期しました。すべての記録がサーバーにあります。 |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | アドレスを保存 |  |
-| `sync_title` | Study sync | 研究サーバーとの同期 |  |
+| `sync_title` | Institution sync | 研究サーバーとの同期 |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | サーバーアドレス |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | 履歴 |  |

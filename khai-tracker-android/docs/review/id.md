@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | Tentang |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nDibuat oleh Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDirancang untuk ponsel bersama, jaringan yang tidak stabil, dan beragam hidangan India. Mengutamakan mode offline. Tidak ada analitik pihak ketiga. Tidak ada iklan. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nDibuat oleh Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDirancang untuk ponsel bersama, jaringan yang tidak stabil, dan beragam hidangan India. Mengutamakan mode offline. Tidak ada analitik pihak ketiga. Tidak ada iklan. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | Pemilik produk: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + Tambah makanan |  |
 | `add_medicines` | Add medicines | Tambah obat |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | Tanyakan kepada tenaga kesehatan yang berkualifikasi. |  |
 | `assistant_input_ph` | Ask a question | Ajukan pertanyaan |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | Jawaban hanya diambil dari teks bantuan alat ini sendiri. Tanpa AI, tanpa diagnosis, tanpa saran. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | Jawaban hanya diambil dari teks bantuan alat ini sendiri. Tanpa AI, tanpa diagnosis, tanpa saran. |  |
 | `assistant_listen` | Listen | Dengarkan |  |
 | `assistant_send` | Send | Kirim |  |
 | `assistant_tab` | Guide | Panduan |  |
 | `assistant_title` | Khai Guide | Panduan Khai |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | Saya tidak punya jawaban untuk itu. Saya hanya menjawab pertanyaan tentang penggunaan alat ini. |  |
 | `back` | Back | Kembali |  |
 | `bp_dia` | Diastolic (lower) | Diastolik (bawah) |  |
 | `bp_sys` | Systolic (upper) | Sistolik (atas) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN harus tepat 4 digit. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | Berguna di ponsel bersama keluarga. PIN 4 digit diminta saat aplikasi dibuka, dan lagi setelah satu menit tidak digunakan. |  |
 | `pin_lock` | App lock | Kunci aplikasi |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | Pilih PIN 4 digit |  |
 | `pin_remove` | Remove PIN | Hapus PIN |  |
 | `pin_removed` | PIN removed. | PIN dihapus. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | Atur PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN salah. Coba lagi. |  |
 | `portion_q` | Portion | Porsi |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | Entri Anda dienkripsi di perangkat ini dengan kunci yang disimpan di penyimpanan kunci aman ponsel ini. Tidak ada yang dikirim ke mana pun kecuali Anda menetapkan server studi. Tidak ada analitik dan tidak ada iklan. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | Entri Anda dienkripsi di perangkat ini dengan kunci yang disimpan di penyimpanan kunci aman ponsel ini. Tidak ada yang dikirim ke mana pun kecuali Anda menetapkan server studi. Tidak ada analitik dan tidak ada iklan. |  |
 | `privacy_title` | Privacy | Privasi |  |
 | `profile` | Profile and medicines | Profil dan obat |  |
 | `progress_title` | Progress | Kemajuan |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | Tidur tadi malam (jam) |  |
 | `sodium` | Salt (sodium) | Garam (sodium) |  |
 | `streak` | Day streak | Rentetan hari |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | Alamat itu tampaknya tidak valid. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | Sinkronisasi gagal. Entri aman di ponsel ini dan akan dicoba lagi. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | Opsional. Koordinator memberi Anda alamat server. Biarkan kosong agar semua tetap hanya di ponsel ini. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | Gunakan alamat HTTPS. Data kesehatan tidak pernah dikirim tanpa enkripsi. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | Opsional. Koordinator memberi Anda alamat server. Biarkan kosong agar semua tetap hanya di ponsel ini. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | Gunakan alamat HTTPS. Data kesehatan tidak pernah dikirim tanpa enkripsi. |  |
 | `sync_never` | Not synced yet. | Belum pernah disinkronkan. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | Sinkronkan sekarang |  |
 | `sync_offline` | No internet right now. Entries queued. | Tidak ada internet saat ini. Entri antre. |  |
 | `sync_ok` | Synced. All entries are on the server. | Tersinkron. Semua entri ada di server. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | Simpan alamat |  |
-| `sync_title` | Study sync | Sinkronisasi studi |  |
+| `sync_title` | Institution sync | Sinkronisasi studi |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | Alamat server |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | Riwayat |  |

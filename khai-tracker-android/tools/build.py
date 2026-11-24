@@ -17,13 +17,16 @@ Usage:
   py tools/build.py --clean
 
 Environment overrides:
-  ANDROID_SDK_ROOT, JAVA_HOME, KHAI_KEYSTORE, KHAI_KEYSTORE_PASS, KHAI_KEY_ALIAS
+  ANDROID_SDK_ROOT, JAVA_HOME, BUNDLETOOL, KHAI_KEYSTORE, KHAI_KEY_ALIAS,
+  KHAI_KEYSTORE_PASS_FILE (preferred) or KHAI_KEYSTORE_PASS
 """
 import argparse
+import hashlib
 import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,6 +80,7 @@ def _find_java():
 KOTLINC = _find_kotlinc()
 KOTLIN_STDLIB = os.path.join(os.path.dirname(os.path.dirname(KOTLINC)), "lib", "kotlin-stdlib.jar")
 BUNDLETOOL = os.environ.get("BUNDLETOOL") or os.path.join(TOOLS, "bundletool.jar")
+BUNDLETOOL_SHA256 = "2d4ad908faea64047c1cc9cb747e6aa667c6ab192e09607bd16b67246a8cd6ae"
 
 if not (JAVA_HOME and os.path.exists(os.path.join(JAVA_HOME, "bin", "javac.exe"))):
     JAVA_HOME = _find_java()
@@ -84,7 +88,18 @@ BUILD_TOOLS = os.environ.get("BUILD_TOOLS_VERSION", "35.0.0")
 PLATFORM = os.environ.get("PLATFORM_VERSION", "android-35")
 
 KEYSTORE = os.environ.get("KHAI_KEYSTORE") or os.path.join(ROOT, "keystore", "khai-upload.jks")
-KEYSTORE_PASS = os.environ.get("KHAI_KEYSTORE_PASS") or "khai-release-2026"
+SIGNING_PASS_ENV = "KHAI_SIGNING_PASS"
+_pass_file = os.environ.get("KHAI_KEYSTORE_PASS_FILE")
+if _pass_file:
+    with open(_pass_file, "r", encoding="utf-8-sig") as _fh:
+        KEYSTORE_PASS = _fh.read().strip()
+else:
+    KEYSTORE_PASS = os.environ.get("KHAI_KEYSTORE_PASS")
+if not KEYSTORE_PASS:
+    print("\nBUILD FAILED: Signing password missing. Set KHAI_KEYSTORE_PASS_FILE to a "
+          "user-only password file, or set KHAI_KEYSTORE_PASS in the environment. "
+          "No secret is stored in source.", file=sys.stderr)
+    sys.exit(1)
 KEY_ALIAS = os.environ.get("KHAI_KEY_ALIAS") or "khai"
 
 BT = os.path.join(SDK, "build-tools", BUILD_TOOLS)
@@ -104,18 +119,22 @@ def fail(message):
 def run(cmd, cwd=None, quiet=False):
     printable = cmd if isinstance(cmd, str) else " ".join(cmd)
     shown = printable if len(printable) < 150 else printable[:140] + " ..."
+    if KEYSTORE_PASS:
+        shown = shown.replace(KEYSTORE_PASS, "<redacted>")
+        printable = printable.replace(KEYSTORE_PASS, "<redacted>")
     print("  > " + shown)
     env = dict(os.environ)
     env["JAVA_HOME"] = JAVA_HOME
     env["PATH"] = os.path.join(JAVA_HOME, "bin") + os.pathsep + env.get("PATH", "")
+    env[SIGNING_PASS_ENV] = KEYSTORE_PASS
     proc = subprocess.run(cmd, cwd=cwd, env=env, shell=isinstance(cmd, str),
                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     out = proc.stdout.decode("utf-8", "replace")
     if proc.returncode != 0:
-        print(out)
+        print(out.replace(KEYSTORE_PASS, "<redacted>"))
         fail("command returned %d: %s" % (proc.returncode, printable))
     if not quiet and out.strip():
-        for line in out.strip().splitlines()[-12:]:
+        for line in out.strip().replace(KEYSTORE_PASS, "<redacted>").splitlines()[-12:]:
             print("    " + line)
     return out
 
@@ -128,6 +147,16 @@ def check_toolchain():
     ]:
         if not os.path.exists(path):
             problems.append("  missing %-18s %s" % (name, path))
+    if not os.path.exists(BUNDLETOOL):
+        problems.append("  missing %-18s %s" % ("bundletool.jar", BUNDLETOOL))
+    else:
+        digest = hashlib.sha256()
+        with open(BUNDLETOOL, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+                digest.update(chunk)
+        if digest.hexdigest().lower() != BUNDLETOOL_SHA256:
+            problems.append("  bundletool.jar SHA-256 is %s, expected %s" %
+                            (digest.hexdigest(), BUNDLETOOL_SHA256))
     if problems:
         print("Toolchain incomplete:")
         print("\n".join(problems))
@@ -159,7 +188,7 @@ def ensure_keystore():
          "-keystore", KEYSTORE,
          "-alias", KEY_ALIAS,
          "-keyalg", "RSA", "-keysize", "4096", "-validity", "10000",
-         "-storepass", KEYSTORE_PASS, "-keypass", KEYSTORE_PASS,
+         "-storepass:env", SIGNING_PASS_ENV, "-keypass:env", SIGNING_PASS_ENV,
          "-dname", "CN=Khai Foods Pvt Ltd, OU=Khai Tracker, O=Khai Foods Pvt Ltd, L=Jamshedpur, ST=Jharkhand, C=IN"])
 
 
@@ -260,12 +289,29 @@ def align_and_sign(apk):
     if os.path.exists(signed):
         os.remove(signed)
     run([APKSIGNER, "sign",
-         "--ks", KEYSTORE, "--ks-pass", "pass:" + KEYSTORE_PASS,
-         "--key-pass", "pass:" + KEYSTORE_PASS, "--ks-key-alias", KEY_ALIAS,
-         "--v1-signing-enabled", "true", "--v2-signing-enabled", "true",
-         "--out", signed, aligned])
+         "--ks", KEYSTORE, "--ks-pass", "env:" + SIGNING_PASS_ENV,
+         "--key-pass", "env:" + SIGNING_PASS_ENV, "--ks-key-alias", KEY_ALIAS,
+         "--v1-signing-enabled", "false", "--v2-signing-enabled", "true",
+         "--v3-signing-enabled", "true", "--out", signed, aligned])
     run([APKSIGNER, "verify", "--print-certs", signed], quiet=True)
     return signed
+
+
+def signing_password_source():
+    """bundletool accepts file: but not env:, so hand it a short-lived password file."""
+    fd, path = tempfile.mkstemp(prefix="khai-sign-", suffix=".txt")
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as fh:
+        fh.write(KEYSTORE_PASS)
+    try:
+        domain = os.environ.get("USERDOMAIN", "")
+        user = os.environ.get("USERNAME", "")
+        if domain and user:
+            subprocess.run(["icacls", path, "/inheritance:r", "/grant:r",
+                            domain + "\\" + user + ":F"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
+    return path, True
 
 
 def build_aab(proto, classes_dex):
@@ -308,10 +354,18 @@ def build_universal(aab):
     apks = os.path.join(BUILD, "khai-tracker.apks")
     if os.path.exists(apks):
         os.remove(apks)
-    run([os.path.join(JAVA_HOME, "bin", "java.exe"), "-jar", BUNDLETOOL, "build-apks",
-         "--bundle", aab, "--output", apks, "--mode=universal",
-         "--ks", KEYSTORE, "--ks-pass", "pass:" + KEYSTORE_PASS,
-         "--key-pass", "pass:" + KEYSTORE_PASS, "--ks-key-alias", KEY_ALIAS])
+    pass_file, temporary = signing_password_source()
+    try:
+        run([os.path.join(JAVA_HOME, "bin", "java.exe"), "-jar", BUNDLETOOL, "build-apks",
+             "--bundle", aab, "--output", apks, "--mode=universal",
+             "--ks", KEYSTORE, "--ks-pass", "file:" + pass_file,
+             "--key-pass", "file:" + pass_file, "--ks-key-alias", KEY_ALIAS])
+    finally:
+        if temporary:
+            try:
+                os.remove(pass_file)
+            except OSError:
+                pass
     out_dir = os.path.join(BUILD, "apks-out")
     if os.path.exists(out_dir):
         shutil.rmtree(out_dir)

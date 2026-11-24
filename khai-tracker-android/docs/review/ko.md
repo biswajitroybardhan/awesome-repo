@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | 앱 정보 |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\n인도 자르칸드 주 잠셰드푸르의 Khai Foods Pvt Ltd가 제작\n\n공용 휴대전화, 불안정한 네트워크, 다양한 인도식 식단을 고려해 설계했습니다. 오프라인 우선. 제3자 분석 없음. 광고 없음. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\n인도 자르칸드 주 잠셰드푸르의 Khai Foods Pvt Ltd가 제작\n\n공용 휴대전화, 불안정한 네트워크, 다양한 인도식 식단을 고려해 설계했습니다. 오프라인 우선. 제3자 분석 없음. 광고 없음. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | 제품 담당자: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + 음식 추가 |  |
 | `add_medicines` | Add medicines | 약 추가 |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | 자격을 갖춘 의료 전문가에게 문의하세요. |  |
 | `assistant_input_ph` | Ask a question | 질문을 입력하세요 |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | 이 도구 자체의 도움말에서만 가져온 답변입니다. AI도, 진단도, 조언도 없습니다. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | 이 도구 자체의 도움말에서만 가져온 답변입니다. AI도, 진단도, 조언도 없습니다. |  |
 | `assistant_listen` | Listen | 듣기 |  |
 | `assistant_send` | Send | 보내기 |  |
 | `assistant_tab` | Guide | 안내 |  |
 | `assistant_title` | Khai Guide | Khai 안내 |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | 그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | 그 질문에 대한 답이 없습니다. 이 도구 사용법에 관한 질문에만 답합니다. |  |
 | `back` | Back | 뒤로 |  |
 | `bp_dia` | Diastolic (lower) | 이완기(낮은 수치) |  |
 | `bp_sys` | Systolic (upper) | 수축기(높은 수치) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN은 정확히 4자리여야 합니다. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | 가족과 함께 쓰는 휴대전화에 유용합니다. 앱을 열 때와 1분 뒤 다시 열 때 4자리 PIN을 입력합니다. |  |
 | `pin_lock` | App lock | 앱 잠금 |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4자리 PIN 선택 |  |
 | `pin_remove` | Remove PIN | PIN 삭제 |  |
 | `pin_removed` | PIN removed. | PIN이 삭제되었습니다. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN 설정 |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN이 틀렸습니다. 다시 시도하세요. |  |
 | `portion_q` | Portion | 분량 |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | 입력 내용은 이 휴대전화의 보안 키저장소에 보관되는 키로 이 기기에서 암호화됩니다. 연구 서버를 설정하지 않는 한 어디로도 전송되지 않습니다. 분석 도구도 광고도 없습니다. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | 입력 내용은 이 휴대전화의 보안 키저장소에 보관되는 키로 이 기기에서 암호화됩니다. 연구 서버를 설정하지 않는 한 어디로도 전송되지 않습니다. 분석 도구도 광고도 없습니다. |  |
 | `privacy_title` | Privacy | 개인정보 보호 |  |
 | `profile` | Profile and medicines | 프로필과 약 |  |
 | `progress_title` | Progress | 진행 상황 |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | 어젯밤 수면(시간) |  |
 | `sodium` | Salt (sodium) | 소금(나트륨) |  |
 | `streak` | Day streak | 연속 기록 일수 |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | 올바른 주소가 아닌 것 같습니다. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | 동기화에 실패했습니다. 기록은 이 휴대전화에 안전하게 있으며 다시 시도합니다. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | 선택 사항입니다. 코디네이터가 서버 주소를 알려줍니다. 비워 두면 모든 내용이 이 휴대전화에만 보관됩니다. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS 주소를 사용하세요. 건강 데이터는 암호화되지 않은 상태로 전송되지 않습니다. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | 선택 사항입니다. 코디네이터가 서버 주소를 알려줍니다. 비워 두면 모든 내용이 이 휴대전화에만 보관됩니다. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS 주소를 사용하세요. 건강 데이터는 암호화되지 않은 상태로 전송되지 않습니다. |  |
 | `sync_never` | Not synced yet. | 아직 동기화하지 않았습니다. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | 지금 동기화 |  |
 | `sync_offline` | No internet right now. Entries queued. | 현재 인터넷에 연결되어 있지 않습니다. 기록이 대기 중입니다. |  |
 | `sync_ok` | Synced. All entries are on the server. | 동기화되었습니다. 모든 기록이 서버에 있습니다. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | 주소 저장 |  |
-| `sync_title` | Study sync | 연구 서버 동기화 |  |
+| `sync_title` | Institution sync | 연구 서버 동기화 |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | 서버 주소 |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | 기록 |  |

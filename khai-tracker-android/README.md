@@ -12,7 +12,7 @@ FHIR R4 file on request. It never diagnoses, never doses and never changes a pre
 - Version: 1.0.0 (versionCode 1)
 - minSdk 24 (Android 7.0) · targetSdk 35 (Android 15)
 - English and हिन्दी, chosen in-app and independent of the phone language
-- No AndroidX, no third-party libraries, no analytics SDK, no ad SDK
+- No AndroidX, no third-party libraries, no third-party analytics SDK, no ad SDK
 
 ## Status — read this before shipping
 
@@ -20,9 +20,10 @@ FHIR R4 file on request. It never diagnoses, never doses and never changes a pre
 | --- | --- |
 | Kotlin compiles, APK and AAB build | Yes, clean |
 | Static release checks (`tools/check.py`) | Pass |
-| Artefact checks (`tools/verify.py`) | Pass, 30 checks — signature, badging, permissions, AAB, locales, universal APK |
+| Artefact checks (`tools/verify.py`) | Pass, 31 checks — signature, badging, permissions, AAB, locales, universal APK |
 | APK signed (v2 + v3) | Yes, 4096-bit RSA, CN=Khai Foods Pvt Ltd |
-| AAB validates with bundletool | Yes |
+| AAB validates with bundletool | Yes, with SHA-256-pinned bundletool |
+| Institution sync backend | **Not provided** — client contract is in `docs/SECURE_SYNC.md` |
 | Run on a physical Android device | **Not yet** — this build environment has no hypervisor and no attached phone |
 | Play screenshots | **Not yet** — must be real device captures, not renders |
 
@@ -56,12 +57,14 @@ fails instead of shipping. Outputs in `build/`:
 - `khai-tracker-1.0.0.aab` — upload to Play Console
 - `apks-out/universal.apk` — one signed APK built from the AAB, install on any test phone
 
-Signing uses `keystore/khai-upload.jks` (alias `khai`). The checked-in keystore is a development
-convenience generated on the first build; **replace it with a Play App Signing upload key held by
-Khai Foods before a real release**, and never commit the production file.
+Builds now use the dedicated **upload key** held outside the repo at
+`%LOCALAPPDATA%\KhaiTracker\release\khai-upload.jks` (alias `khai-upload`). Set
+`KHAI_KEYSTORE`, `KHAI_KEYSTORE_PASS_FILE` and `KHAI_KEY_ALIAS`; the build never reads a password
+from source or takes one on a command line. A development keystore can still be generated on first
+build, but it is not used for published artefacts. Enrol in Play App Signing before release.
 
 Certificate SHA-256 for this build:
-`cb450196111230aeaf105896e3e6bdf8b34b178484a2df64636b538fe963f126`
+`20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b`
 
 ## What is in the app
 

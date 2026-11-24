@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/icon-512.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy — Khai Tracker">
-<meta property="og:description" content="Your record stays on your phone unless you choose to share it. No ads, no analytics, no sale of data.">
+<meta property="og:description" content="Your record is encrypted on your phone. No ads, no third-party analytics SDK, no sale of data; institution sync only with consent.">
 <meta property="og:url" content="https://khaifoods.in/privacy.html">
 <meta property="og:image" content="https://khaifoods.in/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -86,7 +86,7 @@
 
     <article class="prose">
 
-      <div class="callout"><b>Plain version:</b> the app collects only what you type or tap. It encrypts each day on your phone. There are no ads, no analytics, no account, and no sale of data. Sync, sharing and reminders are all off unless you turn them on.</div>
+      <div class="callout"><b>Plain version:</b> the app records what you type or tap and encrypts each day on your phone. There are no ads, no third-party analytics SDK, no account and no sale of data. If your institution configures sync, records you consent to send can be analysed there for programme trends. Sync, sharing and reminders are all off unless you turn them on.</div>
 
       <h2 id="is">1. What this app is</h2>
       <p>Khai Tracker is a measurement and record-keeping tool for participants in a Khai Foods observational pilot. It is <strong>not a medical device</strong>, gives no medical advice, diagnosis, treatment, cure or prevention of disease, and never changes a prescription. Decisions about care belong to a qualified clinician.</p>
@@ -101,26 +101,26 @@
         <li>blood pressure, pulse, blood glucose (with fasting/post-food context), weight;</li>
         <li>energy, mood, sleep and a free-text note.</li>
       </ul>
-      <p>The app does not read your contacts, photos, location, calendars, SMS, call logs, microphone or camera. It has no advertising identifier and no analytics SDK.</p>
+      <p>The app does not read your contacts, photos, location, calendars, SMS, call logs, microphone or camera. It has no advertising identifier and no third-party analytics SDK on your phone.</p>
 
       <h2 id="stored">3. How it is stored</h2>
       <ul>
-        <li>Each day's record is encrypted on the phone with <strong>AES-256-GCM</strong>. The key is generated inside the hardware-backed Android Keystore, is not exportable and is never sent anywhere.</li>
-        <li>The database file contains ciphertext only.</li>
+        <li>Each day's record is encrypted on the phone with <strong>AES-256-GCM</strong>. The key is generated inside the Android Keystore, is not exportable and is never sent anywhere.</li>
+        <li>Your profile (conditions, medicines and consent metadata) uses the same Keystore-backed encryption. The database file contains ciphertext only; ordinary settings are kept separately.</li>
         <li>The app is excluded from Android cloud backup and device-to-device transfer, so your record is not copied to Google Drive or to a new phone by the operating system.</li>
-        <li>An optional four-digit PIN gates the interface. It is stored only as a salted PBKDF2 hash and is not a cryptographic encryption key.</li>
+        <li>Recent-app previews are hidden by default. An optional four-digit PIN gates the interface, is stored only as a salted PBKDF2 hash, and locks briefly after repeated mistakes. It is not a cryptographic encryption key.</li>
       </ul>
 
       <h2 id="leaves">4. When data leaves the phone</h2>
       <p>Only in three situations, each initiated by you or your coordinator:</p>
       <ol>
-        <li><strong>Study sync (optional).</strong> If your coordinator gives you a server address, the app sends your records over HTTPS, keyed by your participant code and a random device ID. Without a server address, nothing is transmitted.</li>
-        <li><strong>Export or share.</strong> When you export, the app writes a file to its private cache and hands it to the app you pick in the system share sheet (mail, chat, Drive, printer). Khai never uploads it itself.</li>
-        <li><strong>Study operations.</strong> Your coordinator or clinician may review records on the study server under the consent you accepted. Access is limited to named study staff.</li>
+        <li><strong>Institution sync (optional).</strong> Your coordinator gives you a server address and a token unique to your device. You must also confirm the consent checkbox. The app then sends only records still waiting to sync over HTTPS, keyed by your participant code and a random device ID. An optional server public-key pin can be supplied, and records are not marked synced until the server confirms the exact dates it saved. Without all of this, nothing is transmitted.</li>
+        <li><strong>Export or share.</strong> When you export, the app writes a file to its private cache and hands it to the app you pick in the system share sheet (mail, chat, Drive, printer). Khai never uploads it itself. The cache expires and is deleted when you erase your data.</li>
+        <li><strong>Institution review and analysis.</strong> Your coordinator or clinician may review synced records under the consent you accepted. Authorised staff may analyse de-identified programme trends; no advertising, sale or automated care decisions are made from them. Access is limited to named staff under a data-processing agreement.</li>
       </ol>
 
       <h2 id="not">5. What we do not do</h2>
-      <p>No advertising. No marketing. No sale or rental of data. No third-party analytics, crash-reporting or attribution SDK. No profiling for decisions about your care. No collection of names, addresses, government identifiers or contact lists.</p>
+      <p>No advertising. No marketing. No sale or rental of data. No third-party analytics, crash-reporting or attribution SDK on your phone. Institution staff may analyse trends only in records synced under the consent above, never for advertising or automated decisions about your care. No collection of names, addresses, government identifiers or contact lists.</p>
 
       <h2 id="permissions">6. Permissions and why</h2>
       <table>
@@ -136,7 +136,7 @@
 
       <h2 id="retention">7. Retention and deletion</h2>
       <ul>
-        <li><strong>On the phone:</strong> data stays until you erase it. <em>Settings → Privacy → Erase my data</em> deletes records, the encryption key, profile, settings and PIN, irreversibly.</li>
+        <li><strong>On the phone:</strong> data stays until you erase it. <em>Settings → Privacy → Erase my data</em> deletes records, the encryption key, profile, settings, sync credentials and PIN, and clears generated export files, irreversibly.</li>
         <li><strong>On the study server:</strong> retained for the study period and statutory audit requirements, then anonymised or deleted. To request earlier removal, email the contact with your participant code; rows are purged within seven days.</li>
         <li>Uninstalling removes the local database and the Keystore key. Files you already exported are outside the app's control.</li>
       </ul>

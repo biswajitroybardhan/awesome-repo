@@ -3,6 +3,24 @@
 All notable changes to the native Android app. Versions follow `versionName`; every Play upload
 increments `versionCode`.
 
+## Unreleased — security hardening (still NO-GO)
+
+- Signing passwords no longer appear in source, argv or generated command output; builds read a
+  user-only password file or environment secret, and `bundletool.jar` is SHA-256 pinned.
+- CSV exports neutralise spreadsheet formulas; export files expire and are deleted on erase.
+- The export provider validates filenames in every method.
+- Profiles are encrypted with the Keystore-backed key; legacy plaintext profiles migrate on read.
+- PIN failures apply exponential backoff, and recent-app previews are hidden by default.
+- Sync now requires HTTPS, a per-device bearer token, explicit consent, hostname verification,
+  TLS 1.2+, optional SPKI pinning, no redirects, pending days only, and an `accepted_dates`
+  acknowledgement before records are marked synced.
+- Unreviewed draft languages are no longer selectable in the app; a stale draft preference falls
+  back to English.
+- Store, privacy, security and release-readiness copy now describes institution-controlled sync and
+  trend analysis accurately, with no blanket "no data collected" claim.
+- The static site ships a restrictive CSP and security headers. The release remains NO-GO until a
+  real server, device testing, Play enrolment and native-speaker review are complete.
+
 ## 1.0.0 — versionCode 1
 
 First native Android release of the Khai Tracker, replacing the web app for participants who need a
@@ -96,11 +114,11 @@ record that works on a shared, mid-range phone with no reliable connection.
 
 - `tools/check.py`: pass — string parity EN/HI, placeholder agreement, `R.*` references, icon
   densities, food-library schema, manifest, versions.
-- `tools/verify.py`: pass, 30 checks — both signature schemes, 4096-bit RSA, certificate
+- `tools/verify.py`: pass, 31 checks — both signature schemes, 4096-bit RSA, certificate
   fingerprint, badging package/version/SDK/permissions/label, launchable activity, food library,
   Hindi resources, AAB validity, universal APK freshness and signature.
 - Signed APK: v2 + v3 true (v1 false, minSdk 24), 4096-bit RSA, CN=Khai Foods Pvt Ltd,
-  SHA-256 `cb450196111230aeaf105896e3e6bdf8b34b178484a2df64636b538fe963f126`.
+  SHA-256 `20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b`.
 - AAB: `bundletool validate` clean; universal APK built from the same bundle and same key.
 - Every record now carries a schema version (`v: 1`), so a later reader can migrate rather than
   guess.

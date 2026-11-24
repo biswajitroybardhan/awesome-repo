@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | О приложении |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nСоздано Khai Foods Pvt Ltd, Джамшедпур, Джаркханд, Индия.\n\nРазработано для общих телефонов, нестабильных сетей и самых разных индийских блюд. Сначала офлайн. Никакой аналитики сторонних органов. Никакой рекламы. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nСоздано Khai Foods Pvt Ltd, Джамшедпур, Джаркханд, Индия.\n\nРазработано для общих телефонов, нестабильных сетей и самых разных индийских блюд. Сначала офлайн. Никакой аналитики сторонних органов. Никакой рекламы. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | Владелец продукта: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + Добавить продукт |  |
 | `add_medicines` | Add medicines | Добавить лекарства |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | Обратитесь к квалифицированному специалисту. |  |
 | `assistant_input_ph` | Ask a question | Задайте вопрос |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | Ответы берутся только из встроенной справки этого инструмента. Никакого ИИ, никакого диагноза, никаких рекомендаций. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | Ответы берутся только из встроенной справки этого инструмента. Никакого ИИ, никакого диагноза, никаких рекомендаций. |  |
 | `assistant_listen` | Listen | Слушать |  |
 | `assistant_send` | Send | Отправить |  |
 | `assistant_tab` | Guide | Справка |  |
 | `assistant_title` | Khai Guide | Справка Khai |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | У меня нет ответа на это. Я отвечаю только на вопросы об использовании этого инструмента. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | У меня нет ответа на это. Я отвечаю только на вопросы об использовании этого инструмента. |  |
 | `back` | Back | Назад |  |
 | `bp_dia` | Diastolic (lower) | Диастолическое (нижнее) |  |
 | `bp_sys` | Systolic (upper) | Систолическое (верхнее) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN должен содержать ровно 4 цифры. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | Полезно на общем семейном телефоне. При открытии приложения и снова после минуты бездействия запрашивается PIN из 4 цифр. |  |
 | `pin_lock` | App lock | Блокировка приложения |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | Выберите PIN из 4 цифр |  |
 | `pin_remove` | Remove PIN | Удалить PIN |  |
 | `pin_removed` | PIN removed. | PIN удалён. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | Установить PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | Неверный PIN. Попробуйте ещё раз. |  |
 | `portion_q` | Portion | Порция |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | Ваши записи зашифрованы на этом устройстве с помощью ключа, хранящегося в защищённом хранилище телефона. Ничего никуда не отправляется, если вы не настроите сервер исследования. Никакой аналитики и рекламы. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | Ваши записи зашифрованы на этом устройстве с помощью ключа, хранящегося в защищённом хранилище телефона. Ничего никуда не отправляется, если вы не настроите сервер исследования. Никакой аналитики и рекламы. |  |
 | `privacy_title` | Privacy | Конфиденциальность |  |
 | `profile` | Profile and medicines | Профиль и лекарства |  |
 | `progress_title` | Progress | Прогресс |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | Сон прошлой ночью (часы) |  |
 | `sodium` | Salt (sodium) | Соль (натрий) |  |
 | `streak` | Day streak | Серия дней |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | Это не похоже на правильный адрес. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | Синхронизация не удалась. Записи в безопасности на этом телефоне, повторная попытка будет выполнена позже. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | Необязательно. Координатор сообщит вам адрес сервера. Оставьте поле пустым, чтобы хранить всё только на этом телефоне. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | Используйте адрес HTTPS. Данные о здоровье никогда не передаются без шифрования. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | Необязательно. Координатор сообщит вам адрес сервера. Оставьте поле пустым, чтобы хранить всё только на этом телефоне. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | Используйте адрес HTTPS. Данные о здоровье никогда не передаются без шифрования. |  |
 | `sync_never` | Not synced yet. | Синхронизация ещё не выполнялась. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | Синхронизировать сейчас |  |
 | `sync_offline` | No internet right now. Entries queued. | Сейчас нет интернета. Записи поставлены в очередь. |  |
 | `sync_ok` | Synced. All entries are on the server. | Синхронизировано. Все записи находятся на сервере. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | Сохранить адрес |  |
-| `sync_title` | Study sync | Синхронизация с исследованием |  |
+| `sync_title` | Institution sync | Синхронизация с исследованием |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | Адрес сервера |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | История |  |

@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | 关于 |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\n由 Khai Foods Pvt Ltd 构建，位于印度贾坎德邦贾姆谢德布尔。\n\n专为共用手机、信号不稳定的网络和多样化的印度餐食而设计。离线优先。无第三方分析。无广告。 |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\n由 Khai Foods Pvt Ltd 构建，位于印度贾坎德邦贾姆谢德布尔。\n\n专为共用手机、信号不稳定的网络和多样化的印度餐食而设计。离线优先。无第三方分析。无广告。 |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | 产品负责人：Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + 添加食物 |  |
 | `add_medicines` | Add medicines | 添加药物 |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | 请咨询合格的医务人员。 |  |
 | `assistant_input_ph` | Ask a question | 请输入问题 |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | 答案仅取自本工具自带的帮助文本。没有人工智能，没有诊断，没有建议。 |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | 答案仅取自本工具自带的帮助文本。没有人工智能，没有诊断，没有建议。 |  |
 | `assistant_listen` | Listen | 朗读 |  |
 | `assistant_send` | Send | 发送 |  |
 | `assistant_tab` | Guide | 指南 |  |
 | `assistant_title` | Khai Guide | Khai 指南 |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | 我无法回答这个问题。我只能回答有关如何使用本工具的问题。 |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | 我无法回答这个问题。我只能回答有关如何使用本工具的问题。 |  |
 | `back` | Back | 返回 |  |
 | `bp_dia` | Diastolic (lower) | 舒张压（低压） |  |
 | `bp_sys` | Systolic (upper) | 收缩压（高压） |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN 必须恰好为 4 位数字。 |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | 适合家庭共用手机。打开应用时会要求输入 4 位 PIN，离开一分钟后再次打开也会要求输入。 |  |
 | `pin_lock` | App lock | 应用锁定 |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 设置 4 位 PIN |  |
 | `pin_remove` | Remove PIN | 移除 PIN |  |
 | `pin_removed` | PIN removed. | PIN 已移除。 |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | 设置 PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN 错误，请重试。 |  |
 | `portion_q` | Portion | 份量 |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | 您的记录在本设备上加密，密钥保存在此手机的安全密钥库中。除非您设置研究服务器，否则不会向任何地方发送任何内容。没有分析统计，也没有广告。 |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | 您的记录在本设备上加密，密钥保存在此手机的安全密钥库中。除非您设置研究服务器，否则不会向任何地方发送任何内容。没有分析统计，也没有广告。 |  |
 | `privacy_title` | Privacy | 隐私 |  |
 | `profile` | Profile and medicines | 个人资料与药物 |  |
 | `progress_title` | Progress | 进展 |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | 昨晚睡眠（小时） |  |
 | `sodium` | Salt (sodium) | 盐（钠） |  |
 | `streak` | Day streak | 连续记录天数 |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | 这看起来不是有效的地址。 |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | 同步失败。记录安全保存在这部手机上，稍后会重试。 |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | 可选。您的协调员会提供服务器地址。留空表示所有内容仅保存在这部手机上。 |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | 请使用 HTTPS 地址。健康数据绝不会以未加密方式发送。 |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | 可选。您的协调员会提供服务器地址。留空表示所有内容仅保存在这部手机上。 |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | 请使用 HTTPS 地址。健康数据绝不会以未加密方式发送。 |  |
 | `sync_never` | Not synced yet. | 尚未同步。 |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | 立即同步 |  |
 | `sync_offline` | No internet right now. Entries queued. | 当前没有网络。记录已排队等待同步。 |  |
 | `sync_ok` | Synced. All entries are on the server. | 已同步。所有记录都在服务器上。 |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | 保存地址 |  |
-| `sync_title` | Study sync | 研究同步 |  |
+| `sync_title` | Institution sync | 研究同步 |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | 服务器地址 |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | 历史 |  |

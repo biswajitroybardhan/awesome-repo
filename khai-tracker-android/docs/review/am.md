@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | ስለ |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nየተገነባው በKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India።\n\nለሚጋሩ ስልኮች፣ ለተለዋዋጭ አውታረ መረቦችና ለተለያዩ የሕንድ ምግቦች የተነደፈ። መጀመሪያ ከመስመር ውጭ። ምንም የሶስተኛ ወገን ትንታኔ የለም። ምንም ማስታወቂያ የለም። |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nየተገነባው በKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India።\n\nለሚጋሩ ስልኮች፣ ለተለዋዋጭ አውታረ መረቦችና ለተለያዩ የሕንድ ምግቦች የተነደፈ። መጀመሪያ ከመስመር ውጭ። ምንም የሶስተኛ ወገን ትንታኔ የለም። ምንም ማስታወቂያ የለም። |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | የምርት ባለቤት፡ Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + ምግብ ይጨምሩ |  |
 | `add_medicines` | Add medicines | መድሃኒቶችን ይጨምሩ |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ብቁ ከሆነ የጤና ባለሙያ ጠይቅ። |  |
 | `assistant_input_ph` | Ask a question | ጥያቄ ጠይቅ |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | መልሶች የሚገኙት ከዚህ መሳሪያ የራሱ የእርዳታ ጽሑፍ ብቻ ነው። AI የለም፣ ምርመራ የለም፣ ምክር የለም። |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | መልሶች የሚገኙት ከዚህ መሳሪያ የራሱ የእርዳታ ጽሑፍ ብቻ ነው። AI የለም፣ ምርመራ የለም፣ ምክር የለም። |  |
 | `assistant_listen` | Listen | ያዳምጡ |  |
 | `assistant_send` | Send | ላክ |  |
 | `assistant_tab` | Guide | መመሪያ |  |
 | `assistant_title` | Khai Guide | የካይ መመሪያ |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | ለዚህ መልስ የለኝም። ስለዚህ መሳሪያ አጠቃቀም ብቻ ነው የምመልሰው። |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | ለዚህ መልስ የለኝም። ስለዚህ መሳሪያ አጠቃቀም ብቻ ነው የምመልሰው። |  |
 | `back` | Back | ተመለስ |  |
 | `bp_dia` | Diastolic (lower) | ዲያስቶሊክ (ዝቅተኛ) |  |
 | `bp_sys` | Systolic (upper) | ሲስቶሊክ (ከላይ) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN በትክክል 4 አሃዞች መሆን አለበት። |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | በጋራ የቤተሰብ ስልክ ላይ ጠቃሚ። ባለ 4 አሃዝ PIN መተግበሪያው ሲከፈት እና ከአንድ ደቂቃ በኋላ እንደገና ይጠየቃል። |  |
 | `pin_lock` | App lock | የመተግበሪያ መቆለፊያ |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | ባለ 4 አሃዝ PIN ይምረጡ |  |
 | `pin_remove` | Remove PIN | PINን ያስወግዱ |  |
 | `pin_removed` | PIN removed. | PIN ተወግዷል። |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN አዘጋጅ |  |
 | `pin_wrong` | Wrong PIN. Try again. | የተሳሳተ PIN እንደገና ይሞክሩ። |  |
 | `portion_q` | Portion | ክፍል |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | የእርስዎ ግቤቶች በዚህ ስልክ ደህንነቱ በተጠበቀ ቁልፍ ማከማቻ ውስጥ በተያዘ ቁልፍ በዚህ መሳሪያ ላይ የተመሰጠሩ ናቸው። የጥናት አገልጋይ እስካላዘጋጁ ድረስ ምንም ነገር ወደ የትኛውም ቦታ አይላክም። ምንም ትንታኔዎች እና ማስታወቂያ የለም. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | የእርስዎ ግቤቶች በዚህ ስልክ ደህንነቱ በተጠበቀ ቁልፍ ማከማቻ ውስጥ በተያዘ ቁልፍ በዚህ መሳሪያ ላይ የተመሰጠሩ ናቸው። የጥናት አገልጋይ እስካላዘጋጁ ድረስ ምንም ነገር ወደ የትኛውም ቦታ አይላክም። ምንም ትንታኔዎች እና ማስታወቂያ የለም. |  |
 | `privacy_title` | Privacy | ግላዊነት |  |
 | `profile` | Profile and medicines | መገለጫ እና መድሃኒቶች |  |
 | `progress_title` | Progress | እድገት |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | ትናንት ማታ (ሰዓታት) ተኛ |  |
 | `sodium` | Salt (sodium) | ጨው (ሶዲየም) |  |
 | `streak` | Day streak | የቀን ትርኢት |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | ያ ትክክለኛ አድራሻ አይመስልም። |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | ማመሳሰል አልተሳካም። በዚህ ስልክ ላይ መግባቶች ደህና ናቸው እና እንደገና ይሞክራሉ። |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | አማራጭ። አስተባባሪዎ የአገልጋይ አድራሻ ይሰጥዎታል። በዚህ ስልክ ላይ ብቻ ሁሉንም ነገር ለማስቀመጥ ባዶ ይተውት። |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS አድራሻ ተጠቀም። የጤና መረጃ መቼም ሳይመሰጠር አይላክም። |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | አማራጭ። አስተባባሪዎ የአገልጋይ አድራሻ ይሰጥዎታል። በዚህ ስልክ ላይ ብቻ ሁሉንም ነገር ለማስቀመጥ ባዶ ይተውት። |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS አድራሻ ተጠቀም። የጤና መረጃ መቼም ሳይመሰጠር አይላክም። |  |
 | `sync_never` | Not synced yet. | እስካሁን አልተሰመረም። |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | አሁን አስምር |  |
 | `sync_offline` | No internet right now. Entries queued. | አሁን ምንም ኢንተርኔት የለም። ግቤቶች ተሰልፈዋል። |  |
 | `sync_ok` | Synced. All entries are on the server. | ተመሳስሏል ሁሉም ግቤቶች በአገልጋዩ ላይ ናቸው። |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | አድራሻ አስቀምጥ |  |
-| `sync_title` | Study sync | የጥናት ማመሳሰል |  |
+| `sync_title` | Institution sync | የጥናት ማመሳሰል |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | የአገልጋይ አድራሻ |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | ታሪክ |  |

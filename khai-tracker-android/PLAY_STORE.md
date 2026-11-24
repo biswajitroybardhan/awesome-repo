@@ -26,13 +26,13 @@ Alternate if the name is rejected as too generic: `Khai Tracker — Daily Record
 EN (74 chars):
 
 ```
-Daily food, medicine and BP record for the Khai study. Offline, EN/हिन्दी.
+Daily food, medicine and BP record for the Khai study. Offline-first, EN/हिन्दी.
 ```
 
 HI:
 
 ```
-खाई अध्ययन के लिए रोज़ का खाना, दवा और बीपी रिकॉर्ड। निजी, ऑफ़लाइन, हिंदी/EN।
+खाई अध्ययन के लिए खाना, दवा, बीपी रिकॉर्ड। ऑफ़लाइन-फ़र्स्ट, हिंदी/EN।
 ```
 
 ### Full description (4000 characters max) — English
@@ -56,16 +56,17 @@ PRIVATE BY DESIGN
 · Every day's record is encrypted on your phone with AES-256-GCM, using a key that stays in the phone's secure keystore and never leaves it.
 · The database alone reveals nothing.
 · No account. No name, phone number, address or Aadhaar number. Your participant code comes from your coordinator.
-· No advertising, no analytics, no third-party tracking, no sale of data.
-· Nothing is uploaded unless your coordinator gives you a study server address. Sync is HTTPS-only and optional.
+· No advertising, no third-party analytics SDK, no ad tracking and no sale of data.
+· Nothing is uploaded unless your coordinator gives you a server address and device token and you confirm consent. Sync is HTTPS-only, optional, and sends only days still waiting to sync.
+· Authorised institution staff may review consented records and analyse programme trends. There are no automated care decisions.
 · Erase everything at any time, permanently.
 
 BUILT FOR REAL PHONES
-· Works fully offline; syncs later if a server is configured.
+· Works offline-first; syncs later when your institution configures it and you consent.
 · English and हिन्दी, chosen inside the app — the phone language does not matter.
-· Optional 4-digit app lock for shared family phones, with a 60-second re-lock.
+· Optional 4-digit app lock for shared family phones, with a 60-second re-lock and backoff after repeated mistakes.
 · One quiet daily reminder. No streak shaming.
-· Small download (under 1 MB), runs on Android 7.0 and newer, no Google services required.
+· Small download (about 1.2 MB), runs on Android 7.0 and newer, no Google services required.
 
 IMPORTANT
 Khai Tracker is a tracking tool for a research pilot. It is not a medical device and does not provide medical advice, diagnosis, treatment, cure or prevention of any disease. It never changes a prescription. Always consult your doctor or dietitian before changing medication or diet. Readings you enter are your own measurements, not a clinical result.
@@ -144,27 +145,30 @@ Answers below match the code as shipped. If any of them stops being true, the fo
 before the next upload.
 
 **Does your app collect or share any of the required user data types?** → **Yes** (health and
-fitness, and "other" free text). It is collected but **not shared** with third parties.
+fitness, and "other" free text). It is collected on the device; when institution sync is explicitly
+configured and consented, those records are transmitted to that institution's server for authorised
+review and trend analysis. There is no advertising, data brokering or sale. Confirm the exact Play
+classification for the institution endpoint when the form is completed.
 
 | Question | Answer |
 | --- | --- |
 | Data collected | Health and fitness (blood pressure, pulse, glucose, weight, sleep, mood, energy); App activity (food and medicine entries, free-text note); App info and performance: none |
 | Personal identifiers | **None** — no name, email, phone, address, account, advertising ID or government ID |
-| Data shared with third parties | **No** |
-| Is data encrypted in transit? | **Yes** — HTTPS only, cleartext disabled in the manifest and network config |
-| Can users request deletion? | **Yes** — in-app "Erase my data" removes all local records and the key; server deletion by email with participant code |
+| Data shared with third parties | **Only with the configured institution** — never with ad networks, data brokers or analytics SDKs. Declare this as sharing if Play treats the institution endpoint as a third party. |
+| Is data encrypted in transit? | **Yes** — HTTPS only with hostname verification, optional SPKI pinning, no redirects, and cleartext disabled in the manifest/network config |
+| Can users request deletion? | **Yes** — in-app "Erase my data" removes local records, the key, profile, sync credentials and export cache; server deletion under the institution's retention policy |
 | Is data required? | **Yes** for app function — the record is the product |
-| Purpose | App functionality only. Not advertising, not analytics, not personalisation |
+| Purpose | App functionality and institution-authorised programme review/trend analysis under recorded consent. Not advertising, not personalisation, not automated care decisions |
 | Ephemeral processing? | No — records persist until erased |
-| Collection optional? | Participation is voluntary; sync is optional and off until a server URL is set |
+| Collection optional? | Participation is voluntary; local recording is the app's function. Sync is optional and off until a server URL, device token and consent are set |
 
 **Deletion request URL:** `https://<your-domain>/privacy` plus the in-app erase path. Keep one URL
 that is live before submission.
 
 **Data safety pitfalls to avoid:** do not claim "no data collected" — the record is health data even
-though it never leaves the phone. Do not claim "no data shared" while also declaring sync, without
-noting that sync goes only to the study server the user configures; Play treats a user-configured
-first-party endpoint as collection, not sharing.
+when it stays on the phone. Do not claim "no data shared" if sync is enabled; consented records go to
+the institution endpoint the coordinator configures. Do not claim "no analytics" without saying
+"no third-party analytics SDK": institution-side trend analysis is part of the licence.
 
 ---
 
@@ -277,15 +281,18 @@ Before the first production upload:
 2. Enrol in **Play App Signing** so Google holds the app-signing key and Khai holds only the upload
    key. Losing the upload key then becomes recoverable; losing an unenrolled signing key does not.
 3. Store the upload keystore and its passwords in a vault with two named custodians.
-4. Point `tools/build.py` at the production key with the environment variables it already reads:
-   `KHAI_KEYSTORE`, `KHAI_KEYSTORE_PASS`, `KHAI_KEY_ALIAS`, plus `ANDROID_SDK_ROOT` and
-   `JAVA_HOME`. Do not edit passwords into the script.
-5. Add `keystore/` to `.gitignore` **after** the production key exists, and rotate any secret that
-   ever appeared in a commit.
+4. Point `tools/build.py` at the upload key with the environment variables it reads:
+   `KHAI_KEYSTORE`, `KHAI_KEYSTORE_PASS_FILE` (preferred), `KHAI_KEY_ALIAS`, plus `ANDROID_SDK_ROOT`
+   and `JAVA_HOME`. The script no longer accepts a hardcoded password or a password on the command
+   line; `bundletool` receives a short-lived, user-only password file.
+5. Keep keystores and password files outside the repo, back them up in the team vault, and rotate
+   any secret that ever appeared in a commit.
 
-The certificate for the current development build is
-`SHA-256 cb450196111230aeaf105896e3e6bdf8b34b178484a2df64636b538fe963f126`, CN=Khai Foods Pvt Ltd.
-It is useful for verifying local builds and must not be published as the production fingerprint.
+The certificate for the current upload key is
+`SHA-256 20531590f7adf747957e69b87f5a82a3e318252f038ba91c01d7fb07bb95105b`,
+CN=Khai Foods Pvt Ltd, OU=Khai Tracker upload. It signs the AAB you upload; Play App Signing will
+replace it with the app signing key after enrolment, so publish the Play app-signing fingerprint
+once Console provides it.
 
 ---
 

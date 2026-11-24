@@ -283,15 +283,29 @@ class MainActivity : Activity() {
         val error = Ui.body(this, "")
         content.addView(Ui.field(this, getString(R.string.pin_enter), input))
         content.addView(error)
-        content.addView(Ui.button(this, getString(R.string.ok), true) {
+        val okButton = Ui.button(this, getString(R.string.ok), true) {
             if (prefs.checkPin(input.text.toString())) {
                 unlocked = true
                 render()
             } else {
-                error.text = getString(R.string.pin_wrong)
+                val wait = prefs.pinBlockSeconds()
+                error.text = if (wait > 0) {
+                    getString(R.string.pin_wrong) + " " + getString(R.string.pin_locked, wait)
+                } else {
+                    getString(R.string.pin_wrong)
+                }
                 input.setText("")
+                if (wait > 0) render()
             }
-        })
+        }
+        val blockedFor = prefs.pinBlockSeconds()
+        if (blockedFor > 0) {
+            okButton.isEnabled = false
+            input.isEnabled = false
+            error.text = getString(R.string.pin_locked, blockedFor)
+            input.postDelayed({ render() }, blockedFor * 1000L)
+        }
+        content.addView(okButton)
         content.addView(Ui.smallButton(this, getString(R.string.erase), false) {
             AlertDialog.Builder(this)
                 .setMessage(R.string.erase_confirm)
@@ -346,6 +360,7 @@ class MainActivity : Activity() {
         liveEntry = null
         liveDirty = false
         prefs.eraseAll(store)
+        Exports.clearCache(this)
         Reminders.cancel(this)
     }
 

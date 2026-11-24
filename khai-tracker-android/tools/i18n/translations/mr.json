@@ -172,5 +172,15 @@
   "assistant_send": "पाठवा",
   "assistant_unknown": "याचे उत्तर माझ्याकडे नाही. मी फक्त या टूलच्या वापराविषयीच्या प्रश्नांची उत्तरे देतो.",
   "ask_clinician": "एका पात्र वैद्यकीय तज्ञाकडे विचारा.",
-  "assistant_listen": "ऐका"
+  "assistant_listen": "ऐका",
+  "pin_locked": "Too many attempts. Try again in %1$d s.",
+  "sync_token": "Access token",
+  "sync_token_ph": "Issued by your coordinator",
+  "sync_pin": "Server key pin (optional)",
+  "sync_pin_ph": "Base64 SHA-256 of the server public key",
+  "sync_consent": "I agree that syncing sends my records to this server for authorised review and trend analysis.",
+  "sync_auth_missing": "Enter the access token issued by your coordinator.",
+  "sync_bad_pin": "The server key pin must be a 32-byte SHA-256 value in base64.",
+  "sync_no_consent": "Confirm consent before syncing.",
+  "sync_ack_fail": "The server did not confirm which records it saved. Nothing was marked synced."
 }

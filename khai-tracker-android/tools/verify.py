@@ -25,6 +25,7 @@ Exit code 0 means "structurally shippable", not "works on a phone". Device testi
 docs/TESTING.md and cannot be replaced by any script.
 """
 import argparse
+import hashlib
 import os
 import re
 import subprocess
@@ -55,6 +56,7 @@ BT = os.path.join(SDK, "build-tools", BUILD_TOOLS)
 APK = os.path.join(BUILD, "khai-tracker-%s.apk" % VERSION_NAME)
 AAB = os.path.join(BUILD, "khai-tracker-%s.aab" % VERSION_NAME)
 BUNDLETOOL = os.environ.get("BUNDLETOOL") or os.path.join(TOOLS, "bundletool.jar")
+BUNDLETOOL_SHA256 = "2d4ad908faea64047c1cc9cb747e6aa667c6ab192e09607bd16b67246a8cd6ae"
 
 NS = "{http://schemas.android.com/apk/res/android}"
 problems = []
@@ -255,6 +257,14 @@ def check_aab():
     if not os.path.exists(BUNDLETOOL):
         bad("bundletool present", BUNDLETOOL)
         return
+    digest = hashlib.sha256()
+    with open(BUNDLETOOL, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+    if digest.hexdigest().lower() != BUNDLETOOL_SHA256:
+        bad("bundletool SHA-256 pinned", digest.hexdigest())
+        return
+    ok("bundletool SHA-256 pinned", BUNDLETOOL_SHA256[:16] + "…")
     v = run([java, "-jar", BUNDLETOOL, "validate", "--bundle", AAB])
     if v.returncode == 0:
         ok("AAB validates", "bundletool validate")
@@ -290,8 +300,8 @@ def main():
             print("  - " + p)
         return 1
     print("structurally shippable (%d checks passed)" % checks)
-    print("Still required before upload: docs/TESTING.md on a real phone, a production keystore,")
-    print("a live privacy-policy URL, and real screenshots.")
+    print("Still required before upload: docs/TESTING.md on a real phone, Play App Signing")
+    print("enrolment, a secured institution sync backend, a live privacy URL, and real screenshots.")
     return 0
 
 

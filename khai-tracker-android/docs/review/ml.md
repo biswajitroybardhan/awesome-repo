@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | വിവരങ്ങൾ |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ആണ് നിർമ്മാതാവ്.\n\nപങ്കിടുന്ന ഫോണുകൾ, ഇടയ്ക്കിടെയുള്ള നെറ്റ്‍വർക്ക്, വിവിധ ഇന്ത്യൻ ഭക്ഷണങ്ങൾ എന്നിവയ്ക്കായി രൂപകൽപ്പന ചെയ്തത്. ഓഫ്‍ലൈൻ ആദ്യം. മൂന്നാം കക്ഷി വിശകലനമില്ല. പരസ്യങ്ങളില്ല. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India ആണ് നിർമ്മാതാവ്.\n\nപങ്കിടുന്ന ഫോണുകൾ, ഇടയ്ക്കിടെയുള്ള നെറ്റ്‍വർക്ക്, വിവിധ ഇന്ത്യൻ ഭക്ഷണങ്ങൾ എന്നിവയ്ക്കായി രൂപകൽപ്പന ചെയ്തത്. ഓഫ്‍ലൈൻ ആദ്യം. മൂന്നാം കക്ഷി വിശകലനമില്ല. പരസ്യങ്ങളില്ല. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | ഉൽപ്പന്ന ഉടമ: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + ഭക്ഷണം ചേർക്കുക |  |
 | `add_medicines` | Add medicines | മരുന്നുകൾ ചേർക്കുക |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | ഒരു യോഗ്യതയുള്ള ഡോക്ടറോട് ചോദിക്കുക. |  |
 | `assistant_input_ph` | Ask a question | ഒരു ചോദ്യം ചോദിക്കുക |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | ഈ ഉപകരണത്തിന്റെ സ്വന്തം സഹായ പാഠത്തിൽ നിന്ന് എടുത്ത ചോദ്യങ്ങളുടെ ഉത്തരങ്ങൾ. AI ഇല്ല, രോഗനിർണയം ഇല്ല, ഉപദേശം ഇല്ല. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | ഈ ഉപകരണത്തിന്റെ സ്വന്തം സഹായ പാഠത്തിൽ നിന്ന് എടുത്ത ചോദ്യങ്ങളുടെ ഉത്തരങ്ങൾ. AI ഇല്ല, രോഗനിർണയം ഇല്ല, ഉപദേശം ഇല്ല. |  |
 | `assistant_listen` | Listen | കേൾക്കുക |  |
 | `assistant_send` | Send | അയയ്ക്കുക |  |
 | `assistant_tab` | Guide | വഴികാട്ടി |  |
 | `assistant_title` | Khai Guide | ഖായ് വഴികാട്ടി |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | ഇതിന് എന്റെ പക്കൽ ഉത്തരമില്ല. ഈ ഉപകരണം ഉപയോഗിക്കുന്നതിനെക്കുറിച്ചുള്ള ചോദ്യങ്ങൾക്ക് മാത്രമേ ഞാൻ ഉത്തരം നൽകുന്നുള്ളൂ. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | ഇതിന് എന്റെ പക്കൽ ഉത്തരമില്ല. ഈ ഉപകരണം ഉപയോഗിക്കുന്നതിനെക്കുറിച്ചുള്ള ചോദ്യങ്ങൾക്ക് മാത്രമേ ഞാൻ ഉത്തരം നൽകുന്നുള്ളൂ. |  |
 | `back` | Back | പിന്നിലേക്ക് |  |
 | `bp_dia` | Diastolic (lower) | ഡയസ്റ്റോളിക് (താഴെ) |  |
 | `bp_sys` | Systolic (upper) | സിസ്റ്റോളിക് (മുകളിൽ) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN-ൽ കൃത്യം 4 അക്കങ്ങൾ ഉണ്ടായിരിക്കണം. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | കുടുംബത്തിൽ പങ്കിടുന്ന ഫോണിൽ ഉപയോഗപ്രദം. ആപ്പ് തുറക്കുമ്പോൾ 4 അക്ക PIN ചോദിക്കും, ഒരു മിനിറ്റ് പിന്നിൽ കഴിഞ്ഞാൽ വീണ്ടും ചോദിക്കും. |  |
 | `pin_lock` | App lock | ആപ്പ് ലോക്ക് |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4 അക്ക PIN തിരഞ്ഞെടുക്കുക |  |
 | `pin_remove` | Remove PIN | PIN നീക്കം ചെയ്യുക |  |
 | `pin_removed` | PIN removed. | PIN നീക്കം ചെയ്തു. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN സജ്ജമാക്കുക |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN തെറ്റാണ്. വീണ്ടും ശ്രമിക്കുക. |  |
 | `portion_q` | Portion | അളവ് |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | നിങ്ങളുടെ രേഖകൾ ഈ ഫോണിന്റെ സുരക്ഷിത കീ സ്റ്റോറിലുള്ള ഒരു കീ ഉപയോഗിച്ച് ഈ ഉപകരണത്തിൽ എൻക്രിപ്റ്റ് ചെയ്തിരിക്കുന്നു. നിങ്ങൾ ഒരു പഠന സെർവർ സജ്ജമാക്കിയില്ലെങ്കിൽ ഒന്നും എവിടേക്കും അയയ്ക്കപ്പെടുന്നില്ല. വിശകലനമില്ല, പരസ്യങ്ങളുമില്ല. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | നിങ്ങളുടെ രേഖകൾ ഈ ഫോണിന്റെ സുരക്ഷിത കീ സ്റ്റോറിലുള്ള ഒരു കീ ഉപയോഗിച്ച് ഈ ഉപകരണത്തിൽ എൻക്രിപ്റ്റ് ചെയ്തിരിക്കുന്നു. നിങ്ങൾ ഒരു പഠന സെർവർ സജ്ജമാക്കിയില്ലെങ്കിൽ ഒന്നും എവിടേക്കും അയയ്ക്കപ്പെടുന്നില്ല. വിശകലനമില്ല, പരസ്യങ്ങളുമില്ല. |  |
 | `privacy_title` | Privacy | സ്വകാര്യത |  |
 | `profile` | Profile and medicines | പ്രൊഫൈലും മരുന്നുകളും |  |
 | `progress_title` | Progress | പുരോഗതി |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | ഇന്നലത്തെ ഉറക്കം (മണിക്കൂറുകൾ) |  |
 | `sodium` | Salt (sodium) | ഉപ്പ് (സോഡിയം) |  |
 | `streak` | Day streak | ദിവസങ്ങളുടെ തുടർച്ച |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | അത് ഒരു സാധുവായ വിലാസം പോലെ തോന്നുന്നില്ല. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | സിൻക് പരാജയപ്പെട്ടു. രേഖകൾ ഈ ഫോണിൽ സുരക്ഷിതമാണ്, വീണ്ടും ശ്രമിക്കും. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | ഓപ്ഷണൽ. നിങ്ങളുടെ കോർഡിനേറ്റർ ഒരു സെർവർ വിലാസം നൽകും. എല്ലാം ഈ ഫോണിൽ മാത്രം സൂക്ഷിക്കാൻ ബ്ലാങ്ക് ആക്കി വിടുക. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | ഒരു HTTPS വിലാസം ഉപയോഗിക്കുക. ആരോഗ്യ ഡാറ്റ ഒരിക്കലും എൻക്രിപ്റ്റ് ചെയ്യാതെ അയയ്ക്കപ്പെടുന്നില്ല. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | ഓപ്ഷണൽ. നിങ്ങളുടെ കോർഡിനേറ്റർ ഒരു സെർവർ വിലാസം നൽകും. എല്ലാം ഈ ഫോണിൽ മാത്രം സൂക്ഷിക്കാൻ ബ്ലാങ്ക് ആക്കി വിടുക. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | ഒരു HTTPS വിലാസം ഉപയോഗിക്കുക. ആരോഗ്യ ഡാറ്റ ഒരിക്കലും എൻക്രിപ്റ്റ് ചെയ്യാതെ അയയ്ക്കപ്പെടുന്നില്ല. |  |
 | `sync_never` | Not synced yet. | ഇതുവരെ സിൻക് ചെയ്തിട്ടില്ല. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | ഇപ്പോൾ സിൻക് ചെയ്യുക |  |
 | `sync_offline` | No internet right now. Entries queued. | ഇപ്പോൾ ഇന്റർനെറ്റില്ല. രേഖകൾ ക്യൂവിൽ നിൽക്കുന്നു. |  |
 | `sync_ok` | Synced. All entries are on the server. | സിൻക് ചെയ്തു. എല്ലാ രേഖകളും സെർവറിലുണ്ട്. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | വിലാസം സൂക്ഷിക്കുക |  |
-| `sync_title` | Study sync | പഠന സിൻക്രൊണൈസേഷൻ |  |
+| `sync_title` | Institution sync | പഠന സിൻക്രൊണൈസേഷൻ |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | സെർവർ വിലാസം |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | ചരിത്രം |  |

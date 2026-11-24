@@ -170,5 +170,15 @@
   "assistant_send": "发送",
   "assistant_unknown": "我无法回答这个问题。我只能回答有关如何使用本工具的问题。",
   "ask_clinician": "请咨询合格的医务人员。",
-  "assistant_listen": "朗读"
+  "assistant_listen": "朗读",
+  "pin_locked": "Too many attempts. Try again in %1$d s.",
+  "sync_token": "Access token",
+  "sync_token_ph": "Issued by your coordinator",
+  "sync_pin": "Server key pin (optional)",
+  "sync_pin_ph": "Base64 SHA-256 of the server public key",
+  "sync_consent": "I agree that syncing sends my records to this server for authorised review and trend analysis.",
+  "sync_auth_missing": "Enter the access token issued by your coordinator.",
+  "sync_bad_pin": "The server key pin must be a 32-byte SHA-256 value in base64.",
+  "sync_no_consent": "Confirm consent before syncing.",
+  "sync_ack_fail": "The server did not confirm which records it saved. Nothing was marked synced."
 }

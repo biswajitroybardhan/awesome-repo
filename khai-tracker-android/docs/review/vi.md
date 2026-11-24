@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | Giới thiệu |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nĐược xây dựng bởi Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, Ấn Độ.\n\nThiết kế cho điện thoại dùng chung, mạng không ổn định và các món ăn Ấn Độ đa dạng. Ưu tiên ngoại tuyến. Không phân tích của bên thứ ba. Không quảng cáo. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nĐược xây dựng bởi Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, Ấn Độ.\n\nThiết kế cho điện thoại dùng chung, mạng không ổn định và các món ăn Ấn Độ đa dạng. Ưu tiên ngoại tuyến. Không phân tích của bên thứ ba. Không quảng cáo. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | Người sở hữu sản phẩm: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + Thêm món ăn |  |
 | `add_medicines` | Add medicines | Thêm thuốc |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | Hãy hỏi một chuyên gia y tế có trình độ. |  |
 | `assistant_input_ph` | Ask a question | Đặt một câu hỏi |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | Câu trả lời chỉ lấy từ văn bản trợ giúp của chính công cụ này. Không có AI, không chẩn đoán, không tư vấn. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | Câu trả lời chỉ lấy từ văn bản trợ giúp của chính công cụ này. Không có AI, không chẩn đoán, không tư vấn. |  |
 | `assistant_listen` | Listen | Nghe |  |
 | `assistant_send` | Send | Gửi |  |
 | `assistant_tab` | Guide | Hướng dẫn |  |
 | `assistant_title` | Khai Guide | Hướng dẫn Khai |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | Tôi không có câu trả lời cho điều đó. Tôi chỉ trả lời các câu hỏi về cách sử dụng công cụ này. |  |
 | `back` | Back | Quay lại |  |
 | `bp_dia` | Diastolic (lower) | Huyết áp tâm trương (dưới) |  |
 | `bp_sys` | Systolic (upper) | Huyết áp tâm thu (trên) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | Mã PIN phải đúng 4 chữ số. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | Hữu ích trên điện thoại dùng chung trong gia đình. Mã PIN 4 chữ số được yêu cầu khi mở ứng dụng và sau một phút không sử dụng. |  |
 | `pin_lock` | App lock | Khóa ứng dụng |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | Chọn mã PIN gồm 4 chữ số |  |
 | `pin_remove` | Remove PIN | Xóa mã PIN |  |
 | `pin_removed` | PIN removed. | Đã xóa mã PIN. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | Đặt mã PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | Mã PIN sai. Vui lòng thử lại. |  |
 | `portion_q` | Portion | Khẩu phần |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | Các mục ghi của bạn được mã hóa trên thiết bị này bằng khóa lưu trong kho khóa an toàn của điện thoại. Không có dữ liệu nào được gửi đi trừ khi bạn thiết lập máy chủ nghiên cứu. Không có phân tích hay quảng cáo. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | Các mục ghi của bạn được mã hóa trên thiết bị này bằng khóa lưu trong kho khóa an toàn của điện thoại. Không có dữ liệu nào được gửi đi trừ khi bạn thiết lập máy chủ nghiên cứu. Không có phân tích hay quảng cáo. |  |
 | `privacy_title` | Privacy | Quyền riêng tư |  |
 | `profile` | Profile and medicines | Hồ sơ và thuốc |  |
 | `progress_title` | Progress | Tiến độ |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | Ngủ đêm qua (giờ) |  |
 | `sodium` | Salt (sodium) | Muối (sodium) |  |
 | `streak` | Day streak | Số ngày liên tiếp |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | Địa chỉ này có vẻ không hợp lệ. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | Đồng bộ thất bại. Các mục ghi vẫn an toàn trên điện thoại và sẽ thử lại. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | Không bắt buộc. Điều phối viên cung cấp cho bạn địa chỉ máy chủ. Để trống để giữ mọi dữ liệu chỉ trên điện thoại này. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | Hãy dùng địa chỉ HTTPS. Dữ liệu sức khỏe không bao giờ được gửi dưới dạng không mã hóa. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | Không bắt buộc. Điều phối viên cung cấp cho bạn địa chỉ máy chủ. Để trống để giữ mọi dữ liệu chỉ trên điện thoại này. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | Hãy dùng địa chỉ HTTPS. Dữ liệu sức khỏe không bao giờ được gửi dưới dạng không mã hóa. |  |
 | `sync_never` | Not synced yet. | Chưa từng đồng bộ. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | Đồng bộ ngay |  |
 | `sync_offline` | No internet right now. Entries queued. | Hiện không có internet. Các mục ghi đã được xếp hàng chờ. |  |
 | `sync_ok` | Synced. All entries are on the server. | Đã đồng bộ. Mọi mục ghi đều có trên máy chủ. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | Lưu địa chỉ |  |
-| `sync_title` | Study sync | Đồng bộ nghiên cứu |  |
+| `sync_title` | Institution sync | Đồng bộ nghiên cứu |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | Địa chỉ máy chủ |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | Lịch sử |  |

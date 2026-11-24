@@ -229,6 +229,8 @@ object Exports {
 
     private fun writeBytes(a: MainActivity, name: String, bytes: ByteArray): File {
         val dir = File(a.cacheDir, "exports").apply { mkdirs() }
+        val cutoff = System.currentTimeMillis() - 86_400_000L
+        dir.listFiles()?.forEach { if (it.lastModified() < cutoff) it.delete() }
         val f = File(dir, name)
         f.writeBytes(bytes)
         return f
@@ -250,11 +252,22 @@ object Exports {
         }
     }
 
+    /** Removes generated files so a participant's "erase" really erases exports too. */
+    fun clearCache(context: android.content.Context) {
+        File(context.cacheDir, "exports").deleteRecursively()
+    }
+
+    /**
+     * Quotes a CSV cell and neutralises spreadsheet formulas. A note beginning with
+     * = + - @ or a control character must never be interpreted as a formula when
+     * a coordinator opens the export in Excel or Sheets.
+     */
     private fun csv(v: String): String {
         if (v.isEmpty()) return ""
-        return if (v.any { it == ',' || it == '"' || it == '\n' || it == '\r' }) {
-            "\"" + v.replace("\"", "\"\"") + "\""
-        } else v
+        val safe = if (v.first() in "=+-@\t\r") "'$v" else v
+        return if (safe.any { it == ',' || it == '"' || it == '\n' || it == '\r' }) {
+            "\"" + safe.replace("\"", "\"\"") + "\""
+        } else safe
     }
 
     private fun num(d: Double): String =

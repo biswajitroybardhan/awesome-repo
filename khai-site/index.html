@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/icon-512.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Khai Tracker — your day, measured">
-<meta property="og:description" content="An offline-first, encrypted Android record for chronic care. English and Hindi. One page for the clinician. Nothing leaves the phone unless you say so.">
+<meta property="og:description" content="An offline-first, encrypted Android record for chronic care. English and Hindi. One page for the clinician. Institution sync only with explicit consent.">
 <meta property="og:url" content="https://khaifoods.in/">
 <meta property="og:image" content="https://khaifoods.in/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -76,7 +76,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
           </a>
         </div>
-        <p class="hero-foot"><span>No account</span><span>No ads</span><span>No analytics</span><span>English + हिंदी</span></p>
+        <p class="hero-foot"><span>No account</span><span>No ads</span><span>No third-party trackers</span><span>English + हिंदी</span></p>
       </div>
 
       <div>
@@ -193,8 +193,8 @@
       <div class="feature-list">
         <div class="feature">
           <span class="num">01</span>
-          <h3>Offline, entirely</h3>
-          <p>Every screen works with no network. There is no login wall and no first-launch download. Sync exists, but it is off until a study server is configured.</p>
+          <h3>Offline-first</h3>
+          <p>Every screen works with no network. There is no login wall and no first-launch download. Sync exists, but it is off until your institution supplies an address and device token and you confirm consent.</p>
         </div>
         <div class="feature">
           <span class="num">02</span>
@@ -229,7 +229,7 @@
         <div class="feature">
           <span class="num">08</span>
           <h3>Small enough to trust</h3>
-          <p>A 1.2 MB APK built from the framework alone — no AndroidX, no analytics SDK, no transitive dependency surface. The whole build is four Python-driven toolchain steps, reproducible without Gradle or an IDE.</p>
+          <p>A 1.2 MB APK built from the framework alone — no AndroidX, no third-party analytics SDK, no transitive dependency surface. The whole build is four Python-driven toolchain steps, reproducible without Gradle or an IDE.</p>
         </div>
       </div>
     </div>
@@ -362,7 +362,7 @@
               <a class="btn on-green" style="background:transparent;color:#f5f1e8;border-color:rgba(245,241,232,.4)" href="demo.html">Try the demo</a>
             </div>
             <div class="download-meta">
-              <div>SHA-256 <span class="sha-row"><span id="apk-sha">dde6cd319873f732e94488052277484da2dc3491162713c543838d2174f563c2</span><button class="copy-btn" type="button" data-copy="#apk-sha">Copy</button></span></div>
+              <div>SHA-256 <span class="sha-row"><span id="apk-sha">40803ec96f6068ffe4dc863f7a429e496db33fa42c7424e9110e377d1c693b4f</span><button class="copy-btn" type="button" data-copy="#apk-sha">Copy</button></span></div>
               <div style="margin-top:8px">adb install -r khai-tracker-1.0.0.apk</div>
             </div>
           </div>

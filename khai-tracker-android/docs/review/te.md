@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | గురించి |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India చే నిర్మించబడింది.\n\nపంచుకునే ఫోన్లు, అస్థిర నెట్ వర్కులు మరియు వివిధ రకాల భారతీయ ఆహారాల కోసం రూపొందించబడింది. ముందుగా ఆఫ్ లైన్. మూడో పక్ష విశ్లేషణలు లేవు. ప్రకటనలు లేవు. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, India చే నిర్మించబడింది.\n\nపంచుకునే ఫోన్లు, అస్థిర నెట్ వర్కులు మరియు వివిధ రకాల భారతీయ ఆహారాల కోసం రూపొందించబడింది. ముందుగా ఆఫ్ లైన్. మూడో పక్ష విశ్లేషణలు లేవు. ప్రకటనలు లేవు. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | ఉత్పత్తి యజమాని: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + ఆహారం జోడించు |  |
 | `add_medicines` | Add medicines | మందులు జోడించు |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | అర్హత కలిగిన వైద్యుడిని అడగండి. |  |
 | `assistant_input_ph` | Ask a question | ఒక ప్రశ్న అడగండి |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | ఈ టూల్ స్వంత సహాయక పాఠ్యం నుంచి తీసిన ప్రశ్నలకు సమాధానాలు. AI లేదు, రోగనిర్ధారణ లేదు, సలహా లేదు. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | ఈ టూల్ స్వంత సహాయక పాఠ్యం నుంచి తీసిన ప్రశ్నలకు సమాధానాలు. AI లేదు, రోగనిర్ధారణ లేదు, సలహా లేదు. |  |
 | `assistant_listen` | Listen | వినండి |  |
 | `assistant_send` | Send | పంపు |  |
 | `assistant_tab` | Guide | గైడ్ |  |
 | `assistant_title` | Khai Guide | ఖాయ్ గైడ్ |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | దీనికి నా వద్ద సమాధానం లేదు. ఈ టూల్ వాడకం గురించిన ప్రశ్నలకు మాత్రమే నేను సమాధానం ఇస్తాను. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | దీనికి నా వద్ద సమాధానం లేదు. ఈ టూల్ వాడకం గురించిన ప్రశ్నలకు మాత్రమే నేను సమాధానం ఇస్తాను. |  |
 | `back` | Back | వెనుదిరుగు |  |
 | `bp_dia` | Diastolic (lower) | డయాస్టాలిక్ (కింది) |  |
 | `bp_sys` | Systolic (upper) | సిస్టాలిక్ (పై) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN ఖచ్చితంగా 4 అంకెలుండాలి. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | కుటుంబంతో పంచుకునే ఫోన్ లో ఇది ఉపయోగకరం. యాప్ తెరిచినప్పుడు 4 అంకెల PIN అడిగి, ఒక నిమిషం దూరంగా ఉన్న తర్వాత మళ్లీ అడుగుతుంది. |  |
 | `pin_lock` | App lock | యాప్ లాక్ |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4 అంకెల PIN ఎంచుకోండి |  |
 | `pin_remove` | Remove PIN | PIN తొలగించు |  |
 | `pin_removed` | PIN removed. | PIN తొలగించబడింది. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN సెట్ చేయు |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN తప్పు. మళ్లీ ప్రయత్నించండి. |  |
 | `portion_q` | Portion | భాగం |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | మీ నమోదులు ఈ పరికరంలో, ఈ ఫోన్ యొక్క సురక్షిత కీస్టోర్ లో ఉన్న కీతో ఎన్ క్రిప్ట్ చేయబడ్డాయి. మీరు అధ్యయన సర్వర్ సెట్ చేసే వరకు ఏదీ ఎక్కడికీ పంపబడదు. విశ్లేషణలు లేవు, ప్రకటనలు లేవు. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | మీ నమోదులు ఈ పరికరంలో, ఈ ఫోన్ యొక్క సురక్షిత కీస్టోర్ లో ఉన్న కీతో ఎన్ క్రిప్ట్ చేయబడ్డాయి. మీరు అధ్యయన సర్వర్ సెట్ చేసే వరకు ఏదీ ఎక్కడికీ పంపబడదు. విశ్లేషణలు లేవు, ప్రకటనలు లేవు. |  |
 | `privacy_title` | Privacy | గోప్యత |  |
 | `profile` | Profile and medicines | ప్రొఫైల్ మరియు మందులు |  |
 | `progress_title` | Progress | పురోగతి |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | నిన్న రాత్రి నిద్ర (గంటలు) |  |
 | `sodium` | Salt (sodium) | ఉప్పు (సోడియం) |  |
 | `streak` | Day streak | వరుస రోజులు |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | అది చెల్లుబాటయ్యే చిరునామాలా లేదు. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | సింక్ విఫలమైంది. నమోదులు ఈ ఫోన్ లో సురక్షితంగా ఉన్నాయి, మళ్లీ ప్రయత్నిస్తాం. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | ఐచ్ఛికం. మీ కోఆర్డినేటర్ సర్వర్ చిరునామా ఇస్తారు. అన్నీ ఈ ఫోన్ లోనే ఉంచాలంటే దీన్ని ఖాళీగా వదిలేయండి. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | HTTPS చిరునామా వాడండి. ఆరోగ్య డేటా ఎప్పుడూ ఎన్ క్రిప్ట్ కాకుండా పంపబడదు. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | ఐచ్ఛికం. మీ కోఆర్డినేటర్ సర్వర్ చిరునామా ఇస్తారు. అన్నీ ఈ ఫోన్ లోనే ఉంచాలంటే దీన్ని ఖాళీగా వదిలేయండి. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | HTTPS చిరునామా వాడండి. ఆరోగ్య డేటా ఎప్పుడూ ఎన్ క్రిప్ట్ కాకుండా పంపబడదు. |  |
 | `sync_never` | Not synced yet. | ఇంకా సింక్ చేయలేదు. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | ఇప్పుడు సింక్ చేయు |  |
 | `sync_offline` | No internet right now. Entries queued. | ప్రస్తుతం ఇంటర్నెట్ లేదు. నమోదులు వరుసలో ఉన్నాయి. |  |
 | `sync_ok` | Synced. All entries are on the server. | సింక్ అయింది. అన్ని నమోదులు సర్వర్ లో ఉన్నాయి. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | చిరునామా భద్రపరచు |  |
-| `sync_title` | Study sync | అధ్యయన సింక్ |  |
+| `sync_title` | Institution sync | అధ్యయన సింక్ |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | సర్వర్ చిరునామా |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | చరిత్ర |  |

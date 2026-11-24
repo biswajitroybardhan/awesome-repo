@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | Kuhusu |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nImeundwa na Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nImeundwa kwa ajili ya simu zinazoshirikiwa, mitandao yenye viraka na sahani mchanganyiko za Kihindi. Nje ya mtandao kwanza. Hakuna uchanganuzi wa wahusika wengine. Hakuna matangazo. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nImeundwa na Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nImeundwa kwa ajili ya simu zinazoshirikiwa, mitandao yenye viraka na sahani mchanganyiko za Kihindi. Nje ya mtandao kwanza. Hakuna uchanganuzi wa wahusika wengine. Hakuna matangazo. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | Mmiliki wa bidhaa: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + Ongeza chakula |  |
 | `add_medicines` | Add medicines | Ongeza dawa |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | Uliza mtaalamu wa afya aliyehitimu. |  |
 | `assistant_input_ph` | Ask a question | Uliza swali |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | Majibu yanatokana tu na maandishi ya msaada ya chombo hiki. Hakuna AI, hakuna utambuzi, hakuna ushauri. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | Majibu yanatokana tu na maandishi ya msaada ya chombo hiki. Hakuna AI, hakuna utambuzi, hakuna ushauri. |  |
 | `assistant_listen` | Listen | Sikiliza |  |
 | `assistant_send` | Send | Tuma |  |
 | `assistant_tab` | Guide | Mwongozo |  |
 | `assistant_title` | Khai Guide | Mwongozo wa Khai |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | Sina jibu la hilo. Najibu tu maswali kuhusu matumizi ya chombo hiki. |  |
 | `back` | Back | Nyuma |  |
 | `bp_dia` | Diastolic (lower) | Diastoli (chini) |  |
 | `bp_sys` | Systolic (upper) | Systolic (juu) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN lazima iwe na tarakimu 4 haswa. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | Inafaa kwenye simu ya familia iliyoshirikiwa. PIN yenye tarakimu 4 inaulizwa wakati programu inafungua, na tena baada ya dakika moja. |  |
 | `pin_lock` | App lock | Kufunga programu |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | Chagua PIN yenye tarakimu 4 |  |
 | `pin_remove` | Remove PIN | Ondoa PIN |  |
 | `pin_removed` | PIN removed. | PIN imeondolewa. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | Weka PIN |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN si sahihi. Jaribu tena. |  |
 | `portion_q` | Portion | Sehemu |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | Maingizo yako yamesimbwa kwa njia fiche kwenye kifaa hiki kwa ufunguo ulioshikiliwa katika hifadhi salama ya simu hii. Hakuna kitu kinachotumwa popote isipokuwa uweke seva ya kusoma. Hakuna uchanganuzi na hakuna matangazo. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | Maingizo yako yamesimbwa kwa njia fiche kwenye kifaa hiki kwa ufunguo ulioshikiliwa katika hifadhi salama ya simu hii. Hakuna kitu kinachotumwa popote isipokuwa uweke seva ya kusoma. Hakuna uchanganuzi na hakuna matangazo. |  |
 | `privacy_title` | Privacy | Faragha |  |
 | `profile` | Profile and medicines | Profaili na dawa |  |
 | `progress_title` | Progress | Maendeleo |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | Lala jana usiku (saa) |  |
 | `sodium` | Salt (sodium) | Chumvi (sodiamu) |  |
 | `streak` | Day streak | Mfululizo wa siku |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | Hiyo haionekani kama anwani halali. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | Usawazishaji haukufaulu. Maingizo ni salama kwenye simu hii na tutajaribu tena. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | Hiari. Mratibu wako anakupa anwani ya seva. Acha tupu ili kuweka kila kitu kwenye simu hii pekee. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | Tumia anwani ya HTTPS. Data ya afya haitumwi bila kufichwa. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | Hiari. Mratibu wako anakupa anwani ya seva. Acha tupu ili kuweka kila kitu kwenye simu hii pekee. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | Tumia anwani ya HTTPS. Data ya afya haitumwi bila kufichwa. |  |
 | `sync_never` | Not synced yet. | Bado haijasawazishwa. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | Sawazisha sasa |  |
 | `sync_offline` | No internet right now. Entries queued. | Hakuna mtandao kwa sasa. Maingizo yamewekwa kwenye foleni. |  |
 | `sync_ok` | Synced. All entries are on the server. | Imesawazishwa. Maingizo yote yapo kwenye seva. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | Hifadhi anwani |  |
-| `sync_title` | Study sync | Usawazishaji wa masomo |  |
+| `sync_title` | Institution sync | Usawazishaji wa masomo |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | Anwani ya seva |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | Historia |  |

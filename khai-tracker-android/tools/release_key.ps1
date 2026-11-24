@@ -76,14 +76,24 @@ function Protect-File([string]$Path) {
     }
 }
 
+function Invoke-KeytoolWithSecret([string[]]$NativeArgs, [string]$Password) {
+    $env:KHAI_KEYTOOL_PASS = $Password
+    try {
+        return Invoke-Native $keytool $NativeArgs
+    } finally {
+        Remove-Item Env:KHAI_KEYTOOL_PASS -ErrorAction SilentlyContinue
+    }
+}
+
 function Show-Fingerprint([string]$Password) {
-    $details = Invoke-Native $keytool @('-list', '-v', '-keystore', $keystore, '-storepass', $Password, '-alias', $AliasName)
+    $details = Invoke-KeytoolWithSecret @('-list', '-v', '-keystore', $keystore,
+        '-storepass:env', 'KHAI_KEYTOOL_PASS', '-alias', $AliasName) $Password
     $sha = ($details -split "`n" | Where-Object { $_ -match 'SHA256:' } | Select-Object -First 1).Trim()
     Write-Host "Upload key SHA-256: $sha"
     Write-Host ''
     Write-Host 'Build with this key (PowerShell):'
     Write-Host "  `$env:KHAI_KEYSTORE = '$keystore'"
-    Write-Host "  `$env:KHAI_KEYSTORE_PASS = (Get-Content '$passwordFile' -Raw).Trim()"
+    Write-Host "  `$env:KHAI_KEYSTORE_PASS_FILE = '$passwordFile'"
     Write-Host "  `$env:KHAI_KEY_ALIAS = '$AliasName'"
     Write-Host '  py tools\build.py'
     Write-Host ''
@@ -120,16 +130,17 @@ $password = -join ($bytes | ForEach-Object { $_.ToString('x2') })
 
 $dname = 'CN=Khai Foods Pvt Ltd, OU=Khai Tracker upload, O=Khai Foods Pvt Ltd, L=Jamshedpur, ST=Jharkhand, C=IN'
 Write-Host "Generating a 4096-bit RSA upload key in $KeyDir (outside the repo)..."
-Invoke-Native $keytool @('-genkeypair', '-v', '-keystore', $keystore, '-alias', $AliasName,
+Invoke-KeytoolWithSecret @('-genkeypair', '-v', '-keystore', $keystore, '-alias', $AliasName,
     '-keyalg', 'RSA', '-keysize', '4096', '-validity', '10000',
-    '-storepass', $password, '-keypass', $password, '-dname', $dname) | Out-Null
+    '-storepass:env', 'KHAI_KEYTOOL_PASS', '-keypass:env', 'KHAI_KEYTOOL_PASS',
+    '-dname', $dname) $password | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Remove-Item -Force $keystore -ErrorAction SilentlyContinue
     Write-Error 'keytool failed; no key was kept.'
     exit 1
 }
 
-[System.IO.File]::WriteAllText($passwordFile, $password + "`r`n", [System.Text.Encoding]::UTF8)
+[System.IO.File]::WriteAllText($passwordFile, $password + "`r`n", (New-Object System.Text.UTF8Encoding($false)))
 Protect-File $keystore
 Protect-File $passwordFile
 

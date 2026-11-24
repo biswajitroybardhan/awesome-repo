@@ -26,7 +26,7 @@
 | Key | English source | Draft translation | Reviewer note |
 | --- | --- | --- | --- |
 | `about` | About | Hakkında |  |
-| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, Hindistan tarafından üretildi.\n\nPaylaşılan telefonlar, kesintili ağlar ve çeşitli Hint sofraları için tasarlandı. Önce çevrimdışı. Üçüncü taraf analiz yok. Reklam yok. |  |
+| `about_body` | Khai Tracker 1.0.0\nBuilt by Khai Foods Pvt Ltd, Jamshedpur, Jharkhand, India.\n\nDesigned for shared phones, patchy networks and mixed Indian plates. Offline first. No third-party analytics SDK. No advertising. | Khai Tracker 1.0.0\nKhai Foods Pvt Ltd, Jamshedpur, Jharkhand, Hindistan tarafından üretildi.\n\nPaylaşılan telefonlar, kesintili ağlar ve çeşitli Hint sofraları için tasarlandı. Önce çevrimdışı. Üçüncü taraf analiz yok. Reklam yok. |  |
 | `about_credit` | Product owner: Biswajit Roy Bardhan | Ürün sahibi: Biswajit Roy Bardhan |  |
 | `add_food` | + Add food | + Yemek ekle |  |
 | `add_medicines` | Add medicines | İlaç ekle |  |
@@ -34,12 +34,12 @@
 | `app_name` | Khai Tracker | Khai Tracker |  |
 | `ask_clinician` | Ask a qualified clinician. | Nitelikli bir sağlık uzmanına danışın. |  |
 | `assistant_input_ph` | Ask a question | Bir soru sorun |  |
-| `assistant_intro` | Questions answered from this tool's own help text. No AI, no diagnosis, no advice. | Yanıtlar yalnızca bu aracın kendi yardım metninden alınır. Yapay zekâ yok, tanı yok, tavsiye yok. |  |
+| `assistant_intro` | Questions answered from this tool\'s own help text. No AI, no diagnosis, no advice. | Yanıtlar yalnızca bu aracın kendi yardım metninden alınır. Yapay zekâ yok, tanı yok, tavsiye yok. |  |
 | `assistant_listen` | Listen | Dinle |  |
 | `assistant_send` | Send | Gönder |  |
 | `assistant_tab` | Guide | Kılavuz |  |
 | `assistant_title` | Khai Guide | Khai Kılavuzu |  |
-| `assistant_unknown` | I don't have an answer for that. I only answer questions about using this tool. | Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım. |  |
+| `assistant_unknown` | I don\'t have an answer for that. I only answer questions about using this tool. | Bunun için bir yanıtım yok. Yalnızca bu aracın kullanımıyla ilgili soruları yanıtlarım. |  |
 | `back` | Back | Geri |  |
 | `bp_dia` | Diastolic (lower) | Diyastolik (alt) |  |
 | `bp_sys` | Systolic (upper) | Sistolik (üst) |  |
@@ -139,6 +139,7 @@
 | `pin_four` | A PIN must be exactly 4 digits. | PIN tam olarak 4 haneli olmalıdır. |  |
 | `pin_hint` | Useful on a shared family phone. A 4-digit PIN is asked when the app opens, and again after a minute away. | Aileyle paylaşılan telefonlarda kullanışlıdır. Uygulama açıldığında ve bir dakika uzak kaldıktan sonra 4 haneli PIN istenir. |  |
 | `pin_lock` | App lock | Uygulama kilidi |  |
+| `pin_locked` | Too many attempts. Try again in %1$d s. | Too many attempts. Try again in %1$d s. |  |
 | `pin_new` | Choose a 4-digit PIN | 4 haneli bir PIN seçin |  |
 | `pin_remove` | Remove PIN | PIN kaldır |  |
 | `pin_removed` | PIN removed. | PIN kaldırıldı. |  |
@@ -146,7 +147,7 @@
 | `pin_set` | Set PIN | PIN belirle |  |
 | `pin_wrong` | Wrong PIN. Try again. | PIN yanlış. Tekrar deneyin. |  |
 | `portion_q` | Portion | Porsiyon |  |
-| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent anywhere unless you set a study server. There are no analytics and no advertising. | Kayıtlarınız, bu telefonun güvenli anahtar deposunda tutulan bir anahtarla bu cihazda şifrelenir. Bir çalışma sunucusu ayarlamadığınız sürece hiçbir yere gönderilmez. Analiz hizmeti yoktur, reklam yoktur. |  |
+| `privacy_body` | Your entries are encrypted on this device with a key held in this phone\'s secure keystore. Nothing is sent unless your institution configures sync and you give consent. No third-party analytics SDK and no advertising. | Kayıtlarınız, bu telefonun güvenli anahtar deposunda tutulan bir anahtarla bu cihazda şifrelenir. Bir çalışma sunucusu ayarlamadığınız sürece hiçbir yere gönderilmez. Analiz hizmeti yoktur, reklam yoktur. |  |
 | `privacy_title` | Privacy | Gizlilik |  |
 | `profile` | Profile and medicines | Profil ve ilaçlar |  |
 | `progress_title` | Progress | İlerleme |  |
@@ -172,16 +173,25 @@
 | `sleep` | Sleep last night (hours) | Dün geceki uyku (saat) |  |
 | `sodium` | Salt (sodium) | Tuz (sodyum) |  |
 | `streak` | Day streak | Üst üste kayıt günü |  |
+| `sync_ack_fail` | The server did not confirm which records it saved. Nothing was marked synced. | The server did not confirm which records it saved. Nothing was marked synced. |  |
+| `sync_auth_missing` | Enter the access token issued by your coordinator. | Enter the access token issued by your coordinator. |  |
+| `sync_bad_pin` | The server key pin must be a 32-byte SHA-256 value in base64. | The server key pin must be a 32-byte SHA-256 value in base64. |  |
 | `sync_bad_url` | That does not look like a valid address. | Bu geçerli bir adres gibi görünmüyor. |  |
+| `sync_consent` | I agree that syncing sends my records to this server for authorised review and trend analysis. | I agree that syncing sends my records to this server for authorised review and trend analysis. |  |
 | `sync_fail` | Sync failed. Entries are safe on this phone and will retry. | Senkronizasyon başarısız. Kayıtlar bu telefonda güvende ve yeniden denenecek. |  |
-| `sync_hint` | Optional. Your coordinator gives you a server address. Leave empty to keep everything on this phone only. | İsteğe bağlı. Koordinatörünüz size bir sunucu adresi verir. Boş bırakırsanız her şey yalnızca bu telefonda kalır. |  |
-| `sync_need_https` | Use an HTTPS address. Health data is never sent unencrypted. | Bir HTTPS adresi kullanın. Sağlık verileri hiçbir zaman şifrelenmeden gönderilmez. |  |
+| `sync_hint` | Optional. Your coordinator gives you a server address and device token, and you confirm consent. Leave empty to keep everything on this phone only. | İsteğe bağlı. Koordinatörünüz size bir sunucu adresi verir. Boş bırakırsanız her şey yalnızca bu telefonda kalır. |  |
+| `sync_need_https` | Use an HTTPS address with a token and your consent. Health data is never sent unencrypted. | Bir HTTPS adresi kullanın. Sağlık verileri hiçbir zaman şifrelenmeden gönderilmez. |  |
 | `sync_never` | Not synced yet. | Henüz senkronize edilmedi. |  |
+| `sync_no_consent` | Confirm consent before syncing. | Confirm consent before syncing. |  |
 | `sync_now` | Sync now | Şimdi senkronize et |  |
 | `sync_offline` | No internet right now. Entries queued. | Şu anda internet yok. Kayıtlar kuyruğa alındı. |  |
 | `sync_ok` | Synced. All entries are on the server. | Senkronize edildi. Tüm kayıtlar sunucuda. |  |
+| `sync_pin` | Server key pin (optional) | Server key pin (optional) |  |
+| `sync_pin_ph` | Base64 SHA-256 of the server public key | Base64 SHA-256 of the server public key |  |
 | `sync_save` | Save address | Adresi kaydet |  |
-| `sync_title` | Study sync | Çalışma senkronizasyonu |  |
+| `sync_title` | Institution sync | Çalışma senkronizasyonu |  |
+| `sync_token` | Access token | Access token |  |
+| `sync_token_ph` | Issued by your coordinator | Issued by your coordinator |  |
 | `sync_url` | Server address | Sunucu adresi |  |
 | `sync_url_ph` | https://your-study.example.org | https://your-study.example.org |  |
 | `tab_history` | History | Geçmiş |  |
